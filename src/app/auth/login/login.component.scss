@@ -34,9 +34,7 @@ svg {
  transform: scale(0.7);
  left: -275px;
  display: flex;
-
- 
-
+ margin-top: -271px;
 }
 .whitepaper1 {
   position: absolute;
@@ -417,4 +415,33 @@ svg {
     object-fit: cover;
   }
   
+}
+
+.user-field {
+  input {
+      width: 348px; 
+  }
+}
+
+.p-ripple {
+  overflow: hidden;
+  position: relative;
+  width: 345px;
+  background-color: #008579 !important;
+}
+
+
+.custom-button {
+
+
+  // flex: 1;
+  // align-self: stretch;
+  // justify-content: center;
+  // align-items: center;
+  // padding: 11px 17px;
+  // outline: solid 1px #008579;
+  // outline-offset: -1px;
+  // border-radius: 4px;
+ 
+  // display: flex;
 }

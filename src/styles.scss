@@ -1,3 +1,5 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
 
 loginPage-root {
   font-family: sans-serif;
@@ -6,3 +8,15 @@ loginPage-root {
   align-items: center;
   justify-content: center;
 }
+
+.sign-in-btn{
+  .p-ripple {
+    overflow: hidden;
+    position: relative;
+    width: 345px;
+    background-color: #008579 !important;
+    outline: solid 1px #008579;
+    border-radius: 4px;
+  }
+}
+

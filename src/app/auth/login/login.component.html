@@ -17,28 +17,22 @@
         </div>
       </div>
       <div class="frame5816">
-        <div class="group8">
-          <div class="rectangle4"></div>
-          <div class="frame5845">
-            <div class="user-icon-container"> 
-              <div class="vector"><img src="assets/user-icon.svg" alt="" class="icon" /></div>
-              </div>
-            <div class="username">Username</div>
-            
-          </div>
-        </div>
-        <div class="group9">
-          <div class="rectangle42"></div>
-          <div class="frame5846">
-            <div class="lock-icon-container">
-              <div class="vector">
-                <img src="assets/lock-icon.svg" alt="" class="icon" />
-              </div>
-            </div>
-            <div class="password">Password</div>
-          </div>
-        </div>
-        <div class="frame10"><div class="signIn">Sign In</div></div>
+       
+        <span class="p-input-icon-left p-float-label user-field mb-2 ">
+          <i class="pi pi-user"></i>
+          <input id="float-input" type="text" pInputText />
+          <label for="float-input">Username</label>
+      </span>
+
+      <span class="p-input-icon-left p-float-label user-field">
+        <i class="pi pi-lock"></i>
+        <input id="float-input" type="text" pInputText />
+        <label for="float-input" class="mt-2">Password</label>
+      </span>
+  
+        <!-- <div class="frame10"><div class="signIn">Sign In</div></div> -->
+        <p-button  label="Sign In" [loading]="loading" (onClick)="load()" class="sign-in-btn"  ></p-button>
+
       </div>
     </div>
   </div>
@@ -60,3 +54,5 @@
   </div>
   <div class="frame5983"></div>
   </div>
+
+
