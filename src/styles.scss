@@ -1,6 +1,21 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 
+
+@import "assets/layout/styles/layout/layout.scss";
+
+/* PrimeNG */
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeflex/primeflex.scss";
+@import "../node_modules/primeicons/primeicons.css";
+
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+/* Demos */
+// @import "assets/demo/styles/flags/flags.css";
+// @import "assets/demo/styles/badges.scss";
+// @import "assets/demo/styles/code.scss";
+
 loginPage-root {
   font-family: sans-serif;
   background-color: #1e1e1e;
