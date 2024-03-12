@@ -1,7 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AppLayoutComponent } from './layout/app.layout.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 
-const routes: Routes = [];
+
+const routes: Routes = [
+  
+    {
+        path: '', component: AppLayoutComponent,
+        children: [
+            { path: '', loadChildren: () => import('./components/dashboard/dashboard.module').then(m => m.DashboardModule) },
+            { path: 'documentation', loadChildren: () => import('./components/documentation/documentation.module').then(m => m.DocumentationModule) },
+            { path: 'pages', loadChildren: () => import('./components/pages/pages.module').then(m => m.PagesModule) }
+        ]
+    },
+  
+    { path: 'notfound', component: NotfoundComponent },
+    { path: '**', redirectTo: '/notfound' },
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
