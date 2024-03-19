@@ -16,24 +16,28 @@
           </p>
         </div>
       </div>
-      <div class="frame5816">
-       
-        <span class="p-input-icon-left p-float-label user-field mb-2 ">
+      <form class="frame5816" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+    
+        <span class="p-input-icon-left p-float-label user-field mb-2">
           <i class="pi pi-user"></i>
-          <input id="float-input" type="text" pInputText />
+          <input id="float-input" type="text" pInputText formControlName="username" />
           <label for="float-input">Username</label>
-      </span>
-
-      <span class="p-input-icon-left p-float-label user-field">
-        <i class="pi pi-lock"></i>
-        <input id="float-input" type="text" pInputText />
-        <label for="float-input" class="mt-2">Password</label>
-      </span>
+          <div *ngIf="loginForm.get('username')?.hasError('required') && loginForm.get('username')?.touched && loginForm.get('username')?.invalid">
+            Username is required.
+          </div>
+        </span>
+      
+        <span class="p-input-icon-left p-float-label user-field">
+          <i class="pi pi-lock"></i>
+          <input id="float-input" type="password" pInputText formControlName="password" />
+          <label for="float-input">Password</label>
+          <div *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+            Password is required.
+          </div>
+        </span>
+        <p-button type="submit"  label="Sign In" [loading]="loading"  [disabled]="loginForm.invalid" class="sign-in-btn"></p-button>
   
-        <!-- <div class="frame10"><div class="signIn">Sign In</div></div> -->
-        <p-button  label="Sign In" [loading]="loading" (onClick)="load()" class="sign-in-btn"  ></p-button>
-
-      </div>
+    </form>
     </div>
   </div>
   <div class="aProblemClickHereAndLetUsHelpY">
