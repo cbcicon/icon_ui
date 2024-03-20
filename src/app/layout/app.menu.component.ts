@@ -29,7 +29,7 @@ export class AppMenuComponent implements OnInit {
                     {
                         label: 'Orders',
                         icon: 'receipt-icon',
-                        routerLink: ['/pages/empty']
+                        routerLink: ['/demand-management/order-list']
                     },
                     {
                         label: 'Inventory',
