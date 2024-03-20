@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppLayoutComponent } from './layout/app.layout.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
-
+import { DemandManagementModule } from './components/demand-management/demand-management.module';
 
 const routes: Routes = [
   
@@ -11,7 +11,8 @@ const routes: Routes = [
         children: [
             { path: '', loadChildren: () => import('./components/dashboard/dashboard.module').then(m => m.DashboardModule) },
             { path: 'documentation', loadChildren: () => import('./components/documentation/documentation.module').then(m => m.DocumentationModule) },
-            { path: 'pages', loadChildren: () => import('./components/pages/pages.module').then(m => m.PagesModule) }
+            { path: 'pages', loadChildren: () => import('./components/pages/pages.module').then(m => m.PagesModule) } ,
+            { path: 'demand-management', loadChildren: () => import('./components/demand-management/demand-management.module').then(m => m.DemandManagementModule) },
         ]
     },
   
