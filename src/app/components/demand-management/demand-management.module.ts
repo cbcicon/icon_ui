@@ -15,9 +15,12 @@ import { DemandManagementRoutingModule } from './demand-management-routing.modul
 import { TableModule } from 'primeng/table';
 import { OrderTableComponent } from './order-table/order-table.component';
 import { PaginatorModule } from 'primeng/paginator';
+import { DialogModule } from 'primeng/dialog'; 
+import { QauntityBreakdownPopupComponent } from './popup/qauntity-breakdown-popup/qauntity-breakdown-popup.component';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 
 @NgModule({
-  declarations: [OrderTableComponent],
+  declarations: [OrderTableComponent , QauntityBreakdownPopupComponent],
   imports: [
     CommonModule,
     DemandManagementRoutingModule ,
@@ -33,8 +36,13 @@ import { PaginatorModule } from 'primeng/paginator';
 		DropdownModule,
 		ProgressBarModule,
 		ToastModule ,
-		PaginatorModule
+		PaginatorModule ,
+		DialogModule ,
+      DynamicDialogModule 
+
   ] ,
+
+  providers:[DialogService]
   
 })
 export class DemandManagementModule { }

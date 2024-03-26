@@ -1,5 +1,5 @@
 
-<div class="card">
+<div *ngIf="!showItemDetailPage" class="card">
 		<p-table
 		[value]="customers"
         dataKey="id"
@@ -12,6 +12,7 @@
         [rows]="10"
         [totalRecords]="totalRecords"
         [loading]="loading"
+		loadingIcon="pi pi-spin pi-spinner"
 		[showCurrentPageReport]="true"
 		currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
 		[rowsPerPageOptions]="rowsPerPageOptions"
@@ -122,19 +123,32 @@
 					<td>
 						<p-tableCheckbox [value]="customer"></p-tableCheckbox>
 					</td>
-					<td>{{ customer.item }}</td>
-					<td>{{ customer.description }}</td>
+					<td> <p style="color: green;" (click)="goToItemDetailsPage()"> {{ customer.item }} </p> </td>
+					<td>  <p>{{ customer.description }}  </p></td>
 					<td>{{ customer['demand'] }}</td>
-					<td>{{ customer['on_stock'] }}</td>
-					<td>{{ customer['availability'] }}</td>
+					<td *ngIf="customer['on_stock'] === 'Out of Stock' ||  customer['availability'] === 'Out of Stock'"  style="color: red;" > <i class="bi bi-box-arrow-in-up-right" (click)="show()"></i>{{ customer['on_stock'] }}</td>
+					<td *ngIf="customer['on_stock'] !== 'Out of Stock' ||  customer['availability'] !== 'Out of Stock'"  style="color: green;" > <i class="bi bi-box-arrow-in-up-right" (click)="show()"></i> {{ customer['on_stock'] }}</td>
+
+					<td *ngIf="customer['availability'] === 'Out of Stock'"  style="color: red;" >{{ customer['availability'] }}</td>
+					<td *ngIf="customer['availability'] !== 'Out of Stock'">{{ customer['availability'] }}</td>
 					<td>{{ customer['due_date'] }}</td>
-					<td>{{ customer['open_po'] }}</td>
+					<td *ngIf="customer['open_po'] === 'No Open PO'"  style="color: red;">{{ customer['open_po'] }}</td>
+					<td *ngIf="customer['open_po'] !== 'No Open PO'" >{{ customer['open_po'] }}</td>
+
 					<td>{{ customer['item_type'] }}</td> 
 					<!-- <td>{{ customer['quantity-open'] }}</td>
 					<td>{{ customer.vendor }}</td> -->
 				
 				</tr>
 			</ng-template>
+
 		</p-table>
 	</div>
 
+
+<!-- order detail page navigation  -->
+
+<div *ngIf="showItemDetailPage" class="card">
+<p-button label="Back" [text]="true" [raised]="true" [plain]="true" (onClick)="backToMainPage()"></p-button>
+<h4> work progress in item detail page   </h4>
+</div>

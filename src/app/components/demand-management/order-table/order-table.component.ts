@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/api';
-
 import { Table, TableLazyLoadEvent } from 'primeng/table';
 import { DataService } from '../data-services/data.service';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { QauntityBreakdownPopupComponent } from '../popup/qauntity-breakdown-popup/qauntity-breakdown-popup.component';
+
 
 export interface Customer {
   id?: number;
@@ -92,14 +94,17 @@ tableHeaderItem = [
   { columnName: 'On Stock', sortableColumn: 'onstock' },
   { columnName: 'Availablity', sortableColumn: 'availability' },
   { columnName: 'Open Po', sortableColumn: 'open_po' },
-  //{ columnName: 'ORDER-DATE', sortableColumn: 'order-date' },
+
   { columnName: 'Due Date', sortableColumn: 'due_date' },
   { columnName: 'Item Type', sortableColumn: 'item_type' },
-  // { columnName: 'QUANTITY-OPEN', sortableColumn: 'quantity-open' },
-  // { columnName: 'VENDOR', sortableColumn: 'vendor' }
 ];
 
-constructor(private customerService: DataService ) {}
+showItemDetailPage:boolean = false
+
+ref: DynamicDialogRef | undefined;
+
+constructor(private customerService: DataService  , public dialogService: DialogService) {}
+
 
 ngOnInit() {
     this.loading = true;
@@ -109,7 +114,7 @@ ngOnInit() {
     this.colunms = this.customerService.getColumns()
     this.duration = this.customerService.getDuration();
     this.loading = false
-  }, 1000);
+  }, 2000);
 
   this.rowsPerPageOptions =  this.divideIntoMultiplesOfTen(this.totalRecords)
 
@@ -164,7 +169,28 @@ onSelectAllChange(event: any) {
 
 
 
+show() {
+this.ref = this.dialogService.open(QauntityBreakdownPopupComponent, {
+    header: 'Quantity Breakdown',
+    width: '50vw',
+    contentStyle: { overflow: 'auto' },
+    breakpoints: {
+        '960px': '75vw',
+        '640px': '90vw'
+    },
+});
 
+
+}
+
+
+goToItemDetailsPage(){
+  this.showItemDetailPage =  true ;
+}
+
+backToMainPage(){
+  this.showItemDetailPage =  false ;
+}
 
 
 }
