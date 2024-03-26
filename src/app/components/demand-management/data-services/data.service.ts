@@ -9021,7 +9021,8 @@ export class DataService {
       "date-due": 1,
       "quantity-ordered": 135000,
       "quantity-received": 133000,
-      "quantity-open": 2000
+      "quantity-open": 2000,
+      "item-type": 2000
     },
     {
       "po": "AP2022044678",
@@ -9033,7 +9034,8 @@ export class DataService {
       "date-due": 1,
       "quantity-ordered": 250000,
       "quantity-received": 226000,
-      "quantity-open": 24000
+      "quantity-open": 24000,
+      "item-type": 2000
     },
     {
       "po": "AP2022044679",

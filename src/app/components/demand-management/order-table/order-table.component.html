@@ -19,7 +19,7 @@
 		>
 		<ng-template pTemplate="caption">
 			<div class="flex">
-				<span class="mt-2"> <h5>Order List</h5> </span>
+				<i class="bi bi-exclamation-circle"></i><h5>Items List</h5>
 				<span class="p-input-icon-left ml-auto">
 					<p-button label="" [text]="true" icon="pi pi-download" [plain]="true"></p-button>
 					<p-button label="" [text]="true" icon="pi pi-plus-circle" [plain]="true"></p-button>
@@ -44,7 +44,7 @@
 							<input pInputText type="text" 
 							(input)="dt1.filter($any($event.target).value, 'item', 'contains')"
 							 [value]="$any(dt1.filters['item'])?.value"
-							placeholder="ITEMID" 
+							placeholder="Item" 
 							class="w-full"
 							>
 						</th>
@@ -52,7 +52,7 @@
 							<input pInputText type="text" 
 							(input)="dt1.filter($any($event.target).value, 'description', 'contains')"
 							[value]="$any(dt1.filters['description'])?.value"
-							placeholder="DESCRIPTION"
+							placeholder="Description"
 							 class="w-full"
 							 >
 						</th>
@@ -60,60 +60,60 @@
 							<input pInputText type="text" 
 							(input)="dt1.filter($any($event.target).value, 'quantity-ordered', 'contains')"
 							[value]="$any(dt1.filters['quantity-ordered'])?.value"
-							placeholder="QUANTITY-ORDERED" 
+							placeholder="Demand" 
 							class="w-full">
 						</th>
 						<th>
 							<input pInputText type="text" 
 							(input)="dt1.filter($any($event.target).value, 'quantity-received', 'contains')"
 							[value]="$any(dt1.filters['quantity-received'])?.value"
-							 placeholder="QUANTITY-RECEIVED" 
+							 placeholder="On Stock" 
 							 class="w-full">
 						</th>
 						<th>
 							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, '', 'contains')"
-							 [value]="$any(dt1.filters[''])?.value"
-							placeholder="CATEGORY" 
-							class="w-full"
-							>
+							(input)="dt1.filter($any($event.target).value, 'availability', 'contains')"
+							[value]="$any(dt1.filters['availability'])?.value"
+							 placeholder="Availability" 
+							 class="w-full">
 						</th>
 						<th>
+							<input pInputText type="text" 
+							(input)="dt1.filter($any($event.target).value, 'open-po', 'contains')"
+							[value]="$any(dt1.filters['open-po'])?.value"
+							 placeholder="Open Po" 
+							 class="w-full">
+						</th>
+						<!-- <th>
 							<input pInputText type="text" 
 							(input)="dt1.filter($any($event.target).value, 'order-date', 'contains')"
 							[value]="$any(dt1.filters['order-date'])?.value"
 							placeholder="ORDER-DATE"
 							 class="w-full"
 							 >
-						</th>
+						</th> -->
 						<th>
 							<input pInputText type="text" 
 							(input)="dt1.filter($any($event.target).value, 'date-due', 'contains')"
 							[value]="$any(dt1.filters['date-due'])?.value"
-							placeholder="DUE-DATE" 
+							placeholder="Due Date" 
 							class="w-full">
 						</th>
-						<th>
+						
+						 <th>
 							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'po', 'contains')"
-							[value]="$any(dt1.filters['po'])?.value"
-							 placeholder="PO" 
-							 class="w-full">
-						</th>
-						<th>
-							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'quantity-open', 'contains')"
-							[value]="$any(dt1.filters['quantity-open'])?.value"
-							placeholder="QUANTITY-OPEN" 
+							(input)="dt1.filter($any($event.target).value, 'item-type', 'contains')"
+							[value]="$any(dt1.filters['item-type'])?.value"
+							placeholder="Item Type" 
 							class="w-full">
 						</th>
-						<th>
+						<!--<th>
 							<input pInputText type="text" 
 							(input)="dt1.filter($any($event.target).value, 'customer.vendor', 'contains')"
 							[value]="$any(dt1.filters['customer.vendor'])?.value"
 							 placeholder="VENDOR" 
 							 class="w-full">
-						</th>
+						</th> -->
 				</tr>				
 
 		</ng-template>
@@ -127,12 +127,11 @@
 					<td>{{ customer.description }}</td>
 					<td>{{ customer['quantity-ordered'] }}</td>
 					<td>{{ customer['quantity-received'] }}</td>
-					<td>  - </td>
-					<td>{{ customer['order-date'] }}</td>
 					<td>{{ customer['date-due'] }}</td>
 					<td>{{ customer['po'] }}</td>
-					<td>{{ customer['quantity-open'] }}</td>
-					<td>{{ customer.vendor }}</td>
+					<td>{{ customer['item-type'] }}</td> 
+					<!-- <td>{{ customer['quantity-open'] }}</td>
+					<td>{{ customer.vendor }}</td> -->
 				
 				</tr>
 			</ng-template>

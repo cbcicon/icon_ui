@@ -85,16 +85,17 @@ selectedCustomers!:any
 rowsPerPageOptions:any
 
 tableHeaderItem = [
-  { columnName: 'ITEMID', sortableColumn: 'itemid' },
-  { columnName: 'DESCRIPTION', sortableColumn: 'description' },
-  { columnName: 'QUANTITY-ORDERED', sortableColumn: 'quantity-ordered' },
-  { columnName: 'QUANTITY-RECEIVED', sortableColumn: 'quantity-received' },
-  { columnName: 'CATEGORY', sortableColumn: 'category' },
-  { columnName: 'ORDER-DATE', sortableColumn: 'order-date' },
-  { columnName: 'DUE-DATE', sortableColumn: 'due-date' },
-  { columnName: 'PO', sortableColumn: 'po' },
-  { columnName: 'QUANTITY-OPEN', sortableColumn: 'quantity-open' },
-  { columnName: 'VENDOR', sortableColumn: 'vendor' }
+  { columnName: 'Item', sortableColumn: 'itemid' },
+  { columnName: 'Item Description', sortableColumn: 'description' },
+  { columnName: 'Demand', sortableColumn: 'quantity-ordered' },
+  { columnName: 'On Stock', sortableColumn: 'quantity-received' },
+  { columnName: 'Availablity', sortableColumn: 'availability' },
+  { columnName: 'Open Po', sortableColumn: 'open-po' },
+  //{ columnName: 'ORDER-DATE', sortableColumn: 'order-date' },
+  { columnName: 'Due Date', sortableColumn: 'due-date' },
+  { columnName: 'Item Type', sortableColumn: 'item-type' },
+  // { columnName: 'QUANTITY-OPEN', sortableColumn: 'quantity-open' },
+  // { columnName: 'VENDOR', sortableColumn: 'vendor' }
 ];
 
 constructor(private customerService: DataService ) {}
