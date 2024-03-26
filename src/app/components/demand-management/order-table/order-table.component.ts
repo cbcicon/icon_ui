@@ -94,13 +94,12 @@ tableHeaderItem = [
   { columnName: 'On Stock', sortableColumn: 'onstock' },
   { columnName: 'Availablity', sortableColumn: 'availability' },
   { columnName: 'Open Po', sortableColumn: 'open_po' },
-  //{ columnName: 'ORDER-DATE', sortableColumn: 'order-date' },
+
   { columnName: 'Due Date', sortableColumn: 'due_date' },
   { columnName: 'Item Type', sortableColumn: 'item_type' },
-  // { columnName: 'QUANTITY-OPEN', sortableColumn: 'quantity-open' },
-  // { columnName: 'VENDOR', sortableColumn: 'vendor' }
 ];
 
+showItemDetailPage:boolean = false
 
 ref: DynamicDialogRef | undefined;
 
@@ -170,16 +169,8 @@ onSelectAllChange(event: any) {
 
 
 
-BasicShow: boolean = false; 
-  
-showDialog() { 
-    this.BasicShow = true; 
-} 
-
-
 show() {
- 
-  this.ref = this.dialogService.open(QauntityBreakdownPopupComponent, {
+this.ref = this.dialogService.open(QauntityBreakdownPopupComponent, {
     header: 'Quantity Breakdown',
     width: '50vw',
     contentStyle: { overflow: 'auto' },
@@ -188,6 +179,18 @@ show() {
         '640px': '90vw'
     },
 });
+
+
 }
+
+
+goToItemDetailsPage(){
+  this.showItemDetailPage =  true ;
+}
+
+backToMainPage(){
+  this.showItemDetailPage =  false ;
+}
+
 
 }

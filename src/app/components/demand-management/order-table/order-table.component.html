@@ -1,5 +1,5 @@
 
-<div class="card">
+<div *ngIf="!showItemDetailPage" class="card">
 		<p-table
 		[value]="customers"
         dataKey="id"
@@ -123,7 +123,7 @@
 					<td>
 						<p-tableCheckbox [value]="customer"></p-tableCheckbox>
 					</td>
-					<td> <a href="/login"> {{ customer.item }} </a> </td>
+					<td> <p style="color: green;" (click)="goToItemDetailsPage()"> {{ customer.item }} </p> </td>
 					<td>  <p>{{ customer.description }}  </p></td>
 					<td>{{ customer['demand'] }}</td>
 					<td *ngIf="customer['on_stock'] === 'Out of Stock' ||  customer['availability'] === 'Out of Stock'"  style="color: red;" > <i class="bi bi-box-arrow-in-up-right" (click)="show()"></i>{{ customer['on_stock'] }}</td>
@@ -143,28 +143,12 @@
 			</ng-template>
 
 		</p-table>
-		
 	</div>
 
 
-	<p-dialog
-	header="icon modal"
-	[(visible)]="BasicShow" 
-	[style]="{ width: '50vw' }" 
-	[draggable]="false" 
-	[resizable]="false"> 
-	<p> 
-		Angular PrimeNG is a framework  
-		used with angular to create components  
-	</p> 
-	<p> 
-		Angular PrimeNG is a framework  
-		used with angular to create components  
-		
-	</p> 
-	<p> 
-		Angular PrimeNG is a framework  
-	
-	</p> 
+<!-- order detail page navigation  -->
 
-</p-dialog> 
+<div *ngIf="showItemDetailPage" class="card">
+<p-button label="Back" [text]="true" [raised]="true" [plain]="true" (onClick)="backToMainPage()"></p-button>
+<h4> work progress in item detail page   </h4>
+</div>
