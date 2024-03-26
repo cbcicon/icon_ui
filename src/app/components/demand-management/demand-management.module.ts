@@ -15,6 +15,7 @@ import { DemandManagementRoutingModule } from './demand-management-routing.modul
 import { TableModule } from 'primeng/table';
 import { OrderTableComponent } from './order-table/order-table.component';
 import { PaginatorModule } from 'primeng/paginator';
+import { DialogModule } from 'primeng/dialog'; 
 
 @NgModule({
   declarations: [OrderTableComponent],
@@ -33,7 +34,8 @@ import { PaginatorModule } from 'primeng/paginator';
 		DropdownModule,
 		ProgressBarModule,
 		ToastModule ,
-		PaginatorModule
+		PaginatorModule ,
+		DialogModule
   ] ,
   
 })

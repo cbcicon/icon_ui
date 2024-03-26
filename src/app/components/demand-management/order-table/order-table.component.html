@@ -12,6 +12,7 @@
         [rows]="10"
         [totalRecords]="totalRecords"
         [loading]="loading"
+		loadingIcon="pi pi-spin pi-spinner"
 		[showCurrentPageReport]="true"
 		currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
 		[rowsPerPageOptions]="rowsPerPageOptions"
@@ -123,8 +124,8 @@
 					<td>
 						<p-tableCheckbox [value]="customer"></p-tableCheckbox>
 					</td>
-					<td>{{ customer.item }}</td>
-					<td>{{ customer.description }}</td>
+					<td> <a href="/login"> {{ customer.item }} </a> </td>
+					<td  >  <p (click)="showDialog()"  style="color: red;">{{ customer.description }}  </p></td>
 					<td>{{ customer['quantity-ordered'] }}</td>
 					<td>{{ customer['quantity-received'] }}</td>
 					<td>{{ customer['date-due'] }}</td>
@@ -135,6 +136,30 @@
 				
 				</tr>
 			</ng-template>
+
 		</p-table>
+		
 	</div>
 
+
+	<p-dialog
+	header="icon modal"
+	[(visible)]="BasicShow" 
+	[style]="{ width: '50vw' }" 
+	[draggable]="false" 
+	[resizable]="false"> 
+	<p> 
+		Angular PrimeNG is a framework  
+		used with angular to create components  
+	</p> 
+	<p> 
+		Angular PrimeNG is a framework  
+		used with angular to create components  
+		
+	</p> 
+	<p> 
+		Angular PrimeNG is a framework  
+	
+	</p> 
+
+</p-dialog> 

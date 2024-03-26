@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/api';
-
 import { Table, TableLazyLoadEvent } from 'primeng/table';
 import { DataService } from '../data-services/data.service';
+
 
 export interface Customer {
   id?: number;
@@ -106,7 +106,7 @@ ngOnInit() {
     setTimeout(() => {
     this.customers = this.customerService.getData()
     this.loading = false
-  }, 1000);
+  }, 3000);
 
   this.rowsPerPageOptions =  this.divideIntoMultiplesOfTen(this.totalRecords)
 
@@ -161,7 +161,11 @@ onSelectAllChange(event: any) {
 
 
 
-
+BasicShow: boolean = false; 
+  
+showDialog() { 
+    this.BasicShow = true; 
+} 
 
 
 }
