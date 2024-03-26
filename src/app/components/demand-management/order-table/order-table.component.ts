@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/api';
 import { Table, TableLazyLoadEvent } from 'primeng/table';
 import { DataService } from '../data-services/data.service';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { QauntityBreakdownPopupComponent } from '../popup/qauntity-breakdown-popup/qauntity-breakdown-popup.component';
 
 
 export interface Customer {
@@ -99,7 +101,11 @@ tableHeaderItem = [
   // { columnName: 'VENDOR', sortableColumn: 'vendor' }
 ];
 
-constructor(private customerService: DataService ) {}
+
+ref: DynamicDialogRef | undefined;
+
+constructor(private customerService: DataService  , public dialogService: DialogService) {}
+
 
 ngOnInit() {
     this.loading = true;
@@ -109,7 +115,7 @@ ngOnInit() {
     this.colunms = this.customerService.getColumns()
     this.duration = this.customerService.getDuration();
     this.loading = false
-  }, 3000);
+  }, 2000);
 
   this.rowsPerPageOptions =  this.divideIntoMultiplesOfTen(this.totalRecords)
 
@@ -170,5 +176,18 @@ showDialog() {
     this.BasicShow = true; 
 } 
 
+
+show() {
+ 
+  this.ref = this.dialogService.open(QauntityBreakdownPopupComponent, {
+    header: 'Quantity Breakdown',
+    width: '50vw',
+    contentStyle: { overflow: 'auto' },
+    breakpoints: {
+        '960px': '75vw',
+        '640px': '90vw'
+    },
+});
+}
 
 }
