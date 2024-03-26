@@ -7,7 +7,6 @@
     
         <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
             <img src="assets/layout-sidebar-inset.svg" alt="logo">
-            <!-- <i class="bi-layout-sidebar-inset fs-19"></i> -->
         </button>
     </div>
    
@@ -17,17 +16,17 @@
 
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
         <button class="p-link layout-topbar-button">
-            <i class="pi pi-calendar"></i>
+            <i class="bi-search"> </i>
             <span>Calendar</span>
         </button>
        
         <button class="p-link layout-topbar-button" [routerLink]="'/documentation'">
            
-            <img src="assets/bell.svg" alt="avatar">
+            <i class="bi-clock-history"></i>
             <span>Settings</span>
         </button>
         <button class="p-link layout-topbar-button user-avtar ">
-            <img src="assets/default-user-avtar.svg" alt="avatar">
+            <i class="bi-bell"></i>
             <span>Profile</span>
         </button>
     </div>
