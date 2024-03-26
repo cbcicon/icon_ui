@@ -23,9 +23,8 @@
 				<h5>Items List</h5>
 				<span class="p-input-icon-left ml-auto">
 					<p-button label="" [text]="true" icon="pi pi-download" [plain]="true"></p-button>
-					<p-button label="" [text]="true" icon="pi pi-plus-circle" [plain]="true"></p-button>
-					<p-button label="" [text]="true" icon="pi pi pi-bars" [plain]="true"></p-button>
-					<p-button icon="pi pi-plus" label="New Order" [text]="true" severity="secondary"></p-button>
+					<p-dropdown [options]="duration" optionLabel="name" [showClear]="true" placeholder="Select a Column"></p-dropdown>
+					<p-dropdown [options]="colunms" optionLabel="name" [showClear]="true" placeholder="Select a Column"></p-dropdown>
 				</span>
 			</div>
 		</ng-template>
@@ -59,15 +58,15 @@
 						</th>
 						<th>
 							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'quantity-ordered', 'contains')"
-							[value]="$any(dt1.filters['quantity-ordered'])?.value"
+							(input)="dt1.filter($any($event.target).value, 'demand', 'contains')"
+							[value]="$any(dt1.filters['demand'])?.value"
 							placeholder="Demand" 
 							class="w-full">
 						</th>
 						<th>
 							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'quantity-received', 'contains')"
-							[value]="$any(dt1.filters['quantity-received'])?.value"
+							(input)="dt1.filter($any($event.target).value, 'on_stock', 'contains')"
+							[value]="$any(dt1.filters['on_stock'])?.value"
 							 placeholder="On Stock" 
 							 class="w-full">
 						</th>
@@ -80,8 +79,8 @@
 						</th>
 						<th>
 							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'open-po', 'contains')"
-							[value]="$any(dt1.filters['open-po'])?.value"
+							(input)="dt1.filter($any($event.target).value, 'open_po', 'contains')"
+							[value]="$any(dt1.filters['open_po'])?.value"
 							 placeholder="Open Po" 
 							 class="w-full">
 						</th>
@@ -95,16 +94,16 @@
 						</th> -->
 						<th>
 							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'date-due', 'contains')"
-							[value]="$any(dt1.filters['date-due'])?.value"
+							(input)="dt1.filter($any($event.target).value, 'due_date', 'contains')"
+							[value]="$any(dt1.filters['due_date'])?.value"
 							placeholder="Due Date" 
 							class="w-full">
 						</th>
 						
 						 <th>
 							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'item-type', 'contains')"
-							[value]="$any(dt1.filters['item-type'])?.value"
+							(input)="dt1.filter($any($event.target).value, 'item_type', 'contains')"
+							[value]="$any(dt1.filters['item_type'])?.value"
 							placeholder="Item Type" 
 							class="w-full">
 						</th>
@@ -126,11 +125,12 @@
 					</td>
 					<td> <a href="/login"> {{ customer.item }} </a> </td>
 					<td  >  <p (click)="showDialog()"  style="color: red;">{{ customer.description }}  </p></td>
-					<td>{{ customer['quantity-ordered'] }}</td>
-					<td>{{ customer['quantity-received'] }}</td>
-					<td>{{ customer['date-due'] }}</td>
-					<td>{{ customer['po'] }}</td>
-					<td>{{ customer['item-type'] }}</td> 
+					<td>{{ customer['demand'] }}</td>
+					<td>{{ customer['on_stock'] }}</td>
+					<td>{{ customer['availability'] }}</td>
+					<td>{{ customer['due_date'] }}</td>
+					<td>{{ customer['open_po'] }}</td>
+					<td>{{ customer['item_type'] }}</td> 
 					<!-- <td>{{ customer['quantity-open'] }}</td>
 					<td>{{ customer.vendor }}</td> -->
 				

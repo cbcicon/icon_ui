@@ -70,8 +70,9 @@ export interface Product {
 export class OrderTableComponent implements OnInit {
 
 
-customers:any
-
+customers:any;
+colunms: any;
+duration: any;
 totalRecords!: number;
 
 loading: boolean = false;
@@ -85,15 +86,15 @@ selectedCustomers!:any
 rowsPerPageOptions:any
 
 tableHeaderItem = [
-  { columnName: 'Item', sortableColumn: 'itemid' },
+  { columnName: 'Item', sortableColumn: 'item' },
   { columnName: 'Item Description', sortableColumn: 'description' },
-  { columnName: 'Demand', sortableColumn: 'quantity-ordered' },
-  { columnName: 'On Stock', sortableColumn: 'quantity-received' },
+  { columnName: 'Demand', sortableColumn: 'demand' },
+  { columnName: 'On Stock', sortableColumn: 'onstock' },
   { columnName: 'Availablity', sortableColumn: 'availability' },
-  { columnName: 'Open Po', sortableColumn: 'open-po' },
+  { columnName: 'Open Po', sortableColumn: 'open_po' },
   //{ columnName: 'ORDER-DATE', sortableColumn: 'order-date' },
-  { columnName: 'Due Date', sortableColumn: 'due-date' },
-  { columnName: 'Item Type', sortableColumn: 'item-type' },
+  { columnName: 'Due Date', sortableColumn: 'due_date' },
+  { columnName: 'Item Type', sortableColumn: 'item_type' },
   // { columnName: 'QUANTITY-OPEN', sortableColumn: 'quantity-open' },
   // { columnName: 'VENDOR', sortableColumn: 'vendor' }
 ];
@@ -104,7 +105,9 @@ ngOnInit() {
     this.loading = true;
     this.totalRecords = 180;
     setTimeout(() => {
-    this.customers = this.customerService.getData()
+    this.customers = this.customerService.getData();
+    this.colunms = this.customerService.getColumns()
+    this.duration = this.customerService.getDuration();
     this.loading = false
   }, 3000);
 
