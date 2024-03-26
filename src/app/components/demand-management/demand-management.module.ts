@@ -14,6 +14,7 @@ import { RatingModule } from 'primeng/rating';
 import { DemandManagementRoutingModule } from './demand-management-routing.module';
 import { TableModule } from 'primeng/table';
 import { OrderTableComponent } from './order-table/order-table.component';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [OrderTableComponent],
@@ -32,6 +33,7 @@ import { OrderTableComponent } from './order-table/order-table.component';
 		DropdownModule,
 		ProgressBarModule,
 		ToastModule ,
+		PaginatorModule
   ] ,
   
 })

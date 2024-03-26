@@ -82,11 +82,45 @@ selectAll: boolean = false;
 
 selectedCustomers!:any
 
-constructor(private customerService: DataService) {}
+rowsPerPageOptions:any
+
+tableHeaderItem = [
+  { columnName: 'ITEMID', sortableColumn: 'itemid' },
+  { columnName: 'DESCRIPTION', sortableColumn: 'description' },
+  { columnName: 'QUANTITY-ORDERED', sortableColumn: 'quantity-ordered' },
+  { columnName: 'QUANTITY-RECEIVED', sortableColumn: 'quantity-received' },
+  { columnName: 'CATEGORY', sortableColumn: 'category' },
+  { columnName: 'ORDER-DATE', sortableColumn: 'order-date' },
+  { columnName: 'DUE-DATE', sortableColumn: 'due-date' },
+  { columnName: 'PO', sortableColumn: 'po' },
+  { columnName: 'QUANTITY-OPEN', sortableColumn: 'quantity-open' },
+  { columnName: 'VENDOR', sortableColumn: 'vendor' }
+];
+
+constructor(private customerService: DataService ) {}
 
 ngOnInit() {
-  
     this.loading = true;
+    this.totalRecords = 180;
+    setTimeout(() => {
+    this.customers = this.customerService.getData()
+    this.loading = false
+  }, 1000);
+
+  this.rowsPerPageOptions =  this.divideIntoMultiplesOfTen(this.totalRecords)
+
+  }
+
+  divideIntoMultiplesOfTen(number:any) {
+    const multiplesOfTen = [];
+    let currentMultiple = 10;
+
+    while (currentMultiple <= number) {
+        multiplesOfTen.push(currentMultiple);
+        currentMultiple += 10;
+    }
+
+    return multiplesOfTen;
 }
 
 loadCustomers(event: TableLazyLoadEvent) {
@@ -98,10 +132,12 @@ loadCustomers(event: TableLazyLoadEvent) {
         //     this.totalRecords = 100;
         //     this.loading = false;
         // });
-        this.customers = this.customerService.getData()
-        this.totalRecords = 180;
-        this.loading = false
+        // this.customers = this.customerService.getData()
+        // this.totalRecords = 180;
+        // this.loading = false
     }, 1000);
+
+    
 }
 
 onSelectionChange(value = []) {
@@ -121,5 +157,10 @@ onSelectAllChange(event: any) {
         this.selectAll = false;
     }
 }
+
+
+
+
+
 
 }
