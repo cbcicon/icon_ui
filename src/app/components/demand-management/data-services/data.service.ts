@@ -9017,7 +9017,8 @@ export class DataService {
         "on_stock": "17,600",
         "availability": "4,400",
         "open_po": "No Open PO",
-        "due_date": "15 May 2024"
+        "due_date": "15 May 2024",
+        "item_type" : ""
       },
       {
         "item": "01.1602.001-Z",
