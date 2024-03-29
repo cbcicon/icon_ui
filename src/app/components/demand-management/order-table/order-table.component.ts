@@ -79,6 +79,7 @@ selectedDuration: any;
 totalRecords!: number;
 
 loading: boolean = false;
+rightSideBar:boolean = false
 
 representatives!: Representative[];
 
@@ -160,9 +161,8 @@ onSelectAllChange(event: any) {
     const checked = event.checked;
 
     if (checked) {
-        this.selectedCustomers = this.customerService.getData();
+        this.selectedCustomers =  this.customerService.getData();
         this.selectAll = true;
-
     } else {
         this.selectedCustomers = [];
         this.selectAll = false;

@@ -8,7 +8,7 @@
 		styleClass="p-datatable-gridlines p-datatable-striped">
 		<ng-template pTemplate="caption">
 			<div class="flex">
-				<h5>Items List</h5>
+				<h5><i class="pi pi-exclamation-circle mr-2" ></i>Items List</h5>
 				<span class="p-input-icon-left ml-auto">
 					<p-button label="Export" [text]="true" icon="pi pi-download" [plain]="true"></p-button>
 					<p-dropdown [options]="duration" optionLabel="name" [(ngModel)]="selectedDuration"></p-dropdown>&nbsp;
@@ -18,102 +18,110 @@
 			</div>
 		</ng-template>
 
-		<ng-template pTemplate="header">
-			<tr>
-				<th style="width: 6rem"></th>
-				<ng-container *ngFor="let headerItem of tableHeaderItem">
-					<th pSortableColumn="{{ headerItem.sortableColumn }}">{{ headerItem.columnName }}</th>
-				</ng-container>
-			</tr>
-			<tr>
-				<th>
-					<p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-				</th>
-				<th>
-					<input pInputText type="text" (input)="dt1.filter($any($event.target).value, 'item', 'contains')"
-						[value]="$any(dt1.filters['item'])?.value" placeholder="Item" class="w-full" >
-				</th>
-				<th>
-					<input pInputText type="text"
-						(input)="dt1.filter($any($event.target).value, 'description', 'contains')"
-						[value]="$any(dt1.filters['description'])?.value" placeholder="Description" class="w-full">
-				</th>
-				<th>
-					<input pInputText type="text" (input)="dt1.filter($any($event.target).value, 'demand', 'contains')"
-						[value]="$any(dt1.filters['demand'])?.value" placeholder="Demand" class="w-full">
-				</th>
-				<th>
-					<input pInputText type="text"
-						(input)="dt1.filter($any($event.target).value, 'on_stock', 'contains')"
-						[value]="$any(dt1.filters['on_stock'])?.value" placeholder="On Stock" class="w-full">
-				</th>
-				<th>
-					<input pInputText type="text"
-						(input)="dt1.filter($any($event.target).value, 'availability', 'contains')"
-						[value]="$any(dt1.filters['availability'])?.value" placeholder="Availability" class="w-full">
-				</th>
-				<th>
-					<input pInputText type="text" (input)="dt1.filter($any($event.target).value, 'open_po', 'contains')"
-						[value]="$any(dt1.filters['open_po'])?.value" placeholder="Open Po" class="w-full">
-				</th>
-				<!-- <th>
+			<ng-template pTemplate="header">
+				<tr>
+					<th style="width: 6rem"></th>
+					<ng-container *ngFor="let headerItem of tableHeaderItem">
+						<th pSortableColumn="{{ headerItem.sortableColumn }}">{{ headerItem.columnName }}</th>
+					  </ng-container>
+				</tr>
+				<tr>
+					<th>
+						<p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+					</th>
+						<th>
 							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'order-date', 'contains')"
-							[value]="$any(dt1.filters['order-date'])?.value"
-							placeholder="ORDER-DATE"
+							(input)="dt1.filter($any($event.target).value, 'item', 'contains')"
+							 [value]="$any(dt1.filters['item'])?.value"
+							placeholder="Item" 
+							class="w-full"
+							>
+						</th>
+						<th>
+							<input pInputText type="text" 
+							(input)="dt1.filter($any($event.target).value, 'description', 'contains')"
+							[value]="$any(dt1.filters['description'])?.value"
+							placeholder="Description"
 							 class="w-full"
 							 >
-						</th> -->
-				<th>
-					<input pInputText type="text"
-						(input)="dt1.filter($any($event.target).value, 'due_date', 'contains')"
-						[value]="$any(dt1.filters['due_date'])?.value" placeholder="Due Date" class="w-full">
-				</th>
-
-				<th>
-					<input pInputText type="text"
-						(input)="dt1.filter($any($event.target).value, 'item_type', 'contains')"
-						[value]="$any(dt1.filters['item_type'])?.value" placeholder="Item Type" class="w-full">
-				</th>
-				<!--<th>
+						</th>
+						<th>
 							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'customer.vendor', 'contains')"
-							[value]="$any(dt1.filters['customer.vendor'])?.value"
-							 placeholder="VENDOR" 
+							(input)="dt1.filter($any($event.target).value, 'demand', 'contains')"
+							[value]="$any(dt1.filters['demand'])?.value"
+							placeholder="Demand" 
+							class="w-full">
+						</th>
+						<th>
+							<input pInputText type="text" 
+							(input)="dt1.filter($any($event.target).value, 'on_stock', 'contains')"
+							[value]="$any(dt1.filters['on_stock'])?.value"
+							 placeholder="On Stock" 
 							 class="w-full">
-						</th> -->
-			</tr>
+						</th>
+						<th>
+							<input pInputText type="text" 
+							(input)="dt1.filter($any($event.target).value, 'availability', 'contains')"
+							[value]="$any(dt1.filters['availability'])?.value"
+							 placeholder="Availability" 
+							 class="w-full">
+						</th>
+						<th>
+							<input pInputText type="text" 
+							(input)="dt1.filter($any($event.target).value, 'open_po', 'contains')"
+							[value]="$any(dt1.filters['open_po'])?.value"
+							 placeholder="Open Po" 
+							 class="w-full">
+						</th>
+						
+						<th>
+							
+							<span class="p-input-icon-right">
+								<i class="pi pi-calendar"></i>
+								<input pInputText type="text" 
+								(input)="dt1.filter($any($event.target).value, 'due_date', 'contains')"
+								[value]="$any(dt1.filters['due_date'])?.value"
+								placeholder="Due Date" 
+								class="w-full">
+							</span>
 
+						</th>
+						
+						 <th>
+							<input pInputText type="text" 
+							(input)="dt1.filter($any($event.target).value, 'item_type', 'contains')"
+							[value]="$any(dt1.filters['item_type'])?.value"
+							placeholder="Item Type" 
+							class="w-full">
+						</th>
+				</tr>				
+ 
 		</ng-template>
 
-		<ng-template pTemplate="body" let-customer>
-			<tr>
-				<td>
-					<p-tableCheckbox [value]="customer"></p-tableCheckbox>
-				</td>
-				<td>
-					<p style="color: green; cursor:pointer" (click)="goToItemDetailsPage()"> {{ customer.item }} </p>
-				</td>
-				<td>
-					<p>{{ customer.description }} </p>
-				</td>
-				<td>{{ customer['demand'] }}</td>
-				<td *ngIf="customer['on_stock'] === 'Out of Stock' ||  customer['availability'] === 'Out of Stock'"
-					style="color: red; cursor:pointer"> <i class="bi bi-box-arrow-in-up-right" (click)="show()"></i>{{
-					customer['on_stock'] }}</td>
-				<td *ngIf="customer['on_stock'] !== 'Out of Stock' ||  customer['availability'] !== 'Out of Stock'"
-					style="color: green; cursor:pointer"> <i class="bi bi-box-arrow-in-up-right" (click)="show()"></i> {{
-					customer['on_stock'] }}</td>
-
-				<td *ngIf="customer['availability'] === 'Out of Stock'" style="color: red;">{{ customer['availability']
-					}}</td>
-				<td *ngIf="customer['availability'] !== 'Out of Stock'">{{ customer['availability'] }}</td>
-				<td>{{ customer['due_date'] }}</td>
-				<td *ngIf="customer['open_po'] === 'No Open PO'" style="color: red;">{{ customer['open_po'] }}</td>
-				<td *ngIf="customer['open_po'] !== 'No Open PO'">{{ customer['open_po'] }}</td>
-
-				<td>{{ customer['item_type'] }}</td>
-				<!-- <td>{{ customer['quantity-open'] }}</td>
+			<ng-template pTemplate="body" let-customer>
+				<tr>
+					<td>
+						<p-tableCheckbox [value]="customer"></p-tableCheckbox>
+					</td>
+					<td> <p style="color: green;" (click)="goToItemDetailsPage()"> {{ customer.item }} </p> </td>
+					<td>  <p>{{ customer.description }}  </p></td>
+					<td>{{ customer['demand'] }}</td>
+					<td [style.color]="customer['on_stock'] === 'Out of Stock' || customer['availability'] === 'Out of Stock' ? 'red' : 'green'">
+						<i class="bi bi-box-arrow-in-up-right" (click)="show()"></i> {{ customer['on_stock'] }}
+					</td>
+					
+					<td [ngClass]="{'text-danger': customer.availability === 'Out of Stock'}" (click)="rightSideBar = customer.availability !== 'Out of Stock'">
+						<i *ngIf="customer.availability === 'Out of Stock'" class="bi bi-unlock"></i>
+						<i *ngIf="customer.availability !== 'Out of Stock'"class="bi bi-lock"></i>
+						{{ customer.availability }}
+					  </td>
+					  
+					<td>{{ customer['due_date'] }}</td>
+					<td *ngIf="customer['open_po'] === 'No Open PO'"  style="color: red;">{{ customer['open_po'] }}</td>
+					<td *ngIf="customer['open_po'] !== 'No Open PO'" > {{ customer['open_po'] }}</td>
+					<!-- {{customer['item_type']}} -->
+					<td> <p-chip label="" icon="pi pi-apple"></p-chip></td> 
+					<!-- <td>{{ customer['quantity-open'] }}</td>
 					<td>{{ customer.vendor }}</td> -->
 
 			</tr>
@@ -129,3 +137,10 @@
 	<p-button label="Back" [text]="true" [raised]="true" [plain]="true" (onClick)="backToMainPage()"></p-button>
 	<h4> Work in Progress.. </h4>
 </div>
+
+
+<!-- left sidebar  -->
+
+<p-sidebar [(visible)]="rightSideBar" position="right" styleClass="w-50rem" >
+	<h3>Right Sidebar</h3>
+</p-sidebar>
