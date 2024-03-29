@@ -1,30 +1,19 @@
-
 <div *ngIf="!showItemDetailPage" class="card">
-		<p-table
-		[value]="customers"
-        dataKey="id"
-        [tableStyle]="{ 'min-width': '75rem' }"
-        [selection]="selectedCustomers"
-        (selectionChange)="onSelectionChange($event)"
-        [selectAll]="selectAll"
-        (selectAllChange)="onSelectAllChange($event)"
-        [paginator]="true"
-        [rows]="10"
-        [totalRecords]="totalRecords"
-        [loading]="loading"
-		loadingIcon="pi pi-spin pi-spinner"
-		[showCurrentPageReport]="true"
+	<p-table [value]="customers" dataKey="id" [tableStyle]="{ 'min-width': '75rem' }" [selection]="selectedCustomers"
+		(selectionChange)="onSelectionChange($event)" [selectAll]="selectAll"
+		(selectAllChange)="onSelectAllChange($event)" [paginator]="true" [rows]="10" [totalRecords]="totalRecords"
+		[loading]="loading" loadingIcon="pi pi-spin pi-spinner" [showCurrentPageReport]="true"
 		currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-		[rowsPerPageOptions]="rowsPerPageOptions"
-      #dt1
-		>
+		[rowsPerPageOptions]="rowsPerPageOptions" #dt1
+		styleClass="p-datatable-gridlines p-datatable-striped">
 		<ng-template pTemplate="caption">
 			<div class="flex">
 				<h5><i class="pi pi-exclamation-circle mr-2" ></i>Items List</h5>
 				<span class="p-input-icon-left ml-auto">
-					<p-button label="" [text]="true" icon="pi pi-download" [plain]="true"></p-button>
-					<p-dropdown [options]="duration" optionLabel="name" [showClear]="true" placeholder="Select a Column"></p-dropdown>
-					<p-dropdown [options]="colunms" optionLabel="name" [showClear]="true" placeholder="Select a Column"></p-dropdown>
+					<p-button label="Export" [text]="true" icon="pi pi-download" [plain]="true"></p-button>
+					<p-dropdown [options]="duration" optionLabel="name" [(ngModel)]="selectedDuration"></p-dropdown>&nbsp;
+					<p-multiSelect [style]="{'width':'170px;'}" [panelStyle]="{'width':'170px'}" [options]="colunms"
+						optionLabel="name" placeholder="Column Options"></p-multiSelect>
 				</span>
 			</div>
 		</ng-template>
@@ -133,19 +122,19 @@
 					<td> <p-chip label="" icon="pi pi-apple"></p-chip></td> 
 					<!-- <td>{{ customer['quantity-open'] }}</td>
 					<td>{{ customer.vendor }}</td> -->
-				
-				</tr>
-			</ng-template>
 
-		</p-table>
-	</div>
+			</tr>
+		</ng-template>
+
+	</p-table>
+</div>
 
 
 <!-- order detail page navigation  -->
 
-<div *ngIf="showItemDetailPage" class="card">
-<p-button label="Back" [text]="true" [raised]="true" [plain]="true" (onClick)="backToMainPage()"></p-button>
-<h4> work progress in item detail page   </h4>
+<div *ngIf="showItemDetailPage" class="card" style="height: 900px;">
+	<p-button label="Back" [text]="true" [raised]="true" [plain]="true" (onClick)="backToMainPage()"></p-button>
+	<h4> Work in Progress.. </h4>
 </div>
 
 

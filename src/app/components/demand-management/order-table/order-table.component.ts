@@ -75,7 +75,8 @@ export class OrderTableComponent implements OnInit {
 customers:any;
 colunms: any;
 duration: any;
-totalRecords!: number;       
+selectedDuration: any;
+totalRecords!: number;
 
 loading: boolean = false;
 rightSideBar:boolean = false
@@ -114,6 +115,7 @@ ngOnInit() {
     this.customers = this.customerService.getData();
     this.colunms = this.customerService.getColumns()
     this.duration = this.customerService.getDuration();
+    this.selectedDuration = this.customerService.getDuration()[1];
     this.loading = false
   }, 2000);
 
@@ -172,12 +174,9 @@ onSelectAllChange(event: any) {
 show() {
 this.ref = this.dialogService.open(QauntityBreakdownPopupComponent, {
     header: 'Quantity Breakdown',
-    width: '50vw',
-    contentStyle: { overflow: 'auto' },
-    breakpoints: {
-        '960px': '75vw',
-        '640px': '90vw'
-    },
+    width: '30vw',
+    height:'400',
+    contentStyle: { overflow: 'auto' }
 });
 
 
