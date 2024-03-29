@@ -111,13 +111,14 @@
 					</td>
 					
 					<td [ngClass]="{'text-danger': customer.availability === 'Out of Stock'}" (click)="rightSideBar = customer.availability !== 'Out of Stock'">
-						<i *ngIf="customer.availability === 'Out of Stock'" class="pi pi-lock-open"></i>
+						<i *ngIf="customer.availability === 'Out of Stock'" class="bi bi-unlock"></i>
+						<i *ngIf="customer.availability !== 'Out of Stock'"class="bi bi-lock"></i>
 						{{ customer.availability }}
 					  </td>
 					  
 					<td>{{ customer['due_date'] }}</td>
 					<td *ngIf="customer['open_po'] === 'No Open PO'"  style="color: red;">{{ customer['open_po'] }}</td>
-					<td *ngIf="customer['open_po'] !== 'No Open PO'" >{{ customer['open_po'] }}</td>
+					<td *ngIf="customer['open_po'] !== 'No Open PO'" > {{ customer['open_po'] }}</td>
 					<!-- {{customer['item_type']}} -->
 					<td> <p-chip label="" icon="pi pi-apple"></p-chip></td> 
 					<!-- <td>{{ customer['quantity-open'] }}</td>
@@ -140,6 +141,6 @@
 
 <!-- left sidebar  -->
 
-<p-sidebar [(visible)]="rightSideBar" position="right" styleClass="w-30rem" >
+<p-sidebar [(visible)]="rightSideBar" position="right" styleClass="w-50rem" >
 	<h3>Right Sidebar</h3>
 </p-sidebar>
