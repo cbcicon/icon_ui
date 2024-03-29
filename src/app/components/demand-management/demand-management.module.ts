@@ -18,6 +18,8 @@ import { PaginatorModule } from 'primeng/paginator';
 import { DialogModule } from 'primeng/dialog'; 
 import { QauntityBreakdownPopupComponent } from './popup/qauntity-breakdown-popup/qauntity-breakdown-popup.component';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
+import { SidebarModule } from 'primeng/sidebar';
+import { ChipModule } from 'primeng/chip';
 
 @NgModule({
   declarations: [OrderTableComponent , QauntityBreakdownPopupComponent],
@@ -38,8 +40,9 @@ import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 		ToastModule ,
 		PaginatorModule ,
 		DialogModule ,
-      DynamicDialogModule 
-
+      DynamicDialogModule ,
+	  SidebarModule ,
+	  ChipModule
   ] ,
 
   providers:[DialogService]

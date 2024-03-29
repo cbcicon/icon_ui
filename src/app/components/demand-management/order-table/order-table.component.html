@@ -20,7 +20,7 @@
 		>
 		<ng-template pTemplate="caption">
 			<div class="flex">
-				<h5>Items List</h5>
+				<h5><i class="pi pi-exclamation-circle mr-2" ></i>Items List</h5>
 				<span class="p-input-icon-left ml-auto">
 					<p-button label="" [text]="true" icon="pi pi-download" [plain]="true"></p-button>
 					<p-dropdown [options]="duration" optionLabel="name" [showClear]="true" placeholder="Select a Column"></p-dropdown>
@@ -84,20 +84,18 @@
 							 placeholder="Open Po" 
 							 class="w-full">
 						</th>
-						<!-- <th>
-							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'order-date', 'contains')"
-							[value]="$any(dt1.filters['order-date'])?.value"
-							placeholder="ORDER-DATE"
-							 class="w-full"
-							 >
-						</th> -->
+						
 						<th>
-							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'due_date', 'contains')"
-							[value]="$any(dt1.filters['due_date'])?.value"
-							placeholder="Due Date" 
-							class="w-full">
+							
+							<span class="p-input-icon-right">
+								<i class="pi pi-calendar"></i>
+								<input pInputText type="text" 
+								(input)="dt1.filter($any($event.target).value, 'due_date', 'contains')"
+								[value]="$any(dt1.filters['due_date'])?.value"
+								placeholder="Due Date" 
+								class="w-full">
+							</span>
+
 						</th>
 						
 						 <th>
@@ -107,15 +105,8 @@
 							placeholder="Item Type" 
 							class="w-full">
 						</th>
-						<!--<th>
-							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'customer.vendor', 'contains')"
-							[value]="$any(dt1.filters['customer.vendor'])?.value"
-							 placeholder="VENDOR" 
-							 class="w-full">
-						</th> -->
 				</tr>				
-
+ 
 		</ng-template>
 
 			<ng-template pTemplate="body" let-customer>
@@ -126,16 +117,20 @@
 					<td> <p style="color: green;" (click)="goToItemDetailsPage()"> {{ customer.item }} </p> </td>
 					<td>  <p>{{ customer.description }}  </p></td>
 					<td>{{ customer['demand'] }}</td>
-					<td *ngIf="customer['on_stock'] === 'Out of Stock' ||  customer['availability'] === 'Out of Stock'"  style="color: red;" > <i class="bi bi-box-arrow-in-up-right" (click)="show()"></i>{{ customer['on_stock'] }}</td>
-					<td *ngIf="customer['on_stock'] !== 'Out of Stock' ||  customer['availability'] !== 'Out of Stock'"  style="color: green;" > <i class="bi bi-box-arrow-in-up-right" (click)="show()"></i> {{ customer['on_stock'] }}</td>
-
-					<td *ngIf="customer['availability'] === 'Out of Stock'"  style="color: red;" >{{ customer['availability'] }}</td>
-					<td *ngIf="customer['availability'] !== 'Out of Stock'">{{ customer['availability'] }}</td>
+					<td [style.color]="customer['on_stock'] === 'Out of Stock' || customer['availability'] === 'Out of Stock' ? 'red' : 'green'">
+						<i class="bi bi-box-arrow-in-up-right" (click)="show()"></i> {{ customer['on_stock'] }}
+					</td>
+					
+					<td [ngClass]="{'text-danger': customer.availability === 'Out of Stock'}" (click)="rightSideBar = customer.availability !== 'Out of Stock'">
+						<i *ngIf="customer.availability === 'Out of Stock'" class="pi pi-lock-open"></i>
+						{{ customer.availability }}
+					  </td>
+					  
 					<td>{{ customer['due_date'] }}</td>
 					<td *ngIf="customer['open_po'] === 'No Open PO'"  style="color: red;">{{ customer['open_po'] }}</td>
 					<td *ngIf="customer['open_po'] !== 'No Open PO'" >{{ customer['open_po'] }}</td>
-
-					<td>{{ customer['item_type'] }}</td> 
+					<!-- {{customer['item_type']}} -->
+					<td> <p-chip label="" icon="pi pi-apple"></p-chip></td> 
 					<!-- <td>{{ customer['quantity-open'] }}</td>
 					<td>{{ customer.vendor }}</td> -->
 				
@@ -152,3 +147,10 @@
 <p-button label="Back" [text]="true" [raised]="true" [plain]="true" (onClick)="backToMainPage()"></p-button>
 <h4> work progress in item detail page   </h4>
 </div>
+
+
+<!-- left sidebar  -->
+
+<p-sidebar [(visible)]="rightSideBar" position="right" styleClass="w-30rem" >
+	<h3>Right Sidebar</h3>
+</p-sidebar>
