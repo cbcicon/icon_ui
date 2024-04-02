@@ -20,9 +20,13 @@ import { QauntityBreakdownPopupComponent } from './popup/qauntity-breakdown-popu
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { SidebarModule } from 'primeng/sidebar';
 import { ChipModule } from 'primeng/chip';
+import { AccordionModule } from 'primeng/accordion';
+import { ChartModule } from 'primeng/chart';
+import { ItemSearchPopupComponent } from './popup/itemsearchpopup/item-search-popup.component';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
-  declarations: [OrderTableComponent , QauntityBreakdownPopupComponent],
+  declarations: [OrderTableComponent , QauntityBreakdownPopupComponent , ItemSearchPopupComponent],
   imports: [
     CommonModule,
     DemandManagementRoutingModule ,
@@ -42,9 +46,11 @@ import { ChipModule } from 'primeng/chip';
 		DialogModule ,
       DynamicDialogModule ,
 	  SidebarModule ,
-	  ChipModule
+	  ChipModule ,
+	  AccordionModule ,
+	  ChartModule   ,
+	  CardModule
   ] ,
-
   providers:[DialogService]
   
 })
