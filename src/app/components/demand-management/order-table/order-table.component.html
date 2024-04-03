@@ -1,3 +1,80 @@
+
+
+<div class="d-flex justify-content-between m-2">
+	<h5> Demand Management</h5>
+	<button type="button" class="btn btn-light" (click)="handleInfoCard()" ><i class="bi bi-graph-up-arrow"></i> Demand KPI's</button>
+
+</div>
+
+<!-- cards on above to dashboard -->
+
+<div class="grid mb-3"  *ngIf="showInfoCard"  >	
+
+<div class="col-12 lg:col-6 xl:col-3">
+            <div class="card mb-0">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Orders</span>
+                        <div class="text-900 font-medium text-xl">152</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center  border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                        <i class="pi pi-shopping-cart"></i>
+                    </div>
+                </div>
+                <span class="text-green-500 font-medium">24 new </span>
+                <span class="text-500">since last visit</span>
+            </div>
+</div>
+<div class="col-12 lg:col-6 xl:col-3">
+	<div class="card mb-0">
+		<div class="flex justify-content-between mb-3">
+			<div>
+				<span class="block text-500 font-medium mb-3">Orders</span>
+				<div class="text-900 font-medium text-xl">152</div>
+			</div>
+			<div class="flex align-items-center justify-content-center  border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+				<i class="pi pi-shopping-cart"></i>
+			</div>
+		</div>
+		<span class="text-green-500 font-medium">24 new </span>
+		<span class="text-500">since last visit</span>
+	</div>
+</div>
+<div class="col-12 lg:col-6 xl:col-3">
+	<div class="card mb-0">
+		<div class="flex justify-content-between mb-3">
+			<div>
+				<span class="block text-500 font-medium mb-3">Orders</span>
+				<div class="text-900 font-medium text-xl">152</div>
+			</div>
+			<div class="flex align-items-center justify-content-center  border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+				<i class="pi pi-shopping-cart"></i>
+			</div>
+		</div>
+		<span class="text-green-500 font-medium">24 new </span>
+		<span class="text-500">since last visit</span>
+	</div>
+</div>
+<div class="col-12 lg:col-6 xl:col-3">
+	<div class="card mb-0">
+		<div class="flex justify-content-between mb-3">
+			<div>
+				<span class="block text-500 font-medium mb-3">Orders</span>
+				<div class="text-900 font-medium text-xl">152</div>
+			</div>
+			<div class="flex align-items-center justify-content-center  border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+				<i class="pi pi-shopping-cart"></i>
+			</div>
+		</div>
+		<span class="text-green-500 font-medium">24 new </span>
+		<span class="text-500">since last visit</span>
+	</div>
+</div>
+
+</div>
+
+<!-- demand management table -->
+
 <div *ngIf="!showItemDetailPage" class="card">
 	<p-table [value]="customers" dataKey="id" [tableStyle]="{ 'min-width': '75rem' }" [selection]="selectedCustomers"
 		(selectionChange)="onSelectionChange($event)" [selectAll]="selectAll"
@@ -103,8 +180,8 @@
 					<td>
 						<p-tableCheckbox [value]="customer"></p-tableCheckbox>
 					</td>
-					<td> <p style="color: green;" (click)="goToItemDetailsPage()"> {{ customer.item }} </p> </td>
-					<td>  <p>{{ customer.description }}  </p></td>
+					<td > <i class="bi bi-search" (click)="showItemSearch()" ></i>  <p style="color: green;" (click)="goToItemDetailsPage()"> {{ customer.item }} </p> </td>
+					<td>  <p>{{ customer.description }} </p></td>
 					<td>{{ customer['demand'] }}</td>
 					<td [style.color]="customer['on_stock'] === 'Out of Stock' || customer['availability'] === 'Out of Stock' ? 'red' : 'green'">
 						<i class="bi bi-box-arrow-in-up-right" (click)="show()"></i> {{ customer['on_stock'] }}
@@ -120,7 +197,15 @@
 					<td *ngIf="customer['open_po'] === 'No Open PO'"  style="color: red;">{{ customer['open_po'] }}</td>
 					<td *ngIf="customer['open_po'] !== 'No Open PO'" > {{ customer['open_po'] }}</td>
 					<!-- {{customer['item_type']}} -->
-					<td> <p-chip label="" icon="pi pi-apple"></p-chip></td> 
+					<td>
+						<div class="item-type-icons">
+						 <div class="item-type-cheap"> <i class="bi bi-exclamation-triangle"  ></i>
+					 </div> <div class="item-type-cheap"> <i class="bi bi-thermometer-snow"></i> </div>
+					 <div class="item-type-cheap"> <i class="bi bi-hourglass"></i> </div>
+					 <div class="item-type-cheap"> <i class="bi bi-box-seam"></i> </div>
+					</div>
+					 </td> 
+
 					<!-- <td>{{ customer['quantity-open'] }}</td>
 					<td>{{ customer.vendor }}</td> -->
 
@@ -133,14 +218,93 @@
 
 <!-- order detail page navigation  -->
 
-<div *ngIf="showItemDetailPage" class="card" style="height: 900px;">
+<div *ngIf="showItemDetailPage" class="card" >
 	<p-button label="Back" [text]="true" [raised]="true" [plain]="true" (onClick)="backToMainPage()"></p-button>
 	<h4> Work in Progress.. </h4>
 </div>
 
 
-<!-- left sidebar  -->
+<!-- right sidebar  -->
 
-<p-sidebar [(visible)]="rightSideBar" position="right" styleClass="w-50rem" >
-	<h3>Right Sidebar</h3>
+<div class="item-detail-right-sidebar" >
+<p-sidebar [(visible)]="rightSideBar" position="right" styleClass="p-sidebar-lg" >
+	<ng-template pTemplate="headless"> 
+	<div class="flex justify-content-between">
+	<div>
+	<span class="sidebar-header">Ring Fence</span>
+	<p class="sidebar-header-id">ID: 01-213-100-Z</p>
+    </div>
+	<span>
+		<p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary " (click)="closeCallback($event)"></p-button>
+	</span>
+</div>
+
+
+<div class="container">
+	<div class="flex justify-content-between">
+	<div>
+		<span class="item-detail-box-header">Item Details</span>
+		<p>Kit Box Small 9x5x2.5 (with Sealing Strip)</p>
+	</div>	
+	<button (click)="toggleContent()" class="toggle-button">
+	  <i class="pi" [ngClass]="{'pi-chevron-down': !showContent, 'pi-chevron-up': showContent}"></i>
+	</button>
+    </div>
+	<div class="content" *ngIf="showContent">
+	<div class="row"> 
+	 <div class="col-3"> <p class="text-center"> 4</p> </div>
+	 <div class="col-3"> <p class="text-center"> 4</p> </div>
+	 <div class="col-3"> <p class="text-center"> 4</p> </div>
+	 <div class="col-3"> <p class="text-center"> 4</p> </div>
+	</div>
+	
+	<div class="row"> 
+		<div class="col-3"> <p class="text-center"> 4</p> </div>
+		<div class="col-3"> <p class="text-center"> 4</p> </div>
+		<div class="col-3"> <p class="text-center"> 4</p> </div>
+		<div class="col-3"> <p class="text-center"> 4</p> </div>
+	</div>
+	<div class="row"> 
+		<div class="col-3"> <p class="text-center"> 4</p> </div>
+		<div class="col-3"> <p class="text-center"> 4</p> </div>
+		<div class="col-3"> <p class="text-center"> 4</p> </div>
+		<div class="col-3"> <p class="text-center"> 4</p> </div>
+	</div>
+	<div class="mt-3">
+		<span> <b>Sponsor Details</b></span>
+		<p>Mitsubishi Tanabe Pharma</p>
+	</div>
+	
+	</div>
+
+	<div class="report-card">
+		<p-chart type="pie" [data]="data" [options]="options"  class="chart-container"></p-chart>
+	</div>
+
+	<div class="card">
+
+		<p-table [value]="itemData" [tableStyle]="{ 'min-width': '50rem' }">
+		  <ng-template pTemplate="header">
+			<tr>
+			  <th>Code</th>
+			  <th>Name</th>
+			  <th>Category</th>
+			</tr>
+		  </ng-template>
+		  <ng-template pTemplate="body" let-itemData>
+			<tr>
+			  <td>{{ itemData.code }}</td>
+			  <td>{{ itemData.name }}</td>
+			  <td>{{ itemData.category }}</td>
+			</tr>
+		  </ng-template>
+		</p-table>
+	  </div>
+  </div>
+
+</ng-template>  
 </p-sidebar>
+
+  
+</div>
+

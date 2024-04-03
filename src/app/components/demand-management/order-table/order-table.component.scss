@@ -1,0 +1,72 @@
+.item-detail-right-sidebar {
+
+    .sidebar-header {
+        font-family: Poppins;
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 34.5px;
+        margin-left: 10px;
+    }
+
+    .sidebar-header-id {
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-left: 10px;
+        color: #128474;
+    }
+
+
+.container {
+    margin-top: 5px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .toggle-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .content {
+    background-color: #F3F9F8;
+  }
+
+.item-detail-box-header{
+font-family: Poppins;
+font-size: 1.2rem;
+font-weight: 600;
+line-height: 24px;
+letter-spacing: 0.15000000596046448px;
+text-align: left;
+
+}
+  
+.report-card{
+ width: 213px;
+ height: 213px;
+}
+
+
+
+}
+
+.item-type-icons{
+  display: flex;
+  flex-direction: row;
+}
+.item-type-cheap{
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  border: 0.5px solid rgba(0, 0, 0, 0.326);
+  border-radius: 50px;
+  background-color: #92d3ca6c;
+  margin: 3px;
+
+}
