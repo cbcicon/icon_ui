@@ -218,9 +218,9 @@
 
 <!-- order detail page navigation  -->
 
-<div *ngIf="showItemDetailPage" class="card" >
-	<p-button label="Back" [text]="true" [raised]="true" [plain]="true" (onClick)="backToMainPage()"></p-button>
-	<h4> Work in Progress.. </h4>
+<div *ngIf="showItemDetailPage" >
+	<app-item-details> </app-item-details>
+	
 </div>
 
 
