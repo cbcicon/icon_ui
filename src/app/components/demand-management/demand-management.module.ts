@@ -24,9 +24,12 @@ import { AccordionModule } from 'primeng/accordion';
 import { ChartModule } from 'primeng/chart';
 import { ItemSearchPopupComponent } from './popup/itemsearchpopup/item-search-popup.component';
 import { CardModule } from 'primeng/card';
+import { ItemDetailsComponent } from './item-details/item-details.component';
+import { PanelModule } from 'primeng/panel';
+import { SkeletonModule } from 'primeng/skeleton';
 
 @NgModule({
-  declarations: [OrderTableComponent , QauntityBreakdownPopupComponent , ItemSearchPopupComponent],
+  declarations: [OrderTableComponent , QauntityBreakdownPopupComponent , ItemSearchPopupComponent,ItemDetailsComponent],
   imports: [
     CommonModule,
     DemandManagementRoutingModule ,
@@ -49,7 +52,9 @@ import { CardModule } from 'primeng/card';
 	  ChipModule ,
 	  AccordionModule ,
 	  ChartModule   ,
-	  CardModule
+	  CardModule ,
+	  PanelModule ,
+	  SkeletonModule
   ] ,
   providers:[DialogService]
   
