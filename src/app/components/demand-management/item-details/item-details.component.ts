@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-item-details',
@@ -102,6 +102,8 @@ export class ItemDetailsComponent {
     }
   ] 
 
+  @Output() goToOrderTable: EventEmitter<void> = new EventEmitter<void>();
+
 ngOnInit(){
 
 }
@@ -110,8 +112,8 @@ ngOnInit(){
     this.showItemDetailPage =  true;
   }
 
-
-
-
+  goBackToTable() {
+    this.goToOrderTable.emit();
+  }
   
 }

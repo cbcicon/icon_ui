@@ -672,7 +672,17 @@ input:focus, input:focus-visible{
   color: var(--primary-100) !important;
 }
 
+.p-dialog-header{
 
+  background-color: #F8F8F8;
+  
+}
+
+
+.p-dialog-content{
+  background-color: #F8F8F8;
+
+}
 
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
