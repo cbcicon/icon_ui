@@ -111,7 +111,7 @@ ref: DynamicDialogRef | undefined;
 data: any;
 
 options: any;
-
+chatRightSideBar = false
 
 @ViewChild('sidebarRef') sidebarRef!: Sidebar;
 
@@ -293,16 +293,14 @@ showItemSearch(){
     header: 'Explore Item',
     width: '50vw',
     height:'400',
-    contentStyle: { overflow: 'auto' }
+    contentStyle: { overflow: 'auto' }, 
 });
 }
 
-goToItemDetailsPage(){
-  this.showItemDetailPage =  true ;
-}
+
 
 backToMainPage(){
-  this.showItemDetailPage =  false ;
+  this.showItemDetailPage =  !this.showItemDetailPage ;
 }
 
 
@@ -319,6 +317,11 @@ toggleContent() {
 
 handleInfoCard(){
   this.showInfoCard = ! this.showInfoCard
+}
+
+
+handleChatRightSidebar(){
+  this.chatRightSideBar = !this.chatRightSideBar
 }
 
 }

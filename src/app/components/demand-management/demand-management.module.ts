@@ -27,12 +27,14 @@ import { CardModule } from 'primeng/card';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { PanelModule } from 'primeng/panel';
 import { SkeletonModule } from 'primeng/skeleton';
+import { DividerModule } from 'primeng/divider';
 
 @NgModule({
   declarations: [OrderTableComponent , QauntityBreakdownPopupComponent , ItemSearchPopupComponent,ItemDetailsComponent],
   imports: [
     CommonModule,
     DemandManagementRoutingModule ,
+	DividerModule,
 		FormsModule,
 		TableModule,
 		RatingModule,

@@ -87,10 +87,10 @@
 			<div class="flex">
 				<h5><i class="pi pi-exclamation-circle mr-2" ></i>Items List</h5>
 				<span class="p-input-icon-left ml-auto">
-					<p-button label="Export" [text]="true" icon="pi pi-download" [plain]="true"></p-button>
-					<p-dropdown [options]="duration" optionLabel="name" [(ngModel)]="selectedDuration"></p-dropdown>&nbsp;
-					<p-multiSelect [style]="{'width':'170px;'}" [panelStyle]="{'width':'170px'}" [options]="colunms"
-						optionLabel="name" placeholder="Column Options"></p-multiSelect>
+					<p-button  [text]="true" icon="pi pi-download" [plain]="true"></p-button>
+					<p-button  [text]="true" icon="pi pi-table" [plain]="true"> </p-button>
+					<p-button  [text]="true"  [plain]="true"> <i class="bi bi-table"></i></p-button>
+					<p-button  [text]="true" [plain]="true"> <i class="bi bi-arrows-angle-expand"></i></p-button>
 				</span>
 			</div>
 		</ng-template>
@@ -180,7 +180,7 @@
 					<td>
 						<p-tableCheckbox [value]="customer"></p-tableCheckbox>
 					</td>
-					<td > <i class="bi bi-search" (click)="showItemSearch()" ></i>  <p style="color: green;" (click)="goToItemDetailsPage()"> {{ customer.item }} </p> </td>
+					<td > <div class="item-section"> <i class="bi bi-search" (click)="showItemSearch()" ></i>  <p style="color: green;" (click)="backToMainPage()"> {{ customer.item }} </p> </div> </td>
 					<td>  <p>{{ customer.description }} </p></td>
 					<td>{{ customer['demand'] }}</td>
 					<td [style.color]="customer['on_stock'] === 'Out of Stock' || customer['availability'] === 'Out of Stock' ? 'red' : 'green'">
@@ -199,11 +199,25 @@
 					<!-- {{customer['item_type']}} -->
 					<td>
 						<div class="item-type-icons">
-						 <div class="item-type-cheap"> <i class="bi bi-exclamation-triangle"  ></i>
-					 </div> <div class="item-type-cheap"> <i class="bi bi-thermometer-snow"></i> </div>
-					 <div class="item-type-cheap"> <i class="bi bi-hourglass"></i> </div>
-					 <div class="item-type-cheap"> <i class="bi bi-box-seam"></i> </div>
-					</div>
+							<div class="item-type-cheap" style="background-color: rgba(227, 96, 96, 0.325);">
+								<i class="bi bi-exclamation-triangle" style="color: red;"></i>
+							</div>
+							<div class="item-type-cheap" style="background-color: #D1E9F6;">
+								<i class="bi bi-thermometer-snow" style="color:#1790D0;" ></i>
+							</div>
+							<div class="item-type-cheap" style="background-color: #D4FCFC;">
+								<i class="bi bi-hourglass"  style="color: #004750;"></i>
+							</div>
+							<div class="item-type-cheap" style="background-color :#B3C8CB;">
+								<i class="bi bi-box-seam"style="color #004750;" ></i>
+							</div>
+
+							 <div class="chat-section">
+								<i class="bi bi-chat-left-text" (click)="handleChatRightSidebar()" ></i>
+							 </div>
+
+						</div>
+						
 					 </td> 
 
 					<!-- <td>{{ customer['quantity-open'] }}</td>
@@ -219,7 +233,7 @@
 <!-- order detail page navigation  -->
 
 <div *ngIf="showItemDetailPage" >
-	<app-item-details> </app-item-details>
+	<app-item-details (goToOrderTable)="backToMainPage()"> </app-item-details>
 	
 </div>
 
@@ -304,7 +318,24 @@
 
 </ng-template>  
 </p-sidebar>
-
-  
 </div>
 
+
+
+<!-- chat side bar  -->
+
+<div class="item-detail-right-sidebar" >
+	<p-sidebar [(visible)]="chatRightSideBar" position="right" styleClass="p-sidebar-lg" >
+		<ng-template pTemplate="headless"> 
+		<div class="flex justify-content-between">
+		<div>
+		<span class="sidebar-header">Activities</span>
+		</div>
+		<span>
+			<p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary " (click)="closeCallback($event)"></p-button>
+		</span>
+	</div>
+	</ng-template>  
+	</p-sidebar>
+</div>
+	
