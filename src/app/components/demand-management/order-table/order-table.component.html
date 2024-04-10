@@ -180,7 +180,7 @@
 					<td>
 						<p-tableCheckbox [value]="customer"></p-tableCheckbox>
 					</td>
-					<td > <div class="item-section"> <i class="bi bi-search" (click)="showItemSearch()" ></i>  <p style="color: green;" (click)="backToMainPage()"> {{ customer.item }} </p> </div> </td>
+					<td > <div class="item-section"> <i class="bi bi-search" (click)="showItemSearch()" ></i>  <span style="color: green;" (click)="backToMainPage()"> {{ customer.item }} </span> </div> </td>
 					<td>  <p>{{ customer.description }} </p></td>
 					<td>{{ customer['demand'] }}</td>
 					<td [style.color]="customer['on_stock'] === 'Out of Stock' || customer['availability'] === 'Out of Stock' ? 'red' : 'green'">
