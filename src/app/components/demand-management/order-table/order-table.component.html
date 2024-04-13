@@ -92,6 +92,7 @@
 		[rowsPerPageOptions]="rowsPerPageOptions" 
 		#dt1 
 		[styleClass]="selectedSize"
+	
 		>
 
 		<ng-template pTemplate="caption">
@@ -143,46 +144,87 @@
 							class="w-full">
 						</th>
 						<th>
-							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'on_stock', 'contains')"
-							[value]="$any(dt1.filters['on_stock'])?.value"
-							 placeholder="On Stock" 
-							 class="w-full">
+							 <p-columnFilter field="on_stock" matchMode="equals" [showMenu]="false">
+								<ng-template pTemplate="filter" let-value let-filter="filterCallback">
+									<p-dropdown [ngModel]="value" [options]="stockFilterOption" (onChange)="filter($event.value)" placeholder="Select" [showClear]="true">
+										<ng-template let-option pTemplate="item">
+											 {{option.value}}
+										</ng-template>
+									</p-dropdown>
+								</ng-template>
+							</p-columnFilter>
 						</th>
 						<th>
-							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'availability', 'contains')"
-							[value]="$any(dt1.filters['availability'])?.value"
-							 placeholder="Availability" 
-							 class="w-full">
+
+							 <p-columnFilter field="availability" matchMode="equals" [showMenu]="false">
+								<ng-template pTemplate="filter" let-value let-filter="filterCallback">
+									<p-dropdown [ngModel]="value" [options]="availbiltyFilterOption" (onChange)="filter($event.value)" placeholder="Select" [showClear]="true">
+										<ng-template let-option pTemplate="item">
+											 {{option.value}}
+										</ng-template>
+									</p-dropdown>
+								</ng-template>
+							</p-columnFilter>
+
 						</th>
 						<th>
-							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'open_po', 'contains')"
-							[value]="$any(dt1.filters['open_po'])?.value"
-							 placeholder="Open Po" 
-							 class="w-full">
+					
+							 <p-columnFilter field="open_po" matchMode="equals" [showMenu]="false">
+								<ng-template pTemplate="filter" let-value let-filter="filterCallback">
+									<p-dropdown [ngModel]="value" [options]="openPoFilterOption" (onChange)="filter($event.value)" placeholder="Select" [showClear]="true">
+										<ng-template let-option pTemplate="item">
+											 {{option.value}}
+										</ng-template>
+									</p-dropdown>
+								</ng-template>
+							</p-columnFilter>
+
+
 						</th>
 						
 						<th>
 							
-							<span class="p-input-icon-right">
+							<!-- <span class="p-input-icon-right">
 								<i class="pi pi-calendar"></i>
 								<input pInputText type="text" 
 								(input)="dt1.filter($any($event.target).value, 'due_date', 'contains')"
 								[value]="$any(dt1.filters['due_date'])?.value"
 								placeholder="Due Date" 
 								class="w-full">
-							</span>
-
+							</span> -->
+							
+								
+						   <p-columnFilter style="width: 20rem;" type="date"  field="due_date" matchMode="is"  [showOperator]="false"  [showMenu]="false" [showAddButton]="false" >
+							<ng-template pTemplate="filter"  let-filter="filterCallback" >
+							   <p-calendar  (onSelect)="filter($event)"  [iconDisplay]="'input'" [showIcon]="true" dateFormat="dd/mm/yy" placeholder="Select">
+								<ng-template pTemplate="inputicon" let-clickCallBack="clickCallBack">
+									<i class="pi pi-calendar pointer-events-none" (click)="clickCallBack($event)"></i>
+								</ng-template>
+							 </p-calendar>
+							</ng-template>
+					      </p-columnFilter>
+                    
+						
 						</th>
 						
 						 <th>
-							<input pInputText type="text" 
+							<!-- <input pInputText type="text" 
 							(input)="dt1.filter($any($event.target).value, 'item_type', 'contains')"
 							[value]="$any(dt1.filters['item_type'])?.value"
 							placeholder="Item Type" 
-							class="w-full">
+							class="w-full"> -->
+							<p-columnFilter field="item_type" matchMode="in" [showMenu]="false">
+								<ng-template pTemplate="filter" let-value let-filter="filterCallback">
+									<p-multiSelect [ngModel]="value" appendTo="body" [options]="itemTypeFilterOption" placeholder="Select" (onChange)="filter($event.value)" optionLabel="name" [maxSelectedLabels]="1" [selectedItemsLabel]="'{0} items'">
+										<ng-template let-option pTemplate="item">
+											<div class="inline-block vertical-align-middle">
+												<span class="ml-1 mt-1">{{ option.name }}</span>
+											</div>
+										</ng-template>
+									</p-multiSelect>
+								</ng-template>
+							</p-columnFilter>
+
 						</th>
 				</tr>				
  
@@ -206,9 +248,9 @@
 						{{ customer.availability }}
 					  </td>
 					  
-					<td>{{ customer['due_date'] }}</td>
-					<td *ngIf="customer['open_po'] === 'No Open PO'"  style="color: red;">{{ customer['open_po'] }}</td>
-					<td *ngIf="customer['open_po'] !== 'No Open PO'" > {{ customer['open_po'] }}</td>
+					  <td *ngIf="customer['open_po'] === 'No Open PO'"  style="color: red;">{{ customer['open_po'] }}</td>
+					  <td *ngIf="customer['open_po'] !== 'No Open PO'" > {{ customer['open_po'] }}</td>
+					  <td>{{ customer['due_date'] }}</td>
 					<!-- {{customer['item_type']}} -->
 					<td>
 						<div class="item-type-icons">

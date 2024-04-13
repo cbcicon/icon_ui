@@ -121,6 +121,10 @@ itemData: any= [];
 
 tableView :any;
 setRows: number = 10;
+stockFilterOption:any =[];
+availbiltyFilterOption :any;
+openPoFilterOption: any;
+itemTypeFilterOption: any;
 
 constructor(private customerService: DataService  , public dialogService: DialogService) {}
 
@@ -241,6 +245,30 @@ ngOnInit() {
 ];
 
 
+this.stockFilterOption = [
+  { label: 'On Stock', value: 'On Stock' },
+  { label: 'Out Of Stock', value: 'Out Of Stock' },
+  { label: 'Stock Deficiency', value: 'Stock Deficiency' },
+];
+
+this.availbiltyFilterOption = [
+  { label: 'On Stock', value: 'On Stock' },
+  { label: 'Out Of Stock', value: 'Out Of Stock' },
+  { label: 'Stock Of Limit', value: 'Stock Of Limit' },
+];
+
+this.openPoFilterOption = [
+  { label: 'Open Po', value: 'Open Po' },
+  { label: 'No Open Po', value: 'No Open Po' },
+];
+
+this.itemTypeFilterOption = [
+  { name: 'Temperature Specific',  value: 'Temperature Specific' },
+  { name: 'Bulk Item',  value:  'Bulk Item' },
+  { name: 'Dangerous Goods',  value: 'Dangerous Goods' },
+  
+];
+
   }
 
   divideIntoMultiplesOfTen(number:any) {
@@ -257,19 +285,6 @@ ngOnInit() {
 
 loadCustomers(event: TableLazyLoadEvent) {
     this.loading = true;
-
-    setTimeout(() => {
-        // this.customerService.getCustomers({ lazyEvent: JSON.stringify(event) }).then((res) => {
-        //     this.customers = res;
-        //     this.totalRecords = 100;
-        //     this.loading = false;
-        // });
-        // this.customers = this.customerService.getData()
-        // this.totalRecords = 180;
-        // this.loading = false
-    }, 1000);
-
-    
 }
 
 onSelectionChange(value = []) {
@@ -356,6 +371,9 @@ handleTableSize(size:any){
     this.selectedSize = 'p-datatable-gridlines p-datatable-striped p-datatable-lg'
   }
 }
+
+
+
 
 
 }
