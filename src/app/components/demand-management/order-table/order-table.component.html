@@ -76,21 +76,34 @@
 <!-- demand management table -->
 
 <div *ngIf="!showItemDetailPage" class="card">
-	<p-table [value]="customers" dataKey="id" [tableStyle]="{ 'min-width': '75rem' }" [selection]="selectedCustomers"
-		(selectionChange)="onSelectionChange($event)" [selectAll]="selectAll"
-		(selectAllChange)="onSelectAllChange($event)" [paginator]="true" [rows]="10" [totalRecords]="totalRecords"
-		[loading]="loading" loadingIcon="pi pi-spin pi-spinner" [showCurrentPageReport]="true"
+	<p-table [value]="customers" dataKey="id" 
+	 [tableStyle]="{ 'min-width': '75rem' }"
+		[selection]="selectedCustomers" 
+		(selectionChange)="onSelectionChange($event)" 
+		[selectAll]="selectAll"
+		(selectAllChange)="onSelectAllChange($event)" 
+		[paginator]="true"
+		[rows]="setRows" 
+		[totalRecords]="totalRecords"
+		[loading]="loading" 
+		loadingIcon="pi pi-spin pi-spinner" 
+		[showCurrentPageReport]="true"
 		currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-		[rowsPerPageOptions]="rowsPerPageOptions" #dt1
-		styleClass="p-datatable-gridlines p-datatable-striped">
+		[rowsPerPageOptions]="rowsPerPageOptions" 
+		#dt1 
+		[styleClass]="selectedSize"
+		>
+
 		<ng-template pTemplate="caption">
 			<div class="flex">
 				<h5><i class="pi pi-exclamation-circle mr-2" ></i>Items List</h5>
 				<span class="p-input-icon-left ml-auto">
 					<p-button  [text]="true" icon="pi pi-download" [plain]="true"></p-button>
-					<p-button  [text]="true" icon="pi pi-table" [plain]="true"> </p-button>
+					<span (click)="handleTableView()">
+						<p-button  [text]="true" icon="pi pi-table" [plain]="true" > </p-button>
+					</span>
 					<p-button  [text]="true"  [plain]="true"> <i class="bi bi-table"></i></p-button>
-					<p-button  [text]="true" [plain]="true"> <i class="bi bi-arrows-angle-expand"></i></p-button>
+<p-button  [text]="true" [plain]="true"> <i class="bi bi-arrows-angle-expand"></i></p-button>
 				</span>
 			</div>
 		</ng-template>
@@ -180,7 +193,7 @@
 					<td>
 						<p-tableCheckbox [value]="customer"></p-tableCheckbox>
 					</td>
-					<td > <div class="item-section"> <i class="bi bi-search" (click)="showItemSearch()" ></i>  <p style="color: green;" (click)="backToMainPage()"> {{ customer.item }} </p> </div> </td>
+					<td > <div class="item-section"> <i class="bi bi-search" (click)="showItemSearch()" ></i>  <span style="color: green;" (click)="backToMainPage()"> {{ customer.item }} </span> </div> </td>
 					<td>  <p>{{ customer.description }} </p></td>
 					<td>{{ customer['demand'] }}</td>
 					<td [style.color]="customer['on_stock'] === 'Out of Stock' || customer['availability'] === 'Out of Stock' ? 'red' : 'green'">
@@ -229,6 +242,23 @@
 	</p-table>
 </div>
 
+<div class="table-view">
+<p-listbox 
+	*ngIf="tableViewOption" 
+	[options]="tableView" 
+	optionLabel="name" 
+	[style]="{'width':'15rem'}" 
+	[metaKeySelection]="false" 
+	[listStyle]="{'max-height': '220px'}">	
+
+	<ng-template let-data pTemplate="item" >
+        <div class="flex align-items-center gap-2" (click)="handleTableSize(data.name)">
+            <div  >{{ data.name }}</div>
+        </div>
+    </ng-template>
+  </p-listbox>
+  
+</div>
 
 <!-- order detail page navigation  -->
 

@@ -70,6 +70,7 @@ export class LayoutService {
     }
 
     onMenuToggle() {
+        debugger
         if (this.isOverlay()) {
             this.state.overlayMenuActive = !this.state.overlayMenuActive;
             if (this.state.overlayMenuActive) {

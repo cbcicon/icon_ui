@@ -28,6 +28,7 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
 import { PanelModule } from 'primeng/panel';
 import { SkeletonModule } from 'primeng/skeleton';
 import { DividerModule } from 'primeng/divider';
+import { ListboxModule } from 'primeng/listbox';
 
 @NgModule({
   declarations: [OrderTableComponent , QauntityBreakdownPopupComponent , ItemSearchPopupComponent,ItemDetailsComponent],
@@ -56,7 +57,8 @@ import { DividerModule } from 'primeng/divider';
 	  ChartModule   ,
 	  CardModule ,
 	  PanelModule ,
-	  SkeletonModule
+	  SkeletonModule ,
+	  ListboxModule
   ] ,
   providers:[DialogService]
   

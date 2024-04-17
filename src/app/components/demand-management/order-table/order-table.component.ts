@@ -113,9 +113,14 @@ data: any;
 options: any;
 chatRightSideBar = false
 
+tableViewOption:boolean = false;
+
 @ViewChild('sidebarRef') sidebarRef!: Sidebar;
 
 itemData: any= [];
+
+tableView :any;
+setRows: number = 10;
 
 constructor(private customerService: DataService  , public dialogService: DialogService) {}
 
@@ -228,6 +233,13 @@ ngOnInit() {
     }
   ] 
 
+  this.tableView = [
+    { name: 'Normal Grids' },
+    { name: 'Small Grids' },
+    { name: 'Large Grids' },
+   
+];
+
 
   }
 
@@ -323,5 +335,27 @@ handleInfoCard(){
 handleChatRightSidebar(){
   this.chatRightSideBar = !this.chatRightSideBar
 }
+
+
+handleTableView(){
+  this.tableViewOption = !this.tableViewOption
+}
+
+selectedSize:string = 'p-datatable-gridlines p-datatable-striped'
+
+handleTableSize(size:any){
+  
+  if(size === 'Normal Grids'){
+   this.setRows = 10
+   this.selectedSize = 'p-datatable-gridlines p-datatable-striped'
+  }else if(size === 'Small Grids'){
+    this.selectedSize = ' p-datatable-gridlines p-datatable-striped p-datatable-sm'
+    this.setRows = 15
+  }else if(size === 'Large Grids'){
+    this.setRows = 5
+    this.selectedSize = 'p-datatable-gridlines p-datatable-striped p-datatable-lg'
+  }
+}
+
 
 }
