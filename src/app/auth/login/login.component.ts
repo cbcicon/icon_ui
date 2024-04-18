@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
      this.load()
+     this.router.navigate(['/']);
     if (this.loginForm.valid) {
       
       this.router.navigate(['/']);

@@ -6,9 +6,9 @@
           <div class="col-7 m-auto h-100 d-flex align-items-center justify-content-center">
               <div class="text-center w-100">
                   <img src="assets/images/logo.png" width="180px" class="mb-4" alt="Labgistics Logo">
-                  <h6 class="fw-600 mb-4">Login to your account</h6>
+                 <!--<h6 class="fw-600 mb-4">Login to your account</h6>--> 
                   <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
-                      <div class="input-group mb-3">
+                      <!-- <div class="input-group mb-3">
                           <span class="input-group-text" id="Username"><i class="bi-person"></i></span>
                           <input type="text" class="form-control" placeholder="Username"  type="text" pInputText formControlName="username" />
                           <div *ngIf="loginForm.get('username')?.hasError('required') && loginForm.get('username')?.touched && loginForm.get('username')?.invalid">
@@ -21,11 +21,11 @@
                           <div *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
                             Password is required.
                           </div>
-                    </div>
+                    </div> 
                       <button type="submit" href="dashboard.html" class="btn btn-primary w-100 mb-3">Sign In</button>
                       <p class="fs-12">Forgot password? <a href="">Click</a> here to reset.</p>
-                      <div class="bar-throgh"><span>Or</span></div>
-                      <button type="submit" class="btn btn-primary w-100 mb-3"  >Sign In With ICON SSO</button>
+                      <div class="bar-throgh"><span>Or</span></div>-->
+                      <button type="submit" class="btn btn-primary w-100 mb-3"  href="dashboard.html" >Sign In With ICON SSO</button>
 
                     </form>
               </div>
