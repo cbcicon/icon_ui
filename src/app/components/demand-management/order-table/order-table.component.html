@@ -1,10 +1,10 @@
 
 
-<div class="d-flex justify-content-between m-2">
+<!-- <div class="d-flex justify-content-between m-2">
 	<h5> Demand Management</h5>
 	<button type="button" class="btn btn-light" (click)="handleInfoCard()" ><i class="bi bi-graph-up-arrow"></i> Demand KPI's</button>
 
-</div>
+</div> -->
 
 <!-- cards on above to dashboard -->
 
@@ -76,172 +76,197 @@
 <!-- demand management table -->
 
 <div *ngIf="!showItemDetailPage" class="card">
-	<p-table [value]="customers" dataKey="id" 
-	 [tableStyle]="{ 'min-width': '75rem' }"
-		[selection]="selectedCustomers" 
-		(selectionChange)="onSelectionChange($event)" 
-		[selectAll]="selectAll"
-		(selectAllChange)="onSelectAllChange($event)" 
-		[paginator]="true"
-		[rows]="setRows" 
-		[totalRecords]="totalRecords"
-		[loading]="loading" 
-		loadingIcon="pi pi-spin pi-spinner" 
-		[showCurrentPageReport]="true"
-		currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-		[rowsPerPageOptions]="rowsPerPageOptions" 
-		#dt1 
-		[styleClass]="selectedSize"
-		>
 
-		<ng-template pTemplate="caption">
-			<div class="flex">
-				<h5><i class="pi pi-exclamation-circle mr-2" ></i>Items List</h5>
-				<span class="p-input-icon-left ml-auto">
-					<p-button  [text]="true" icon="pi pi-download" [plain]="true"></p-button>
-					<span (click)="handleTableView()">
-						<p-button  [text]="true" icon="pi pi-table" [plain]="true" > </p-button>
-					</span>
-					<p-button  [text]="true"  [plain]="true"> <i class="bi bi-table"></i></p-button>
-<p-button  [text]="true" [plain]="true"> <i class="bi bi-arrows-angle-expand"></i></p-button>
+	<p-table
+    #dt
+    [value]="customers"
+    [(selection)]="selectedCustomers"
+    dataKey="id"
+    [rowHover]="true"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    [loading]="loading"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [filterDelay]="0"
+    [globalFilterFields]="['item', 'description', 'demand', 'onstock' , 'availability' , 'open_po','due_date' ,'item_type']"
+    [styleClass]="'p-datatable-gridlines p-datatable-striped p-datatable-sm'"
+	[exportHeader]="'customExportHeader'"
+	>
+    <ng-template pTemplate="caption">
+        <div class="table-header d-flex justify-content-between"> 
+		<div >
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Global Search" />
+            </span>
+		  </div>
+		  <div>
+			<span class="p-input-icon-left ml-auto">
+				<span (click)="exportExcel()">
+				<p-button  [text]="true" icon="pi pi-download" [plain]="true"></p-button>
+			  </span>
+				<span (click)="handleTableView()">
+					<p-button  [text]="true" icon="pi pi-table" [plain]="true" > </p-button>
 				</span>
-			</div>
-		</ng-template>
+				<span (click)="handleAdditionanlColumn()">
+				<p-button  [text]="true"  [plain]="true" > <i class="bi bi-table"  ></i></p-button>
+			       </span>
+				<p-button  [text]="true" [plain]="true" > <i class="bi bi-arrows-angle-expand"></i></p-button>
+			
+				
+			
+			</span>
 
-			<ng-template pTemplate="header">
-				<tr>
-					<th style="width: 6rem"></th>
-					<ng-container *ngFor="let headerItem of tableHeaderItem">
-						<th pSortableColumn="{{ headerItem.sortableColumn }}">{{ headerItem.columnName }}</th>
-					  </ng-container>
-				</tr>
-				<tr>
-					<th>
-						<p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-					</th>
-						<th>
-							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'item', 'contains')"
-							 [value]="$any(dt1.filters['item'])?.value"
-							placeholder="Item" 
-							class="w-full"
-							>
-						</th>
-						<th>
-							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'description', 'contains')"
-							[value]="$any(dt1.filters['description'])?.value"
-							placeholder="Description"
-							 class="w-full"
-							 >
-						</th>
-						<th>
-							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'demand', 'contains')"
-							[value]="$any(dt1.filters['demand'])?.value"
-							placeholder="Demand" 
-							class="w-full">
-						</th>
-						<th>
-							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'on_stock', 'contains')"
-							[value]="$any(dt1.filters['on_stock'])?.value"
-							 placeholder="On Stock" 
-							 class="w-full">
-						</th>
-						<th>
-							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'availability', 'contains')"
-							[value]="$any(dt1.filters['availability'])?.value"
-							 placeholder="Availability" 
-							 class="w-full">
-						</th>
-						<th>
-							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'open_po', 'contains')"
-							[value]="$any(dt1.filters['open_po'])?.value"
-							 placeholder="Open Po" 
-							 class="w-full">
-						</th>
-						
-						<th>
-							
-							<span class="p-input-icon-right">
-								<i class="pi pi-calendar"></i>
-								<input pInputText type="text" 
-								(input)="dt1.filter($any($event.target).value, 'due_date', 'contains')"
-								[value]="$any(dt1.filters['due_date'])?.value"
-								placeholder="Due Date" 
-								class="w-full">
-							</span>
+		  </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 4rem">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
 
-						</th>
-						
-						 <th>
-							<input pInputText type="text" 
-							(input)="dt1.filter($any($event.target).value, 'item_type', 'contains')"
-							[value]="$any(dt1.filters['item_type'])?.value"
-							placeholder="Item Type" 
-							class="w-full">
-						</th>
-				</tr>				
- 
-		</ng-template>
+            <th pSortableColumn="name" style="min-width: 14rem">
+                <div class="flex justify-content-between align-items-center">
+                    Item
+                    <p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
+                </div>
+            </th>
+            <th pSortableColumn="description" style="min-width: 14rem">
+                <div class="flex justify-content-between align-items-center">
+                    Item Description
+                    <p-columnFilter type="text" field="description" display="menu" class="ml-auto"></p-columnFilter>
+                </div>
+            </th>
+            
+			<th pSortableColumn="demand" style="min-width: 14rem">
+                <div class="flex justify-content-between align-items-center">
+                    Demand
+                    <p-columnFilter type="text" field="demand" display="menu" class="ml-auto"></p-columnFilter>
+                </div>
+            </th>
 
-			<ng-template pTemplate="body" let-customer>
-				<tr>
-					<td>
-						<p-tableCheckbox [value]="customer"></p-tableCheckbox>
-					</td>
-					<td > <div class="item-section"> <i class="bi bi-search" (click)="showItemSearch()" ></i>  <span style="color: green;" (click)="backToMainPage()"> {{ customer.item }} </span> </div> </td>
-					<td>  <p>{{ customer.description }} </p></td>
-					<td>{{ customer['demand'] }}</td>
-					<td [style.color]="customer['on_stock'] === 'Out of Stock' || customer['availability'] === 'Out of Stock' ? 'red' : 'green'">
-						<i class="bi bi-box-arrow-in-up-right" (click)="show()"></i> {{ customer['on_stock'] }}
-					</td>
-					
-					<td [ngClass]="{'text-danger': customer.availability === 'Out of Stock'}" (click)="rightSideBar = customer.availability !== 'Out of Stock'">
-						<i *ngIf="customer.availability === 'Out of Stock'" class="bi bi-unlock"></i>
-						<i *ngIf="customer.availability !== 'Out of Stock'"class="bi bi-lock"></i>
-						{{ customer.availability }}
-					  </td>
-					  
-					<td>{{ customer['due_date'] }}</td>
-					<td *ngIf="customer['open_po'] === 'No Open PO'"  style="color: red;">{{ customer['open_po'] }}</td>
-					<td *ngIf="customer['open_po'] !== 'No Open PO'" > {{ customer['open_po'] }}</td>
-					<!-- {{customer['item_type']}} -->
-					<td>
-						<div class="item-type-icons">
-							<div class="item-type-cheap" style="background-color: rgba(227, 96, 96, 0.325);">
-								<i class="bi bi-exclamation-triangle" style="color: red;"></i>
-							</div>
-							<div class="item-type-cheap" style="background-color: #D1E9F6;">
-								<i class="bi bi-thermometer-snow" style="color:#1790D0;" ></i>
-							</div>
-							<div class="item-type-cheap" style="background-color: #D4FCFC;">
-								<i class="bi bi-hourglass"  style="color: #004750;"></i>
-							</div>
-							<div class="item-type-cheap" style="background-color :#B3C8CB;">
-								<i class="bi bi-box-seam"style="color #004750;" ></i>
-							</div>
+			<th pSortableColumn="onstock" style="min-width: 14rem">
+                <div class="flex justify-content-between align-items-center">
+					On Stock
+                    <p-columnFilter type="text" field="onstock" display="menu" class="ml-auto"></p-columnFilter>
+                </div>
+            </th>
 
-							 <div class="chat-section">
-								<i class="bi bi-chat-left-text" (click)="handleChatRightSidebar()" ></i>
-							 </div>
+			<th pSortableColumn="availability" style="min-width: 14rem">
+                <div class="flex justify-content-between align-items-center">
+					Availablity
+                    <p-columnFilter type="text" field="availability" display="menu" class="ml-auto"></p-columnFilter>
+                </div>
+            </th>
 
-						</div>
-						
-					 </td> 
+			<th pSortableColumn="open_po" style="min-width: 14rem">
+                <div class="flex justify-content-between align-items-center">
+					Open Po
+                    <p-columnFilter type="text" field="open_po" display="menu" class="ml-auto"></p-columnFilter>
+                </div>
+            </th>
 
-					<!-- <td>{{ customer['quantity-open'] }}</td>
-					<td>{{ customer.vendor }}</td> -->
+            <th pSortableColumn="due_date" style="min-width: 10rem">
+                <div class="flex justify-content-between align-items-center">
+					Due Date
+               
+                    <p-columnFilter type="date" field="due_date" display="menu" class="ml-auto"></p-columnFilter>
+                </div>
+            </th>
 
-			</tr>
-		</ng-template>
+            <th pSortableColumn="item_type" style="min-width: 10rem">
+				<div class="flex justify-content-between align-items-center">
+                    Item Type
+                  
+                    <p-columnFilter type="numeric" field="balance" display="menu" currency="USD" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+       
+			<ng-container *ngFor="let item of tableHeaderItem">
+				<ng-container *ngIf="item.active">
+				  <th pSortableColumn="{{ item.sortableColumn }}" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+					  {{ item.columnName }}
+					  <p-columnFilter *ngIf="item.active" 
+									  type="numeric" 
+									  field="balance" 
+									  display="menu" 
+									  currency="USD" 
+									  class="ml-auto">
+					  </p-columnFilter>
+					</div>
+				  </th>
+				</ng-container>
+			  </ng-container>
 
-	</p-table>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-customer>
+        <tr class="p-selectable-row">
+            <td>
+                <p-tableCheckbox [value]="customer"></p-tableCheckbox>
+            </td>
+            <td>
+				<div class="item-section"> <i class="bi bi-search" (click)="showItemSearch()" ></i>  <span style="color: green;" (click)="backToMainPage()"> {{ customer.item }} </span> </div> 
+            </td>
+            <td>
+				<p>{{ customer.description }}
+            </td>
+            <td>
+				{{ customer['demand'] }}
+            </td>
+			<td [style.color]="customer['on_stock'] === 'Out of Stock' || customer['availability'] === 'Out of Stock' ? 'red' : 'green'">
+				<i class="bi bi-box-arrow-in-up-right" (click)="show()"></i> {{ customer['on_stock'] }}
+			</td>
+			
+			<td [ngClass]="{'text-danger': customer.availability === 'Out of Stock'}" (click)="rightSideBar = customer.availability !== 'Out of Stock'">
+				<i *ngIf="customer.availability === 'Out of Stock'" class="bi bi-unlock"></i>
+				<i *ngIf="customer.availability !== 'Out of Stock'"class="bi bi-lock"></i>
+				{{ customer.availability }}
+			  </td>
+			  
+			  <td *ngIf="customer['open_po'] === 'No Open PO'"  style="color: red;">{{ customer['open_po'] }}</td>
+			  <td *ngIf="customer['open_po'] !== 'No Open PO'" > {{ customer['open_po'] }}</td>
+			  <td>{{ customer['due_date'] }}</td>
+		
+			<td>
+				<div class="item-type-icons">
+					<div class="item-type-cheap" style="background-color: rgba(227, 96, 96, 0.325);">
+						<i class="bi bi-exclamation-triangle" style="color: red;"></i>
+					</div>
+					<div class="item-type-cheap" style="background-color: #D1E9F6;">
+						<i class="bi bi-thermometer-snow" style="color:#1790D0;" ></i>
+					</div>
+					<div class="item-type-cheap" style="background-color: #D4FCFC;">
+						<i class="bi bi-hourglass"  style="color: #004750;"></i>
+					</div>
+					<div class="item-type-cheap" style="background-color :#B3C8CB;">
+						<i class="bi bi-box-seam"style="color #004750;" ></i>
+					</div>
+
+					 <div class="chat-section">
+						<i class="bi bi-chat-left-text" (click)="handleChatRightSidebar()" ></i>
+					 </div>
+
+				</div>
+				
+			 </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="8">No Data found.</td>
+        </tr>
+    </ng-template>
+
+</p-table>
+
 </div>
 
+<!-- table view menu -->
 <div class="table-view">
 <p-listbox 
 	*ngIf="tableViewOption" 
@@ -258,6 +283,28 @@
     </ng-template>
   </p-listbox>
   
+</div>
+
+<!-- table add column -->
+<div class="addition-col-menu">
+<p-listbox
+    *ngIf="viewAdditionColumn"
+    [options]="additionalColList"
+    [(ngModel)]="selectedItems"
+    [selectAll]="selectAll"
+    optionLabel="field"
+    [style]="{ width: '20rem' }"
+    [virtualScroll]="true"
+    [filter]="true"
+    [virtualScrollItemSize]="50"
+    [multiple]="true"
+    [checkbox]="true"
+    [showToggleAll]="false"
+    [metaKeySelection]="false"
+    [showToggleAll]="true"
+    (onChange)="addedColumnConfig($event)"
+    [listStyle]="{ 'max-height': '220px' }"
+></p-listbox>
 </div>
 
 <!-- order detail page navigation  -->

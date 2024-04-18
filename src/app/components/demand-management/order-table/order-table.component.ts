@@ -6,7 +6,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { QauntityBreakdownPopupComponent } from '../popup/qauntity-breakdown-popup/qauntity-breakdown-popup.component';
 import { Sidebar } from 'primeng/sidebar';
 import { ItemSearchPopupComponent } from '../popup/itemsearchpopup/item-search-popup.component';
-
+import * as FileSaver from 'file-saver';
 
 export interface Customer {
   id?: number;
@@ -93,15 +93,28 @@ rowsPerPageOptions:any
 showInfoCard:boolean = false
 
 tableHeaderItem = [
-  { columnName: 'Item', sortableColumn: 'item' },
-  { columnName: 'Item Description', sortableColumn: 'description' },
-  { columnName: 'Demand', sortableColumn: 'demand' },
-  { columnName: 'On Stock', sortableColumn: 'onstock' },
-  { columnName: 'Availablity', sortableColumn: 'availability' },
-  { columnName: 'Open Po', sortableColumn: 'open_po' },
-
-  { columnName: 'Due Date', sortableColumn: 'due_date' },
-  { columnName: 'Item Type', sortableColumn: 'item_type' },
+  { id: '1', columnName: 'Item', sortableColumn: 'item', active: false },
+  { id: '2', columnName: 'Item Description', sortableColumn: 'description', active: false },
+  { id: '3', columnName: 'Demand', sortableColumn: 'demand', active: false },
+  { id: '4', columnName: 'On Stock', sortableColumn: 'onstock', active: false },
+  { id: '5', columnName: 'Availablity', sortableColumn: 'availability', active: false },
+  { id: '6', columnName: 'Open Po', sortableColumn: 'open_po', active: false },
+  { id: '7', columnName: 'Due Date', sortableColumn: 'due_date', active: false },
+  { id: '8', columnName: 'Item Type', sortableColumn: 'item_type', active: false },
+  { id: '9', columnName: 'Qty to Order', sortableColumn: 'qty_to_order', active: false },
+  { id: '10', columnName: 'Study Type', sortableColumn: 'study_type', active: false },
+  { id: '11', columnName: 'Kit Production Location', sortableColumn: 'kit_production_location', active: false },
+  { id: '12', columnName: 'Order Type', sortableColumn: 'order_type', active: false },
+  { id: '13', columnName: 'Lead Time', sortableColumn: 'lead_time', active: false },
+  { id: '14', columnName: 'Consumption', sortableColumn: 'consumption', active: false },
+  { id: '15', columnName: 'Component Type', sortableColumn: 'component_type', active: false },
+  { id: '16', columnName: 'Forecaste', sortableColumn: 'forecaste', active: false },
+  { id: '17', columnName: 'Total Demand', sortableColumn: 'total_demand', active: false },
+  { id: '18', columnName: 'Scrap', sortableColumn: 'scrap', active: false },
+  { id: '19', columnName: 'Warehouse', sortableColumn: 'warehouse', active: false },
+  { id: '20', columnName: 'Inventory Location', sortableColumn: 'inventory_location', active: false },
+  { id: '21', columnName: 'Carton', sortableColumn: 'carton', active: false },
+  { id: '22', columnName: 'Kit Category', sortableColumn: 'kit_category', active: false }
 ];
 
 showItemDetailPage:boolean = false
@@ -121,11 +134,79 @@ itemData: any= [];
 
 tableView :any;
 setRows: number = 10;
+stockFilterOption:any =[];
+availbiltyFilterOption :any;
+openPoFilterOption: any;
+itemTypeFilterOption: any;
+viewAdditionColumn = false
+
+additionalColList = [
+  {
+    "field": "Qty to Order",
+    "id": 1
+  },
+  {
+    "field": "Study Type",
+    "id": 2
+  },
+  {
+    "field": "Kit Production Location",
+    "id": 3
+  },
+  {
+    "field": "Order Type",
+    "id": 4
+  },
+  {
+    "field": "Lead Time",
+    "id": 5
+  },
+  {
+    "field": "Consumption",
+    "id": 6
+  },
+  {
+    "field": "Component Type",
+    "id": 7
+  },
+  {
+    "field": "Forecaste",
+    "id": 8
+  },
+  {
+    "field": "Total Demand",
+    "id": 9
+  },
+  {
+    "field": "Scrap",
+    "id": 10
+  },
+  {
+    "field": "Warehouse",
+    "id": 11
+  },
+  {
+    "field": "Inventory Location",
+    "id": 12
+  },
+  {
+    "field": "Carton",
+    "id": 13
+  },
+  {
+    "field": "Kit Category",
+    "id": 14
+  }
+]
+
 
 constructor(private customerService: DataService  , public dialogService: DialogService) {}
 
 
 ngOnInit() {
+
+
+
 
     this.loading = true;
     this.totalRecords = 180;
@@ -241,6 +322,30 @@ ngOnInit() {
 ];
 
 
+this.stockFilterOption = [
+  { label: 'On Stock', value: 'On Stock' },
+  { label: 'Out Of Stock', value: 'Out Of Stock' },
+  { label: 'Stock Deficiency', value: 'Stock Deficiency' },
+];
+
+this.availbiltyFilterOption = [
+  { label: 'On Stock', value: 'On Stock' },
+  { label: 'Out Of Stock', value: 'Out Of Stock' },
+  { label: 'Stock Of Limit', value: 'Stock Of Limit' },
+];
+
+this.openPoFilterOption = [
+  { label: 'Open Po', value: 'Open Po' },
+  { label: 'No Open Po', value: 'No Open Po' },
+];
+
+this.itemTypeFilterOption = [
+  { name: 'Temperature Specific',  value: 'Temperature Specific' },
+  { name: 'Bulk Item',  value:  'Bulk Item' },
+  { name: 'Dangerous Goods',  value: 'Dangerous Goods' },
+  
+];
+
   }
 
   divideIntoMultiplesOfTen(number:any) {
@@ -257,19 +362,6 @@ ngOnInit() {
 
 loadCustomers(event: TableLazyLoadEvent) {
     this.loading = true;
-
-    setTimeout(() => {
-        // this.customerService.getCustomers({ lazyEvent: JSON.stringify(event) }).then((res) => {
-        //     this.customers = res;
-        //     this.totalRecords = 100;
-        //     this.loading = false;
-        // });
-        // this.customers = this.customerService.getData()
-        // this.totalRecords = 180;
-        // this.loading = false
-    }, 1000);
-
-    
 }
 
 onSelectionChange(value = []) {
@@ -356,6 +448,56 @@ handleTableSize(size:any){
     this.selectedSize = 'p-datatable-gridlines p-datatable-striped p-datatable-lg'
   }
 }
+
+
+
+
+handleAdditionanlColumn(){
+  this.viewAdditionColumn =  !this.viewAdditionColumn
+}
+
+
+
+selectedItems!: any[];
+
+
+addedColumnConfig(event:any){
+  this.selectedItems.forEach(selection => {
+    
+    const matchingItem = this.tableHeaderItem.find(item => item.columnName === selection.field);
+    if (matchingItem) {
+        matchingItem.active = true;
+    }
+});
+
+this.tableHeaderItem.forEach(item => {
+  if (!this.selectedItems.some(selection => selection.field === item.columnName)) {
+      item.active = false;
+  }
+});
+}
+
+
+
+exportExcel() {
+  import('xlsx').then((xlsx) => {
+      const worksheet = xlsx.utils.json_to_sheet(this.selectedCustomers);
+      const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
+      const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
+      this.saveAsExcelFile(excelBuffer, 'products');
+  });
+}
+
+saveAsExcelFile(buffer: any, fileName: string): void {
+  let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+  let EXCEL_EXTENSION = '.xlsx';
+  const data: Blob = new Blob([buffer], {
+      type: EXCEL_TYPE
+  });
+  FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
+}
+
+
 
 
 }

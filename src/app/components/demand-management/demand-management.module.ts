@@ -29,6 +29,10 @@ import { PanelModule } from 'primeng/panel';
 import { SkeletonModule } from 'primeng/skeleton';
 import { DividerModule } from 'primeng/divider';
 import { ListboxModule } from 'primeng/listbox';
+import { TagModule } from 'primeng/tag';
+import { CalendarModule } from 'primeng/calendar';
+import { MenuModule } from 'primeng/menu';
+import {SplitButtonModule} from 'primeng/splitbutton';
 
 @NgModule({
   declarations: [OrderTableComponent , QauntityBreakdownPopupComponent , ItemSearchPopupComponent,ItemDetailsComponent],
@@ -58,7 +62,11 @@ import { ListboxModule } from 'primeng/listbox';
 	  CardModule ,
 	  PanelModule ,
 	  SkeletonModule ,
-	  ListboxModule
+	  ListboxModule,
+	  TagModule ,
+	  CalendarModule ,
+	  MenuModule ,
+	  SplitButtonModule 
   ] ,
   providers:[DialogService]
   
