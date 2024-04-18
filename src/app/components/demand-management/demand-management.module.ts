@@ -31,7 +31,8 @@ import { DividerModule } from 'primeng/divider';
 import { ListboxModule } from 'primeng/listbox';
 import { TagModule } from 'primeng/tag';
 import { CalendarModule } from 'primeng/calendar';
-
+import { MenuModule } from 'primeng/menu';
+import {SplitButtonModule} from 'primeng/splitbutton';
 
 @NgModule({
   declarations: [OrderTableComponent , QauntityBreakdownPopupComponent , ItemSearchPopupComponent,ItemDetailsComponent],
@@ -63,7 +64,9 @@ import { CalendarModule } from 'primeng/calendar';
 	  SkeletonModule ,
 	  ListboxModule,
 	  TagModule ,
-	  CalendarModule
+	  CalendarModule ,
+	  MenuModule ,
+	  SplitButtonModule 
   ] ,
   providers:[DialogService]
   
