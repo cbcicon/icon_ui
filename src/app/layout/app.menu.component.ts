@@ -17,86 +17,50 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Main',
                 items: [
-                    { label: 'Dashboard', icon: 'dashboard-icon', routerLink: ['/'] },
-                    { label: 'Forecast', icon: 'forecaste', routerLink: ['/'] },
-                    
+                    { label: 'Dashboard', icon: 'dashboard-icon', routerLink: ['/'] }
                 ]
             },
             {
-                label: 'Material Resource Planning',
+                label: 'Demand Management',
+                icon: 'receipt-icon',
                 items: [
-                    
-                    {
-                        label: 'Demand Management',
-                        icon: 'receipt-icon',
-                        routerLink: ['/demand-management/order-list']
-                    },
-                    {
-                        label: 'Inventory',
-                        icon: 'inventory-icon',
-                        items: [
-                            {
-                                label: 'Login',
-                                icon: 'pi pi-fw pi-sign-in',
-                                routerLink: ['/auth/login']
-                            },
-                            {
-                                label: 'Error',
-                                icon: 'pi pi-fw pi-times-circle',
-                                routerLink: ['/auth/error']
-                            },
-                            {
-                                label: 'Access Denied',
-                                icon: 'pi pi-fw pi-lock',
-                                routerLink: ['/auth/access']
-                            }
-                        ]
-                    },
-                    {
-                        label: 'Procure',
-                        icon: 'handbag-icon',
-                        routerLink: ['/pages/empty']
-                    },
-                    {
-                        label: 'Make',
-                        icon: 'stopwatch-icon',
-                        routerLink: ['/pages/empty']
-                    },
-                    {
-                        label: 'Manufacturers',
-                        icon: 'people-icon',
-                        routerLink: ['/pages/empty']
-                    },
-                    {
-                        label: 'Capacity',
-                        icon: 'battery-half-icon',
-                        routerLink: ['/pages/empty']
-                    },
-                    {
-                        label: 'What If?',
-                        icon: 'question-circle-icon',
-                        routerLink: ['/pages/empty']
-                    },
-                    {
-                        label: 'Reports',
-                        icon: 'bar-chart-icon',
-                        routerLink: ['/pages/empty']
-                    },
-                ]
-            } ,
-            {
-                label: 'Others',
-                items: [
-                    { label: 'Suppliers', icon: 'box-seam-icon', routerLink: ['/'] },
-                    { label: 'Logistics', icon: 'truck-icon', routerLink: ['/'] },
+                    { label: 'Forecast', icon: 'box-seam-icon', routerLink: ['/demand-management/order-list'] },
+                    { label: 'New Study', icon: 'box-seam-icon', routerLink: ['/'] },
+                    { label: 'Live Study', icon: 'box-seam-icon', routerLink: ['/pages/empty'] }
                 ]
             },
             {
+                label: 'Resource Planning',
                 items: [
-                    { label: 'Settings', icon: 'setting-icon', routerLink: ['/'] },
-                    { label: 'Sign Out', icon: 'signout-icon', routerLink: ['/'] },
+                    { label: 'Resource Capacity', icon: 'box-seam-icon', routerLink: ['/'] },
+                    { label: 'Storage', icon: 'truck-icon', routerLink: ['/'] },
                 ]
             },
+            {
+                label: 'Inventory Management',
+                icon: 'receipt-icon',
+                items: [
+                    { label: 'Inventory', icon: 'box-seam-icon', routerLink: ['/demand-management/order-list'] },
+                    { label: 'Purchase Orders', icon: 'box-seam-icon', routerLink: ['/'] },
+                    { label: 'Safty Stocks', icon: 'box-seam-icon', routerLink: ['/pages/empty'] },
+                    { label: 'Scarp', icon: 'box-seam-icon', routerLink: ['/pages/empty'] },
+                    { label: 'Configurations', icon: 'box-seam-icon', routerLink: ['/pages/empty'] }
+                ]
+            },
+            {
+                label: 'MPS',
+                icon: 'receipt-icon',
+                items: [{ label: 'Schedule', icon: 'setting-icon', routerLink: ['/'] }]
+            },
+            {
+                label: 'Reports',
+                items: [
+                    { label: 'Kit Reports', icon: 'setting-icon', routerLink: ['/'] }
+                ]
+            },
+            { label: 'User Management', icon: 'setting-icon', routerLink: ['/'] },
+            { label: 'Settings', icon: 'setting-icon', routerLink: ['/'] },
+            { label: 'Sign Out', icon: 'signout-icon', routerLink: ['/'] }
         ];
     }
 }
