@@ -75,7 +75,7 @@
 
 <!-- demand management table -->
 
-<div *ngIf="!showItemDetailPage" class="card">
+<div *ngIf="!showItemDetailPage">
 
 	<p-table
     #dt
@@ -91,7 +91,7 @@
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [filterDelay]="0"
     [globalFilterFields]="['item', 'description', 'demand', 'onstock' , 'availability' , 'open_po','due_date' ,'item_type']"
-    [styleClass]="'p-datatable-gridlines p-datatable-striped p-datatable-sm'"
+    styleClass={{selectedSize}}
 	[exportHeader]="'customExportHeader'"
 	>
     <ng-template pTemplate="caption">
@@ -114,9 +114,6 @@
 				<p-button  [text]="true"  [plain]="true" > <i class="bi bi-table"  ></i></p-button>
 			       </span>
 				<p-button  [text]="true" [plain]="true" > <i class="bi bi-arrows-angle-expand"></i></p-button>
-			
-				
-			
 			</span>
 
 		  </div>
@@ -128,41 +125,41 @@
                 <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
             </th>
 
-            <th pSortableColumn="name" style="min-width: 14rem">
+            <th pSortableColumn="name">
                 <div class="flex justify-content-between align-items-center">
                     Item
                     <p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
                 </div>
             </th>
-            <th pSortableColumn="description" style="min-width: 14rem">
+            <th pSortableColumn="description">
                 <div class="flex justify-content-between align-items-center">
                     Item Description
                     <p-columnFilter type="text" field="description" display="menu" class="ml-auto"></p-columnFilter>
                 </div>
             </th>
             
-			<th pSortableColumn="demand" style="min-width: 14rem">
+			<th pSortableColumn="demand">
                 <div class="flex justify-content-between align-items-center">
                     Demand
                     <p-columnFilter type="text" field="demand" display="menu" class="ml-auto"></p-columnFilter>
                 </div>
             </th>
 
-			<th pSortableColumn="onstock" style="min-width: 14rem">
+			<th pSortableColumn="onstock">
                 <div class="flex justify-content-between align-items-center">
 					On Stock
                     <p-columnFilter type="text" field="onstock" display="menu" class="ml-auto"></p-columnFilter>
                 </div>
             </th>
 
-			<th pSortableColumn="availability" style="min-width: 14rem">
+			<th pSortableColumn="availability">
                 <div class="flex justify-content-between align-items-center">
 					Availablity
                     <p-columnFilter type="text" field="availability" display="menu" class="ml-auto"></p-columnFilter>
                 </div>
             </th>
 
-			<th pSortableColumn="open_po" style="min-width: 14rem">
+			<th pSortableColumn="open_po">
                 <div class="flex justify-content-between align-items-center">
 					Open Po
                     <p-columnFilter type="text" field="open_po" display="menu" class="ml-auto"></p-columnFilter>
@@ -210,10 +207,10 @@
                 <p-tableCheckbox [value]="customer"></p-tableCheckbox>
             </td>
             <td>
-				<div class="item-section"> <i class="bi bi-search" (click)="showItemSearch()" ></i>  <span style="color: green;" (click)="backToMainPage()"> {{ customer.item }} </span> </div> 
+				<div class="item-section"> <i class="bi bi-search" (click)="hanldeBelowContent()" ></i>  <span style="color: green;" (click)="backToMainPage()"> {{ customer.item }} </span> </div> 
             </td>
             <td>
-				<p>{{ customer.description }}
+				{{ customer.description }}
             </td>
             <td>
 				{{ customer['demand'] }}
@@ -416,3 +413,12 @@
 	</p-sidebar>
 </div>
 	
+
+
+<!-- Table below content  -->
+
+<div *ngIf="showDetailContent">
+
+ <h1>hello</h1>
+
+</div>

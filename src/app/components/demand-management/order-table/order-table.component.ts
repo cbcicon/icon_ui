@@ -139,6 +139,7 @@ availbiltyFilterOption :any;
 openPoFilterOption: any;
 itemTypeFilterOption: any;
 viewAdditionColumn = false
+showDetailContent  = false
 
 additionalColList = [
   {
@@ -497,7 +498,9 @@ saveAsExcelFile(buffer: any, fileName: string): void {
   FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
 }
 
-
+hanldeBelowContent(){
+  this.showDetailContent = !this.showDetailContent
+}
 
 
 }
