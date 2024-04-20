@@ -33,9 +33,17 @@ import { TagModule } from 'primeng/tag';
 import { CalendarModule } from 'primeng/calendar';
 import { MenuModule } from 'primeng/menu';
 import {SplitButtonModule} from 'primeng/splitbutton';
+import { ItemDetailLandingComponent } from './item-detail-landing/item-detail-landing.component';
+import { StockAndScrapComponent } from './item-detail-landing/stock-and-scrap/stock-and-scrap.component';
+import { RingFenceComponent } from './item-detail-landing/ring-fence/ring-fence.component';
+import { ReplacementComponent } from './item-detail-landing/replacement/replacement.component';
+import { PurchaseOrderComponent } from './item-detail-landing/purchase-order/purchase-order.component';
 
 @NgModule({
-  declarations: [OrderTableComponent , QauntityBreakdownPopupComponent , ItemSearchPopupComponent,ItemDetailsComponent],
+  declarations: [
+	OrderTableComponent , QauntityBreakdownPopupComponent , ItemSearchPopupComponent,ItemDetailsComponent ,ItemDetailLandingComponent ,
+   StockAndScrapComponent ,RingFenceComponent ,ReplacementComponent,PurchaseOrderComponent
+  ],
   imports: [
     CommonModule,
     DemandManagementRoutingModule ,

@@ -714,6 +714,23 @@ input:focus, input:focus-visible{
   height: 15px;
   border-radius: 3px;
 }
+
+
+.p-menu {
+  width: 18.5rem;
+}
+
+.p-menu .p-menuitem > .p-menuitem-content {
+  margin-left: -2rem;
+}
+
+i{
+  width: 16px;
+  height: 15.92px;
+  color: black;
+  
+}
+
  @import "primeng/resources/themes/lara-light-blue/theme.css";
  @import "primeng/resources/primeng.css";
 
