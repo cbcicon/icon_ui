@@ -97,21 +97,27 @@
     <ng-template pTemplate="caption">
         <div class="table-header d-flex justify-content-between"> 
 		<div >
-            <span class="p-input-icon-left">
+			<div class="filter-sm-circle-btn">Y</div>
+			<div class="filter-sm-circle-btn">H</div>
+			<div class="filter-sm-circle-btn">Q</div>
+			<div class="filter-sm-circle-btn">M</div>
+			<div class="filter-sm-circle-btn">W</div>
+
+            <!-- <span class="p-input-icon-left">
                 <i class="pi pi-search"></i>
                 <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Global Search" />
-            </span>
+            </span> -->
 		  </div>
 		  <div>
 			<span class="p-input-icon-left ml-auto">
 				<span (click)="exportExcel()">
-				<p-button  [text]="true" icon="pi pi-download" [plain]="true"></p-button>
+				<p-button  [text]="true"  [plain]="true"> <i class="bi bi-download"></i></p-button>
 			  </span>
 				<span (click)="handleTableView()">
 					<p-button  [text]="true" icon="pi pi-table" [plain]="true" > </p-button>
 				</span>
 				<span (click)="handleAdditionanlColumn()">
-				<p-button  [text]="true"  [plain]="true" > <i class="bi bi-table"  ></i></p-button>
+				<p-button  [text]="true"  [plain]="true" > <i class="bi bi-layout-three-columns"></i></p-button>
 			       </span>
 				<p-button  [text]="true" [plain]="true" > <i class="bi bi-arrows-angle-expand"></i></p-button>
 			</span>
@@ -121,8 +127,13 @@
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th style="width: 4rem">
+            <!-- <th style="width: 4rem">
                 <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th> -->
+			<th pSortableColumn="action-item">
+                <div class="flex justify-content-between align-items-center">
+                   Action Item
+                </div>
             </th>
 
             <th pSortableColumn="name">
@@ -204,10 +215,11 @@
     <ng-template pTemplate="body" let-customer>
         <tr class="p-selectable-row">
             <td>
-                <p-tableCheckbox [value]="customer"></p-tableCheckbox>
+               <span> <i class="bi bi-eye" (click)="hanldeBelowContent()"></i></span>
+			   <span class="ml-3"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar()"></i></span>
             </td>
             <td>
-				<div class="item-section"> <i class="bi bi-search" (click)="hanldeBelowContent()" ></i>  <span style="color: green;" (click)="backToMainPage()"> {{ customer.item }} </span> </div> 
+				<div class="item-section"> <i class="bi bi-search"  ></i>  <span style="color: green;" > {{ customer.item }} </span> </div> 
             </td>
             <td>
 				{{ customer.description }}
@@ -243,10 +255,6 @@
 					<div class="item-type-cheap" style="background-color :#B3C8CB;">
 						<i class="bi bi-box-seam"style="color #004750;" ></i>
 					</div>
-
-					 <div class="chat-section">
-						<i class="bi bi-chat-left-text" (click)="handleChatRightSidebar()" ></i>
-					 </div>
 
 				</div>
 				

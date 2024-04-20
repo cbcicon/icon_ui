@@ -3,18 +3,15 @@
   <div class="mt-4" >
   <p-menu [model]="items">
       <ng-template pTemplate="item" let-item>
-          
         <div class="p-4" (click)="handleComponentChange(item.activate)" >
-          <span> <i class={{item.icon}}></i></span> 
-          <span> {{ item.label }}</span>
-        </div>
-              
-             
+          <span class="mx-2"> <i class={{item.icon}}></i></span> 
+          <span class="menu-label-text "> {{ item.label }}</span>
+        </div>  
       </ng-template>
   </p-menu>
 </div>
 
-  <div class="col-md-11 mt-4" >
+  <div class="col-md-11 mt-4 activate-component" >
 
     <div [ngSwitch]="activeComponent">
       <div *ngSwitchCase="'stock-and-scrap'"><app-stock-and-scrap></app-stock-and-scrap></div>
