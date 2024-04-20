@@ -2,11 +2,10 @@
    
     <div class="d-flex justify-content-between">
         <a class="layout-topbar-logo" routerLink="">
-            <img src="../../assets/images/logo.png" alt="logo">
+            <img src="../../assets/images/labgistics-logo.png" alt="logo">
         </a>
-    
         <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
-            <img src="assets/layout-sidebar-inset.svg" alt="logo">
+            <i class="bi bi-list h1"></i>
         </button>
     </div>
    
@@ -21,14 +20,18 @@
         </button>
        
         <button class="p-link layout-topbar-button" [routerLink]="'/documentation'">
-           
             <i class="bi-clock-history"></i>
             <span>Settings</span>
         </button>
         <button class="p-link layout-topbar-button user-avtar ">
-            <i class="bi-bell"></i>
+            <i class="bi-bell" alt="Notifications"></i>
+            <span>Notifications</span>
+        </button>
+        <button class="p-link layout-topbar-button user-avtar ">
+            <i class="bi bi-person-circle"></i>
             <span>Profile</span>
         </button>
+       
     </div>
 
 </div>

@@ -15,7 +15,7 @@ import { LayoutService } from './service/app.layout.service';
 			<a *ngIf="(!item.routerLink || item.items) && item.visible !== false" [attr.href]="item.url" (click)="itemClick($event)"
 			   [ngClass]="item.class" [attr.target]="item.target" tabindex="0" pRipple>
 				
-                <img  [src]="'assets/' + item.icon + '.svg'" alt="sidebar-icon" class="layout-menuitem-icon">
+               <!-- <img  [src]="'assets/' + item.icon + '.svg'" alt="sidebar-icon" class="layout-menuitem-icon">-->
 				<span class="layout-menuitem-text">{{item.label}}</span>
 				<i class="pi pi-fw pi-angle-down layout-submenu-toggler" *ngIf="item.items"></i>
 			</a>
@@ -25,7 +25,7 @@ import { LayoutService } from './service/app.layout.service';
                [fragment]="item.fragment" [queryParamsHandling]="item.queryParamsHandling" [preserveFragment]="item.preserveFragment" 
                [skipLocationChange]="item.skipLocationChange" [replaceUrl]="item.replaceUrl" [state]="item.state" [queryParams]="item.queryParams"
                [attr.target]="item.target" tabindex="0" pRipple>
-               <img  [src]="'assets/' + item.icon + '.svg'" alt="sidebar-icon" class="layout-menuitem-icon">
+               <!--<img  [src]="'assets/' + item.icon + '.svg'" alt="sidebar-icon" class="layout-menuitem-icon">-->
 				
 				<span class="layout-menuitem-text">{{item.label}}</span>
 				<i class="pi pi-fw pi-angle-down layout-submenu-toggler" *ngIf="item.items"></i>

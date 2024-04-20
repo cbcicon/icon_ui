@@ -1,7 +1,7 @@
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { LayoutService } from './service/app.layout.service';
-
+import { PrimeIcons, MenuItem } from 'primeng/api';
 @Component({
     selector: 'app-menu',
     templateUrl: './app.menu.component.html'
@@ -16,23 +16,25 @@ export class AppMenuComponent implements OnInit {
         this.model = [
             {
                 label: 'Main',
+                icon: 'bar-chart',
                 items: [
                     { label: 'Dashboard', icon: 'dashboard-icon', routerLink: ['/'] }
                 ]
             },
             {
                 label: 'Demand Management',
-                icon: 'receipt-icon',
+                collapsed: true,
                 items: [
-                    { label: 'Forecast', icon: 'box-seam-icon', routerLink: ['/demand-management/order-list'] },
-                    { label: 'New Study', icon: 'box-seam-icon', routerLink: ['/'] },
-                    { label: 'Live Study', icon: 'box-seam-icon', routerLink: ['/pages/empty'] }
+                    { label: 'Forecast', routerLink: ['/demand-management/order-list'] },
+                    { label: 'New Study', routerLink: ['/'] },
+                    { label: 'Live Study', routerLink: ['/pages/empty'] }
                 ]
             },
             {
                 label: 'Resource Planning',
+                icon: 'people',
                 items: [
-                    { label: 'Resource Capacity', icon: 'box-seam-icon', routerLink: ['/'] },
+                    { label: 'Resource Capacity', routerLink: ['/'] },
                     { label: 'Storage', icon: 'truck-icon', routerLink: ['/'] },
                 ]
             },
@@ -40,11 +42,11 @@ export class AppMenuComponent implements OnInit {
                 label: 'Inventory Management',
                 icon: 'receipt-icon',
                 items: [
-                    { label: 'Inventory', icon: 'box-seam-icon', routerLink: ['/demand-management/order-list'] },
-                    { label: 'Purchase Orders', icon: 'box-seam-icon', routerLink: ['/'] },
-                    { label: 'Safty Stocks', icon: 'box-seam-icon', routerLink: ['/pages/empty'] },
-                    { label: 'Scarp', icon: 'box-seam-icon', routerLink: ['/pages/empty'] },
-                    { label: 'Configurations', icon: 'box-seam-icon', routerLink: ['/pages/empty'] }
+                    { label: 'Inventory', routerLink: ['/inventory-management/order-list'] },
+                    { label: 'Purchase Orders', routerLink: ['/'] },
+                    { label: 'Safty Stocks', routerLink: ['/pages/empty'] },
+                    { label: 'Scarp', routerLink: ['/pages/empty'] },
+                    { label: 'Configurations', routerLink: ['/pages/empty'] }
                 ]
             },
             {

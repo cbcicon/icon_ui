@@ -1,0 +1,90 @@
+.item-detail-right-sidebar {
+
+    .sidebar-header {
+        font-family: Poppins;
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 34.5px;
+        margin-left: 10px;
+    }
+
+    .sidebar-header-id {
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-left: 10px;
+        color: #128474;
+    }
+
+
+.container {
+    margin-top: 5px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .toggle-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .content {
+    background-color: #F3F9F8;
+  }
+
+.item-detail-box-header{
+font-family: Poppins;
+font-size: 1.2rem;
+font-weight: 600;
+line-height: 24px;
+letter-spacing: 0.15000000596046448px;
+text-align: left;
+
+}
+  
+.report-card{
+ width: 213px;
+ height: 213px;
+}
+
+
+
+}
+
+.item-type-icons{
+  display: flex;
+  flex-direction: row;
+}
+.item-type-cheap{
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center;
+  border-radius: 50%;
+  background-color: #92d3ca6c;
+  margin: 3px;
+  padding: 2px 5px;
+}
+
+.chat-section{
+  margin-left: 20px;
+  margin-top: 12px;
+}
+
+.item-section{
+width: 100px;
+}
+
+.table-view{
+  position: absolute;
+  top: 17rem;
+  right: 14rem;
+}
+
+.addition-col-menu{
+  position: absolute;
+  top: 17rem;
+  right: 14rem;
+}
