@@ -1,4 +1,4 @@
-:root {
+/* :root {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
@@ -278,7 +278,7 @@
   }
 
   .p-component {
-    font-family: var(--font-family);
+    font-family: var(--font-family) !important ;
     font-feature-settings: var(--font-feature-settings, normal);
     font-size: 1rem;
     font-weight: normal;
@@ -311,7 +311,7 @@
   }
 
   .p-link {
-    font-family: var(--font-family);
+    font-family: var(--font-family) !important;
     font-feature-settings: var(--font-feature-settings, normal);
     font-size: 1rem;
     border-radius: 3px;
@@ -6272,7 +6272,7 @@
   }
 }
 /* Customizations to the designer theme should be defined here */
-@layer primeng {
+/* @layer primeng {
   .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
     background-color: #64B5F6;
   }
@@ -6290,4 +6290,4 @@
   .p-datatable .p-datatable-tbody > tr.p-datatable-dragpoint-bottom > td {
     box-shadow: inset 0 -2px 0 0 #64B5F6;
   }
-}
+} */ */

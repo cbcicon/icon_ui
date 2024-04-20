@@ -62,13 +62,10 @@ text-align: left;
   display: flex;
   justify-content: center; /* horizontally center */
   align-items: center;
-  height: 30px;
-  width: 30px;
-  border: 0.5px solid rgba(0, 0, 0, 0.326);
-  border-radius: 50px;
+  border-radius: 50%;
   background-color: #92d3ca6c;
   margin: 3px;
-
+  padding: 2px 5px;
 }
 
 .chat-section{

@@ -668,6 +668,28 @@ input:focus, input:focus-visible{
   border-color: var(--primary-40) !important;
   opacity: 0.8;
 }
+.p-datatable .p-datatable-tbody > tr > td{
+  padding: 0;
+}
+.p-datatable .p-datatable-tbody > tr > td:first-child{
+  padding-left: 10px;
+}
+.p-datatable .p-datatable-thead > tr > th{
+  padding: 0.2rem 0.2rem;
+}
+.p-datatable .p-datatable-thead > tr > th:first-child{
+  padding-left: 10px;
+}
+.p-datatable .p-datatable-header{
+  padding: 8px 10px;
+  border-radius: 5px 5px 0 0;
+}
+.p-datatable>.p-datatable-wrapper{
+  margin-left: 1px;
+}
+.p-paginator{
+  border-radius: 0 0 5px 5px;
+}
 .btn-link{
   color: var(--primary-100) !important;
 }
@@ -684,14 +706,26 @@ input:focus, input:focus-visible{
 
 }
 
-@import "primeng/resources/themes/lara-light-blue/theme.css";
-@import "primeng/resources/primeng.css";
+.p-component{
+  font-size: var(--fs-14);
+} 
+.p-checkbox .p-checkbox-box{
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+}
+ @import "primeng/resources/themes/lara-light-blue/theme.css";
+ @import "primeng/resources/primeng.css";
 
 
 @import "assets/layout/styles/layout/layout.scss";
 
 /* PrimeNG */
 @import "../node_modules/primeng/resources/primeng.min.css";
+
+
+
+
 @import "../node_modules/primeflex/primeflex.scss";
 @import "../node_modules/primeicons/primeicons.css";
 
