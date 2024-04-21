@@ -11,9 +11,9 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { ToastModule } from 'primeng/toast';
 import { SliderModule } from 'primeng/slider';
 import { RatingModule } from 'primeng/rating';
-import { DemandManagementRoutingModule } from './demand-management-routing.module';
+import { InventoryManagementRoutingModule } from './inventory-management-routing.module';
 import { TableModule } from 'primeng/table';
-import { ForecastTableComponent } from './forecast/forecast-table.component';
+import { OrderTableComponent } from './order-table/order-table.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { DialogModule } from 'primeng/dialog';
 import { QauntityBreakdownPopupComponent } from './popup/qauntity-breakdown-popup/qauntity-breakdown-popup.component';
@@ -41,12 +41,12 @@ import { PurchaseOrderComponent } from './item-detail-landing/purchase-order/pur
 
 @NgModule({
 	declarations: [
-		ForecastTableComponent, QauntityBreakdownPopupComponent, ItemSearchPopupComponent, ItemDetailsComponent, ItemDetailLandingComponent,
+		OrderTableComponent, QauntityBreakdownPopupComponent, ItemSearchPopupComponent, ItemDetailsComponent, ItemDetailLandingComponent,
 		StockAndScrapComponent, RingFenceComponent, ReplacementComponent, PurchaseOrderComponent
 	],
 	imports: [
 		CommonModule,
-		DemandManagementRoutingModule,
+		InventoryManagementRoutingModule,
 		DividerModule,
 		FormsModule,
 		TableModule,
@@ -79,4 +79,4 @@ import { PurchaseOrderComponent } from './item-detail-landing/purchase-order/pur
 	providers: [DialogService]
 
 })
-export class DemandManagementModule { }
+export class InventoryManagementModule { }
