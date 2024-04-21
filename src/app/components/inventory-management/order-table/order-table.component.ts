@@ -3,7 +3,9 @@ import { LazyLoadEvent } from 'primeng/api';
 import { Table, TableLazyLoadEvent } from 'primeng/table';
 import { DataService } from '../data-services/data.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { QauntityBreakdownPopupComponent } from '../popup/qauntity-breakdown-popup/qauntity-breakdown-popup.component';
 import { Sidebar } from 'primeng/sidebar';
+import { ItemSearchPopupComponent } from '../popup/itemsearchpopup/item-search-popup.component';
 import * as FileSaver from 'file-saver';
 
 export interface Customer {
@@ -381,7 +383,7 @@ onSelectAllChange(event: any) {
 }
 
 
-/*
+
 show() {
 this.ref = this.dialogService.open(QauntityBreakdownPopupComponent, {
     header: 'Quantity Breakdown',
@@ -398,7 +400,7 @@ showItemSearch(){
     height:'400',
     contentStyle: { overflow: 'auto' }, 
 });
-}*/
+}
 
 
 
@@ -480,7 +482,7 @@ this.tableHeaderItem.forEach(item => {
 
 exportExcel() {
   import('xlsx').then((xlsx) => {
-      const worksheet = xlsx.utils.json_to_sheet(this.selectedCustomers);
+      const worksheet = xlsx.utils.json_to_sheet(this.customers);
       const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
       const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
       this.saveAsExcelFile(excelBuffer, 'products');

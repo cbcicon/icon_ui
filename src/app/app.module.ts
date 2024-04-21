@@ -7,7 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppLayoutModule } from './layout/app.layout.module';
 import { DemandManagementModule } from './components/demand-management/demand-management.module';
-
+import { InventoryManagementModule } from './components/inventory-management/inventory-management.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +18,8 @@ import { DemandManagementModule } from './components/demand-management/demand-ma
      AppLayoutModule, 
      BrowserAnimationsModule ,
      FormsModule ,
-     DemandManagementModule
+     DemandManagementModule,
+     InventoryManagementModule
     ],
   providers: [],
   bootstrap: [AppComponent],

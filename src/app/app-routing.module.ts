@@ -14,7 +14,7 @@ const routes: Routes = [
             { path: 'documentation', loadChildren: () => import('./components/documentation/documentation.module').then(m => m.DocumentationModule) },
             { path: 'pages', loadChildren: () => import('./components/pages/pages.module').then(m => m.PagesModule) } ,
             { path: 'demand-management', loadChildren: () => import('./components/demand-management/demand-management.module').then(m => m.DemandManagementModule) },
-            { path: 'inventory-management', loadChildren: () => import('./components/inventory-management/inventory-management.module').then(m => m.InventoryManagementModule) },
+            { path: 'inventory-management', loadChildren: () => import('./components//inventory-management/inventory-management.module').then(m => m.InventoryManagementModule) },
         
         ]
     },
