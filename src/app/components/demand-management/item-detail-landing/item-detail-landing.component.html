@@ -1,24 +1,3 @@
-<div class="d-flex justify-content-between">
-
-  <div class="mt-4" >
-  <p-menu [model]="items">
-      <ng-template pTemplate="item" let-item>
-        <div class="p-4" (click)="handleComponentChange(item.activate)" >
-          <span class="mx-2"> <i class={{item.icon}}></i></span> 
-          <span class="menu-label-text "> {{ item.label }}</span>
-        </div>  
-      </ng-template>
-  </p-menu>
-</div>
-
-  <div class="col-md-11 mt-4 activate-component" >
-
-    <div [ngSwitch]="activeComponent">
-      <div *ngSwitchCase="'stock-and-scrap'"><app-stock-and-scrap></app-stock-and-scrap></div>
-      <div *ngSwitchCase="'replacement'"> <app-replacement></app-replacement> </div>
-      <div *ngSwitchCase="'ring-fence'"><app-ring-fence></app-ring-fence></div>
-      <div *ngSwitchCase="'purchase-bill'"><app-purchase-order></app-purchase-order></div>
-    </div>
-  </div>
-
+<div class="card">
+  <p-chart type="bar" [data]="data" [options]="options"></p-chart>
 </div>
