@@ -83,25 +83,25 @@
     [(selection)]="selectedCustomers"
     dataKey="id"
     [rowHover]="true"
-    [rows]="10"
+    [rows]="controlRow"
     [showCurrentPageReport]="true"
     [rowsPerPageOptions]="rowsPerPageOptions"
     [loading]="loading"
     [paginator]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [filterDelay]="0"
-    [globalFilterFields]="['item', 'description', 'demand', 'onstock' , 'availability' , 'open_po','due_date' ,'item_type']"
+    [globalFilterFields]="['ITEM_ID', 'ITEM_NAME', 'ITEM_DESCRIPTION', 'DEMAND' , 'ON_STOCK' , 'AVAILABILITY','OPEN_PO' ,'ITEM_TYPE']"
     styleClass={{selectedSize}}
 	[exportHeader]="'customExportHeader'"
 	>
     <ng-template pTemplate="caption">
         <div class="table-header d-flex justify-content-between"> 
 		<div >
-			<div class="filter-sm-circle-btn">Y</div>
-			<div class="filter-sm-circle-btn">H</div>
-			<div class="filter-sm-circle-btn">Q</div>
-			<div class="filter-sm-circle-btn">M</div>
-			<div class="filter-sm-circle-btn">W</div>
+			<div class="filter-sm-circle-btn" (click)="handleDateShortener('yearly')" [class.selected]="selectedInterval === 'yearly'">Y</div>
+<div class="filter-sm-circle-btn" (click)="handleDateShortener('half-yearly')" [class.selected]="selectedInterval === 'half-yearly'">H</div>
+<div class="filter-sm-circle-btn" (click)="handleDateShortener('quarterly')" [class.selected]="selectedInterval === 'quarterly'">Q</div>
+<div class="filter-sm-circle-btn" (click)="handleDateShortener('monthly')" [class.selected]="selectedInterval === 'monthly'">M</div>
+<div class="filter-sm-circle-btn" (click)="handleDateShortener('weekly')" [class.selected]="selectedInterval === 'weekly'">W</div>
 
             <!-- <span class="p-input-icon-left">
                 <i class="pi pi-search"></i>
@@ -113,13 +113,20 @@
 				<span (click)="exportExcel()">
 				<p-button  [text]="true"  [plain]="true"> <i class="bi bi-download"></i></p-button>
 			  </span>
-				<span (click)="handleTableView()">
+				<!-- <span (click)="handleTableView()">
 					<p-button  [text]="true" icon="pi pi-table" [plain]="true" > </p-button>
-				</span>
+				</span> -->
 				<span (click)="handleAdditionanlColumn()">
 				<p-button  [text]="true"  [plain]="true" > <i class="bi bi-layout-three-columns"></i></p-button>
 			       </span>
-				<p-button  [text]="true" [plain]="true" > <i class="bi bi-arrows-angle-expand"></i></p-button>
+				   <span (click)="handleRowControl()">
+					<p-button [text]="true" [plain]="true">
+						<i class="bi bi-arrows-angle-expand" *ngIf="changeExpandButton; else collapseIcon"></i>
+						<ng-template #collapseIcon>
+							<i class="bi bi-arrows-angle-contract"></i>
+						</ng-template>
+					  </p-button>
+				   </span>
 			</span>
 
 		  </div>
@@ -136,60 +143,60 @@
                 </div>
             </th>
 
-            <th pSortableColumn="name">
+            <th pSortableColumn="ITEM_NAME">
                 <div class="flex justify-content-between align-items-center">
                     Item
-                    <p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
+                    <p-columnFilter type="text" field="ITEM_NAME" display="menu" class="ml-auto"></p-columnFilter>
                 </div>
             </th>
-            <th pSortableColumn="description">
+            <th pSortableColumn="ITEM_DESCRIPTION">
                 <div class="flex justify-content-between align-items-center">
                     Item Description
-                    <p-columnFilter type="text" field="description" display="menu" class="ml-auto"></p-columnFilter>
+                    <p-columnFilter type="text" field="ITEM_DESCRIPTION" display="menu" class="ml-auto"></p-columnFilter>
                 </div>
             </th>
             
-			<th pSortableColumn="demand">
+			<th pSortableColumn="DEMAND">
                 <div class="flex justify-content-between align-items-center">
                     Demand
-                    <p-columnFilter type="text" field="demand" display="menu" class="ml-auto"></p-columnFilter>
+                    <p-columnFilter type="text" field="DEMAND" display="menu" class="ml-auto"></p-columnFilter>
                 </div>
             </th>
 
-			<th pSortableColumn="onstock">
+			<th pSortableColumn="ON_STOCK">
                 <div class="flex justify-content-between align-items-center">
 					On Stock
-                    <p-columnFilter type="text" field="onstock" display="menu" class="ml-auto"></p-columnFilter>
+                    <p-columnFilter type="text" field="ON_STOCK" display="menu" class="ml-auto"></p-columnFilter>
                 </div>
             </th>
 
-			<th pSortableColumn="availability">
+			<th pSortableColumn="AVAILABILITY">
                 <div class="flex justify-content-between align-items-center">
 					Availablity
-                    <p-columnFilter type="text" field="availability" display="menu" class="ml-auto"></p-columnFilter>
+                    <p-columnFilter type="text" field="AVAILABILITY" display="menu" class="ml-auto"></p-columnFilter>
                 </div>
             </th>
 
-			<th pSortableColumn="open_po">
+			<th pSortableColumn="OPEN_PO">
                 <div class="flex justify-content-between align-items-center">
 					Open Po
-                    <p-columnFilter type="text" field="open_po" display="menu" class="ml-auto"></p-columnFilter>
+                    <p-columnFilter type="text" field="OPEN_PO" display="menu" class="ml-auto"></p-columnFilter>
                 </div>
             </th>
 
-            <th pSortableColumn="due_date" style="min-width: 10rem">
+            <th pSortableColumn="DUE_DATE" style="min-width: 10rem">
                 <div class="flex justify-content-between align-items-center">
 					Due Date
                
-                    <p-columnFilter type="date" field="due_date" display="menu" class="ml-auto"></p-columnFilter>
+                    <p-columnFilter type="date" field="DUE_DATE" display="menu" class="ml-auto"></p-columnFilter>
                 </div>
             </th>
 
-            <th pSortableColumn="item_type" style="min-width: 10rem">
+            <th pSortableColumn="ITEM_TYPE" style="min-width: 10rem">
 				<div class="flex justify-content-between align-items-center">
                     Item Type
                   
-                    <p-columnFilter type="numeric" field="balance" display="menu" currency="USD" class="ml-auto"></p-columnFilter>
+                    <p-columnFilter type="numeric" field="ITEM_TYPE" display="menu" currency="USD" class="ml-auto"></p-columnFilter>
               </div>
             </th>
        
@@ -219,27 +226,27 @@
 			   <span class="ml-3"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar()"></i></span>
             </td>
             <td>
-				<div class="item-section"> <i class="bi bi-search"  ></i>  <span style="color: green;" > {{ customer.item }} </span> </div> 
+				<div class="item-section">  <span style="color: green;" > {{ customer["ITEM_NAME"] }} </span> </div> 
             </td>
             <td>
-				{{ customer.description }}
+				{{ customer["ITEM_DESCRIPTION"] }}
             </td>
             <td>
-				{{ customer['demand'] }}
+				{{ customer['DEMAND'] }}
             </td>
-			<td [style.color]="customer['on_stock'] === 'Out of Stock' || customer['availability'] === 'Out of Stock' ? 'red' : 'green'">
-				<i class="bi bi-box-arrow-in-up-right" (click)="show()"></i> {{ customer['on_stock'] }}
+			<td [style.color]="customer['ON_STOCK'] === 'Out of Stock' || customer['AVAILABILITY'] === 'Out of Stock' ? 'red' : 'green'">
+				<i class="bi bi-box-arrow-in-up-right" (click)="show()"></i> {{ customer['ON_STOCK'] }}
 			</td>
 			
-			<td [ngClass]="{'text-danger': customer.availability === 'Out of Stock'}" (click)="rightSideBar = customer.availability !== 'Out of Stock'">
-				<i *ngIf="customer.availability === 'Out of Stock'" class="bi bi-unlock"></i>
-				<i *ngIf="customer.availability !== 'Out of Stock'"class="bi bi-lock"></i>
-				{{ customer.availability }}
+			<td [ngClass]="{'text-danger': customer.AVAILABILITY === 'Out of Stock'}" (click)="rightSideBar = customer.AVAILABILITY !== 'Out of Stock'">
+				<i *ngIf="customer.AVAILABILITY === 'Out of Stock'" class="bi bi-unlock"></i>
+				<i *ngIf="customer.AVAILABILITY !== 'Out of Stock'"class="bi bi-lock"></i>
+				{{ customer.AVAILABILITY }}
 			  </td>
 			  
-			  <td *ngIf="customer['open_po'] === 'No Open PO'"  style="color: red;">{{ customer['open_po'] }}</td>
-			  <td *ngIf="customer['open_po'] !== 'No Open PO'" > {{ customer['open_po'] }}</td>
-			  <td>{{ customer['due_date'] }}</td>
+			  <td *ngIf="customer['OPEN_PO'] === 'No Open PO'"  style="color: red;">{{ customer['OPEN_PO'] }}</td>
+			  <td *ngIf="customer['OPEN_PO'] !== 'No Open PO'" > {{ customer['OPEN_PO'] }}</td>
+			  <td>{{ customer['DUE_DATE'] }}</td>
 		
 			<td>
 				<div class="item-type-icons">

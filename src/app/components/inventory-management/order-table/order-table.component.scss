@@ -66,6 +66,7 @@ text-align: left;
   background-color: #92d3ca6c;
   margin: 3px;
   padding: 2px 5px;
+  padding-left: 7px;
 }
 
 .chat-section{
@@ -107,5 +108,10 @@ width: 100px;
 .filter-sm-circle-btn:hover,
 .filter-sm-circle-btn:active {
   background-color: #128474;
+  color: white;
+}
+
+.selected {
+  background-color:#128474; 
   color: white;
 }

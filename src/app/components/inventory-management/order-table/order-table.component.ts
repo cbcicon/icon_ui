@@ -7,6 +7,7 @@ import { QauntityBreakdownPopupComponent } from '../popup/qauntity-breakdown-pop
 import { Sidebar } from 'primeng/sidebar';
 import { ItemSearchPopupComponent } from '../popup/itemsearchpopup/item-search-popup.component';
 import * as FileSaver from 'file-saver';
+import { DataShortenerService } from '../data-shortener/data-shortener.service';
 
 export interface Customer {
   id?: number;
@@ -91,6 +92,7 @@ selectedCustomers!:any
 
 rowsPerPageOptions:any
 showInfoCard:boolean = false
+selectedInterval: string | null = null;
 
 tableHeaderItem = [
   { id: '1', columnName: 'Item', sortableColumn: 'item', active: false },
@@ -140,6 +142,8 @@ openPoFilterOption: any;
 itemTypeFilterOption: any;
 viewAdditionColumn = false
 showDetailContent  = false
+controlRow = 10;
+changeExpandButton = false
 
 additionalColList = [
   {
@@ -201,19 +205,18 @@ additionalColList = [
 ]
 
 
-constructor(private customerService: DataService  , public dialogService: DialogService) {}
+constructor(private customerService: DataService  , public dialogService: DialogService , public dataShortenerService:DataShortenerService) {}
 
 
 ngOnInit() {
-
-
-
-
     this.loading = true;
-    this.totalRecords = 180;
+
+    this.customers =  this.customerService.getData()
+
+
     setTimeout(() => {
-    this.customers = this.customerService.getData();
-    this.colunms = this.customerService.getColumns()
+
+    this.totalRecords =  this.customers.length
     this.duration = this.customerService.getDuration();
     this.selectedDuration = this.customerService.getDuration()[1];
     this.loading = false
@@ -502,5 +505,16 @@ hanldeBelowContent(){
   this.showDetailContent = !this.showDetailContent
 }
 
+handleRowControl(){
+  this.controlRow = this.controlRow == 10 ? 30:10
+  this.changeExpandButton = this.controlRow == 10 ? false:true;
+}
+
+
+handleDateShortener(datetype:any){
+  this.selectedInterval = datetype;
+
+ //this.customers = this.dataShortenerService.shortenData( this.customers ,datetype)
+}
 
 }
