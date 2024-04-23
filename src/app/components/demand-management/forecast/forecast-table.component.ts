@@ -72,6 +72,7 @@ export interface Product {
 export class ForecastTableComponent implements OnInit {
 
 
+  moment: any;
   forecasts: any;
   colunms: any;
   duration: any;
@@ -138,89 +139,23 @@ export class ForecastTableComponent implements OnInit {
   itemTypeFilterOption: any;
   viewAdditionColumn = false;
   showDetailContent = false;
-  additionalColList = [
-    {
-      "field": "Qty to Order",
-      "id": 1
-    },
-    {
-      "field": "Study Type",
-      "id": 2
-    },
-    {
-      "field": "Kit Production Location",
-      "id": 3
-    },
-    {
-      "field": "Order Type",
-      "id": 4
-    },
-    {
-      "field": "Lead Time",
-      "id": 5
-    },
-    {
-      "field": "Consumption",
-      "id": 6
-    },
-    {
-      "field": "Component Type",
-      "id": 7
-    },
-    {
-      "field": "Forecaste",
-      "id": 8
-    },
-    {
-      "field": "Total Demand",
-      "id": 9
-    },
-    {
-      "field": "Scrap",
-      "id": 10
-    },
-    {
-      "field": "Warehouse",
-      "id": 11
-    },
-    {
-      "field": "Inventory Location",
-      "id": 12
-    },
-    {
-      "field": "Carton",
-      "id": 13
-    },
-    {
-      "field": "Kit Category",
-      "id": 14
-    }
-  ]
+  additionalColList = [];
 
 
   constructor(private forecastService: DataService, public dialogService: DialogService) {
-   }
+  }
 
 
   ngOnInit() {
-
-
-
-
     this.loading = true;
-    this.totalRecords = 180;
     setTimeout(() => {
-      this.forecasts = this.forecastService.getData();
+      this.forecasts = this.forecastService.getForecastData();
       this.colunms = this.forecastService.getColumns()
       this.duration = this.forecastService.getDuration();
       this.selectedDuration = this.forecastService.getDuration()[1];
       this.loading = false
     }, 2000);
-
     this.rowsPerPageOptions = this.divideIntoMultiplesOfTen(this.totalRecords)
-
-
-
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
 
@@ -238,9 +173,9 @@ export class ForecastTableComponent implements OnInit {
     this.options = {
       scales: {
         xAxes: [{
-            barPercentage: 0.4
+          barPercentage: 0.4
         }]
-    },
+      },
       plugins: {
         legend: {
           position: 'right',
@@ -253,70 +188,6 @@ export class ForecastTableComponent implements OnInit {
         }
       }
     };
-
-    this.itemData = [
-      {
-        "id": "1000",
-        "code": "f230fh0g3",
-        "name": "Bamboo Watch",
-        "description": "Product Description",
-        "image": "bamboo-watch.jpg",
-        "price": 65,
-        "category": "Accessories",
-        "quantity": 24,
-        "inventoryStatus": "INSTOCK",
-        "rating": 5
-      },
-      {
-        "id": "1001",
-        "code": "nvklal433",
-        "name": "Black Watch",
-        "description": "Product Description",
-        "image": "black-watch.jpg",
-        "price": 72,
-        "category": "Accessories",
-        "quantity": 61,
-        "inventoryStatus": "OUTOFSTOCK",
-        "rating": 4
-      },
-      {
-        "id": "1002",
-        "code": "zz21cz3c1",
-        "name": "Blue Band",
-        "description": "Product Description",
-        "image": "blue-band.jpg",
-        "price": 79,
-        "category": "Fitness",
-        "quantity": 2,
-        "inventoryStatus": "LOWSTOCK",
-        "rating": 3
-      },
-      {
-        "id": "1003",
-        "code": "244wgerg2",
-        "name": "Blue T-Shirt",
-        "description": "Product Description",
-        "image": "blue-t-shirt.jpg",
-        "price": 29,
-        "category": "Clothing",
-        "quantity": 25,
-        "inventoryStatus": "INSTOCK",
-        "rating": 5
-      },
-      {
-        "id": "1004",
-        "code": "h456wer53",
-        "name": "Bracelet",
-        "description": "Product Description",
-        "image": "bracelet.jpg",
-        "price": 15,
-        "category": "Accessories",
-        "quantity": 73,
-        "inventoryStatus": "INSTOCK",
-        "rating": 4
-      }
-    ]
-
     this.tableView = [
       { name: 'Normal Grids' },
       { name: 'Small Grids' },
@@ -376,7 +247,7 @@ export class ForecastTableComponent implements OnInit {
     const checked = event.checked;
 
     if (checked) {
-      this.selectedforecasts = this.forecastService.getData();
+      this.selectedforecasts = this.forecastService.getForecastData();
       this.selectAll = true;
     } else {
       this.selectedforecasts = [];

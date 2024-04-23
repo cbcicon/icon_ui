@@ -394,7 +394,7 @@ export class DataService {
     //               code: 'ec'
     //           },
     //           company: 'C 4 Network Inc',
-    //           date: '2017-03-24',
+    //           date: '2017-0324',
     //           status: 'renewal',
     //           verified: false,
     //           activity: 72,
@@ -484,7 +484,7 @@ export class DataService {
     //               code: 'ar'
     //           },
     //           company: 'Professional Image Inc',
-    //           date: '2018-06-24',
+    //           date: '2018-0624',
     //           status: 'new',
     //           verified: true,
     //           activity: 26,
@@ -502,7 +502,7 @@ export class DataService {
     //               code: 'ie'
     //           },
     //           company: 'Sider, Donald C Esq',
-    //           date: '2016-09-24',
+    //           date: '2016-0924',
     //           status: 'new',
     //           verified: false,
     //           activity: 76,
@@ -880,7 +880,7 @@ export class DataService {
     //               code: 'fi'
     //           },
     //           company: 'Knights Inn',
-    //           date: '2018-11-24',
+    //           date: '2018-1124',
     //           status: 'new',
     //           verified: false,
     //           activity: 63,
@@ -970,7 +970,7 @@ export class DataService {
     //               code: 'nl'
     //           },
     //           company: 'Vicon Corporation',
-    //           date: '2018-01-24',
+    //           date: '2018-0124',
     //           status: 'negotiation',
     //           verified: false,
     //           activity: 89,
@@ -1600,7 +1600,7 @@ export class DataService {
     //               code: 'cu'
     //           },
     //           company: 'Sharp, J Daniel Esq',
-    //           date: '2020-07-24',
+    //           date: '2020-0724',
     //           status: 'renewal',
     //           verified: false,
     //           activity: 51,
@@ -3076,7 +3076,7 @@ export class DataService {
     //               code: 'au'
     //           },
     //           company: 'Nagle, Daniel J Esq',
-    //           date: '2016-12-24',
+    //           date: '2016-1224',
     //           status: 'unqualified',
     //           verified: true,
     //           activity: 88,
@@ -4120,7 +4120,7 @@ export class DataService {
     //               code: 'cu'
     //           },
     //           company: 'Holmes, Armstead J Esq',
-    //           date: '2020-02-24',
+    //           date: '2020-0224',
     //           status: 'renewal',
     //           verified: true,
     //           activity: 96,
@@ -5056,7 +5056,7 @@ export class DataService {
     //               code: 'gb'
     //           },
     //           company: 'American Council On Sci & Hlth',
-    //           date: '2018-06-24',
+    //           date: '2018-0624',
     //           status: 'qualified',
     //           verified: true,
     //           activity: 4,
@@ -5092,7 +5092,7 @@ export class DataService {
     //               code: 'sa'
     //           },
     //           company: 'Twiggs Abrams Blanchard',
-    //           date: '2020-06-24',
+    //           date: '2020-0624',
     //           status: 'negotiation',
     //           verified: true,
     //           activity: 35,
@@ -5704,7 +5704,7 @@ export class DataService {
     //               code: 'ng'
     //           },
     //           company: 'Binswanger',
-    //           date: '2019-07-24',
+    //           date: '2019-0724',
     //           status: 'qualified',
     //           verified: true,
     //           activity: 64,
@@ -5974,7 +5974,7 @@ export class DataService {
     //               code: 'ma'
     //           },
     //           company: 'Hasting, H Duane Esq',
-    //           date: '2018-10-24',
+    //           date: '2018-1024',
     //           status: 'renewal',
     //           verified: false,
     //           activity: 2,
@@ -6532,7 +6532,7 @@ export class DataService {
     //               code: 'ng'
     //           },
     //           company: 'Thompson Steel Company Inc',
-    //           date: '2016-07-24',
+    //           date: '2016-0724',
     //           status: 'new',
     //           verified: true,
     //           activity: 0,
@@ -7162,7 +7162,7 @@ export class DataService {
     //               code: 'pk'
     //           },
     //           company: 'Farrell & Johnson Office Equip',
-    //           date: '2017-06-24',
+    //           date: '2017-0624',
     //           status: 'proposal',
     //           verified: true,
     //           activity: 39,
@@ -7486,7 +7486,7 @@ export class DataService {
     //               code: 'ch'
     //           },
     //           company: 'Jackson Millwork Co',
-    //           date: '2017-07-24',
+    //           date: '2017-0724',
     //           status: 'renewal',
     //           verified: false,
     //           activity: 23,
@@ -7936,7 +7936,7 @@ export class DataService {
     //               code: 'jm'
     //           },
     //           company: 'Tipiak Inc',
-    //           date: '2015-08-24',
+    //           date: '2015-0824',
     //           status: 'qualified',
     //           verified: true,
     //           activity: 46,
@@ -8026,7 +8026,7 @@ export class DataService {
     //               code: 'my'
     //           },
     //           company: 'Gersh & Danielson',
-    //           date: '2017-09-24',
+    //           date: '2017-0924',
     //           status: 'renewal',
     //           verified: true,
     //           activity: 86,
@@ -8170,7 +8170,7 @@ export class DataService {
     //               code: 'hr'
     //           },
     //           company: 'Bank Of New York',
-    //           date: '2020-07-24',
+    //           date: '2020-0724',
     //           status: 'negotiation',
     //           verified: true,
     //           activity: 78,
@@ -8890,7 +8890,7 @@ export class DataService {
     //               code: 'th'
     //           },
     //           company: 'Kwikprint',
-    //           date: '2017-07-24',
+    //           date: '2017-0724',
     //           status: 'negotiation',
     //           verified: false,
     //           activity: 23,
@@ -9018,7 +9018,7 @@ export class DataService {
         "availability": "4,400",
         "open_po": "No Open PO",
         "due_date": "15 May 2024",
-        "item_type" : ""
+        "item_type": ""
       },
       {
         "item": "01.1602.001-Z",
@@ -9234,7 +9234,7 @@ export class DataService {
         id: 2,
         name: "15 Days",
         val: "15Days"
-      },{
+      }, {
         id: 1,
         name: "3 Months",
         val: "3Months"
@@ -9274,8 +9274,154 @@ export class DataService {
   }
 
   getCustomers(params?: any) {
-
     return this.http.get<any>('https://www.primefaces.org/data/customers', { params: params }).toPromise();
-
+  }
+  getForecastData() {
+    let forecastData = [
+      {
+        "Actions": "KitPending Que",
+        "Component": "G-Sub-Assembly",
+        "ProductNo": "G-Sub",
+        "Manufacturer": "Therapak Corporation",
+        "ItemType": "",
+        "Jan24": "52,014",
+        "Feb24": "51,503",
+        "Mar24": "51,503",
+        "Apr24": "52,014",
+        "May24": "51,503",
+        "Jun24": "51,503"
+      },
+      {
+        "Actions": "KitPendingQue",
+        "Component": "1.8 mLClear,Plastic Nunc2D Barcod...",
+        "ProductNo": "374502",
+        "Manufacturer": "Thermo Scientific",
+        "ItemType": "啡",
+        "Jan24": "51,503",
+        "Feb24": "9,234",
+        "Mar24": "9,234",
+        "Apr24": "51,503",
+        "May24": "9,234",
+        "Jun24": "9,234"
+      },
+      {
+        "Actions": "KitPending Que",
+        "Component": "Prelabel items forKitAssembly",
+        "ProductNo": "Prelabel2",
+        "Manufacturer": "Design Packing,Inc",
+        "ItemType": "",
+        "Jan24": "9,722",
+        "Feb24": "338,540",
+        "Mar24": "338,540",
+        "Apr24": "9,722",
+        "May24": "338,540",
+        "Jun24": "338,540"
+      },
+      {
+        "Actions": "KitPending Que",
+        "Component": "KitBoxSmall9x5x2.5 (with SealingSt...",
+        "ProductNo": "345632VMI",
+        "Manufacturer": "Laddawn",
+        "ItemType": "",
+        "Jan24": "339,592",
+        "Feb24": "43,483",
+        "Mar24": "43,483",
+        "Apr24": "339,592",
+        "May24": "43,483",
+        "Jun24": "43,483"
+      },
+      {
+        "Actions": "KitPending Que",
+        "Component": "Assembling Baggie8x8",
+        "ProductNo": "F20808",
+        "Manufacturer": "Greiner Bio-One, North America Inc.",
+        "ItemType": "8",
+        "Jan24": "43,479",
+        "Feb24": "65,879",
+        "Mar24": "65,879",
+        "Apr24": "43,479",
+        "May24": "65,879",
+        "Jun24": "65,879"
+      },
+      {
+        "Actions": "KitPending Que",
+        "Component": "1/2\"DotlabelforKitBox(Red)",
+        "ProductNo": "BC05R",
+        "Manufacturer": "BectonDickinson-England",
+        "ItemType": "B",
+        "Jan24": "66,212",
+        "Feb24": "1,717",
+        "Mar24": "1,717",
+        "Apr24": "66,212",
+        "May24": "1,717",
+        "Jun24": "1,717"
+      },
+      {
+        "Actions": "KitPendingQue",
+        "Component": "2mLRed/WhiteSerum w/ClotActiva...",
+        "ProductNo": "454236",
+        "Manufacturer": "Greiner Bio-One, North America Inc.",
+        "ItemType": "A",
+        "Jan24": "1,809",
+        "Feb24": "4,145",
+        "Mar24": "4,145",
+        "Apr24": "1,809",
+        "May24": "4,145",
+        "Jun24": "4,145"
+      },
+      {
+        "Actions": "KitPendingQue",
+        "Component": "10 ml LavenderK2EDTA Plastic Becto...",
+        "ProductNo": "366643",
+        "Manufacturer": "Therapak Corporation",
+        "ItemType": "De",
+        "Jan24": "3,852",
+        "Feb24": "5,874",
+        "Mar24": "5,874",
+        "Apr24": "3,852",
+        "May24": "5,874",
+        "Jun24": "5,874"
+      },
+      {
+        "Actions": "KitPending Que",
+        "Component": "1/2\"DotLabelforKitBox (LightBlue)",
+        "ProductNo": "10101",
+        "Manufacturer": "Thermo Scientific",
+        "ItemType": "A",
+        "Jan24": "6,014",
+        "Feb24": "3,787",
+        "Mar24": "3,787",
+        "Apr24": "6,014",
+        "May24": "3,787",
+        "Jun24": "3,787"
+      },
+      {
+        "Actions": "KitPending Que",
+        "Component": "2.5mL Red/White Serum Gel w/Clot....",
+        "ProductNo": "454243P",
+        "Manufacturer": "Design Packing,Inc.",
+        "ItemType": "",
+        "Jan24": "3,537",
+        "Feb24": "22,702",
+        "Mar24": "22,702",
+        "Apr24": "3,537",
+        "May24": "22,702",
+        "Jun24": "22,702"
+      },
+      {
+        "Actions": "KitPending Que",
+        "Component": "G-Sub-Assembly",
+        "ProductNo": "G-Sub",
+        "Manufacturer": "Laddawn",
+        "ItemType": "",
+        "Jan24": "22,826",
+        "Feb24": "98,648",
+        "Mar24": "98,648",
+        "Apr24": "22,826",
+        "May24": "98,648",
+        "Jun24": "98,648"
+      }
+    ]
+    return forecastData;
   }
 }

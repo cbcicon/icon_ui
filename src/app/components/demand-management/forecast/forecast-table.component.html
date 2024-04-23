@@ -36,13 +36,6 @@
 						Action Item
 					</div>
 				</th>
-
-				<th pSortableColumn="name">
-					<div class="flex justify-content-between align-items-center">
-						Item
-						<p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
-					</div>
-				</th>
 				<th pSortableColumn="description">
 					<div class="flex justify-content-between align-items-center">
 						Kit Production Locations
@@ -75,12 +68,52 @@
 				<th pSortableColumn="item_type" style="min-width: 10rem">
 					<div class="flex justify-content-between align-items-center">
 						Item Type
-
 						<p-columnFilter type="numeric" field="balance" display="menu" currency="USD"
 							class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
-
+				<th pSortableColumn="availability">
+					<div class="flex justify-content-between align-items-center">
+						Jan24
+						<p-columnFilter type="text" field="availability" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+				<th pSortableColumn="availability">
+					<div class="flex justify-content-between align-items-center">
+						Feb24
+						<p-columnFilter type="text" field="availability" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+				<th pSortableColumn="availability">
+					<div class="flex justify-content-between align-items-center">
+						Mar24
+						<p-columnFilter type="text" field="availability" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+				<th pSortableColumn="availability">
+					<div class="flex justify-content-between align-items-center">
+						Apr24
+						<p-columnFilter type="text" field="availability" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+				<th pSortableColumn="availability">
+					<div class="flex justify-content-between align-items-center">
+						May24
+						<p-columnFilter type="text" field="availability" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+				<th pSortableColumn="availability">
+					<div class="flex justify-content-between align-items-center">
+						Jun24
+						<p-columnFilter type="text" field="availability" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
 				<ng-container *ngFor="let item of tableHeaderItem">
 					<ng-container *ngIf="item.active">
 						<th pSortableColumn="{{ item.sortableColumn }}" style="min-width: 10rem">
@@ -103,23 +136,17 @@
 					<span class="ml-3"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar()"></i></span>
 				</td>
 				<td>
-					<div class="item-section"> {{forecast.item }} </div>
+					{{ forecast.Actions }}
 				</td>
 				<td>
-					{{ forecast.description }}
+					{{ forecast.Component }}
 				</td>
 				<td>
-					{{ forecast['demand'] }}
+					{{ forecast.ProductNo }}
 				</td>
-				<td
-					[style.color]="forecast['on_stock'] === 'Out of Stock' || forecast['availability'] === 'Out of Stock' ? 'red' : 'green'">
-					{{ forecast['on_stock'] }}
-				</td>
-
 				<td>
-					{{ forecast.description }}
+					{{ forecast.Manufacturer }}
 				</td>
-
 				<td>
 					<div class="item-type-icons">
 						<div class="item-type-cheap" style="background-color: rgba(227, 96, 96, 0.325);">
@@ -134,10 +161,14 @@
 						<div class="item-type-cheap" style="background-color :#B3C8CB;">
 							<i class="bi bi-box-seam" style="color #004750;"></i>
 						</div>
-
 					</div>
-
 				</td>
+				<td>{{forecast.Jan24}}</td>
+				<td>{{forecast.Feb24}}</td>
+				<td>{{forecast.Mar24}}</td>
+				<td>{{forecast.Apr24}}</td>
+				<td>{{forecast.May24}}</td>
+				<td>{{forecast.Jun24}}</td>
 			</tr>
 		</ng-template>
 		<ng-template pTemplate="emptymessage">
@@ -197,7 +228,7 @@
 
 <!-- Table below content  -->
 <div class="card" style="min-height: 500px;">
-<div *ngIf="showDetailContent">
-	<app-item-detail-landing></app-item-detail-landing>
-</div>
+	<div *ngIf="showDetailContent">
+		<app-item-detail-landing></app-item-detail-landing>
+	</div>
 </div>
