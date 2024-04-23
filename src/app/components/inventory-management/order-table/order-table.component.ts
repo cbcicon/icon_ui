@@ -521,9 +521,17 @@ handleDateShortener(datetype:any){
   else  if(datetype == 'monthly' ){
     this.customers = this.dataShortenerService.filterMonthly( this.customers )
   }
+  else if( datetype == 'quarterly'){
+    this.customers = this.dataShortenerService.filterQuarterly( this.customers )
+  }
   else if(datetype == 'half-yearly'){
     this.customers = this.dataShortenerService.filterHalfYearly( this.customers )
   }
+  else if(datetype == 'yearly'){
+      this.customers = this.dataShortenerService.filterYearly( this.customers )
+    }
 }
+
+
 
 }

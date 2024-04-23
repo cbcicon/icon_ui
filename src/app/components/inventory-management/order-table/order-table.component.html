@@ -244,7 +244,7 @@
 
 				<td *ngIf="customer['OPEN_PO'] === 'No Open PO'" style="color: red;">{{ customer['OPEN_PO'] }}</td>
 				<td *ngIf="customer['OPEN_PO'] !== 'No Open PO'"> {{ customer['OPEN_PO'] }}</td>
-				<td>{{ customer['DUE_DATE'] }}</td>
+				<td>{{ dataShortenerService.formatDate(customer['DUE_DATE']) }}</td>
 
 				<td>
 					<div class="item-type-icons">
