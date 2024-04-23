@@ -506,7 +506,7 @@ hanldeBelowContent(){
 }
 
 handleRowControl(){
-  this.controlRow = this.controlRow == 10 ? 30:10
+  this.controlRow = this.controlRow == 10 ? 28:10
   this.changeExpandButton = this.controlRow == 10 ? false:true;
 }
 
