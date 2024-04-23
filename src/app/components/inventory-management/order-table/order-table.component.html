@@ -235,14 +235,15 @@
 				{{ customer['DEMAND'] }}
             </td>
 			<td [style.color]="customer['ON_STOCK'] === 'Out of Stock' || customer['AVAILABILITY'] === 'Out of Stock' ? 'red' : 'green'">
-				<i class="bi bi-box-arrow-in-up-right" (click)="show()"></i> {{ customer['ON_STOCK'] }}
+				<!-- <i class="bi bi-box-arrow-in-up-right" (click)="show()"></i>  -->
+				{{ customer['ON_STOCK'] }}
 			</td>
 			
 			<td [ngClass]="{'text-danger': customer.AVAILABILITY === 'Out of Stock'}" (click)="rightSideBar = customer.AVAILABILITY !== 'Out of Stock'">
-				<i *ngIf="customer.AVAILABILITY === 'Out of Stock'" class="bi bi-unlock"></i>
-				<i *ngIf="customer.AVAILABILITY !== 'Out of Stock'"class="bi bi-lock"></i>
+				<!-- <i *ngIf="customer.AVAILABILITY === 'Out of Stock'" class="bi bi-unlock"></i>
+				<i *ngIf="customer.AVAILABILITY !== 'Out of Stock'"class="bi bi-lock"></i> -->
 				{{ customer.AVAILABILITY }}
-			  </td>
+			</td>
 			  
 			  <td *ngIf="customer['OPEN_PO'] === 'No Open PO'"  style="color: red;">{{ customer['OPEN_PO'] }}</td>
 			  <td *ngIf="customer['OPEN_PO'] !== 'No Open PO'" > {{ customer['OPEN_PO'] }}</td>

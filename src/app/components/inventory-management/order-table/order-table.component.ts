@@ -513,8 +513,17 @@ handleRowControl(){
 
 handleDateShortener(datetype:any){
   this.selectedInterval = datetype;
+  this.customers =  this.customerService.getData()
 
- //this.customers = this.dataShortenerService.shortenData( this.customers ,datetype)
+  if(datetype == 'weekly'){
+    this.customers = this.dataShortenerService.filterWeekly( this.customers )
+  }
+  else  if(datetype == 'monthly' ){
+    this.customers = this.dataShortenerService.filterMonthly( this.customers )
+  }
+  else if(datetype == 'half-yearly'){
+    this.customers = this.dataShortenerService.filterHalfYearly( this.customers )
+  }
 }
 
 }
