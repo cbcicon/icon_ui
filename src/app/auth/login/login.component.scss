@@ -1,0 +1,33 @@
+.loginPage{
+  
+.login-form-box{
+  width: 450px;
+}
+.login-bg{
+  background: url('../../../assets/images/login-bg.png') no-repeat;
+  background-size: 100%;
+  background-position: center;
+  height: 100vh;
+}
+.bar-throgh{
+  font-size: var(--fs-12);
+  margin-bottom: 30px;
+  position: relative;
+}
+.bar-throgh::before{
+  content: '';
+  border-bottom: 1px solid var(--grey-40);
+  position:absolute;
+  left: 0;
+  width: 100%;
+  top: 9px;
+  z-index: 0;
+}
+.bar-throgh>span{
+  background-color: var(--bg-white);
+  z-index: 1;
+  position: relative;
+  padding: 20px;
+}
+
+}

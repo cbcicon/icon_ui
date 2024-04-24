@@ -1,0 +1,445 @@
+<!-- <div class="d-flex justify-content-between m-2">
+	<h5> Demand Management</h5>
+	<button type="button" class="btn btn-light" (click)="handleInfoCard()" ><i class="bi bi-graph-up-arrow"></i> Demand KPI's</button>
+
+</div> -->
+
+<!-- cards on above to dashboard -->
+
+<div class="grid mb-3" *ngIf="showInfoCard">
+
+	<div class="col-12 lg:col-6 xl:col-3">
+		<div class="card mb-0">
+			<div class="flex justify-content-between mb-3">
+				<div>
+					<span class="block text-500 font-medium mb-3">Orders</span>
+					<div class="text-900 font-medium text-xl">152</div>
+				</div>
+				<div class="flex align-items-center justify-content-center  border-round"
+					[ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+					<i class="pi pi-shopping-cart"></i>
+				</div>
+			</div>
+			<span class="text-green-500 font-medium">24 new </span>
+			<span class="text-500">since last visit</span>
+		</div>
+	</div>
+	<div class="col-12 lg:col-6 xl:col-3">
+		<div class="card mb-0">
+			<div class="flex justify-content-between mb-3">
+				<div>
+					<span class="block text-500 font-medium mb-3">Orders</span>
+					<div class="text-900 font-medium text-xl">152</div>
+				</div>
+				<div class="flex align-items-center justify-content-center  border-round"
+					[ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+					<i class="pi pi-shopping-cart"></i>
+				</div>
+			</div>
+			<span class="text-green-500 font-medium">24 new </span>
+			<span class="text-500">since last visit</span>
+		</div>
+	</div>
+	<div class="col-12 lg:col-6 xl:col-3">
+		<div class="card mb-0">
+			<div class="flex justify-content-between mb-3">
+				<div>
+					<span class="block text-500 font-medium mb-3">Orders</span>
+					<div class="text-900 font-medium text-xl">152</div>
+				</div>
+				<div class="flex align-items-center justify-content-center  border-round"
+					[ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+					<i class="pi pi-shopping-cart"></i>
+				</div>
+			</div>
+			<span class="text-green-500 font-medium">24 new </span>
+			<span class="text-500">since last visit</span>
+		</div>
+	</div>
+	<div class="col-12 lg:col-6 xl:col-3">
+		<div class="card mb-0">
+			<div class="flex justify-content-between mb-3">
+				<div>
+					<span class="block text-500 font-medium mb-3">Orders</span>
+					<div class="text-900 font-medium text-xl">152</div>
+				</div>
+				<div class="flex align-items-center justify-content-center  border-round"
+					[ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+					<i class="pi pi-shopping-cart"></i>
+				</div>
+			</div>
+			<span class="text-green-500 font-medium">24 new </span>
+			<span class="text-500">since last visit</span>
+		</div>
+	</div>
+
+</div>
+
+<!-- demand management table -->
+
+<div *ngIf="!showItemDetailPage">
+
+	<p-table #dt [value]="customers" [(selection)]="selectedCustomers" dataKey="id" [rowHover]="true"
+		[rows]="controlRow" [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading"
+		[paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+		[filterDelay]="0"
+		[globalFilterFields]="['ITEM_ID', 'ITEM_NAME', 'ITEM_DESCRIPTION', 'DEMAND' , 'ON_STOCK' , 'AVAILABILITY','OPEN_PO' ,'ITEM_TYPE']"
+		styleClass={{selectedSize}} [exportHeader]="'customExportHeader'">
+		<ng-template pTemplate="caption">
+			<div class="table-header d-flex justify-content-between">
+				<div>
+					<div class="filter-sm-circle-btn" (click)="handleDateShortener('yearly')"
+						[class.selected]="selectedInterval === 'yearly'">Y</div>
+					<div class="filter-sm-circle-btn" (click)="handleDateShortener('half-yearly')"
+						[class.selected]="selectedInterval === 'half-yearly'">H</div>
+					<div class="filter-sm-circle-btn" (click)="handleDateShortener('quarterly')"
+						[class.selected]="selectedInterval === 'quarterly'">Q</div>
+					<div class="filter-sm-circle-btn" (click)="handleDateShortener('monthly')"
+						[class.selected]="selectedInterval === 'monthly'">M</div>
+					<!--<div class="filter-sm-circle-btn" (click)="handleDateShortener('weekly')" [class.selected]="selectedInterval === 'weekly'">W</div> -->
+
+					<!-- <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Global Search" />
+            </span> -->
+				</div>
+				<div>
+					<span class="p-input-icon-left ml-auto">
+						<span (click)="exportExcel()">
+							<p-button [text]="true" [plain]="true"> <i class="bi bi-download"></i></p-button>
+						</span>
+						<!-- <span (click)="handleTableView()">
+					<p-button  [text]="true" icon="pi pi-table" [plain]="true" > </p-button>
+				</span> -->
+						<span (click)="handleAdditionanlColumn()">
+							<p-button [text]="true" [plain]="true"> <i
+									class="bi bi-layout-three-columns"></i></p-button>
+						</span>
+						<span (click)="handleRowControl()">
+							<p-button [text]="true" [plain]="true">
+								<i class="bi bi-arrows-angle-expand" *ngIf="changeExpandButton; else collapseIcon"></i>
+								<ng-template #collapseIcon>
+									<i class="bi bi-arrows-angle-contract"></i>
+								</ng-template>
+							</p-button>
+						</span>
+					</span>
+
+				</div>
+			</div>
+		</ng-template>
+		<ng-template pTemplate="header">
+			<tr>
+				<!-- <th style="width: 4rem">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th> -->
+				<th pSortableColumn="action-item">
+					<div class="flex justify-content-between align-items-center">
+						Action Item
+					</div>
+				</th>
+
+				<th pSortableColumn="ITEM_NAME">
+					<div class="flex justify-content-between align-items-center">
+						Item
+						<p-columnFilter type="text" field="ITEM_NAME" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+				<th pSortableColumn="ITEM_DESCRIPTION">
+					<div class="flex justify-content-between align-items-center">
+						Item Description
+						<p-columnFilter type="text" field="ITEM_DESCRIPTION" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="DEMAND">
+					<div class="flex justify-content-between align-items-center">
+						Demand
+						<p-columnFilter type="text" field="DEMAND" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="ON_STOCK">
+					<div class="flex justify-content-between align-items-center">
+						On Stock
+						<p-columnFilter type="text" field="ON_STOCK" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="AVAILABILITY">
+					<div class="flex justify-content-between align-items-center">
+						Availablity
+						<p-columnFilter type="text" field="AVAILABILITY" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="OPEN_PO">
+					<div class="flex justify-content-between align-items-center">
+						Open Po
+						<p-columnFilter type="text" field="OPEN_PO" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="DUE_DATE" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Early Expire Date
+
+						<p-columnFilter type="date" field="DUE_DATE" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="ITEM_TYPE" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Item Type
+
+						<p-columnFilter type="numeric" field="ITEM_TYPE" display="menu" currency="USD"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<ng-container *ngFor="let item of tableHeaderItem">
+					<ng-container *ngIf="item.active">
+						<th pSortableColumn="{{ item.sortableColumn }}" style="min-width: 10rem">
+							<div class="flex justify-content-between align-items-center">
+								{{ item.columnName }}
+								<p-columnFilter *ngIf="item.active" type="numeric" field="balance" display="menu"
+									currency="USD" class="ml-auto">
+								</p-columnFilter>
+							</div>
+						</th>
+					</ng-container>
+				</ng-container>
+
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="body" let-customer>
+			<tr class="p-selectable-row">
+				<td>
+					<span> <i class="bi bi-eye" (click)="hanldeBelowContent()"></i></span>
+					<span class="ml-3"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar()"></i></span>
+				</td>
+				<td>
+					<div class="item-section"> <span style="color: green;"> {{ customer["ITEM_NAME"] }} </span> </div>
+				</td>
+				<td>
+					{{ customer["ITEM_DESCRIPTION"] }}
+				</td>
+				<td>
+					{{ customer['DEMAND'] }}
+				</td>
+				<td
+					[style.color]="customer['ON_STOCK'] === 'Out of Stock' || customer['AVAILABILITY'] === 'Out of Stock' ? 'red' : 'green'">
+					<!-- <i class="bi bi-box-arrow-in-up-right" (click)="show()"></i>  -->
+					{{ customer['ON_STOCK'] }}
+				</td>
+
+				<td [ngClass]="{'text-danger': customer.AVAILABILITY === 'Out of Stock'}"
+					(click)="rightSideBar = customer.AVAILABILITY !== 'Out of Stock'">
+					<!-- <i *ngIf="customer.AVAILABILITY === 'Out of Stock'" class="bi bi-unlock"></i>
+				<i *ngIf="customer.AVAILABILITY !== 'Out of Stock'"class="bi bi-lock"></i> -->
+					{{ customer.AVAILABILITY }}
+				</td>
+
+				<td *ngIf="customer['OPEN_PO'] === 'No Open PO'" style="color: red;">{{ customer['OPEN_PO'] }}</td>
+				<td *ngIf="customer['OPEN_PO'] !== 'No Open PO'"> {{ customer['OPEN_PO'] }}</td>
+				<td>{{ dataShortenerService.formatDate(customer['DUE_DATE']) }}</td>
+
+				<td>
+					<div class="item-type-icons">
+						<div class="item-type-cheap" style="background-color: rgba(227, 96, 96, 0.325);">
+							<i class="bi bi-exclamation-triangle" style="color: red;"></i>
+						</div>
+						<div class="item-type-cheap" style="background-color: #D1E9F6;">
+							<i class="bi bi-thermometer-snow" style="color:#1790D0;"></i>
+						</div>
+						<div class="item-type-cheap" style="background-color: #D4FCFC;">
+							<i class="bi bi-hourglass" style="color: #004750;"></i>
+						</div>
+						<div class="item-type-cheap" style="background-color :#B3C8CB;">
+							<i class="bi bi-box-seam" style="color #004750;"></i>
+						</div>
+
+					</div>
+
+				</td>
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="emptymessage">
+			<tr>
+				<td colspan="8">No Data found.</td>
+			</tr>
+		</ng-template>
+
+	</p-table>
+
+</div>
+
+<!-- table view menu -->
+<div class="table-view">
+	<p-listbox *ngIf="tableViewOption" [options]="tableView" optionLabel="name" [style]="{'width':'15rem'}"
+		[metaKeySelection]="false" [listStyle]="{'max-height': '220px'}">
+
+		<ng-template let-data pTemplate="item">
+			<div class="flex align-items-center gap-2" (click)="handleTableSize(data.name)">
+				<div>{{ data.name }}</div>
+			</div>
+		</ng-template>
+	</p-listbox>
+
+</div>
+
+<!-- table add column -->
+<div class="addition-col-menu">
+	<p-listbox *ngIf="viewAdditionColumn" [options]="additionalColList" [(ngModel)]="selectedItems"
+		[selectAll]="selectAll" optionLabel="field" [style]="{ width: '20rem' }" [virtualScroll]="true" [filter]="true"
+		[virtualScrollItemSize]="50" [multiple]="true" [checkbox]="true" [showToggleAll]="false"
+		[metaKeySelection]="false" [showToggleAll]="true" (onChange)="addedColumnConfig($event)"
+		[listStyle]="{ 'max-height': '220px' }"></p-listbox>
+</div>
+
+<!-- order detail page navigation  -->
+
+<div *ngIf="showItemDetailPage">
+	<app-item-details (goToOrderTable)="backToMainPage()"> </app-item-details>
+
+</div>
+
+
+<!-- right sidebar  -->
+
+<div class="item-detail-right-sidebar">
+	<p-sidebar [(visible)]="rightSideBar" position="right" styleClass="p-sidebar-lg">
+		<ng-template pTemplate="headless">
+			<div class="flex justify-content-between">
+				<div>
+					<span class="sidebar-header">Ring Fence</span>
+					<p class="sidebar-header-id">ID: 01-213-100-Z</p>
+				</div>
+				<span>
+					<p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary "
+						(click)="closeCallback($event)"></p-button>
+				</span>
+			</div>
+
+
+			<div class="container">
+				<div class="flex justify-content-between">
+					<div>
+						<span class="item-detail-box-header">Item Details</span>
+						<p>Kit Box Small 9x5x2.5 (with Sealing Strip)</p>
+					</div>
+					<button (click)="toggleContent()" class="toggle-button">
+						<i class="pi" [ngClass]="{'pi-chevron-down': !showContent, 'pi-chevron-up': showContent}"></i>
+					</button>
+				</div>
+				<div class="content" *ngIf="showContent">
+					<div class="row">
+						<div class="col-3">
+							<p class="text-center"> 4</p>
+						</div>
+						<div class="col-3">
+							<p class="text-center"> 4</p>
+						</div>
+						<div class="col-3">
+							<p class="text-center"> 4</p>
+						</div>
+						<div class="col-3">
+							<p class="text-center"> 4</p>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-3">
+							<p class="text-center"> 4</p>
+						</div>
+						<div class="col-3">
+							<p class="text-center"> 4</p>
+						</div>
+						<div class="col-3">
+							<p class="text-center"> 4</p>
+						</div>
+						<div class="col-3">
+							<p class="text-center"> 4</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<p class="text-center"> 4</p>
+						</div>
+						<div class="col-3">
+							<p class="text-center"> 4</p>
+						</div>
+						<div class="col-3">
+							<p class="text-center"> 4</p>
+						</div>
+						<div class="col-3">
+							<p class="text-center"> 4</p>
+						</div>
+					</div>
+					<div class="mt-3">
+						<span> <b>Sponsor Details</b></span>
+						<p>Mitsubishi Tanabe Pharma</p>
+					</div>
+
+				</div>
+
+				<div class="report-card">
+					<p-chart type="pie" [data]="data" [options]="options" class="chart-container"></p-chart>
+				</div>
+
+				<div class="card">
+
+					<p-table [value]="itemData" [tableStyle]="{ 'min-width': '50rem' }">
+						<ng-template pTemplate="header">
+							<tr>
+								<th>Code</th>
+								<th>Name</th>
+								<th>Category</th>
+							</tr>
+						</ng-template>
+						<ng-template pTemplate="body" let-itemData>
+							<tr>
+								<td>{{ itemData.code }}</td>
+								<td>{{ itemData.name }}</td>
+								<td>{{ itemData.category }}</td>
+							</tr>
+						</ng-template>
+					</p-table>
+				</div>
+			</div>
+
+		</ng-template>
+	</p-sidebar>
+</div>
+
+
+
+<!-- chat side bar  -->
+
+<div class="item-detail-right-sidebar">
+	<p-sidebar [(visible)]="chatRightSideBar" position="right" styleClass="p-sidebar-lg">
+		<ng-template pTemplate="headless">
+			<div class="flex justify-content-between">
+				<div>
+					<span class="sidebar-header">Activities</span>
+				</div>
+				<span>
+					<p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary "
+						(click)="closeCallback($event)"></p-button>
+				</span>
+			</div>
+		</ng-template>
+	</p-sidebar>
+</div>
+
+
+
+<!-- Table below content  -->
+
+<div *ngIf="showDetailContent">
+
+	<app-item-detail-landing></app-item-detail-landing>
+
+</div>

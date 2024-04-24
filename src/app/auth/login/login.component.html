@@ -1,0 +1,46 @@
+
+<div class="loginPage">
+<div class="d-flex align-content-lg-stretch">
+  <div class="flex-shrink-1">
+      <div class="login-form-box h-100">
+          <div class="col-7 m-auto h-100 d-flex align-items-center justify-content-center">
+              <div class="text-center w-100">
+                  <img src="assets/logo-black.png" width="180px" class="mb-4" alt="Labgistics Logo">
+                 <!--<h6 class="fw-600 mb-4">Login to your account</h6>--> 
+                  <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+                      <!-- <div class="input-group mb-3">
+                          <span class="input-group-text" id="Username"><i class="bi-person"></i></span>
+                          <input type="text" class="form-control" placeholder="Username"  type="text" pInputText formControlName="username" />
+                          <div *ngIf="loginForm.get('username')?.hasError('required') && loginForm.get('username')?.touched && loginForm.get('username')?.invalid">
+                            Username is required.
+                          </div>
+                        </div>
+                      <div class="input-group mb-3">
+                          <span class="input-group-text" id="Password"><i class="bi-lock"></i></span>
+                          <input type="password" class="form-control" placeholder="Password" pInputText formControlName="password" />
+                          <div *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+                            Password is required.
+                          </div>
+                    </div> 
+                      <button type="submit" href="dashboard.html" class="btn btn-primary w-100 mb-3">Sign In</button>
+                      <p class="fs-12">Forgot password? <a href="">Click</a> here to reset.</p>
+                      <div class="bar-throgh"><span>Or</span></div>-->
+                      <button type="submit" class="btn btn-primary w-100 mb-3"  href="dashboard.html" >Sign In With ICON SSO</button>
+
+                    </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="w-100">
+      <div class="login-bg d-flex align-items-center justify-content-start vh-100">
+          <div class="ps-5 col-8 text-white">
+              <h1 class="fw-600 fs-33 mb-4 text-white" >Securely Sign In to Gateway:</h1>
+              <h3 class="fw-400 fs-23 mb-3  text-white">Integrated Business Planning</h3>
+              <p class="fw-400 fs-14 text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          </div>
+      </div>
+  </div>
+</div> 
+</div>
+
