@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppLayoutComponent } from './layout/app.layout.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
-import { InventoryManagementModule } from './components/inventory-management/inventory-management.module';
-import { DemandManagementModule } from './components/demand-management/demand-management.module';
 
 const routes: Routes = [
   

@@ -1,115 +1,118 @@
 <!-- demand management table -->
 <div *ngIf="!showItemDetailPage">
 	<p-table #dt [value]="forecasts" [(selection)]="selectedforecasts" dataKey="id" [rowHover]="true" [rows]="10"
-		[showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading" [paginator]="true"
-		currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+		[rows]="controlRow" [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading"
+		[paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+		[filterDelay]="0"
 		[globalFilterFields]="['item', 'description', 'demand', 'onstock' , 'availability' , 'open_po','due_date' ,'item_type']"
 		styleClass={{selectedSize}} [exportHeader]="'customExportHeader'">
 		<ng-template pTemplate="caption">
 			<div class="table-header d-flex justify-content-between">
+				<div>&nbsp;</div>
 				<div>
 					<h4> Forecast</h4>
 				</div>
 				<div>
 					<span class="p-input-icon-left ml-auto">
 						<span (click)="exportExcel()">
-							<p-button [text]="true" [plain]="true"> <i class="bi bi-download"></i></p-button>
-						</span>
-						<span (click)="handleTableView()">
-							<p-button [text]="true" icon="pi pi-table" [plain]="true"> </p-button>
+							<p-button [text]="true" [plain]="true"> <i class="bi bi-download bi-lg"></i></p-button>
 						</span>
 						<span (click)="handleAdditionanlColumn()">
 							<p-button [text]="true" [plain]="true"> <i
 									class="bi bi-layout-three-columns"></i></p-button>
 						</span>
-						<p-button [text]="true" [plain]="true"> <i class="bi bi-arrows-angle-expand"></i></p-button>
+						<span (click)="handleRowControl()">
+							<p-button [text]="true" [plain]="true">
+								<i class="bi bi-arrows-angle-expand" *ngIf="changeExpandButton; else collapseIcon"></i>
+								<ng-template #collapseIcon>
+									<i class="bi bi-arrows-angle-contract"></i>
+								</ng-template>
+							</p-button>
+						</span>
 					</span>
-
 				</div>
 			</div>
 		</ng-template>
 		<ng-template pTemplate="header">
 			<tr>
-
 				<th pSortableColumn="action-item">
-					<div class="flex justify-content-between align-items-center">
-						Action Item
-					</div>
+					Action Item
 				</th>
-				<th pSortableColumn="description">
+				<th pSortableColumn="Actions">
 					<div class="flex justify-content-between align-items-center">
 						Kit Production Locations
 						<p-columnFilter type="text" field="description" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="demand">
+				<th pSortableColumn="Component">
 					<div class="flex justify-content-between align-items-center">
 						Component
 						<p-columnFilter type="text" field="demand" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="onstock">
+				<th pSortableColumn="ProductNo">
 					<div class="flex justify-content-between align-items-center">
 						Production No
 						<p-columnFilter type="text" field="onstock" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="availability">
+				<th pSortableColumn="Manufacturer">
 					<div class="flex justify-content-between align-items-center">
 						Manufacturer
 						<p-columnFilter type="text" field="availability" display="menu"
 							class="ml-auto"></p-columnFilter>
 					</div>
+
 				</th>
 
-				<th pSortableColumn="item_type" style="min-width: 10rem">
+				<th pSortableColumn="ItemType" style="min-width: 10rem">
 					<div class="flex justify-content-between align-items-center">
 						Item Type
 						<p-columnFilter type="numeric" field="balance" display="menu" currency="USD"
 							class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
-				<th pSortableColumn="availability">
+				<th pSortableColumn="Jan24">
 					<div class="flex justify-content-between align-items-center">
-						Jan24
+						Jan-24
 						<p-columnFilter type="text" field="availability" display="menu"
 							class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
-				<th pSortableColumn="availability">
+				<th pSortableColumn="Feb24">
 					<div class="flex justify-content-between align-items-center">
-						Feb24
+						Feb-24
 						<p-columnFilter type="text" field="availability" display="menu"
 							class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
-				<th pSortableColumn="availability">
+				<th pSortableColumn="Mar24">
 					<div class="flex justify-content-between align-items-center">
-						Mar24
+						Mar-24
 						<p-columnFilter type="text" field="availability" display="menu"
 							class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
-				<th pSortableColumn="availability">
+				<th pSortableColumn="Apr24">
 					<div class="flex justify-content-between align-items-center">
-						Apr24
+						Apr-24
 						<p-columnFilter type="text" field="availability" display="menu"
 							class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
-				<th pSortableColumn="availability">
+				<th pSortableColumn="May24">
 					<div class="flex justify-content-between align-items-center">
-						May24
+						May-24
 						<p-columnFilter type="text" field="availability" display="menu"
 							class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
-				<th pSortableColumn="availability">
+				<th pSortableColumn="Jun24">
 					<div class="flex justify-content-between align-items-center">
-						Jun24
+						Jun-24
 						<p-columnFilter type="text" field="availability" display="menu"
 							class="ml-auto"></p-columnFilter>
 					</div>
@@ -118,6 +121,7 @@
 					<ng-container *ngIf="item.active">
 						<th pSortableColumn="{{ item.sortableColumn }}" style="min-width: 10rem">
 							<div class="flex justify-content-between align-items-center">
+
 								{{ item.columnName }}
 								<p-columnFilter *ngIf="item.active" type="numeric" field="balance" display="menu"
 									currency="USD" class="ml-auto">

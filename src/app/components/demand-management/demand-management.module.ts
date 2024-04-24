@@ -13,7 +13,7 @@ import { SliderModule } from 'primeng/slider';
 import { RatingModule } from 'primeng/rating';
 import { DemandManagementRoutingModule } from './demand-management-routing.module';
 import { TableModule } from 'primeng/table';
-import { ForecastTableComponent } from './forecast/forecast-table.component';
+import { ForecastTable } from './forecast/forecast-table';
 import { PaginatorModule } from 'primeng/paginator';
 import { DialogModule } from 'primeng/dialog';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
@@ -30,11 +30,11 @@ import { TagModule } from 'primeng/tag';
 import { CalendarModule } from 'primeng/calendar';
 import { MenuModule } from 'primeng/menu';
 import { SplitButtonModule } from 'primeng/splitbutton';
-import { ItemDetailLandingComponent } from './item-detail-landing/item-detail-landing.component';
+import { ForecastChart } from './forecast/chart/forecast-chart';
 
 @NgModule({
 	declarations: [
-		ForecastTableComponent, ItemDetailLandingComponent
+		ForecastTable, ForecastChart
 	],
 	imports: [
 		CommonModule,

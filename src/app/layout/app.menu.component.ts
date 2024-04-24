@@ -1,17 +1,13 @@
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { LayoutService } from './service/app.layout.service';
-import { PrimeIcons, MenuItem } from 'primeng/api';
 @Component({
     selector: 'app-menu',
     templateUrl: './app.menu.component.html'
 })
 export class AppMenuComponent implements OnInit {
-
     model: any[] = [];
-
     constructor(public layoutService: LayoutService) { }
-
     ngOnInit() {
         this.model = [
             {
@@ -25,7 +21,7 @@ export class AppMenuComponent implements OnInit {
                 label: 'Demand Management',
                 collapsed: true,
                 items: [
-                    { label: 'Forecast', routerLink: ['/demand-management/order-list'] },
+                    { label: 'Forecast', routerLink: ['/demand-management/forecast'] },
                     { label: 'New Study', routerLink: ['/'] },
                     { label: 'Live Study', routerLink: ['/pages/empty'] }
                 ]
@@ -44,7 +40,7 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     { label: 'Inventory', routerLink: ['/inventory-management/order-list'] },
                     { label: 'Purchase Orders', routerLink: ['/'] },
-                    { label: 'Safty Stocks', routerLink: ['/pages/empty'] },
+                    { label: 'Saftey Stocks', routerLink: ['/pages/empty'] },
                     { label: 'Scarp', routerLink: ['/pages/empty'] },
                     { label: 'Configurations', routerLink: ['/pages/empty'] }
                 ]
