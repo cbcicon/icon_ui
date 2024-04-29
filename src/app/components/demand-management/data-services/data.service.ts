@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Utils } from '../../../common/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -9274,7 +9275,7 @@ export class DataService {
   }
 
   getCustomers(params?: any) {
-    return this.http.get<any>('https://www.primefaces.org/data/customers', { params: params }).toPromise();
+    return this.http.get<any>('https://labgistics-api.azure-api.net/labgistics-api/api/DemandMgmt/GetMasterTable', { params: params }).toPromise();
   }
   getForecastData() {
     let forecastData = [
@@ -9289,7 +9290,11 @@ export class DataService {
         "Mar24": "51,503",
         "Apr24": "52,014",
         "May24": "51,503",
-        "Jun24": "51,503"
+        "Jun24": "51,503",
+        "Jul24": "51,503",
+        "Aug24": "51,503",
+        "Sep24": "51,503"
+
       },
       {
         "Actions": "KitPendingQue",
@@ -9424,4 +9429,19 @@ export class DataService {
     ]
     return forecastData;
   }
+
+  getForecastChartData() {
+    const chartStartDate = '2023-06-23';
+    let chartData = Utils.generateMonthlyData(chartStartDate, '', 12);
+    let data: any = [];
+    chartData.forEach((c: any) => {
+      let obj = { name: c['name'], value: (Math.random() * 1000) };
+      data.push(obj);
+    });
+    return data;
+  };
+  getForecastChartDataAPI() {
+    return this.http.get<any>('https://labgistics-api.azure-api.net/labgistics-api/api/DemandMgmt/GetHelloWorld').toPromise();
+  
+  };
 }
