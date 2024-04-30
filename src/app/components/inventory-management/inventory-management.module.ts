@@ -38,6 +38,8 @@ import { StockAndScrapComponent } from './item-detail-landing/stock-and-scrap/st
 import { RingFenceComponent } from './item-detail-landing/ring-fence/ring-fence.component';
 import { ReplacementComponent } from './item-detail-landing/replacement/replacement.component';
 import { PurchaseOrderComponent } from './item-detail-landing/purchase-order/purchase-order.component';
+import { SharedModule } from '../../shared/shared.module';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @NgModule({
 	declarations: [
@@ -74,7 +76,9 @@ import { PurchaseOrderComponent } from './item-detail-landing/purchase-order/pur
 		TagModule,
 		CalendarModule,
 		MenuModule,
-		SplitButtonModule
+		SplitButtonModule ,
+		SharedModule ,
+		RadioButtonModule
 	],
 	providers: [DialogService]
 

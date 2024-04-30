@@ -1543,6 +1543,323 @@ export class DataService {
     return data
   }
 
+
+
+purchase_order_table =  [
+    {
+        "Actions": "",
+        "PO#": "AP2022044323",
+        "Vendor": "Farmingdale",
+        "Status": "Open",
+        "Sponsor": "Mitsubishi TanabePharma",
+        "QtyOrdered": 22000,
+        "QtyReceived": 17600,
+        "QtyOpen": 4400,
+        "Ordered Date": "15May2024",
+        "DateDue": "15Aug2024"
+    },
+    {
+        "Actions": "",
+        "PO#": "AP2022044678",
+        "Vendor": "Farmingdale",
+        "Status": "Closed",
+        "Sponsor": "4D MolecularTherapeuticsInc",
+        "QtyOrdered": 4000,
+        "QtyReceived": 4000,
+        "QtyOpen": 0,
+        "Ordered Date": "15Nov2023",
+        "DateDue": "15Feb2024"
+    },
+    {
+        "Actions": "",
+        "PO#": "AP2022044679",
+        "Vendor": "New York",
+        "Status": "Open",
+        "Sponsor": "ACADIA PharmaceuticalsInc.",
+        "QtyOrdered": 5000,
+        "QtyReceived": 4000,
+        "QtyOpen": 1000,
+        "Ordered Date": "23Mar2024",
+        "DateDue": "23Mar2024"
+    },
+    {
+        "Actions": "",
+        "PO#": "AP2022046467",
+        "Vendor": "NewYork",
+        "Status": "Open",
+        "Sponsor": "ALX Oncology",
+        "QtyOrdered": 6000,
+        "QtyReceived": 7050,
+        "QtyOpen": 1050,
+        "Ordered Date": "19Apr2024",
+        "DateDue": "19Apr2024"
+    },
+    {
+        "Actions": "",
+        "PO#": "AP2022046467",
+        "Vendor": "Berlin",
+        "Status": "Open",
+        "Sponsor": "AMAGPharmaceuticals,Inc.",
+        "QtyOrdered": 2000,
+        "QtyReceived": 8000,
+        "QtyOpen": 6000,
+        "Ordered Date": "20Apr2024",
+        "DateDue": "20Apr2024"
+    },
+    {
+        "Actions": "",
+        "PO#": "AP2023047805",
+        "Vendor": "Berlin",
+        "Status": "Open",
+        "Sponsor": "AMAGPharmaceuticals,Inc.",
+        "QtyOrdered": 1500,
+        "QtyReceived": 500,
+        "QtyOpen": 1000,
+        "Ordered Date": "17 Mar2024",
+        "DateDue": "17Mar2024"
+    },
+    {
+        "Actions": "",
+        "PO#": "AP2023047856",
+        "Vendor": "Dublin",
+        "Status": "Open",
+        "Sponsor": "ALXOncology",
+        "QtyOrdered": 6000,
+        "QtyReceived": 7000,
+        "QtyOpen": 1000,
+        "Ordered Date": "05 Apr2024",
+        "DateDue": "05Apr2024"
+    },
+    {
+        "Actions": "",
+        "PO#": "AP2023047856",
+        "Vendor": "Dublin",
+        "Status": "Open",
+        "Sponsor": "ACADIA PharmaceuticalsInc.",
+        "QtyOrdered": 16000,
+        "QtyReceived": 20000,
+        "QtyOpen": 4000,
+        "Ordered Date": "06May2024",
+        "DateDue": "06 May2024"
+    }
+]
+
+
+replacement = [
+    {
+		"Sponsor": "Select",
+		"Country": "Select",
+		"Protocol #": "Select",
+		"Description": "Foil,Aluminum,Dispenser Cutter Box, Fisherbrand™M,12\"x200",
+		"Product#": "01-213-100-Z",
+		"Quantity": 1
+	}
+]
+
+replacement_found =  [
+    {
+        "Actions": "S",
+        "Sponsor": "Mitsubishi T...",
+        "Country": "Singapore",
+        "Description": "Foil,Aluminum,DispenserCutterBox,Threebrand,10\"x190°",
+        "Item#": "01.1602.001-Z",
+        "Quantity": 1,
+        "UOM": "EA",
+        "OnStock": 234,
+        "ExpiryDate": "14Aug2024"
+    },
+    {
+        "Actions": "←",
+        "Sponsor": "Mitsubishi T...",
+        "Country": "Singapore",
+        "Description": "Foil,Aluminum,DispenserCutterBox,Threebrand,11\"x190'",
+        "Item#": "24323-Z",
+        "Quantity": 2,
+        "UOM": "EA",
+        "OnStock": 567,
+        "ExpiryDate": "14Aug2024"
+    },
+    {
+        "Actions": "S",
+        "Sponsor": "Mitsubishi T...",
+        "Country": "Singapore",
+        "Description": "Foil,Aluminum, DispenserCutterBox,Threebrand,9\"x190\"",
+        "Item#": "01.4352-P",
+        "Quantity": 1,
+        "UOM": "EA",
+        "OnStock": 765,
+        "ExpiryDate": "14Aug2024"
+    }
+]
+
+ring_fence =  [
+    {
+        "location": "",
+        "lotNo": "2384",
+        "totalQty": "4,000",
+        "qtyRingFenced": "1,800",
+        "qtyAvailable": "2,200",
+        "lockedDate": "14Aug2024",
+        "unlockedDate": "2May2024",
+        "expireDate": "14Aug2024",
+        "action": ""
+    },
+    {
+        "location": "Farmingdale",
+        "lotNo": "45334",
+        "totalQty": "3,000",
+        "qtyRingFenced": "1,500",
+        "qtyAvailable": "1,500",
+        "lockedDate": "14Aug2024",
+        "unlockedDate": "2May2024",
+        "expireDate": "A22Apr2024",
+        "action": ""
+    },
+    {
+        "location": "Farmingdale",
+        "lotNo": "5534",
+        "totalQty": "500",
+        "qtyRingFenced": "",
+        "qtyAvailable": "500",
+        "lockedDate": "14Aug2024",
+        "unlockedDate": "2May2024",
+        "expireDate": "A19Jun2024",
+        "action": ""
+    },
+    {
+        "location": "",
+        "lotNo": "1345",
+        "totalQty": "850",
+        "qtyRingFenced": "450",
+        "qtyAvailable": "400",
+        "lockedDate": "14Aug2024",
+        "unlockedDate": "2May2024",
+        "expireDate": "14Aug2024",
+        "action": ""
+    },
+    {
+        "location": "New York",
+        "lotNo": "45345",
+        "totalQty": "15,000",
+        "qtyRingFenced": "9,000",
+        "qtyAvailable": "",
+        "lockedDate": "",
+        "unlockedDate": "2May2024",
+        "expireDate": "10Jun2024",
+        "action": ""
+    },
+    {
+        "location": "Seattle",
+        "lotNo": "23445",
+        "totalQty": "15,000",
+        "qtyRingFenced": "9,000",
+        "qtyAvailable": "",
+        "lockedDate": "",
+        "unlockedDate": "2May2024",
+        "expireDate": "A18Jun2024",
+        "action": ""
+    },
+    {
+        "location": "Berlin",
+        "lotNo": "7567",
+        "totalQty": "15,000",
+        "qtyRingFenced": "9,000",
+        "qtyAvailable": "",
+        "lockedDate": "",
+        "unlockedDate": "2May2024",
+        "expireDate": "20Aug2024",
+        "action": ""
+    },
+    {
+        "location": "Dublin",
+        "lotNo": "87686",
+        "totalQty": "8,000",
+        "qtyRingFenced": "6,000",
+        "qtyAvailable": "2,000",
+        "lockedDate": "7May2024",
+        "unlockedDate": "2May2024",
+        "expireDate": "20Aug2024",
+        "action": ""
+    }
+]
+
+
+stock_and_scrap =  [
+    {
+        "Name": "Farmingdale",
+        "Lots": [
+            {
+                "LotNo.": "2384",
+                "TotalQty": "4,000",
+                "Category": "Expiry",
+                "Days": "30",
+                "Date": "14Aug2024",
+                "Min": "500",
+                "Max": "1000",
+                "Re-OrderDate": "14Aug2024"
+            },
+            {
+                "LotNo.": "45334",
+                "TotalQty": "3,000",
+                "Category": "ShortShelfLife",
+                "Days": "500",
+                "Date": "14Aug2024"
+            },
+            {
+                "LotNo.": "5534",
+                "TotalQty": "500",
+                "Category": "LongShelfLife",
+                "Days": "120",
+                "Date": "14Aug2024"
+            },
+            {
+                "LotNo.": "1345",
+                "TotalQty": "850",
+                "Category": "Medium ShelfLife",
+                "Days": "200",
+                "Date": "14Aug2024"
+            }
+        ],
+        "Total": "8,350"
+    },
+    {
+        "Name": "Buford",
+        "Lots": [
+            {
+                "LotNo.": "2384",
+                "TotalQty": "4,000",
+                "Category": "Expiry",
+                "Days": "700",
+                "Date": "14Aug2024",
+                "Min": "500",
+                "Max": "1000"
+            },
+            {
+                "LotNo.": "45334",
+                "TotalQty": "3,000",
+                "Category": "ShortShelfLife",
+                "Days": "500",
+                "Date": "14Aug2024"
+            },
+            {
+                "LotNo.": "5534",
+                "TotalQty": "500",
+                "Category": "LongShelfLife",
+                "Days": "120",
+                "Date": "14Aug2024"
+            },
+            {
+                "LotNo.": "1345",
+                "TotalQty": "850",
+                "Category": "Medium ShelfLife",
+                "Days": "200",
+                "Date": "14Aug2024"
+            }
+        ],
+        "Total": "8,350"
+    }
+]
+
   getColumns() {
     let dropdownData = [
       {

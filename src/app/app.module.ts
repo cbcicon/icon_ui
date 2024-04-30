@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppLayoutModule } from './layout/app.layout.module';
 import { DemandManagementModule } from './components/demand-management/demand-management.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +18,8 @@ import { DemandManagementModule } from './components/demand-management/demand-ma
      AppLayoutModule, 
      BrowserAnimationsModule ,
      FormsModule ,
-     DemandManagementModule
+     DemandManagementModule ,
+     SharedModule
     ],
   providers: [],
   bootstrap: [AppComponent],
