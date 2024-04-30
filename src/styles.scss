@@ -223,6 +223,7 @@ h3 {
 h4 {
   font-size: var(--fs-33) !important;
   letter-spacing: 0.25px;
+  margin: 0px !important;
 }
 
 h5 {
@@ -805,7 +806,7 @@ input:focus-visible {
   padding: 0.2rem 0.2rem;
   border-width: thin;
   border-color: lightgray;
-  background:var(--primary-20);
+  background: var(--primary-20);
 }
 
 .p-datatable .p-datatable-thead>tr>th:first-child {
@@ -823,6 +824,8 @@ input:focus-visible {
 
 .p-paginator {
   border-radius: 0 0 5px 5px;
+  font-family: Poppins;
+  font-size: 12px !important;
 }
 
 .btn-link {
@@ -841,9 +844,6 @@ input:focus-visible {
 
 }
 
-.p-component {
-  font-size: var(--fs-14);
-}
 
 .p-checkbox .p-checkbox-box {
   width: 15px;
@@ -915,29 +915,61 @@ loginPage-root {
   }
 }
 
+//dropdown global css
 .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
   margin: 0;
-  padding: 0.55rem 0.75rem;
+  padding: 0.25rem 0.55rem;
+  font-size: 12px;
 }
 
 .p-dropdown-panel .p-dropdown-items {
   padding: 0;
+  font-family: Poppins;
+  font-size: 12px !important;
+}
+
+//listbox global class
+.p-listbox-header {
+  padding: 5px;
+  margin-left: 7px;
+}
+
+.p-listbox-list {
+  padding: 5px;
+}
+
+.p-listbox-list .p-ripple {
+  padding: 5px;
+  height: 30px !important;
+}
+
+.p-listbox-list .p-ripple .p-checkbox {
+  padding: 2px;
+  height: 20px !important;
 }
 
 .p-multiselect-panel .p-multiselect-items {
   padding: 0;
 }
 
-.item-type-icons{
+.item-type-icons {
   display: flex;
   flex-direction: row;
 }
-.item-type-cheap{
+
+.item-type-cheap {
   display: flex;
-  justify-content: center; /* horizontally center */
+  justify-content: center;
+  /* horizontally center */
   align-items: center;
   border-radius: 50%;
   background-color: #92d3ca6c;
   margin: 3px;
   padding: 2px 5px;
+}
+
+.addition-col-menu {
+  position: absolute;
+  top: 9rem;
+  right: 6rem;
 }
