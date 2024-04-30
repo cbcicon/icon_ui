@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-between">
+
+    <div class="mt-4" >
+      <p-menu [model]="studies">
+          <ng-template pTemplate="study" let-study>
+            <div class="p-4" (click)="handleComponentChange(study.activate)" >
+              <span class="mx-2"> <i class={{study.icon}}></i></span> 
+              <span class="menu-label-text "> {{ study.label }}</span>
+            </div>  
+          </ng-template>
+      </p-menu>
+    </div>
+  
+    <div class="col-md-11 mt-4 activate-component" >
+  
+      <div [ngSwitch]="activeComponent">
+        <div *ngSwitchCase="'countries'"><app-countries></app-countries></div>
+        <div *ngSwitchCase="'sites'"> <app-sites></app-sites> </div>
+        <div *ngSwitchCase="'inventory-review'"><app-inventory-review></app-inventory-review></div>
+        <div *ngSwitchCase="'summary'"><app-summary></app-summary></div>
+      </div>
+    </div>
+  
+  </div>
+  

@@ -11,7 +11,8 @@
                     <h4> New Study </h4> 
                 </div>
                 <div>
-                    <span class="p-input-icon-left ml-auto">
+                    <!-- <span class="p-input-icon-left ml-auto"> -->
+                    <span class="bi bi-pencil ml-auto">
                         <span (click)="exportExcel()">
                             <p-button [text]="true" [plain]="true"> <i class="bi bi-download"></i></p-button>
                         </span>
@@ -116,7 +117,7 @@
 
         </ng-template>
         <ng-template pTemplate="body" let-study>
-            <tr class="p-selectable-row" style="height: 20px;">
+            <tr class="p-selectable-row" style="height: 27px;">
                 <td>
                     <span> <i class="bi bi-eye" (click)="hanldeBelowContent()"></i></span>
                     <span class="ml-3"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar()"></i></span>
@@ -190,4 +191,11 @@
 
     </p-table>
 
+</div>
+
+<!-- Table below content  -->
+<div class="card" style="min-height: 500px;">
+	<div *ngIf="showDetailContent">
+		<app-study-detail-landing></app-study-detail-landing>
+	</div>
 </div>
