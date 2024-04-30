@@ -31,10 +31,11 @@ import { CalendarModule } from 'primeng/calendar';
 import { MenuModule } from 'primeng/menu';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { ForecastChart } from './forecast/chart/forecast-chart';
+import { NewstudyTableComponent } from './newstudy/newstudy-table.component';
 
 @NgModule({
 	declarations: [
-		ForecastTable, ForecastChart
+		ForecastTable, ForecastChart, NewstudyTableComponent
 	],
 	imports: [
 		CommonModule,
