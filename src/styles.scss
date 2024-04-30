@@ -790,8 +790,11 @@ input:focus-visible {
 .p-datatable .p-datatable-tbody>tr>td {
   font-family: Poppins;
   text-align: left;
-  padding: 0;
+  padding: 2px;
   font-size: 12px;
+  border-width: thin;
+  border-color: rgb(222, 217, 217);
+  color: black;
 }
 
 .p-datatable .p-datatable-tbody>tr>td:first-child {
@@ -800,6 +803,9 @@ input:focus-visible {
 
 .p-datatable .p-datatable-thead>tr>th {
   padding: 0.2rem 0.2rem;
+  border-width: thin;
+  border-color: lightgray;
+  background:var(--primary-20);
 }
 
 .p-datatable .p-datatable-thead>tr>th:first-child {
@@ -850,19 +856,19 @@ input:focus-visible {
   width: 18.5rem;
 }
 
-.p-menu .p-menuitem > .p-menuitem-content {
+.p-menu .p-menuitem>.p-menuitem-content {
   margin-left: -2rem;
 }
 
-i{
+i {
   width: 16px;
   height: 15.92px;
   color: black;
-  
+
 }
 
- @import "primeng/resources/themes/lara-light-blue/theme.css";
- @import "primeng/resources/primeng.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
 
 
 @import "assets/layout/styles/layout/layout.scss";
@@ -920,4 +926,18 @@ loginPage-root {
 
 .p-multiselect-panel .p-multiselect-items {
   padding: 0;
+}
+
+.item-type-icons{
+  display: flex;
+  flex-direction: row;
+}
+.item-type-cheap{
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center;
+  border-radius: 50%;
+  background-color: #92d3ca6c;
+  margin: 3px;
+  padding: 2px 5px;
 }

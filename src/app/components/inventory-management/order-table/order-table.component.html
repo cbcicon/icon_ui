@@ -7,7 +7,6 @@
 <!-- cards on above to dashboard -->
 
 <div class="grid mb-3" *ngIf="showInfoCard">
-
 	<div class="col-12 lg:col-6 xl:col-3">
 		<div class="card mb-0">
 			<div class="flex justify-content-between mb-3">
@@ -102,6 +101,9 @@
                 <i class="pi pi-search"></i>
                 <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Global Search" />
             </span> -->
+				</div>
+				<div>
+					<h4>Inventory</h4>
 				</div>
 				<div>
 					<span class="p-input-icon-left ml-auto">
@@ -258,7 +260,7 @@
 							<i class="bi bi-hourglass" style="color: #004750;"></i>
 						</div>
 						<div class="item-type-cheap" style="background-color :#B3C8CB;">
-							<i class="bi bi-box-seam" style="color #004750;"></i>
+							<i class="bi bi-box-seam" style="color: #004750;"></i>
 						</div>
 
 					</div>
