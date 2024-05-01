@@ -853,7 +853,9 @@ input:focus-visible {
 
 
 .p-menu {
-  width: 18.5rem;
+  width: 19rem;
+  height: 49vh;
+
 }
 
 .p-menu .p-menuitem>.p-menuitem-content {
@@ -865,6 +867,10 @@ i {
   height: 15.92px;
   color: black;
 
+}
+
+.below-card{
+  min-height: 49vh !important
 }
 
 @import "primeng/resources/themes/lara-light-blue/theme.css";

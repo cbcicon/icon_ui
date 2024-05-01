@@ -1,21 +1,20 @@
 
 <div class="row">
-<div class="card col" >
+<div class="card col below-card" >
+
+				
+	<div class="mb-4">
+		<h4 class="text-start">Replacement</h4>
+	</div>
+	
+
 <p-table #dt [value]="replacemnetData"  dataKey="id" [rowHover]="true"
 		[rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,20,30]" [loading]="loading"
 		[paginator]="false" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
 		[filterDelay]="0"
 		[globalFilterFields]="['ITEM_ID', 'ITEM_NAME', 'ITEM_DESCRIPTION', 'DEMAND' , 'ON_STOCK' , 'AVAILABILITY','OPEN_PO' ,'ITEM_TYPE']"
 		styleClass=" p-datatable-gridlines p-datatable-striped p-datatable-sm" >
-		<ng-template pTemplate="caption">
-	
-				
-				<div>
-					<h4 class="text-start">Replacement</h4>
-				</div>
-				
-			
-		</ng-template>
+
     
 	<ng-template pTemplate="header">
 			<tr>
@@ -205,20 +204,9 @@
 
 </div>
 
-<div class=" col-md-3 card mx-2" *ngIf="showReversal">
-	<h5>Lock</h5>
+<div class=" col-md-3 card mx-2 below-card" *ngIf="showReversal">
+	<h5>Replacement Action</h5>
 
-	<div class="flex flex-wrap gap-3">
-		<div class="flex align-items-center">
-			<p-radioButton name="pizza" value="Cheese" [(ngModel)]="ingredient" inputId="ingredient1"></p-radioButton>
-			<label for="ingredient1" class="ml-2">Lock</label>
-		</div>
-		
-		<div class="flex align-items-center">
-			<p-radioButton name="pizza" value="Mushroom" [(ngModel)]="ingredient" inputId="ingredient2"></p-radioButton>
-			<label for="ingredient2" class="ml-2">Unlock</label>
-		</div>
-		</div>
 	<div class="p-fluid p-formgrid grid">
 		
 		<div class="field md:col-6">
@@ -235,29 +223,30 @@
 			<p-dropdown [options]="dropdownItems" optionLabel="name" ></p-dropdown>
 		</div>
 		<div class="field md:col-6">
+			<label htmlFor="state">Work Order *</label>
+			<p-dropdown [options]="dropdownItems" optionLabel="name" ></p-dropdown>
+		</div>
+		<div class="field md:col-6">
 			<label htmlFor="state">Lot Number *</label>
 			<p-dropdown [options]="dropdownItems" optionLabel="name" ></p-dropdown>
 		</div>
 		<div class="field md:col-6">
-			<label htmlFor="state">Qty Unlock *</label>
+			<label htmlFor="state">Lot Number *</label>
 			<input pInputText id="username" type="text" />
 		</div>
-		<div class="field md:col-6">
-			<label htmlFor="state">Date *</label>
-			<p-calendar  [iconDisplay]="'input'" [showIcon]="true"></p-calendar>
-		</div>
+		
     
+
 	</div>
 
 	<div>
 		<p htmlFor="state"> <b>Comment</b> </p>
-		<textarea class="w-100" rows="5" cols="15" placeholder="Your Message" pInputTextarea></textarea>
+		<textarea class="w-100" rows="3" cols="15" placeholder="Your Message" pInputTextarea></textarea>
 	</div>
 
 	<div class="d-flex justify-content-between">
-		<p-button label="Secondary" [outlined]="true" severity="secondary"></p-button>
-		<p-button label="Success" [raised]="true" severity="success"></p-button>
-
+		<p-button label="Cancel" [outlined]="true" severity="secondary"></p-button>
+		<p-button label="Submit" [raised]="true" severity="success"></p-button>
 	 </div>
 </div>
 

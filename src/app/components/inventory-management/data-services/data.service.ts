@@ -1787,77 +1787,94 @@ ring_fence =  [
 stock_and_scrap =  [
     {
         "Name": "Farmingdale",
-        "Lots": [
-            {
-                "LotNo.": "2384",
-                "TotalQty": "4,000",
-                "Category": "Expiry",
-                "Days": "30",
-                "Date": "14Aug2024",
-                "Min": "500",
-                "Max": "1000",
-                "Re-OrderDate": "14Aug2024"
-            },
-            {
-                "LotNo.": "45334",
-                "TotalQty": "3,000",
-                "Category": "ShortShelfLife",
-                "Days": "500",
-                "Date": "14Aug2024"
-            },
-            {
-                "LotNo.": "5534",
-                "TotalQty": "500",
-                "Category": "LongShelfLife",
-                "Days": "120",
-                "Date": "14Aug2024"
-            },
-            {
-                "LotNo.": "1345",
-                "TotalQty": "850",
-                "Category": "Medium ShelfLife",
-                "Days": "200",
-                "Date": "14Aug2024"
-            }
-        ],
-        "Total": "8,350"
+        "LotNo.": "2384",
+        "TotalQty": "4,000",
+        "Category": "Expiry",
+        "Days": "30",
+        "Date": "14Aug2024",
+        "Min": "500",
+        "Max": "1000",
+        "Re-OrderDate": "14Aug2024"
+    },
+    {
+        "Name": "Farmingdale",
+        "LotNo.": "45334",
+        "TotalQty": "3,000",
+        "Category": "ShortShelfLife",
+        "Days": "500",
+        "Date": "14Aug2024",
+        "Min": "500",
+        "Max": "1000",
+        "Re-OrderDate": "14Aug2024"
+    },
+    {
+        "Name": "Farmingdale",
+        "LotNo.": "5534",
+        "TotalQty": "500",
+        "Category": "LongShelfLife",
+        "Days": "120",
+        "Date": "14Aug2024",
+        "Min": "500",
+        "Max": "1000",
+        "Re-OrderDate": "14Aug2024"
+    },
+    {
+        "Name": "Farmingdale",
+        "LotNo.": "1345",
+        "TotalQty": "850",
+        "Category": "Medium ShelfLife",
+        "Days": "200",
+        "Date": "14Aug2024" ,
+        "Min": "500",
+        "Max": "1000",
+        "Re-OrderDate": "14Aug2024"
+    },
+ 
+    {
+        "Name": "Buford",
+        "LotNo.": "2384",
+        "TotalQty": "4,000",
+        "Category": "Expiry",
+        "Days": "700",
+        "Date": "14Aug2024",
+        "Min": "500",
+        "Max": "1000",
+        "Re-OrderDate": "14Aug2024"
     },
     {
         "Name": "Buford",
-        "Lots": [
-            {
-                "LotNo.": "2384",
-                "TotalQty": "4,000",
-                "Category": "Expiry",
-                "Days": "700",
-                "Date": "14Aug2024",
-                "Min": "500",
-                "Max": "1000"
-            },
-            {
-                "LotNo.": "45334",
-                "TotalQty": "3,000",
-                "Category": "ShortShelfLife",
-                "Days": "500",
-                "Date": "14Aug2024"
-            },
-            {
-                "LotNo.": "5534",
-                "TotalQty": "500",
-                "Category": "LongShelfLife",
-                "Days": "120",
-                "Date": "14Aug2024"
-            },
-            {
-                "LotNo.": "1345",
-                "TotalQty": "850",
-                "Category": "Medium ShelfLife",
-                "Days": "200",
-                "Date": "14Aug2024"
-            }
-        ],
-        "Total": "8,350"
+        "LotNo.": "45334",
+        "TotalQty": "3,000",
+        "Category": "ShortShelfLife",
+        "Days": "500",
+        "Date": "14Aug2024",
+        "Min": "500",
+        "Max": "1000",
+        "Re-OrderDate": "14Aug2024"
+    },
+    {
+        "Name": "Buford",
+        "LotNo.": "5534",
+        "TotalQty": "500",
+        "Category": "LongShelfLife",
+        "Days": "120",
+        "Date": "14Aug2024",
+        "Min": "500",
+        "Max": "1000",
+        "Re-OrderDate": "14Aug2024"
+    },
+    {
+        "Name": "Buford",
+        "LotNo.": "1345",
+        "TotalQty": "850",
+        "Category": "Medium ShelfLife",
+        "Days": "200",
+        "Date": "14Aug2024",
+        "Min": "500",
+        "Max": "1000",
+        "Re-OrderDate": "14Aug2024"
     }
+
 ]
 
   getColumns() {
