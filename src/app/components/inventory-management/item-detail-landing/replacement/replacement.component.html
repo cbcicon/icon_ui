@@ -1,3 +1,253 @@
-<div class="card" >
-  <h1>Replacement</h1>
+
+<div class="row">
+<div class="card col below-card" >
+
+				
+	<div class="mb-4">
+		<h4 class="text-start">Replacement</h4>
+	</div>
+	
+
+<p-table #dt [value]="replacemnetData"  dataKey="id" [rowHover]="true"
+		[rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,20,30]" [loading]="loading"
+		[paginator]="false" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+		[filterDelay]="0"
+		[globalFilterFields]="['ITEM_ID', 'ITEM_NAME', 'ITEM_DESCRIPTION', 'DEMAND' , 'ON_STOCK' , 'AVAILABILITY','OPEN_PO' ,'ITEM_TYPE']"
+		styleClass=" p-datatable-gridlines p-datatable-striped p-datatable-sm" >
+
+    
+	<ng-template pTemplate="header">
+			<tr>
+				
+				<th pSortableColumn="action-item">
+					<div class="flex justify-content-between align-items-center">
+						Sponsor
+					</div>
+				</th>
+
+				<th pSortableColumn="ITEM_NAME">
+					<div class="flex justify-content-between align-items-center">
+            Country
+					</div>
+				</th>
+				<th pSortableColumn="ITEM_DESCRIPTION">
+					<div class="flex justify-content-between align-items-center">
+						Protocol
+					</div>
+				</th>
+
+				<th pSortableColumn="DEMAND">
+					<div class="flex justify-content-between align-items-center">
+            Description
+					</div>
+				</th>
+
+				<th pSortableColumn="ON_STOCK">
+					<div class="flex justify-content-between align-items-center">
+						Product#
+					
+					</div>
+				</th>
+
+				<th pSortableColumn="AVAILABILITY">
+					<div class="flex justify-content-between align-items-center">
+						Quantity
+						
+					</div>
+				</th>
+
+			</tr>
+		</ng-template> 
+    
+		<ng-template pTemplate="body" let-replacemnetData>
+			<tr class="p-selectable-row">
+				
+				<td>
+				  <span (click)="handleReplacementFound()">	{{replacemnetData.Sponsor}} <i class="bi bi-chevron-down"></i> </span>
+				</td>
+				<td>
+					{{replacemnetData.Country}} <i class="bi bi-chevron-down"></i>
+				</td>
+				<td>
+					{{replacemnetData.Protocol}} <i class="bi bi-chevron-down"></i>
+				</td>
+				<td>
+					{{replacemnetData.Description}}
+				</td>
+				<td>
+					{{replacemnetData.Product}}
+				</td>
+				<td>
+					{{replacemnetData.Quantity}}
+				</td>
+			
+				
+			</tr>
+		</ng-template>
+		
+	
+     <ng-template pTemplate="emptymessage">
+			<tr>
+				<td colspan="8">No Data found.</td>
+			</tr>
+		</ng-template>
+
+	</p-table>
+
+
+	<!-- ................................on select show table---------------- -->
+
+	<div *ngIf="showReplacementData" class="mt-4">
+	<i class="bi bi-exclamation-circle-fill"></i> 3 Replacement items found
+
+
+	<p-table #dt [value]="replacementDataFound"  dataKey="id" [rowHover]="true"
+	[rows]="10" [showCurrentPageReport]="true"  [loading]="loading"
+	currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+	[filterDelay]="0"
+	styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm"  >
+   
+	<ng-template pTemplate="header">
+	  <tr>
+		<th pSortableColumn="action-item">
+		  <div class="flex justify-content-between align-items-center">
+			Action 
+		  </div>
+		</th>
+  
+		<th pSortableColumn="ITEM_NAME">
+		  <div class="flex justify-content-between align-items-center">
+			Sponsor
+			<p-columnFilter type="text" field="ITEM_NAME" display="menu" class="ml-auto"></p-columnFilter>
+		  </div>
+		</th>
+		<th pSortableColumn="ITEM_NAME">
+			<div class="flex justify-content-between align-items-center">
+			  Country
+			  <p-columnFilter type="text" field="ITEM_NAME" display="menu" class="ml-auto"></p-columnFilter>
+			</div>
+		  </th>
+		<th pSortableColumn="ITEM_DESCRIPTION">
+		  <div class="flex justify-content-between align-items-center">
+			Description
+			<p-columnFilter type="text" field="ITEM_DESCRIPTION" display="menu"
+			  class="ml-auto"></p-columnFilter>
+		  </div>
+		</th>
+  
+		<th pSortableColumn="DEMAND">
+		  <div class="flex justify-content-between align-items-center">
+			Product #
+			<p-columnFilter type="text" field="DEMAND" display="menu" class="ml-auto"></p-columnFilter>
+		  </div>
+		</th>
+  
+		<th pSortableColumn="ON_STOCK">
+		  <div class="flex justify-content-between align-items-center">
+			Quantity
+			<p-columnFilter type="text" field="ON_STOCK" display="menu" class="ml-auto"></p-columnFilter>
+		  </div>
+		</th>
+  
+		<th pSortableColumn="AVAILABILITY">
+		  <div class="flex justify-content-between align-items-center">
+			UOM
+			<p-columnFilter type="text" field="AVAILABILITY" display="menu"
+			  class="ml-auto"></p-columnFilter>
+		  </div>
+		</th>
+  
+		<th pSortableColumn="OPEN_PO">
+		  <div class="flex justify-content-between align-items-center">
+			On Stock
+			<p-columnFilter type="text" field="OPEN_PO" display="menu" class="ml-auto"></p-columnFilter>
+		  </div>
+		</th>
+  
+		<th pSortableColumn="ITEM_TYPE" style="min-width: 10rem">
+		  <div class="flex justify-content-between align-items-center">
+			Expiry Date
+			<p-columnFilter type="numeric" field="ITEM_TYPE" display="menu" currency="USD"
+			  class="ml-auto"></p-columnFilter>
+		  </div>
+		</th>	 
+  
+	  </tr>
+	</ng-template>
+  
+	<ng-template pTemplate="body" let-replacementDataFound>
+	  <tr class="p-selectable-row">
+		<td>
+		  <span (click)="handleShowReplacement()" > <i class="bi bi-arrow-left-right"></i></span>
+		  
+		</td>
+		<td>{{replacementDataFound['Sponsor']}}</td>
+		<td>{{replacementDataFound['Country']}}</td>
+		<td>{{replacementDataFound['Description']}}</td>
+		<td>{{replacementDataFound['Item#']}}</td>
+		<td>{{replacementDataFound['Quantity']}}</td>
+		<td>{{replacementDataFound['UOM']}}</td>
+		<td>{{replacementDataFound['OnStock']}}</td>
+		<td>{{replacementDataFound['ExpiryDate']}}</td>
+
+	  </tr>
+	</ng-template> 
+	
+	<ng-template pTemplate="emptymessage">
+	  <tr>
+		<td colspan="8">No Data found.</td>
+	  </tr>
+	</ng-template>
+  
+  </p-table>
+  </div>
+
+</div>
+
+<div class=" col-md-3 card mx-2 below-card" *ngIf="showReversal">
+	<h5>Replacement Action</h5>
+
+	<div class="p-fluid p-formgrid grid">
+		
+		<div class="field md:col-6">
+			<label htmlFor="state">Sponsor *</label>
+			<p-dropdown [options]="dropdownItems" optionLabel="name" ></p-dropdown>
+		</div>
+		<div class="field md:col-6">
+			<label htmlFor="state">Protocol ID *</label>
+			<p-dropdown [options]="dropdownItems" optionLabel="name" ></p-dropdown>
+		</div>
+
+		<div class="field md:col-6">
+			<label htmlFor="state">Location *</label>
+			<p-dropdown [options]="dropdownItems" optionLabel="name" ></p-dropdown>
+		</div>
+		<div class="field md:col-6">
+			<label htmlFor="state">Work Order *</label>
+			<p-dropdown [options]="dropdownItems" optionLabel="name" ></p-dropdown>
+		</div>
+		<div class="field md:col-6">
+			<label htmlFor="state">Lot Number *</label>
+			<p-dropdown [options]="dropdownItems" optionLabel="name" ></p-dropdown>
+		</div>
+		<div class="field md:col-6">
+			<label htmlFor="state">Lot Number *</label>
+			<input pInputText id="username" type="text" />
+		</div>
+		
+    
+
+	</div>
+
+	<div>
+		<p htmlFor="state"> <b>Comment</b> </p>
+		<textarea class="w-100" rows="3" cols="15" placeholder="Your Message" pInputTextarea></textarea>
+	</div>
+
+	<div class="d-flex justify-content-between">
+		<p-button label="Cancel" [outlined]="true" severity="secondary"></p-button>
+		<p-button label="Submit" [raised]="true" severity="success"></p-button>
+	 </div>
+</div>
+
 </div>

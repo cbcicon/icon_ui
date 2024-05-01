@@ -1,9 +1,3 @@
-<!-- <div class="d-flex justify-content-between m-2">
-	<h5> Demand Management</h5>
-	<button type="button" class="btn btn-light" (click)="handleInfoCard()" ><i class="bi bi-graph-up-arrow"></i> Demand KPI's</button>
-
-</div> -->
-
 <!-- cards on above to dashboard -->
 
 <div class="grid mb-3" *ngIf="showInfoCard">
@@ -74,7 +68,7 @@
 
 </div>
 
-<!-- demand management table -->
+<!-- Inventory table -->
 
 <div *ngIf="!showItemDetailPage">
 
@@ -95,12 +89,7 @@
 						[class.selected]="selectedInterval === 'quarterly'">Q</div>
 					<div class="filter-sm-circle-btn" (click)="handleDateShortener('monthly')"
 						[class.selected]="selectedInterval === 'monthly'">M</div>
-					<!--<div class="filter-sm-circle-btn" (click)="handleDateShortener('weekly')" [class.selected]="selectedInterval === 'weekly'">W</div> -->
-
-					<!-- <span class="p-input-icon-left">
-                <i class="pi pi-search"></i>
-                <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Global Search" />
-            </span> -->
+				
 				</div>
 				<div>
 					<h4>Inventory</h4>
@@ -110,9 +99,7 @@
 						<span (click)="exportExcel()">
 							<p-button [text]="true" [plain]="true"> <i class="bi bi-download"></i></p-button>
 						</span>
-						<!-- <span (click)="handleTableView()">
-					<p-button  [text]="true" icon="pi pi-table" [plain]="true" > </p-button>
-				</span> -->
+					
 						<span (click)="handleAdditionanlColumn()">
 							<p-button [text]="true" [plain]="true"> <i
 									class="bi bi-layout-three-columns"></i></p-button>
@@ -132,9 +119,7 @@
 		</ng-template>
 		<ng-template pTemplate="header">
 			<tr>
-				<!-- <th style="width: 4rem">
-                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-            </th> -->
+				
 				<th pSortableColumn="action-item">
 					<div class="flex justify-content-between align-items-center">
 						Action Item
@@ -231,16 +216,12 @@
 				<td>
 					{{ customer['DEMAND'] }}
 				</td>
-				<td
-					[style.color]="customer['ON_STOCK'] === 'Out of Stock' || customer['AVAILABILITY'] === 'Out of Stock' ? 'red' : 'green'">
-					<!-- <i class="bi bi-box-arrow-in-up-right" (click)="show()"></i>  -->
+				<td [style.color]="customer['ON_STOCK'] === 'Out of Stock' || customer['AVAILABILITY'] === 'Out of Stock' ? 'red' : 'green'">
 					{{ customer['ON_STOCK'] }}
 				</td>
 
 				<td [ngClass]="{'text-danger': customer.AVAILABILITY === 'Out of Stock'}"
 					(click)="rightSideBar = customer.AVAILABILITY !== 'Out of Stock'">
-					<!-- <i *ngIf="customer.AVAILABILITY === 'Out of Stock'" class="bi bi-unlock"></i>
-				<i *ngIf="customer.AVAILABILITY !== 'Out of Stock'"class="bi bi-lock"></i> -->
 					{{ customer.AVAILABILITY }}
 				</td>
 
