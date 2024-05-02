@@ -7,7 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppLayoutModule } from './layout/app.layout.module';
 import { DemandManagementModule } from './components/demand-management/demand-management.module';
-
+import { UtilService } from './common/util';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -19,7 +19,7 @@ import { DemandManagementModule } from './components/demand-management/demand-ma
      FormsModule ,
      DemandManagementModule
     ],
-  providers: [],
+  providers: [UtilService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
