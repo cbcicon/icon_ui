@@ -1,4 +1,3 @@
-
 import moment from 'moment';
 export class Utils {
     //Its for all grids
