@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Utils } from '../../../common/utils';
+import { UtilService } from '../../../common/util';
 
 @Injectable({
   providedIn: 'root'
@@ -9248,7 +9248,7 @@ export class DataService {
     return dropdownData;
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private Util: UtilService) { }
 
   generateUniqueId() {
     return Math.random().toString(36).substring(2) + Date.now().toString(36) + Math.random().toString(36).substring(2);
@@ -9432,7 +9432,7 @@ export class DataService {
 
   getForecastChartData() {
     const chartStartDate = '2023-06-23';
-    let chartData = Utils.generateMonthlyData(chartStartDate, '', 12);
+    let chartData = this.Util.generateMonthlyData(chartStartDate, '', 12);
     let data: any = [];
     chartData.forEach((c: any) => {
       let obj = { name: c['name'], value: (Math.random() * 1000) };

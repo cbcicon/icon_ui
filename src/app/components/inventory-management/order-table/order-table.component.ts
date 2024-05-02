@@ -510,26 +510,37 @@ handleRowControl(){
   this.changeExpandButton = this.controlRow == 10 ? false:true;
 }
 
+handleDateShortener(datetype: string): void {
 
-handleDateShortener(datetype:any){
-  this.selectedInterval = datetype;
-  this.customers =  this.customerService.getData()
+  if (this.selectedInterval === datetype) {
+    this.selectedInterval = '';
+    this.customers = this.customerService.getData(); 
+    return;
+  }
 
-  if(datetype == 'weekly'){
-    this.customers = this.dataShortenerService.filterWeekly( this.customers )
+  this.selectedInterval = datetype; 
+
+  this.customers = this.customerService.getData();
+
+  switch (datetype) {
+    case 'weekly':
+      this.customers = this.dataShortenerService.filterWeekly(this.customers);
+      break;
+    case 'monthly':
+      this.customers = this.dataShortenerService.filterMonthly(this.customers);
+      break;
+    case 'quarterly':
+      this.customers = this.dataShortenerService.filterQuarterly(this.customers);
+      break;
+    case 'half-yearly':
+      this.customers = this.dataShortenerService.filterHalfYearly(this.customers);
+      break;
+    case 'yearly':
+      this.customers = this.dataShortenerService.filterYearly(this.customers);
+      break;
+    default:
+      break;
   }
-  else  if(datetype == 'monthly' ){
-    this.customers = this.dataShortenerService.filterMonthly( this.customers )
-  }
-  else if( datetype == 'quarterly'){
-    this.customers = this.dataShortenerService.filterQuarterly( this.customers )
-  }
-  else if(datetype == 'half-yearly'){
-    this.customers = this.dataShortenerService.filterHalfYearly( this.customers )
-  }
-  else if(datetype == 'yearly'){
-      this.customers = this.dataShortenerService.filterYearly( this.customers )
-    }
 }
 
 

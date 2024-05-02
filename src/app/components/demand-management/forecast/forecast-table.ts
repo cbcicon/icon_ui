@@ -4,20 +4,24 @@ import { TableLazyLoadEvent } from 'primeng/table';
 import { DataService } from '../data-services/data.service';
 import { Sidebar } from 'primeng/sidebar';
 import * as FileSaver from 'file-saver';
-import { Utils } from '../../../common/utils';
-
+import { UtilService} from '../../../common/util';
 @Component({
   selector: 'app-order-table',
   templateUrl: './forecast-table.html'
 })
 
 export class ForecastTable implements OnInit {
+
+
+  constructor(private util: UtilService, private forecastService: DataService,) {
+  }
+
   forecasts: any;
   loading: boolean = false;
   rightSideBar: boolean = false
   selectAll: boolean = false;
   selectedforecasts!: any
-  rowsPerPageOptions: any
+  rowsPerPageOptions= this.util.getRowsPerPage();
   showInfoCard: boolean = false;
   showItemDetailPage: boolean = false
   data: any;
@@ -27,7 +31,6 @@ export class ForecastTable implements OnInit {
   @ViewChild('sidebarRef') sidebarRef!: Sidebar;
   itemData: any = [];
   tableView: any;
-  setRows: number = Utils.pageSize;
   stockFilterOption: any = [];
   availbiltyFilterOption: any;
   openPoFilterOption: any;
@@ -39,20 +42,19 @@ export class ForecastTable implements OnInit {
   monthlyData: any;
   chartData: any;
   changeExpandButton = false;
-
-  constructor(private forecastService: DataService) {
-  }
-
+  commonService: any;
+  pageSize: any;
+  setRows: any;
   ngOnInit() {
-    const startDate = '2024-01-01'; 
-    const chartStartDate = '2023-06-23'; 
-    const endDate = '2024-10-01';
+    const startDate = '2024-01-01';
+    const chartStartDate = '2023-06-23';
     this.loading = true;
+    this.setRows = this.util.getPageSize();
     setTimeout(() => {
       this.forecasts = this.forecastService.getForecastData();
       this.loading = false
-      this.monthlyData = Utils.generateMonthlyData(startDate, endDate, 9);
-      this.chartData = Utils.generateMonthlyData(chartStartDate, '', 12);
+      this.monthlyData = this.util.generateMonthlyData(startDate, '', 9);
+      this.chartData = this.util.generateMonthlyData(chartStartDate, '', 12);
       console.log(this.forecastService.getForecastChartData());
       //Add to additional columns after 6 months;
       this.additionalColList = this.monthlyData.filter((f: any) => f['value'] > 6);
@@ -108,8 +110,8 @@ export class ForecastTable implements OnInit {
   }
 
   handleRowControl() {
-    this.setRows = this.setRows == Utils.pageSize ? this.forecasts.length : Utils.pageSize
-    this.changeExpandButton = this.setRows == Utils.pageSize ? false : true;
+    this.setRows = this.setRows == this.util.getPageSize() ? this.forecasts.length : this.util.getPageSize();
+    this.changeExpandButton = this.setRows == this.util.getPageSize() ? false : true;
   }
 
 

@@ -1,3 +1,118 @@
-<div class="card" >
-  <h1>Stock and scrap</h1>
-</div>
+<div class="card below-card"  >
+
+  <h4 class="text-start"> Stock & Scrap </h4>
+
+  <p-divider></p-divider>
+    <div class="d-flex align-items-start">
+      <app-block-tag [blockTagStyle]="'blockTagStyle'" [blockData]="{label:'Total Ring Fenced ' , qtyNum:'15000'}" ></app-block-tag>
+      <app-block-tag [blockTagStyle]="'blockTagStyle'" [blockData]="{label:'Total Replacement Excess Stock' , qtyNum:'18000'}" ></app-block-tag>
+      <app-block-tag [blockTagStyle]="'blockTagStyleDanger'" [blockData]="{label:'Scrap Volume' , qtyNum:'11'}" ></app-block-tag>
+      <app-block-tag [blockTagStyle]="'blockTagStyleDanger'" [blockData]="{label:'Scrap Volume' , qtyNum:'1100'}" ></app-block-tag>
+
+    </div>
+
+    <p-divider class="solid"></p-divider>
+
+
+  <p-table #dt [value]="stockAndScrap"  dataKey="id" [rowHover]="true"
+      [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,20,30]" [loading]="loading"
+      [paginator]="false" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [filterDelay]="0"
+      styleClass=" p-datatable-gridlines p-datatable-striped p-datatable-sm" rowGroupMode="rowspan" groupRowsBy="Name"
+     >
+     
+      
+    <ng-template pTemplate="header">
+        <tr>
+          
+          <th pSortableColumn="action-item" rowspan="2">
+            <div class="flex justify-content-between align-items-center">
+              Location
+            </div>
+          </th>
+
+  
+          <th pSortableColumn="ITEM_NAME"  rowspan="2">
+            <div class="flex justify-content-between align-items-center">
+              Lot No. 
+            </div>
+          </th>
+          <th pSortableColumn="ITEM_DESCRIPTION"  rowspan="2">
+            <div class="flex justify-content-between align-items-center">
+              Total Qty
+            </div>
+          </th>
+  
+          <th pSortableColumn="DEMAND"  rowspan="2">
+          fas
+          </th>
+  
+          <th pSortableColumn="ON_STOCK" colspan="3">
+            <div class="text-center">
+              Expiry
+            </div>
+          </th>
+  
+          <th pSortableColumn="AVAILABILITY"  rowspan="2">
+            <div class="flex justify-content-between align-items-center">
+              Max
+              
+            </div>
+          </th>
+
+          <th pSortableColumn="AVAILABILITY"  rowspan="2">
+            <div class="flex justify-content-between align-items-center">
+              Re-Order Date
+              
+            </div>
+          </th>
+  
+        </tr>
+
+        <tr>
+         
+          <th class="text-center">Category</th>
+          <th class="text-center">Days</th>
+          
+          <th class="text-center">Date</th>
+        
+        </tr>
+
+      </ng-template> 
+      
+      
+      <ng-template pTemplate="body" let-stockAndScrap  let-rowgroup="rowgroup" let-rowspan="rowspan">
+        <tr class="p-selectable-row">
+          
+         <td  *ngIf="rowgroup" [attr.rowspan]="rowspan" >
+            {{stockAndScrap.Name}}
+         </td>   
+         <td >{{stockAndScrap['LotNo.']}}</td>
+         <td>{{stockAndScrap.TotalQty}}</td>
+         <td>{{stockAndScrap.Category}}</td>
+         <td>{{stockAndScrap.Days}}</td>
+         <td>{{stockAndScrap.Date}}</td>
+         <td>{{stockAndScrap.Min}}</td>
+         <td>{{stockAndScrap.Max}}</td>
+         <td>{{stockAndScrap["Re-OrderDate"]}}</td>
+
+        </tr>
+    
+      </ng-template>
+    
+      <!-- <ng-template pTemplate="footer">
+        <tr>
+            <td colspan="3" class="text-right">Totals</td>
+    
+
+        </tr>
+    </ng-template> -->
+
+       <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="12">No Data found.</td>
+        </tr>
+      </ng-template>
+  
+    </p-table>
+  </div>
