@@ -9,6 +9,8 @@ export class DataService {
   replacement: any;
   replacement_found: any;
   purchase_order_table: any;
+  ring_fence: any;
+  stock_and_scrap: any;
 
   getData() {
     
