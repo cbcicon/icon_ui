@@ -4,7 +4,7 @@ import { DataService} from '../../data-services/data.service';
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',
-  styleUrls: ['./summary.component.css']
+  styleUrls: ['./summary.component.scss']
 })
 export class SummaryComponent {
 

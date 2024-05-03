@@ -33,11 +33,15 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { ForecastChart } from './forecast/chart/forecast-chart';
 import { NewstudyTableComponent } from './newstudy/newstudy-table.component';
 import { StudyDetailLandingComponent } from './study-detail-landing/study-detail-landing.component';
+import { CountriesComponent } from './study-detail-landing/countries/countries.component';
+import { SitesComponent } from './study-detail-landing/sites/sites.component';
+import { InventoryReviewComponent } from './study-detail-landing/inventory-review/inventory-review.component';
+import { SummaryComponent } from './study-detail-landing/summary/summary.component';
 
 
 @NgModule({
 	declarations: [
-		ForecastTable, ForecastChart, NewstudyTableComponent, StudyDetailLandingComponent
+		ForecastTable, ForecastChart, NewstudyTableComponent, StudyDetailLandingComponent, CountriesComponent, SitesComponent, InventoryReviewComponent, SummaryComponent
 	],
 	imports: [
 		CommonModule,
