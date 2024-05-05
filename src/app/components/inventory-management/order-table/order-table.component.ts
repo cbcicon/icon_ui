@@ -144,6 +144,7 @@ viewAdditionColumn = false
 showDetailContent  = false
 controlRow = 10;
 changeExpandButton = false
+commentText: string = ''
 
 additionalColList = [
   {
@@ -453,6 +454,10 @@ handleTableSize(size:any){
   }
 }
 
+
+postComment(){
+  localStorage.setItem('comment', this.commentText);
+}
 
 
 

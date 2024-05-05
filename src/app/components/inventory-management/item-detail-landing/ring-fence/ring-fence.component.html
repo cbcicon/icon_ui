@@ -93,7 +93,7 @@
 			<tr class="p-selectable-row">
 				<td>
 					<span (click)="handleLockUnlockShow()" > <i class="bi bi-unlock"></i></span>
-					<span class="ml-3"><i class="bi bi-chat-left-text" ></i></span>
+					<span class="ml-3" (click)="handleChatRightSidebar()"><i class="bi bi-chat-left-text" ></i></span>
 				</td>
 				<td>
 					{{ringFenceData.location}}
@@ -185,10 +185,83 @@
 	</div>
 
 	<div class="d-flex justify-content-between">
-		<p-button label="Secondary" [outlined]="true" severity="secondary"></p-button>
-		<p-button label="Success" [raised]="true" severity="success"></p-button>
+		<p-button label="Secondary" [outlined]="true" severity="secondary" (click)="handleLockUnlockShow()"></p-button>
+		<button type="button" class="btn btn-success  mt-2"> Submit</button>
 
 	 </div>
 </div>
 
+</div>
+
+
+
+<!-- chat side bar  -->
+
+<div class="item-detail-right-sidebar">
+	<p-sidebar  #sidebarRef  [(visible)]="chatRightSideBar" position="right" styleClass="p-sidebar-lg">
+		<ng-template pTemplate="headless"  >
+			<div class="flex justify-content-between ml-3">
+				<div>
+					<p class="chat-sidebar-header">Activity History</p>
+				</div>
+				<span>
+					<p-button  type="button" (click)="closeCallback($event)" icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary "></p-button>
+
+				</span>
+			</div>
+
+			<p class=" ml-3">01-213-100-Z</p>
+			<p class=" ml-3">Foil, Aluminum, Dispenser Cutter Box, Fisherbrand™, 12" x 200'</p>
+
+				
+					<div class="row m-2">
+						
+						<div class="col-10">
+						
+							<textarea 
+								rows="2"	
+								class="w-100"
+								pInputTextarea 
+								[autoResize]="true"
+								[(ngModel)]="commentText"
+								>
+							</textarea>
+						</div>
+
+						<div class="col-2"> 
+							<button type="button" class="btn btn-success w-100 mt-2" (click)="postComment()"><i style="color: white;" class="bi bi-send"></i> Post</button>
+
+						</div>
+
+					</div>
+					<p-divider />
+
+
+					<div class="row m-2">
+						
+						<div class="col-1">
+							<p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
+						</div>
+
+						<div class="col-11"> 
+							<p> <b>Reyes, Sandra</b></p>
+							<p>Feb 05, 2024 at 03:50 PM</p>
+							<p-chip label="Ringfence"><i class="bi bi-arrow-repeat"></i></p-chip>
+						
+						</div>
+					</div>
+
+					<p class="mx-4" style="font-size: 14px;">
+						Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+						 the Lorem Ipsum has been the industry's standard dummy text ever since the to 
+						 1500s, when an unknown printer took a galley of type and scrambled it to make 
+						 a type specimen book.	
+					</p>
+				
+
+			
+	
+
+		</ng-template>
+	</p-sidebar>
 </div>

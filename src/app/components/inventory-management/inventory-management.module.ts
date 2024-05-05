@@ -40,6 +40,10 @@ import { ReplacementComponent } from './item-detail-landing/replacement/replacem
 import { PurchaseOrderComponent } from './item-detail-landing/purchase-order/purchase-order.component';
 import { SharedModule } from '../../shared/shared.module';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { AvatarModule } from 'primeng/avatar';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+
+
 
 @NgModule({
 	declarations: [
@@ -78,7 +82,9 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 		MenuModule,
 		SplitButtonModule ,
 		SharedModule ,
-		RadioButtonModule
+		RadioButtonModule ,
+		AvatarModule,
+		InputTextareaModule
 	],
 	providers: [DialogService]
 
