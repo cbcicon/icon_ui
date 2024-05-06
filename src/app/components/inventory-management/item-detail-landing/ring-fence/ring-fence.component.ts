@@ -1,5 +1,6 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { DataService } from '../../data-services/data.service';
+import { Sidebar } from 'primeng/sidebar';
 
 @Component({
   selector: 'app-ring-fence',
@@ -16,6 +17,9 @@ export class RingFenceComponent implements OnInit  {
    lockActive = false
 
    ingredient= false
+   chatRightSideBar = false
+
+   @ViewChild('sidebarRef') sidebarRef!: Sidebar;
    
 
   ngOnInit(){
@@ -24,6 +28,8 @@ export class RingFenceComponent implements OnInit  {
       this.loading =  false
     },1000)
   }
+
+  commentText:string = ''
 
 
 states: any[] = [
@@ -49,6 +55,20 @@ handleLockUnlockShow(){
     this.lockActive = false
   }
 
+}
+
+
+handleChatRightSidebar(){
+  this.chatRightSideBar = !this.chatRightSideBar
+}
+
+
+postComment(){
+  localStorage.setItem('comment', this.commentText);
+}
+
+closeCallback(e:any): void {
+  this.sidebarRef.close(e);
 }
 
 }
