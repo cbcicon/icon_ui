@@ -39,7 +39,7 @@ export class AppMenuComponent implements OnInit {
                 icon: 'receipt-icon',
                 items: [
                     { label: 'Inventory', routerLink: ['/inventory-management/order-list'] },
-                    { label: 'Purchase Orders', routerLink: ['/'] },
+                    { label: 'Purchase Orders', routerLink: ['/inventory-management/purchase-orders'] },
                     { label: 'Saftey Stocks', routerLink: ['/pages/empty'] },
                     { label: 'Scarp', routerLink: ['/pages/empty'] },
                     { label: 'Configurations', routerLink: ['/pages/empty'] }
