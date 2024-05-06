@@ -10,7 +10,7 @@ export class StudyDetailLandingComponent {
 
   studies: any;
 
-  activeComponent = "countries" ;
+  activeComponent = "summary" ;
     
   ngOnInit() {
     this.studies = [
