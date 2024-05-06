@@ -2,12 +2,17 @@
 
   <div class="mt-4" >
   <p-menu [model]="items">
+    
+    <ng-template  pTemplate="start">
+      <p class=" ml-4 mt-4 text-start sidebar-label-text">Item Details</p> 
+    </ng-template>
+  
       <ng-template pTemplate="item" let-item>
         <div class="p-4" (click)="handleComponentChange(item.activate)" >
-          <span class="mx-2"> <i class={{item.icon}}></i></span> 
+          <span class="mr-3"> <i class={{item.icon}}></i></span> 
           <span class="menu-label-text "> {{ item.label }}</span>
         </div>  
-      </ng-template>
+      </ng-template> 
   </p-menu>
 </div>
 
