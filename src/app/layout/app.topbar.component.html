@@ -37,7 +37,10 @@
             <span>Settings</span>
         </button>
         <button class="p-link layout-topbar-button user-avtar ">
-            <i style="color: white;" class="bi-bell"></i>
+
+            <i *ngIf="getComments"  style="color: white;" class="bi bi-bell-fill" (click)="handleReadComments()" ></i>
+            <i *ngIf="!getComments" style="color: white;" class="bi-bell"></i>
+
             <span>Profile</span>
         </button>
        

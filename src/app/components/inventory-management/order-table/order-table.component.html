@@ -205,7 +205,7 @@
 			<tr class="p-selectable-row">
 				<td>
 					<span> <i class="bi bi-eye" (click)="hanldeBelowContent()"></i></span>
-					<span class="ml-3"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar()"></i></span>
+					<span class="ml-3"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar(customer)"></i></span>
 				</td>
 				<td>
 					<div class="item-section"> <span style="color: green;"> {{ customer["ITEM_NAME"] }} </span> </div>
@@ -410,14 +410,12 @@
 				</div>
 				<span>
 					<p-button  type="button" (click)="closeCallback($event)" icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary "></p-button>
-
 				</span>
 			</div>
 
-			<p class=" ml-3">01-213-100-Z</p>
-			<p class=" ml-3">Foil, Aluminum, Dispenser Cutter Box, Fisherbrand™, 12" x 200'</p>
-
-				
+			<p class=" ml-3">{{chatData.ITEM_NAME}}</p>
+			<p class=" ml-3">{{chatData.ITEM_DESCRIPTION}}</p>
+			
 					<div class="row m-2">
 						
 						<div class="col-10">
@@ -461,10 +459,6 @@
 						 1500s, when an unknown printer took a galley of type and scrambled it to make 
 						 a type specimen book.	
 					</p>
-				
-
-			
-	
 
 		</ng-template>
 	</p-sidebar>
