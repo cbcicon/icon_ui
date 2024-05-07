@@ -558,100 +558,127 @@ export class DataService {
           "productNo": "MD-001",
           "componentName": "InvestigatorManual English",
           "itemType": "B",
+          "newitem":"",
+          "kitvendor":"",
           "qtyNeededInitialShipment": 1,
           "qtyNeededStudyDuration": 5,
           "newItemBuford": 0,
           "newItemFarmingdale": 0,
           "newItemMidland": 0,
-          "kitProductionLocations": []
+          "kitProductionLocations": [],
+          "replacementneeded":[]
         },
         {
           "productNo": "0178",
           "componentName": "LabCertificate-ICL",
           "itemType": "",
+          "newitem":"",
+          "kitvendor":"",
           "qtyNeededInitialShipment": 1,
           "qtyNeededStudyDuration": 5,
           "newItemBuford": 500,
           "newItemFarmingdale": 49300,
           "newItemMidland": 49300,
-          "kitProductionLocations": []
+          "kitProductionLocations": [],
+          "replacementneeded":[]
         },
         {
           "productNo": "8169",
           "componentName": "Summary/CollectionGuideEnglish",
           "itemType": "D",
+          "newitem":"",
+          "kitvendor":"",
           "qtyNeededInitialShipment": 1,
           "qtyNeededStudyDuration": 5,
           "newItemBuford": 500,
           "newItemFarmingdale": 49300,
           "newItemMidland": 49300,
-          "kitProductionLocations": []
+          "kitProductionLocations": [],
+          "replacementneeded":[]
         },
         {
           "productNo": "GAHCG-102a",
           "componentName": "PregnancyHCG urine Kit(CEMarked)W/Instructions",
           "itemType": "",
+          "newitem":"",
+          "kitvendor":"",
           "qtyNeededInitialShipment": 30,
           "qtyNeededStudyDuration": 165,
           "newItemBuford": 16250,
           "newItemFarmingdale": 7256,
           "newItemMidland": 50,
-          "kitProductionLocations": []
+          "kitProductionLocations": [],
+          "replacementneeded":[]
         },
         {
           "productNo": "10316",
           "componentName": "6Segmented AbsorbentPouch",
           "itemType": "",
+          "newitem":"",
+          "kitvendor":"",
           "qtyNeededInitialShipment": 185,
           "qtyNeededStudyDuration": 1000,
           "newItemBuford": 0,
           "newItemFarmingdale": 0,
           "newItemMidland": 0,
-          "kitProductionLocations": []
+          "kitProductionLocations": [],
+          "replacementneeded":[]
         },
         {
           "productNo": "BM087X121CON",
           "componentName": "7x11 95KPABiohazardBag",
           "itemType": "",
+          "newitem":"",
+          "kitvendor":"",
           "qtyNeededInitialShipment": 185,
           "qtyNeededStudyDuration": 1000,
           "newItemBuford": 0,
           "newItemFarmingdale": 0,
           "newItemMidland": 0,
-          "kitProductionLocations": []
+          "kitProductionLocations": [],
+          "replacementneeded":[]
         },
         {
           "productNo": "135030Bag",
           "componentName": "Bagof1003mlTransferPipette",
           "itemType": "A",
+          "newitem":"",
+          "kitvendor":"",
           "qtyNeededInitialShipment": 1,
           "qtyNeededStudyDuration": 5,
           "newItemBuford": 312547,
           "newItemFarmingdale": 0,
           "newItemMidland": "D",
-          "kitProductionLocations": []
+          "kitProductionLocations": [],
+          "replacementneeded":[]
         },
         {
           "productNo": "95.064.981",
           "componentName": "81Insert(Iml,1.8ml or2mlTube)CryoBoxw/Large95KPA...",
           "itemType": "A",
+          "newitem":"",
+          "kitvendor":"",
           "qtyNeededInitialShipment": 12,
           "qtyNeededStudyDuration": 64,
           "newItemBuford": 1687,
           "newItemFarmingdale": 6526,
           "newItemMidland": 0,
-          "kitProductionLocations": []
+          "kitProductionLocations": [],
+          "replacementneeded":[]
         },
         {
           "productNo": "243610",
           "componentName": "90mlYellow NoAdditivePlasticParterMedicalScrew To....",
           "itemType": "g",
+          "newitem":"",
+          "kitvendor":"",
           "qtyNeededInitialShipment": 42,
           "qtyNeededStudyDuration": 330,
           "newItemBuford": 3991,
           "newItemFarmingdale": "°",
           "newItemMidland": 0,
-          "kitProductionLocations": []
+          "kitProductionLocations": [],
+          "replacementneeded":[]
         }
       ];
     }
