@@ -1,7 +1,14 @@
 <div class="d-flex justify-content-between">
 
     <div class="mt-4">
+      
       <p-menu [model]="studies">
+
+        <ng-template  pTemplate="start">
+         <p class=" accordion-header sidebar-label-text"><b>Protocol Details</b></p>
+          <!-- <p class=" ml-4 mt-4 text-start sidebar-label-text">Protocol Details</p>  -->
+        </ng-template>
+
           <ng-template pTemplate="study" let-study>
             <div class="p-4" (click)="handleComponentChange(study.activate)" >
               <span class="mx-2"> <i class={{study.icon}}></i></span> 

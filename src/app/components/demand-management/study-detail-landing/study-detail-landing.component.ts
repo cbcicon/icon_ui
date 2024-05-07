@@ -10,14 +10,10 @@ export class StudyDetailLandingComponent {
 
   studies: any;
 
-  activeComponent = "summary" ;
+  activeComponent = "countries" ;
     
   ngOnInit() {
     this.studies = [
-      
-        {
-
-        studies: [
           {
             label: 'Countries',
             icon: 'bi bi-geo-alt',
@@ -37,10 +33,7 @@ export class StudyDetailLandingComponent {
             label: 'Summary',
             icon: 'bi bi-info-circle',
             activate:"summary"
-          }
-
-        ]
-        }
+          }        
     ];
 }
 
