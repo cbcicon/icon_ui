@@ -9,61 +9,6 @@ import { ItemSearchPopupComponent } from '../popup/itemsearchpopup/item-search-p
 import * as FileSaver from 'file-saver';
 import { DataShortenerService } from '../data-shortener/data-shortener.service';
 
-export interface Customer {
-  id?: number;
-  name?: string;
-  country?: Country;
-  company?: string;
-  date?: string;
-  status?: string;
-  activity?: number;
-  representative?: Representative;
-}
-
-export interface Country {
-  name?: string;
-  code?: string;
-}
-
-export interface Representative {
-  name?: string;
-  image?: string;
-}
-
-
-interface InventoryStatus {
-  label: string;
-  value: string;
-}
-export interface Customer {
-  id?: number;
-  name?: string;
-  country?: Country;
-  company?: string;
-  verified?:boolean;
-  date?: string;
-  status?: string;
-  activity?: number;
-  representative?: Representative;
-  balance?:number
-}
-
-interface expandedRows {
-  [key: string]: boolean;
-}
-
-export interface Product {
-  id?: string;
-  code?: string;
-  name?: string;
-  description?: string;
-  price?: number;
-  quantity?: number;
-  inventoryStatus?: InventoryStatus;
-  category?: string;
-  image?: string;
-  rating?: number;
-}
 
 
 @Component({
@@ -84,7 +29,7 @@ totalRecords!: number;
 loading: boolean = false;
 rightSideBar:boolean = false
 
-representatives!: Representative[];
+representatives: any = [];
 
 selectAll: boolean = false;
 
@@ -145,6 +90,7 @@ showDetailContent  = false
 controlRow = 10;
 changeExpandButton = false
 commentText: string = ''
+chatData :any
 
 additionalColList = [
   {
@@ -214,17 +160,16 @@ ngOnInit() {
 
     this.customers =  this.customerService.getData()
 
+    this.totalRecords =  this.customers.length
 
     setTimeout(() => {
 
-    this.totalRecords =  this.customers.length
     this.duration = this.customerService.getDuration();
     this.selectedDuration = this.customerService.getDuration()[1];
     this.loading = false
   }, 2000);
 
   this.rowsPerPageOptions =  this.divideIntoMultiplesOfTen(this.totalRecords)
-
 
 
   const documentStyle = getComputedStyle(document.documentElement);
@@ -429,8 +374,9 @@ handleInfoCard(){
 }
 
 
-handleChatRightSidebar(){
+handleChatRightSidebar(customer:any){
   this.chatRightSideBar = !this.chatRightSideBar
+  this.chatData = customer
 }
 
 
@@ -456,7 +402,14 @@ handleTableSize(size:any){
 
 
 postComment(){
-  localStorage.setItem('comment', this.commentText);
+
+
+  const existingComments = JSON.parse(localStorage.getItem('comments') || '[]');
+
+  existingComments.push({  commentText :this.commentText ,read: false });
+
+  localStorage.setItem('comments', JSON.stringify(existingComments));
+
 }
 
 
