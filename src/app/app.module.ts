@@ -9,6 +9,7 @@ import { AppLayoutModule } from './layout/app.layout.module';
 import { DemandManagementModule } from './components/demand-management/demand-management.module';
 import { SharedModule } from './shared/shared.module';
 import { UtilService } from './common/util';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -19,7 +20,8 @@ import { UtilService } from './common/util';
      BrowserAnimationsModule ,
      FormsModule ,
      DemandManagementModule ,
-     SharedModule
+     SharedModule ,
+     DragDropModule
     ],
   providers: [UtilService],
   bootstrap: [AppComponent],

@@ -14,11 +14,15 @@ import { AppMenuitemComponent } from './app.menuitem.component';
 import { RouterModule } from '@angular/router';
 import { AppTopBarComponent } from './app.topbar.component';
 import { DividerModule } from 'primeng/divider';
-
-
+import { TabViewModule } from 'primeng/tabview';
 import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppLayoutComponent } from "./app.layout.component";
 import { LayoutService } from './service/app.layout.service';
+import { ButtonModule } from 'primeng/button';
+
+import { OrderListModule } from 'primeng/orderlist';
+import { AvatarModule } from 'primeng/avatar';
+
 
 @NgModule({
     declarations: [
@@ -40,7 +44,11 @@ import { LayoutService } from './service/app.layout.service';
         InputSwitchModule,
         RippleModule,
         RouterModule,
-        DividerModule
+        DividerModule ,
+        ButtonModule ,
+        TabViewModule,
+        OrderListModule ,
+        AvatarModule
     ],
     exports: [AppLayoutComponent ]
 })

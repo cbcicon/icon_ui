@@ -36,13 +36,16 @@
             <i style="color: white;" class="bi-clock-history"></i>
             <span>Settings</span>
         </button>
-        <button class="p-link layout-topbar-button user-avtar ">
+        <div class="p-3"  (click)="hideShowAlertSidebar()">
+            <i  *ngIf="getComments"  style="color: white;" class="pi pi-bell text-3xl" pBadge [value]="unreadCommentLength.toString()"  severity="danger" (click)="handleReadComments()"></i>
+            <i *ngIf="!getComments" style="color: white;"  class="pi pi-bell text-3xl"></i>
+        </div>
+        <!-- <button class="p-link layout-topbar-button user-avtar " (click)="hideShowAlertSidebar()">
 
-            <i *ngIf="getComments"  style="color: white;" class="bi bi-bell-fill" (click)="handleReadComments()" ></i>
-            <i *ngIf="!getComments" style="color: white;" class="bi-bell"></i>
+
 
             <span>Profile</span>
-        </button>
+        </button> -->
        
         <button class="p-link layout-topbar-button user-avtar ">
             <i style="color: white;" class="bi bi-person-circle"></i>
@@ -51,4 +54,89 @@
        
     </div>
 
+</div>
+
+
+ <!-- Alert message box  -->
+
+<div class="item-detail-right-sidebar">
+	<p-sidebar  #sidebarRef  [(visible)]="alertRightSideBar" position="right" styleClass="p-sidebar-lg">
+		<ng-template pTemplate="headless"  >
+			<div class="flex justify-content-between ml-3 mt-4">
+				<div>
+					<p class="alert-sidebar-header"> <i class="bi bi-bell"></i> Notifications</p>
+				</div> 
+				<span>
+					<p-button  type="button" (click)="closeCallback($event)" icon="pi pi-times text-3xl" [rounded]="true" [text]="true" severity="secondary "></p-button>
+				</span>
+			</div>
+
+           <div class="mt-4">
+            <p-tabView styleClass="tabview-custom">
+                <p-tabPanel >
+                    <ng-template pTemplate="header">
+                        <div class="flex align-items-center gap-2">
+                               <h5>Work Updates  <span  ><p-badge  [value]="unreadCommentLength.toString()"  severity="danger"/></span>  </h5> 
+                        </div> 
+                    </ng-template>
+                    <ng-template pTemplate="body">
+                        <div *ngFor="let comment of allComments">
+                        <div class="flex flex-wrap p-2 align-items-center gap-3">
+                           
+                    <p-avatar 
+                    image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" 
+                    styleClass="mr-2" 
+                    size="xlarge" 
+                    shape="circle" />
+                            <div class="flex-1 flex flex-column gap-2">
+                                <span class="font-bold">{{ comment["commentText"] }}</span>
+                                <div class="flex align-items-center gap-2">
+                                    <span>
+                                        {{  comment['commentText']  }} 
+                                    </span>
+                                </div>
+                            </div>
+                  
+                       </div>
+                    </div>
+
+                    </ng-template>
+                    
+                </p-tabPanel>
+                <p-tabPanel header="Header II">
+                    <ng-template pTemplate="header">
+                        <div class="flex align-items-center gap-2">
+                            <h5>Order Updates  <p-badge value="10"  severity="danger"></p-badge> </h5>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="body">
+                        <div *ngFor="let comment of allComments">
+                        <div class="flex flex-wrap p-2 align-items-center gap-3">
+                           
+                    <p-avatar 
+                    image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" 
+                    styleClass="mr-2" 
+                    size="xlarge" 
+                    shape="circle" />
+                            <div class="flex-1 flex flex-column gap-2">
+                                <span class="font-bold">{{ comment["commentText"] }}</span>
+                                <div class="flex align-items-center gap-2">
+                                    <span>
+                                        {{  comment['commentText']  }} 
+                                    </span>
+                                </div>
+                            </div>
+                  
+                       </div>
+                    </div>
+
+                    </ng-template>
+                </p-tabPanel>
+              
+            </p-tabView>
+           </div>
+               
+        
+		</ng-template>
+	</p-sidebar>
 </div>
