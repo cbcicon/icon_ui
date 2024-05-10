@@ -1,6 +1,6 @@
 <!-- New Study Management Table -->
 <div *ngIf="!showStudyDetailPage">
-    <p-table #dt [value]="studies" [(selection)]="selectedStudies" dataKey="id" [rowHover]="true" [rows]="10"
+    <p-table #dt [value]="studies" [(selection)]="selectedStudies" dataKey="id" editMode="row" [rowHover]="true" [rows]="10"
              [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading" [paginator]="true"
              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
              [globalFilterFields]="['sponsor', 'protocol_id', 'countries', 'sites', 'sites_completed', 'subjects_screened', 'qty_of_kits_study', 'qty_of_kits_initial', 'visits', 'pre_label_y', 'kit_vendor', 'date_kit_at_first_site', 'revenue_gen']"
@@ -115,53 +115,159 @@
             </tr>
 
         </ng-template>
-        <ng-template pTemplate="body" let-study>
-            <tr class="p-selectable-row" style="height: 27px;">
+        <ng-template pTemplate="body" let-study let-ri="rowIndex" let-editing="editing">
+            <tr class="p-selectable-row" [pEditableRow]="study" style="height: 27px;">
                 <td>
                     <span> <i class="bi bi-eye" (click)="hanldeBelowContent()"></i></span>
-                    <span class="ml-2"><i class="bi bi-pencil"></i></span>
+                    <span class="ml-2" *ngIf="!editing"><i class="bi bi-pencil" (click)="onEditRow(study)"></i></span>
+                    <span class="ml-2" *ngIf="editing"><i class="bi bi-check" (click)="onSaveRow(study)"></i></span>
+                    <span class="ml-2" *ngIf="editing"><i class="bi bi-x" (click)="onCancelRow(study, ri)"></i></span>
                     <span class="ml-2"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar()"></i></span>
                 </td>
                 <td>
-                    <div class="item-section"> {{study.sponsor }} </div>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.sponsor" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.sponsor }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- <div class="item-section"> {{study.sponsor }} </div> -->
                 </td>
                 <td>
-                    {{ study.protocol_id }}
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.protocol_id" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.protocol_id }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.protocol_id }} -->
                 </td>
                 <td>
-                    {{ study.countries }}
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.countries" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.countries }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.countries }} -->
                 </td>
                 <td>
-                    {{ study.sites }}
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.sites" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.sites }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.sites }} -->
                 </td>
                 <td>
-                    {{ study.sites_completed }}
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.sites_completed" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.sites_completed }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.sites_completed }} -->
                 </td>
                 <td>
-                    {{ study.subjects_screened }}
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.subjects_screened" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.subjects_screened }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.subjects_screened }} -->
                 </td>
                 <td>
-                    {{ study.qty_of_kits_study }}
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.qty_of_kits_study" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.qty_of_kits_study }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.qty_of_kits_study }} -->
                 </td>
                 <td>
-                    {{ study.qty_of_kits_initial }}
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.qty_of_kits_initial" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.qty_of_kits_initial }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.qty_of_kits_initial }} -->
                 </td>
                 <td>
-                    {{ study.visits }}
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.visits" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.visits }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.visits }} -->
                 </td>
                 <td [style.color]="study['pre_label_y'] === 'Yes' ? 'green' : 'red'">
-                    {{ study.pre_label_y }}
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.pre_label_y" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.pre_label_y }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.pre_label_y }} -->
                 </td>
                 <td>
-                    {{ study.kit_vendor }}
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.kit_vendor" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.kit_vendor }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.kit_vendor }} -->
                 </td>
                 <td>
-                    {{ study.date_kit_at_first_site }}
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.date_kit_at_first_site" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.date_kit_at_first_site }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.date_kit_at_first_site }} -->
                 </td>
                 <td>
-                    {{ study.revenue_gen }}
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.revenue_gen" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.revenue_gen }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.revenue_gen }} -->
                 </td>
-
+                
                 <!-- <td>
 					<div class="item-type-icons">
 						<div class="item-type-cheap" style="background-color: rgba(227, 96, 96, 0.325);">

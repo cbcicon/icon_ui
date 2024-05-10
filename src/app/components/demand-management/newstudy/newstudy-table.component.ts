@@ -13,6 +13,7 @@ import * as FileSaver from 'file-saver';
 })
 export class NewstudyTableComponent implements OnInit {
   studies: any[] = []; 
+  editingRow: any = null;
   selectedStudies: any[] = [];
   loading: boolean = false;
   showStudyDetailPage: boolean = false;
@@ -211,6 +212,10 @@ export class NewstudyTableComponent implements OnInit {
           "revenue_gen": "$2,348"
         }
     ];
+
+    this.studies.forEach(study => {
+      study.editing = false;
+    });
 }
 
 // loadStudiesLazy(event: TableLazyLoadEvent) {
@@ -230,6 +235,23 @@ export class NewstudyTableComponent implements OnInit {
 //   }, 1000); // Simulating a delay of 1 second
 // }
 
+onEditRow(study: any): void {
+  this.editingRow = { ...study };
+  study.editing = true; // Set editing to true for the selected study
+}
+
+onSaveRow(study: any): void {
+  // Save the changes to the study object
+  this.editingRow = null;
+  study.editing = false; // Set editing to false after saving
+}
+
+onCancelRow(study: any, ri: number): void {
+  // Restore the original values of the study object
+  Object.assign(study, this.editingRow);
+  this.editingRow = null;
+  study.editing = false; // Set editing to false after canceling
+}
 
 exportExcel() {
   import('xlsx').then((xlsx) => {
