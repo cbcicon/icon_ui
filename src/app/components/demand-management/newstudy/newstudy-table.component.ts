@@ -247,8 +247,9 @@ onSaveRow(study: any): void {
 }
 
 onCancelRow(study: any, ri: number): void {
-  // Restoring the original values of the study object
-  Object.assign(study, this.editingRow);
+  if (this.editingRow) { // if there's an active edit
+    Object.assign(study, this.editingRow); // Restoring original values
+  }
   this.editingRow = null;
   study.editing = false; // Setting editing to false after canceling
 }
