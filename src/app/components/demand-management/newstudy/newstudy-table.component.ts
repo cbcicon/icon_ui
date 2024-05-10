@@ -237,20 +237,20 @@ export class NewstudyTableComponent implements OnInit {
 
 onEditRow(study: any): void {
   this.editingRow = { ...study };
-  study.editing = true; // Set editing to true for the selected study
+  study.editing = true; // Setting editing to true for the selected study
 }
 
 onSaveRow(study: any): void {
-  // Save the changes to the study object
+  // Saving the changes to the study object
   this.editingRow = null;
-  study.editing = false; // Set editing to false after saving
+  study.editing = false; // Setting editing to false after saving
 }
 
 onCancelRow(study: any, ri: number): void {
-  // Restore the original values of the study object
+  // Restoring the original values of the study object
   Object.assign(study, this.editingRow);
   this.editingRow = null;
-  study.editing = false; // Set editing to false after canceling
+  study.editing = false; // Setting editing to false after canceling
 }
 
 exportExcel() {
