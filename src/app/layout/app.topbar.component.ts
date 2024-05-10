@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from "./service/app.layout.service";
-import { Sidebar } from 'primeng/sidebar';
+
 
 
 @Component({
@@ -15,7 +15,7 @@ export class AppTopBarComponent {
     alertRightSideBar :boolean = false;
 
     unreadCommentLength = 0;
-
+    
     allComments = []
 
     @ViewChild('menubutton') menuButton!: ElementRef;
@@ -23,7 +23,6 @@ export class AppTopBarComponent {
     @ViewChild('topbarmenubutton') topbarMenuButton!: ElementRef;
 
     @ViewChild('topbarmenu') menu!: ElementRef;
-    @ViewChild('sidebarRef') sidebarRef!: Sidebar;
 
     
 
@@ -54,11 +53,7 @@ export class AppTopBarComponent {
         }
       }
 
-      closeCallback(e:any): void {
-        this.sidebarRef.close(e);
-     }
-    
-
+// making read msg to true 
       handleReadComments(){
         const existingComments =JSON.parse(localStorage.getItem('comments') || '[]');
         const updatedComments = existingComments.map((comment:any )=> {
