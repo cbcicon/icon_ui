@@ -22,6 +22,7 @@ import { ButtonModule } from 'primeng/button';
 
 import { OrderListModule } from 'primeng/orderlist';
 import { AvatarModule } from 'primeng/avatar';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { AvatarModule } from 'primeng/avatar';
         ButtonModule ,
         TabViewModule,
         OrderListModule ,
-        AvatarModule
+        AvatarModule ,
+        SharedModule
     ],
     exports: [AppLayoutComponent ]
 })
