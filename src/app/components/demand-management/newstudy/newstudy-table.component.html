@@ -120,8 +120,38 @@
                 <td>
                     <span> <i class="bi bi-eye" (click)="hanldeBelowContent()"></i></span>
                     <span class="ml-2" *ngIf="!study.editing"><i class="bi bi-pencil" (click)="onEditRow(study)"></i></span>
-                    <span class="ml-2" *ngIf="study.editing"><i class="bi bi-check" (click)="onSaveRow(study)"></i></span>
-                    <span class="ml-2" *ngIf="study.editing"><i class="bi bi-x" (click)="onCancelRow(study, ri)"></i></span>
+                    <!-- <button 
+                        *ngIf="!study.editing" 
+                        pButton 
+                        pRipple 
+                        type="button" 
+                        pInitEditableRow 
+                        icon="bi bi-pencil" 
+                        (click)="onEditRow(study)" 
+                        class="p-button-rounded p-button-text custom-icon">
+                    </button> -->
+                    <div *ngIf="study.editing" class="d-flex align-items-center">
+                        <button 
+                            pButton 
+                            pRipple 
+                            type="button" 
+                            pSaveEditableRow 
+                            icon="pi pi-check" 
+                            (click)="onSaveRow(study)" 
+                            class="p-button-rounded p-button-text p-button-success mr-0">
+                        </button>
+                        <button 
+                            pButton 
+                            pRipple 
+                            type="button" 
+                            pCancelEditableRow 
+                            icon="pi pi-times" 
+                            (click)="onCancelRow(study, ri)" 
+                            class="p-button-rounded p-button-text p-button-danger">
+                        </button> 
+                    </div>
+                    <!-- <span class="ml-2" *ngIf="study.editing"><i class="bi bi-check" (click)="onSaveRow(study)"></i></span>
+                    <span class="ml-2" *ngIf="study.editing"><i class="bi bi-x" (click)="onCancelRow(study, ri)"></i></span> -->
                     <span class="ml-2"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar()"></i></span>
                 </td>
                 <td [pEditableColumn]="study.sponsor" pEditableColumnField="sponsor">
