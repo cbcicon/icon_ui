@@ -13,6 +13,7 @@ import * as FileSaver from 'file-saver';
 })
 export class NewstudyTableComponent implements OnInit {
   studies: any[] = []; 
+  editing: boolean = false;
   editingRow: any = null;
   selectedStudies: any[] = [];
   loading: boolean = false;
@@ -236,22 +237,25 @@ export class NewstudyTableComponent implements OnInit {
 // }
 
 onEditRow(study: any): void {
-  this.editingRow = { ...study };
+  // this.editingRow = { ...study };
   study.editing = true; // Setting editing to true for the selected study
+  this.editing = true;
 }
 
 onSaveRow(study: any): void {
   // Saving the changes to the study object
-  this.editingRow = null;
+  // this.editingRow = null;
   study.editing = false; // Setting editing to false after saving
+  this.editing = false;
 }
 
 onCancelRow(study: any, ri: number): void {
-  if (this.editingRow) { // if there's an active edit
-    Object.assign(study, this.editingRow); // Restoring original values
-  }
-  this.editingRow = null;
+  // if (this.editingRow) { // if there's an active edit
+  //   Object.assign(study, this.editingRow); // Restoring original values
+  // }
+  // this.editingRow = null;
   study.editing = false; // Setting editing to false after canceling
+  this.editing = false;
 }
 
 exportExcel() {

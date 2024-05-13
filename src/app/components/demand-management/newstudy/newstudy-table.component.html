@@ -154,7 +154,7 @@
                     <span class="ml-2" *ngIf="study.editing"><i class="bi bi-x" (click)="onCancelRow(study, ri)"></i></span> -->
                     <span class="ml-2"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar()"></i></span>
                 </td>
-                <td [pEditableColumn]="study.sponsor" pEditableColumnField="sponsor">
+                <td [pEditableColumn]="study.sponsor" pEditableColumnField="sponsor" [style.pointer-events]="study.editing ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.sponsor" />
@@ -163,9 +163,9 @@
                             {{ study.sponsor }}
                         </ng-template>
                     </p-cellEditor>
-                    <!-- <div class="item-section"> {{study.sponsor }} </div> -->
+                    <!-- {{ study.sponsor }} -->
                 </td>
-                <td [pEditableColumn]="study.protocol_id" pEditableColumnField="protocol_id">
+                <td [pEditableColumn]="study.protocol_id" pEditableColumnField="protocol_id" [style.pointer-events]="study.editing ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.protocol_id" />
@@ -176,7 +176,7 @@
                     </p-cellEditor>
                     <!-- {{ study.protocol_id }} -->
                 </td>
-                <td [pEditableColumn]="study.countries" pEditableColumnField="countries">
+                <td [pEditableColumn]="study.countries" pEditableColumnField="countries" [style.pointer-events]="study.editing ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.countries" />
@@ -187,7 +187,7 @@
                     </p-cellEditor>
                     <!-- {{ study.countries }} -->
                 </td>
-                <td [pEditableColumn]="study.sites" pEditableColumnField="sites">
+                <td [pEditableColumn]="study.sites" pEditableColumnField="sites" [style.pointer-events]="study.editing ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.sites" />
@@ -198,7 +198,7 @@
                     </p-cellEditor>
                     <!-- {{ study.sites }} -->
                 </td>
-                <td [pEditableColumn]="study.sites_completed" pEditableColumnField="sites_completed">
+                <td [pEditableColumn]="study.sites_completed" pEditableColumnField="sites_completed" [style.pointer-events]="study.editing ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.sites_completed" />
@@ -209,7 +209,7 @@
                     </p-cellEditor>
                     <!-- {{ study.sites_completed }} -->
                 </td>
-                <td [pEditableColumn]="study.subjects_screened" pEditableColumnField="subjects_screened">
+                <td [pEditableColumn]="study.subjects_screened" pEditableColumnField="subjects_screened" [style.pointer-events]="study.editing ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.subjects_screened" />
@@ -220,7 +220,7 @@
                     </p-cellEditor>
                     <!-- {{ study.subjects_screened }} -->
                 </td>
-                <td [pEditableColumn]="study.qty_of_kits_study" pEditableColumnField="qty_of_kits_study">
+                <td [pEditableColumn]="study.qty_of_kits_study" pEditableColumnField="qty_of_kits_study" [style.pointer-events]="study.editing ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.qty_of_kits_study" />
@@ -231,7 +231,7 @@
                     </p-cellEditor>
                     <!-- {{ study.qty_of_kits_study }} -->
                 </td>
-                <td [pEditableColumn]="study.qty_of_kits_initial" pEditableColumnField="qty_of_kits_initial">
+                <td [pEditableColumn]="study.qty_of_kits_initial" pEditableColumnField="qty_of_kits_initial" [style.pointer-events]="study.editing ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.qty_of_kits_initial" />
@@ -242,7 +242,7 @@
                     </p-cellEditor>
                     <!-- {{ study.qty_of_kits_initial }} -->
                 </td>
-                <td [pEditableColumn]="study.visits" pEditableColumnField="visits">
+                <td [pEditableColumn]="study.visits" pEditableColumnField="visits" [style.pointer-events]="study.editing ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.visits" />
@@ -253,7 +253,7 @@
                     </p-cellEditor>
                     <!-- {{ study.visits }} -->
                 </td>
-                <td [style.color]="study['pre_label_y'] === 'Yes' ? 'green' : 'red'" [pEditableColumn]="study.pre_label_y" pEditableColumnField="pre_label_y">
+                <td [style.color]="study['pre_label_y'] === 'Yes' ? 'green' : 'red'" [pEditableColumn]="study.pre_label_y" pEditableColumnField="pre_label_y" [style.pointer-events]="study.editing ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.pre_label_y" />
@@ -264,7 +264,7 @@
                     </p-cellEditor>
                     <!-- {{ study.pre_label_y }} -->
                 </td>
-                <td [pEditableColumn]="study.kit_vendor" pEditableColumnField="kit_vendor">
+                <td [pEditableColumn]="study.kit_vendor" pEditableColumnField="kit_vendor" [style.pointer-events]="study.editing ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.kit_vendor" />
@@ -275,7 +275,7 @@
                     </p-cellEditor>
                     <!-- {{ study.kit_vendor }} -->
                 </td>
-                <td [pEditableColumn]="study.visits" pEditableColumnField="visits">
+                <td [pEditableColumn]="study.date_kit_at_first_site" pEditableColumnField="date_kit_at_first_site" [style.pointer-events]="study.editing ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.date_kit_at_first_site" />
@@ -286,7 +286,7 @@
                     </p-cellEditor>
                     <!-- {{ study.date_kit_at_first_site }} -->
                 </td>
-                <td [pEditableColumn]="study.revenue_gen" pEditableColumnField="revenue_gen">
+                <td [pEditableColumn]="study.revenue_gen" pEditableColumnField="revenue_gen" [style.pointer-events]="study.editing ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input 
