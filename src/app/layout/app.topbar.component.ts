@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from "./service/app.layout.service";
+import { Sidebar } from 'primeng/sidebar';
 
 
 
@@ -13,10 +14,14 @@ export class AppTopBarComponent {
     items!: MenuItem[];
 
     alertRightSideBar :boolean = false;
+    historyRightSideBar :boolean = false;
 
     unreadCommentLength = 0;
     
     allComments = []
+
+    
+    @ViewChild('sidebarRef') sidebarRef!: Sidebar;
 
     @ViewChild('menubutton') menuButton!: ElementRef;
 
@@ -68,5 +73,13 @@ export class AppTopBarComponent {
  hideShowAlertSidebar(){
        this.alertRightSideBar = ! this.alertRightSideBar
      }
+
+     closeCallback(e:any): void {
+      this.sidebarRef.close(e);
+   } 
+
+   hideShowHistorySidebar(){
+    this.historyRightSideBar = !this.historyRightSideBar
+   }
 
 }

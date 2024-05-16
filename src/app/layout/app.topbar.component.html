@@ -31,7 +31,7 @@
         </button>
        
        
-        <button class="p-link layout-topbar-button" [routerLink]="'/documentation'">
+        <button class="p-link layout-topbar-button" [routerLink]="'/documentation'"  (click)="hideShowHistorySidebar()" >
            
             <i style="color: white;" class="bi-clock-history"></i>
             <span>Settings</span>
@@ -56,3 +56,26 @@
 <div *ngIf="alertRightSideBar" class="item-detail-right-sidebar">
     <app-msg-right-sidebar [allComments]="allComments" [unreadCommentLength] = "unreadCommentLength" ></app-msg-right-sidebar>
 </div>
+
+<!-- Data Update History right sidebar -->
+
+<p-sidebar  #sidebarRef  [(visible)]="historyRightSideBar" position="right" styleClass="p-sidebar-lg">
+    <ng-template pTemplate="headless"  >
+      <div class="flex justify-content-between ml-3 mt-4">
+        <div>
+          <p class="alert-sidebar-header"> Data Update History</p>
+        </div> 
+        <span>
+            <i class="bi bi-calendar3 mx-4" style="font-size: 25px;"></i>
+            <i class="bi bi-filter mx-4" style="font-size: 25px;"></i>
+          <p-button  type="button" (click)="closeCallback($event)" icon="pi pi-times text-3xl" [rounded]="true" [text]="true" severity="secondary "></p-button>
+        </span>
+      </div>
+
+      <div class="m-4">
+          <app-vertical-stepper></app-vertical-stepper>
+      </div>
+      
+        
+    </ng-template>
+  </p-sidebar>
