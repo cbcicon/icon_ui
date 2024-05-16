@@ -1,0 +1,339 @@
+<!-- New Study Management Table -->
+<div *ngIf="!showStudyDetailPage">
+    <p-table #dt [value]="studies" [(selection)]="selectedStudies" dataKey="id" editMode="row" [rowHover]="true" [rows]="10"
+             [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading" [paginator]="true"
+             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+             [globalFilterFields]="['sponsor', 'protocol_id', 'countries', 'sites', 'sites_completed', 'subjects_screened', 'qty_of_kits_study', 'qty_of_kits_initial', 'visits', 'pre_label_y', 'kit_vendor', 'date_kit_at_first_site', 'revenue_gen']"
+             styleClass={{selectedSize}} [exportHeader]="'customExportHeader'">
+        <ng-template pTemplate="caption">
+            <div class="table-header d-flex justify-content-between">
+                <div>
+                    <h4> New Study </h4> 
+                </div>
+                <div>
+                    <span class="p-input-icon-left ml-auto">
+                        <span (click)="exportExcel()">
+                            <p-button [text]="true" [plain]="true"> <i class="bi bi-download"></i></p-button>
+                        </span>
+                        <span (click)="handleTableView()">
+                            <p-button [text]="true" icon="pi pi-table" [plain]="true"> </p-button>
+                        </span>
+                        <span (click)="handleAdditionanlColumn()">
+                            <p-button [text]="true" [plain]="true"> <i class="bi bi-layout-three-columns"></i></p-button>
+                        </span>
+                        <p-button [text]="true" [plain]="true"> <i class="bi bi-arrows-angle-expand"></i></p-button>
+                    </span>
+
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="action-item" style="min-width: 5rem">
+                    <div class="flex justify-content-between align-items-center">
+                        Action Item
+                    </div>
+                </th>
+                <th pSortableColumn="sponsor" style="min-width: 12rem">
+                    <div class="flex justify-content-between align-items-center">
+                        Sponsor
+                        <p-columnFilter type="text" field="sponsor" display="menu" class="ml-auto"></p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="protocol_id" style="min-width: 8rem">
+                    <div class="flex justify-content-between align-items-center">
+                        Protocol ID
+                        <p-columnFilter type="text" field="protocol_id" display="menu" class="ml-auto"></p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="countries">
+                    <div class="flex justify-content-between align-items-center">
+                        Countries
+                        <p-columnFilter type="text" field="countries" display="menu" class="ml-auto"></p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="sites">
+                    <div class="flex justify-content-between align-items-center">
+                        Sites
+                        <p-columnFilter type="text" field="sites" display="menu" class="ml-auto"></p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="sites_completed">
+                    <div class="flex justify-content-between align-items-center">
+                        Sites Completed
+                        <p-columnFilter type="text" field="sites_completed" display="menu" class="ml-auto"></p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="subjects_screened">
+                    <div class="flex justify-content-between align-items-center">
+                        Subjects Screened
+                        <p-columnFilter type="text" field="subjects_screened" display="menu" class="ml-auto"></p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="qty_of_kits_study">
+                    <div class="flex justify-content-between align-items-center">
+                        Qty of Kits(Study)
+                        <p-columnFilter type="text" field="qty_of_kits_study" display="menu" class="ml-auto"></p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="qty_of_kits_initial">
+                    <div class="flex justify-content-between align-items-center">
+                        Qty of Kits(Initial)
+                        <p-columnFilter type="text" field="qty_of_kits_initial" display="menu" class="ml-auto"></p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="visits">
+                    <div class="flex justify-content-between align-items-center">
+                        Visits
+                        <p-columnFilter type="text" field="visits" display="menu" class="ml-auto"></p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="pre_label_y">
+                    <div class="flex justify-content-between align-items-center">
+                        Pre-Label
+                        <p-columnFilter type="text" field="pre_label_y" display="menu" class="ml-auto"></p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="kit_vendor">
+                    <div class="flex justify-content-between align-items-center">
+                        Kit Vendor
+                        <p-columnFilter type="text" field="kit_vendor" display="menu" class="ml-auto"></p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="date_kit_at_first_site" style="min-width: 7rem">
+                    <div class="flex justify-content-between align-items-center">
+                        Date Kit at First Site
+                        <p-columnFilter type="text" field="date_kit_at_first_site" display="menu" class="ml-auto"></p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="revenue_gen">
+                    <div class="flex justify-content-between align-items-center">
+                        Revenue Gen
+                        <p-columnFilter type="text" field="revenue_gen" display="menu" class="ml-auto"></p-columnFilter>
+                    </div>
+                </th>
+            </tr>
+
+        </ng-template>
+        <ng-template pTemplate="body" let-study let-ri="rowIndex" let-editing="editing">
+            <tr class="p-selectable-row" [pEditableRow]="study" style="height: 27px;">
+                <td>
+                    <span> <i class="bi bi-eye" (click)="hanldeBelowContent()"></i></span>
+                    <span class="ml-2" *ngIf="!study.editing"><i class="bi bi-pencil" (click)="onEditRow(study)"></i></span>
+                    <!-- <button 
+                        *ngIf="!study.editing" 
+                        pButton 
+                        pRipple 
+                        type="button" 
+                        pInitEditableRow 
+                        icon="bi bi-pencil" 
+                        (click)="onEditRow(study)" 
+                        class="p-button-rounded p-button-text custom-icon">
+                    </button> -->
+                    <div *ngIf="study.editing" class="d-flex align-items-center">
+                        <button 
+                            pButton 
+                            pRipple 
+                            type="button" 
+                            pSaveEditableRow 
+                            icon="pi pi-check" 
+                            (click)="onSaveRow(study)" 
+                            class="p-button-rounded p-button-text p-button-success mr-0">
+                        </button>
+                        <button 
+                            pButton 
+                            pRipple 
+                            type="button" 
+                            pCancelEditableRow 
+                            icon="pi pi-times" 
+                            (click)="onCancelRow(study, ri)" 
+                            class="p-button-rounded p-button-text p-button-danger">
+                        </button> 
+                    </div>
+                    <!-- <span class="ml-2" *ngIf="study.editing"><i class="bi bi-check" (click)="onSaveRow(study)"></i></span>
+                    <span class="ml-2" *ngIf="study.editing"><i class="bi bi-x" (click)="onCancelRow(study, ri)"></i></span> -->
+                    <span class="ml-2"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar()"></i></span>
+                </td>
+                <td [pEditableColumn]="study.sponsor" pEditableColumnField="sponsor" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.sponsor" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.sponsor }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.sponsor }} -->
+                </td>
+                <td [pEditableColumn]="study.protocol_id" pEditableColumnField="protocol_id" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.protocol_id" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.protocol_id }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.protocol_id }} -->
+                </td>
+                <td [pEditableColumn]="study.countries" pEditableColumnField="countries" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.countries" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.countries }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.countries }} -->
+                </td>
+                <td [pEditableColumn]="study.sites" pEditableColumnField="sites" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.sites" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.sites }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.sites }} -->
+                </td>
+                <td [pEditableColumn]="study.sites_completed" pEditableColumnField="sites_completed" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.sites_completed" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.sites_completed }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.sites_completed }} -->
+                </td>
+                <td [pEditableColumn]="study.subjects_screened" pEditableColumnField="subjects_screened" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.subjects_screened" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.subjects_screened }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.subjects_screened }} -->
+                </td>
+                <td [pEditableColumn]="study.qty_of_kits_study" pEditableColumnField="qty_of_kits_study" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.qty_of_kits_study" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.qty_of_kits_study }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.qty_of_kits_study }} -->
+                </td>
+                <td [pEditableColumn]="study.qty_of_kits_initial" pEditableColumnField="qty_of_kits_initial" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.qty_of_kits_initial" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.qty_of_kits_initial }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.qty_of_kits_initial }} -->
+                </td>
+                <td [pEditableColumn]="study.visits" pEditableColumnField="visits" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.visits" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.visits }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.visits }} -->
+                </td>
+                <td [style.color]="study['pre_label_y'] === 'Yes' ? 'green' : 'red'" [pEditableColumn]="study.pre_label_y" pEditableColumnField="pre_label_y" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.pre_label_y" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.pre_label_y }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.pre_label_y }} -->
+                </td>
+                <td [pEditableColumn]="study.kit_vendor" pEditableColumnField="kit_vendor" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.kit_vendor" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.kit_vendor }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.kit_vendor }} -->
+                </td>
+                <td [pEditableColumn]="study.date_kit_at_first_site" pEditableColumnField="date_kit_at_first_site" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.date_kit_at_first_site" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.date_kit_at_first_site }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.date_kit_at_first_site }} -->
+                </td>
+                <td [pEditableColumn]="study.revenue_gen" pEditableColumnField="revenue_gen" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input 
+                                pInputText 
+                                type="text" 
+                                [(ngModel)]="study.revenue_gen" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.revenue_gen }}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                
+                <!-- <td>
+					<div class="item-type-icons">
+						<div class="item-type-cheap" style="background-color: rgba(227, 96, 96, 0.325);">
+							<i class="bi bi-exclamation-triangle" style="color: red;"></i>
+						</div>
+						<div class="item-type-cheap" style="background-color: #D1E9F6;">
+							<i class="bi bi-thermometer-snow" style="color:#1790D0;"></i>
+						</div>
+						<div class="item-type-cheap" style="background-color: #D4FCFC;">
+							<i class="bi bi-hourglass" style="color: #004750;"></i>
+						</div>
+						<div class="item-type-cheap" style="background-color :#B3C8CB;">
+							<i class="bi bi-box-seam" style="color: #004750;"></i>
+						</div>
+
+					</div>
+
+				</td> -->
+            </tr>
+            
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="8">No Data found.</td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+
+</div>
+
+<!-- Table below content  -->
+<div class="card" style="min-height: 500px;">
+	<div *ngIf="showDetailContent">
+		<app-study-detail-landing></app-study-detail-landing>
+	</div>
+</div>

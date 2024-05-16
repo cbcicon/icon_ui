@@ -22,7 +22,7 @@ export class AppMenuComponent implements OnInit {
                 collapsed: true,
                 items: [
                     { label: 'Forecast', routerLink: ['/demand-management/forecast'] },
-                    { label: 'New Study', routerLink: ['/'] },
+                    { label: 'New Study', routerLink: ['/demand-management/new-study'] },
                     { label: 'Live Study', routerLink: ['/pages/empty'] }
                 ]
             },
