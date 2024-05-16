@@ -9,6 +9,8 @@ import { Sidebar } from 'primeng/sidebar';
 })
 export class RingFenceComponent implements OnInit  {
 
+  chartActive = false;
+
   constructor(private dataService: DataService ) {}
 
    ringFenceData :any
@@ -19,6 +21,9 @@ export class RingFenceComponent implements OnInit  {
    ingredient= false
    chatRightSideBar = false
 
+   data:any;
+   options:any;
+
    @ViewChild('sidebarRef') sidebarRef!: Sidebar;
    
 
@@ -27,9 +32,39 @@ export class RingFenceComponent implements OnInit  {
     setTimeout(() => {
       this.loading =  false
     },1000)
+
+    const documentStyle = getComputedStyle(document.documentElement);
+  const textColor = documentStyle.getPropertyValue('--text-color');
+
+    this.data = {
+      labels: ['A', 'B', 'C'],
+      datasets: [
+          {
+              data: [540, 325, 702],
+              backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
+              hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
+          }
+      ]
+  };
+
+  this.options = { 
+
+      plugins: {
+          legend: {
+            position: 'bottom' ,
+            align: 'start' ,
+              labels: {
+                  usePointStyle: true,
+                  color: textColor
+                },
+             direction: 'vertical'
+          } 
+      }
+  };
+
   }
 
-  commentText:string = ''
+commentText:string = ''
 
 
 states: any[] = [
@@ -57,6 +92,9 @@ handleLockUnlockShow(){
 
 }
 
+handleChartShow(){
+  this.chartActive = false
+}
 
 handleChatRightSidebar(){
   this.chatRightSideBar = !this.chatRightSideBar
@@ -69,6 +107,10 @@ postComment(){
 
 closeCallback(e:any): void {
   this.sidebarRef.close(e);
+}
+
+hideShowChart(){
+  this.chartActive = !this.chartActive
 }
 
 }

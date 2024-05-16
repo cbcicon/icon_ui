@@ -1,0 +1,21 @@
+.container {
+  position: relative;
+  display: inline-block;
+  margin-right: 20px; /* Adjust as needed */
+  margin-bottom: 20px;
+}
+
+.box {
+  background: #F0F0F0;
+  border-radius: 10px;
+  width: 503px;
+  height: 171px;
+}
+
+.pointer {
+  border: solid 10px transparent;
+  border-right-color: #F0F0F0;
+  position: absolute;
+  margin-top: -130px;
+  margin-left: -20px;
+}

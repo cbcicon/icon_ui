@@ -13,12 +13,16 @@ import { ButtonModule } from 'primeng/button';
 import { TabViewModule } from 'primeng/tabview';
 import { OrderListModule } from 'primeng/orderlist';
 import { AvatarModule } from 'primeng/avatar';
-
+import { ArrowCardComponent } from './arrow-card/arrow-card.component';
+import { TagModule } from 'primeng/tag';
+import { VerticalStepperComponent } from './vertical-stepper/vertical-stepper.component';
 
 @NgModule({
   declarations: [
     BlockTagComponent ,
-    MsgRightSidebarComponent
+    MsgRightSidebarComponent,
+    ArrowCardComponent ,
+    VerticalStepperComponent
   ],
   imports: [
     CommonModule,
@@ -32,9 +36,10 @@ import { AvatarModule } from 'primeng/avatar';
     ButtonModule ,
     TabViewModule,
     OrderListModule ,
-    AvatarModule 
+    AvatarModule  ,
+    TagModule
   ],
-  exports: [BlockTagComponent , MsgRightSidebarComponent],
+  exports: [BlockTagComponent , MsgRightSidebarComponent ,ArrowCardComponent , VerticalStepperComponent],
 })
 export class SharedModule {
   
