@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/c172d5ff-6bf6-423c-81b9-d16261083a05/resourceGroups/ibpdev/providers/Microsoft.Web/sites/ibpdev",
+    "appService.deploySubpath": "dist"
+}
