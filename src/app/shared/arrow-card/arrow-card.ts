@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-arrow-card',
-  templateUrl: './arrow-card.component.html',
-  styleUrls:['./arrow-card.component.scss']
+  templateUrl: './arrow-card.html',
+  styleUrls:['./arrow-card.scss']
 
 })
 export class ArrowCardComponent {}

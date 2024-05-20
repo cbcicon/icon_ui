@@ -3,9 +3,9 @@ import { LazyLoadEvent } from 'primeng/api';
 import { Table, TableLazyLoadEvent } from 'primeng/table';
 import { DataService } from '../data-services/data.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { QauntityBreakdownPopupComponent } from '../popup/qauntity-breakdown-popup/qauntity-breakdown-popup.component';
+import { QauntityBreakdownPopupComponent } from '../popup/qauntity-breakdown-popup/qauntity-breakdown-popup';
 import { Sidebar } from 'primeng/sidebar';
-import { ItemSearchPopupComponent } from '../popup/itemsearchpopup/item-search-popup.component';
+import { ItemSearchPopupComponent } from '../popup/itemsearchpopup/item-search-popup';
 import * as FileSaver from 'file-saver';
 import { DataShortenerService } from '../data-shortener/data-shortener.service';
 
@@ -13,8 +13,8 @@ import { DataShortenerService } from '../data-shortener/data-shortener.service';
 
 @Component({
   selector: 'app-order-table',
-  templateUrl: './order-table.component.html',
-  styleUrl: './order-table.component.scss'
+  templateUrl: './order-table.html',
+  styleUrl: './order-table.scss'
 })
 
 export class OrderTableComponent implements OnInit {
@@ -36,7 +36,7 @@ selectAll: boolean = false;
 selectedCustomers!:any
 
 rowsPerPageOptions:any
-showInfoCard:boolean = false
+
 selectedInterval: string | null = null;
 
 tableHeaderItem = [
@@ -64,7 +64,7 @@ tableHeaderItem = [
   { id: '22', columnName: 'Kit Category', sortableColumn: 'kit_category', active: false }
 ];
 
-showItemDetailPage:boolean = false
+
 
 ref: DynamicDialogRef | undefined;
 
@@ -79,7 +79,6 @@ tableViewOption:boolean = false;
 
 itemData: any= [];
 
-tableView :any;
 setRows: number = 10;
 stockFilterOption:any =[];
 availbiltyFilterOption :any;
@@ -152,124 +151,28 @@ additionalColList = [
 ]
 
 
-constructor(private customerService: DataService  , public dialogService: DialogService , public dataShortenerService:DataShortenerService) {}
+constructor(private invetoryServices: DataService  , public dialogService: DialogService , public dataShortenerService:DataShortenerService) {}
 
 
 ngOnInit() {
     this.loading = true;
 
-    this.customers =  this.customerService.getData()
+    this.customers =  this.invetoryServices.getData()
 
     this.totalRecords =  this.customers.length
 
     setTimeout(() => {
 
-    this.duration = this.customerService.getDuration();
-    this.selectedDuration = this.customerService.getDuration()[1];
+    this.duration = this.invetoryServices.getDuration();
+    this.selectedDuration = this.invetoryServices.getDuration()[1];
     this.loading = false
   }, 2000);
 
   this.rowsPerPageOptions =  this.divideIntoMultiplesOfTen(this.totalRecords)
 
 
-  const documentStyle = getComputedStyle(document.documentElement);
-  const textColor = documentStyle.getPropertyValue('--text-color');
 
-  this.data = {
-      labels: ['A', 'B', 'C'],
-      datasets: [
-          {
-              data: [540, 325, 702],
-              backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
-              hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
-          }
-      ]
-  };
 
-  this.options = {
-
-      plugins: {
-          legend: {
-            position: 'right' ,
-            align: 'center' ,
-              labels: {
-               
-                  usePointStyle: true,
-                  color: textColor
-              }
-          } 
-      }
-  };
-
-  this.itemData = [
-    {
-      "id": "1000",
-      "code": "f230fh0g3",
-      "name": "Bamboo Watch",
-      "description": "Product Description",
-      "image": "bamboo-watch.jpg",
-      "price": 65,
-      "category": "Accessories",
-      "quantity": 24,
-      "inventoryStatus": "INSTOCK",
-      "rating": 5
-    },
-    {
-      "id": "1001",
-      "code": "nvklal433",
-      "name": "Black Watch",
-      "description": "Product Description",
-      "image": "black-watch.jpg",
-      "price": 72,
-      "category": "Accessories",
-      "quantity": 61,
-      "inventoryStatus": "OUTOFSTOCK",
-      "rating": 4
-    },
-    {
-      "id": "1002",
-      "code": "zz21cz3c1",
-      "name": "Blue Band",
-      "description": "Product Description",
-      "image": "blue-band.jpg",
-      "price": 79,
-      "category": "Fitness",
-      "quantity": 2,
-      "inventoryStatus": "LOWSTOCK",
-      "rating": 3
-    },
-    {
-      "id": "1003",
-      "code": "244wgerg2",
-      "name": "Blue T-Shirt",
-      "description": "Product Description",
-      "image": "blue-t-shirt.jpg",
-      "price": 29,
-      "category": "Clothing",
-      "quantity": 25,
-      "inventoryStatus": "INSTOCK",
-      "rating": 5
-    },
-    {
-      "id": "1004",
-      "code": "h456wer53",
-      "name": "Bracelet",
-      "description": "Product Description",
-      "image": "bracelet.jpg",
-      "price": 15,
-      "category": "Accessories",
-      "quantity": 73,
-      "inventoryStatus": "INSTOCK",
-      "rating": 4
-    }
-  ] 
-
-  this.tableView = [
-    { name: 'Normal Grids' },
-    { name: 'Small Grids' },
-    { name: 'Large Grids' },
-   
-];
 
 
 this.stockFilterOption = [
@@ -323,7 +226,7 @@ onSelectAllChange(event: any) {
     const checked = event.checked;
 
     if (checked) {
-        this.selectedCustomers =  this.customerService.getData();
+        this.selectedCustomers =  this.invetoryServices.getData();
         this.selectAll = true;
     } else {
         this.selectedCustomers = [];
@@ -353,25 +256,10 @@ showItemSearch(){
 
 
 
-backToMainPage(){
-  this.showItemDetailPage =  !this.showItemDetailPage ;
-}
-
-
 closeCallback(e:any): void {
     this.sidebarRef.close(e);
 }
 
-
-showContent: boolean = true;
-
-toggleContent() {
-  this.showContent = !this.showContent;
-}
-
-handleInfoCard(){
-  this.showInfoCard = ! this.showInfoCard
-}
 
 
 handleChatRightSidebar(customer:any){
@@ -385,20 +273,6 @@ handleTableView(){
 }
 
 selectedSize:string = 'p-datatable-gridlines p-datatable-striped'
-
-handleTableSize(size:any){
-  
-  if(size === 'Normal Grids'){
-   this.setRows = 10
-   this.selectedSize = 'p-datatable-gridlines p-datatable-striped'
-  }else if(size === 'Small Grids'){
-    this.selectedSize = ' p-datatable-gridlines p-datatable-striped p-datatable-sm'
-    this.setRows = 15
-  }else if(size === 'Large Grids'){
-    this.setRows = 5
-    this.selectedSize = 'p-datatable-gridlines p-datatable-striped p-datatable-lg'
-  }
-}
 
 
 postComment(){
@@ -472,13 +346,13 @@ handleDateShortener(datetype: string): void {
 
   if (this.selectedInterval === datetype) {
     this.selectedInterval = '';
-    this.customers = this.customerService.getData(); 
+    this.customers = this.invetoryServices.getData(); 
     return;
   }
 
   this.selectedInterval = datetype; 
 
-  this.customers = this.customerService.getData();
+  this.customers = this.invetoryServices.getData();
 
   switch (datetype) {
     case 'weekly':

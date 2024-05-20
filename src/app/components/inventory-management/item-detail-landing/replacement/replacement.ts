@@ -3,8 +3,8 @@ import { DataService } from '../../data-services/data.service';
 
 @Component({
   selector: 'app-replacement',
-  templateUrl: './replacement.component.html',
-  styleUrls:['./replacement.component.scss']
+  templateUrl: './replacement.html',
+  styleUrls:['./replacement.scss']
 })
 export class ReplacementComponent {
 
