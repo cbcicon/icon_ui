@@ -4,8 +4,8 @@ import { Sidebar } from 'primeng/sidebar';
 
 @Component({
   selector: 'app-ring-fence',
-  templateUrl: './ring-fence.component.html',
-  styleUrls:['./ring-fence.component.scss']
+  templateUrl: './ring-fence.html',
+  styleUrls:['./ring-fence.scss']
 })
 export class RingFenceComponent implements OnInit  {
 

@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-block-tag',
-  templateUrl: './block-tag.component.html',
-  styleUrls: ['./block-tag.component.scss']
+  templateUrl: './block-tag.html',
+  styleUrls: ['./block-tag.scss']
 })
 export class BlockTagComponent {
   

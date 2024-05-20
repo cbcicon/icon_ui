@@ -3,8 +3,8 @@ import { Sidebar } from 'primeng/sidebar';
 
 @Component({
   selector: 'app-msg-right-sidebar',
-  templateUrl: './msg-right-sidebar.component.html',
-  styleUrls:['./msg-right-sidebar.component.scss']
+  templateUrl: './msg-right-sidebar.html',
+  styleUrls:['./msg-right-sidebar.scss']
 })
 export class MsgRightSidebarComponent {
   
