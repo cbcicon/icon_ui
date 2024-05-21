@@ -5,6 +5,7 @@ import { DataService } from '../data-services/data.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Sidebar } from 'primeng/sidebar';
 import * as FileSaver from 'file-saver';
+import { UtilService} from '../../../common/util';
 
 @Component({
   selector: 'app-newstudy-table',
@@ -17,12 +18,22 @@ export class NewstudyTableComponent implements OnInit {
   editingRow: any = null;
   selectedStudies: any[] = [];
   loading: boolean = false;
+  selectAll: boolean = false;
   showStudyDetailPage: boolean = false;
-  selectedSize: string = 'table-responsive';
   tableViewOption: boolean = false;
   viewAdditionColumn = false;
+  // additionalColList = [];
+  additionalColList = [
+    { name: 'PM Name', field: 'pmName' },
+    { name: 'PM Team', field: 'pmTeam' },
+    { name: 'Setup Specialist Name', field: 'setupSpecialistName' },
+    { name: 'GSC/Inventory Review', field: 'gscInventoryReview' },
+    { name: 'CLW Version #', field: 'clwVersion' },
+    { name: 'CSTR Version #', field: 'cstrVersion' }
+  ];
   showDetailContent = false;
   chatRightSideBar = false;
+  changeExpandButton = false;
 
   tableView: any;
 
@@ -40,10 +51,11 @@ export class NewstudyTableComponent implements OnInit {
 
   itemData: any = [];
 
-  setRows: number = 10;
+  pageSize: any;
+  setRows: any;
   
 
-  constructor(private newstudyService: DataService, public dialogService: DialogService) { }
+  constructor(private util: UtilService,private newstudyService: DataService, public dialogService: DialogService) { }
 
   ngOnInit(): void {
     this.studies = [
@@ -236,6 +248,26 @@ export class NewstudyTableComponent implements OnInit {
 //   }, 1000); // Simulating a delay of 1 second
 // }
 
+onSelectAllChange(event: any) {
+  this.selectedItems = event.checked ? this.additionalColList : [];
+  this.selectAll = event.checked;
+}
+
+selectedItems!: any[];
+  onSelectionChange(event: any) {
+  }
+
+  handleRowControl() {
+    this.setRows = this.setRows == this.util.getPageSize() ? this.studies.length : this.util.getPageSize();
+    this.changeExpandButton = this.setRows == this.util.getPageSize() ? false : true;
+  }
+
+  selectedSize: string = 'p-datatable-gridlines p-datatable-striped'
+
+  handleAdditionanlColumn() {
+    this.viewAdditionColumn = !this.viewAdditionColumn
+  }
+
 onEditRow(study: any): void {
   // this.editingRow = { ...study };
   study.editing = true; // Setting editing to true for the selected study
@@ -278,10 +310,6 @@ saveAsExcelFile(buffer: any, fileName: string): void {
 
 handleTableView() {
   this.tableViewOption = !this.tableViewOption
-}
-
-handleAdditionanlColumn() {
-  this.viewAdditionColumn = !this.viewAdditionColumn
 }
   
 hanldeBelowContent() {
