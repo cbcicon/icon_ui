@@ -15,7 +15,7 @@ export class AppTopBarComponent {
 
     alertRightSideBar :boolean = false;
     historyRightSideBar :boolean = false;
-
+    showToDoList =  false
     unreadCommentLength = 0;
     
     allComments = []
@@ -80,6 +80,10 @@ export class AppTopBarComponent {
 
    hideShowHistorySidebar(){
     this.historyRightSideBar = !this.historyRightSideBar
+   }
+
+   hideShowToDoList(){
+    this.showToDoList = !this.showToDoList
    }
 
 }
