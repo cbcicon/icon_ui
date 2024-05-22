@@ -121,6 +121,15 @@
                         <p-columnFilter type="text" field="revenue_gen" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
+                <ng-container *ngFor="let item of selectedItems">
+					<th pSortableColumn="{{ item.field }}" style="min-width: 10rem">
+						<div class="flex justify-content-between align-items-center">
+							{{ item.name }}
+							<p-columnFilter type="text" field="{{ item.field }}" display="menu" class="ml-auto">
+							</p-columnFilter>
+						</div>
+					</th>
+				</ng-container>
             </tr>
 
         </ng-template>
@@ -327,6 +336,9 @@
 					</div>
 
 				</td> -->
+                <ng-container *ngFor="let item of selectedItems">
+					<td *ngIf="item['field']">{{study[item.field]}}</td>
+				</ng-container>
             </tr>
             
         </ng-template>
@@ -353,6 +365,26 @@
 		[multiple]="true" [checkbox]="true" [showToggleAll]="false" [metaKeySelection]="false" [showToggleAll]="true"
 		(onChange)="onSelectionChange($event)" (onSelectAllChange)="onSelectAllChange($event)"
 		[listStyle]="{ 'max-height': '220px' }"></p-listbox>
+</div>
+
+<!-- chat side bar  -->
+<div class="item-detail-right-sidebar">
+	<p-sidebar [(visible)]="chatRightSideBar" position="right" styleClass="p-sidebar-lg">
+		<ng-template pTemplate="headless">
+			<div class="flex justify-content-between">
+				<div>
+					<span class="sidebar-header">Activity History</span>
+				</div>
+				<div>
+					<span class="sidebar-header">{{selectedStudies.sponsor}}</span>
+				</div>
+				<span>
+					<p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary"
+						(click)="closeCallback($event)"></p-button>
+				</span>
+			</div>
+		</ng-template>
+	</p-sidebar>
 </div>
 
 <!-- Table below content  -->

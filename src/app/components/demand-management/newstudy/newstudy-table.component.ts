@@ -16,13 +16,13 @@ export class NewstudyTableComponent implements OnInit {
   studies: any[] = []; 
   editing: boolean = false;
   editingRow: any = null;
-  selectedStudies: any[] = [];
+  selectedStudies!: any;
   loading: boolean = false;
   selectAll: boolean = false;
   showStudyDetailPage: boolean = false;
   tableViewOption: boolean = false;
   viewAdditionColumn = false;
-  // additionalColList = [];
+  
   additionalColList = [
     { name: 'PM Name', field: 'pmName' },
     { name: 'PM Team', field: 'pmTeam' },
@@ -260,6 +260,10 @@ selectedItems!: any[];
   handleRowControl() {
     this.setRows = this.setRows == this.util.getPageSize() ? this.studies.length : this.util.getPageSize();
     this.changeExpandButton = this.setRows == this.util.getPageSize() ? false : true;
+  }
+
+  closeCallback(e: any): void {
+    this.sidebarRef.close(e);
   }
 
   selectedSize: string = 'p-datatable-gridlines p-datatable-striped'
