@@ -1,0 +1,32 @@
+
+
+<div class="row main-container">
+
+    <div class="col-md-2">
+    <div class="d-flex justify-content-between mt-3">
+     <div><p class="custom-icon-size"><i  class="bi bi-inboxes " ></i> Todo List</p></div>
+     <div><span class="mx-4"><i class="bi bi-flag custom-icon-size  "></i></span> <span> <i class="bi bi-filter custom-icon-size "></i></span></div>
+    </div>
+        <p-divider />
+    <ul class="option-list">
+    <li *ngFor="let item of items"  [class.active]="item === activeItem" (click)="selectItem(item)">
+        <i [class]="item.icon" ></i> <span class="mx-4"> {{ item.name }}</span> 
+    </li>
+  </ul>
+
+</div>
+
+<div class="col-md-10">
+
+     <h4 class="text-left m-4">New Study</h4>
+
+    <div [ngSwitch]="activeItem.name">
+        <div *ngSwitchCase="'Move Stock'" class="mr-4"> <app-move-stock-item></app-move-stock-item>  </div>
+        <div *ngSwitchCase="'Create PO'"><h1> Create PO</h1>  </div>
+        <div *ngSwitchCase="'Need Replacement'"><h1>Need Replacement</h1></div>
+        <div *ngSwitchCase="'Review Excess Stock'"> <h1>Review Excess Stock</h1></div>
+      </div>
+
+</div>
+
+</div>

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppLayoutComponent } from './layout/app.layout.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { ToDoListComponent } from './layout/to-do-list/to-do-list';
 
 const routes: Routes = [
   
@@ -13,10 +14,10 @@ const routes: Routes = [
             { path: 'pages', loadChildren: () => import('./components/pages/pages.module').then(m => m.PagesModule) } ,
             { path: 'demand-management', loadChildren: () => import('./components/demand-management/demand-management.module').then(m => m.DemandManagementModule) },
             { path: 'inventory-management', loadChildren: () => import('./components//inventory-management/inventory-management.module').then(m => m.InventoryManagementModule) },
+            { path: 'to-do-list', component: ToDoListComponent },
         
         ]
     },
-  
     { path: 'notfound', component: NotfoundComponent },
     { path: '**', redirectTo: '/notfound' },
 

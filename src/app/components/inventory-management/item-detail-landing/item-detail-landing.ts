@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-item-detail-landing',
-  templateUrl: './item-detail-landing.component.html',
-  styleUrls:['./item-detail-landing.component.scss']
+  templateUrl: './item-detail-landing.html',
+  styleUrls:['./item-detail-landing.scss']
 })
 export class ItemDetailLandingComponent {
 

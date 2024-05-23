@@ -3,8 +3,8 @@ import { DataService } from '../../data-services/data.service';
 
 @Component({
   selector: 'app-stock-and-scrap',
-  templateUrl: './stock-and-scrap.component.html',
-  styleUrls:['./stock-and-scrap.component.scss']
+  templateUrl: './stock-and-scrap.html',
+  styleUrls:['./stock-and-scrap.scss']
 })
 export class StockAndScrapComponent {
 

@@ -23,7 +23,8 @@ import { ButtonModule } from 'primeng/button';
 import { OrderListModule } from 'primeng/orderlist';
 import { AvatarModule } from 'primeng/avatar';
 import { SharedModule } from '../shared/shared.module';
-
+import { ToDoListComponent } from './to-do-list/to-do-list';
+import { ListboxModule } from 'primeng/listbox';
 
 @NgModule({
     declarations: [
@@ -32,6 +33,7 @@ import { SharedModule } from '../shared/shared.module';
         AppMenuComponent,
         AppSidebarComponent,
         AppLayoutComponent,
+        ToDoListComponent
     ],
     imports: [
         BrowserModule,
@@ -50,7 +52,8 @@ import { SharedModule } from '../shared/shared.module';
         TabViewModule,
         OrderListModule ,
         AvatarModule ,
-        SharedModule
+        SharedModule,
+        ListboxModule
     ],
     exports: [AppLayoutComponent ]
 })

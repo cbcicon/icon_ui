@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { BlockTagComponent } from './block-tag/block-tag.component';
-import { MsgRightSidebarComponent } from './msg-right-sidebar/msg-right-sidebar.component';
+import { BlockTagComponent } from './block-tag/block-tag';
+import { MsgRightSidebarComponent } from './msg-right-sidebar/msg-right-sidebar';
 import { SidebarModule } from 'primeng/sidebar';
 import { BadgeModule } from 'primeng/badge';
 import { RadioButtonModule } from 'primeng/radiobutton';
@@ -13,16 +13,18 @@ import { ButtonModule } from 'primeng/button';
 import { TabViewModule } from 'primeng/tabview';
 import { OrderListModule } from 'primeng/orderlist';
 import { AvatarModule } from 'primeng/avatar';
-import { ArrowCardComponent } from './arrow-card/arrow-card.component';
+import { ArrowCardComponent } from './arrow-card/arrow-card';
 import { TagModule } from 'primeng/tag';
-import { VerticalStepperComponent } from './vertical-stepper/vertical-stepper.component';
+import { VerticalStepperComponent } from './vertical-stepper/vertical-stepper';
+import { MoveStockItemComponent } from './move-stock-item/move-stock-item';
 
 @NgModule({
   declarations: [
     BlockTagComponent ,
     MsgRightSidebarComponent,
     ArrowCardComponent ,
-    VerticalStepperComponent
+    VerticalStepperComponent ,
+    MoveStockItemComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +41,7 @@ import { VerticalStepperComponent } from './vertical-stepper/vertical-stepper.co
     AvatarModule  ,
     TagModule
   ],
-  exports: [BlockTagComponent , MsgRightSidebarComponent ,ArrowCardComponent , VerticalStepperComponent],
+  exports: [BlockTagComponent , MsgRightSidebarComponent ,ArrowCardComponent , VerticalStepperComponent ,MoveStockItemComponent],
 })
 export class SharedModule {
   

@@ -1,77 +1,5 @@
-<!-- cards on above to dashboard -->
-
-<div class="grid mb-3" *ngIf="showInfoCard">
-	<div class="col-12 lg:col-6 xl:col-3">
-		<div class="card mb-0">
-			<div class="flex justify-content-between mb-3">
-				<div>
-					<span class="block text-500 font-medium mb-3">Orders</span>
-					<div class="text-900 font-medium text-xl">152</div>
-				</div>
-				<div class="flex align-items-center justify-content-center  border-round"
-					[ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-					<i class="pi pi-shopping-cart"></i>
-				</div>
-			</div>
-			<span class="text-green-500 font-medium">24 new </span>
-			<span class="text-500">since last visit</span>
-		</div>
-	</div>
-	<div class="col-12 lg:col-6 xl:col-3">
-		<div class="card mb-0">
-			<div class="flex justify-content-between mb-3">
-				<div>
-					<span class="block text-500 font-medium mb-3">Orders</span>
-					<div class="text-900 font-medium text-xl">152</div>
-				</div>
-				<div class="flex align-items-center justify-content-center  border-round"
-					[ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-					<i class="pi pi-shopping-cart"></i>
-				</div>
-			</div>
-			<span class="text-green-500 font-medium">24 new </span>
-			<span class="text-500">since last visit</span>
-		</div>
-	</div>
-	<div class="col-12 lg:col-6 xl:col-3">
-		<div class="card mb-0">
-			<div class="flex justify-content-between mb-3">
-				<div>
-					<span class="block text-500 font-medium mb-3">Orders</span>
-					<div class="text-900 font-medium text-xl">152</div>
-				</div>
-				<div class="flex align-items-center justify-content-center  border-round"
-					[ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-					<i class="pi pi-shopping-cart"></i>
-				</div>
-			</div>
-			<span class="text-green-500 font-medium">24 new </span>
-			<span class="text-500">since last visit</span>
-		</div>
-	</div>
-	<div class="col-12 lg:col-6 xl:col-3">
-		<div class="card mb-0">
-			<div class="flex justify-content-between mb-3">
-				<div>
-					<span class="block text-500 font-medium mb-3">Orders</span>
-					<div class="text-900 font-medium text-xl">152</div>
-				</div>
-				<div class="flex align-items-center justify-content-center  border-round"
-					[ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-					<i class="pi pi-shopping-cart"></i>
-				</div>
-			</div>
-			<span class="text-green-500 font-medium">24 new </span>
-			<span class="text-500">since last visit</span>
-		</div>
-	</div>
-
-</div>
-
 <!-- Inventory table -->
-
-<div *ngIf="!showItemDetailPage">
-
+<div>
 	<p-table #dt [value]="customers" [(selection)]="selectedCustomers" dataKey="id" [rowHover]="true"
 		[rows]="controlRow" [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading"
 		[paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -259,20 +187,6 @@
 
 </div>
 
-<!-- table view menu -->
-<div class="table-view">
-	<p-listbox *ngIf="tableViewOption" [options]="tableView" optionLabel="name" [style]="{'width':'15rem'}"
-		[metaKeySelection]="false" [listStyle]="{'max-height': '220px'}">
-
-		<ng-template let-data pTemplate="item">
-			<div class="flex align-items-center gap-2" (click)="handleTableSize(data.name)">
-				<div>{{ data.name }}</div>
-			</div>
-		</ng-template>
-	</p-listbox>
-
-</div>
-
 <!-- table add column -->
 <div class="addition-col-menu">
 	<p-listbox *ngIf="viewAdditionColumn" [options]="additionalColList" [(ngModel)]="selectedItems"
@@ -281,123 +195,6 @@
 		[metaKeySelection]="false" [showToggleAll]="true" (onChange)="addedColumnConfig($event)"
 		[listStyle]="{ 'max-height': '220px' }"></p-listbox>
 </div>
-
-<!-- order detail page navigation  -->
-
-<div *ngIf="showItemDetailPage">
-	<app-item-details (goToOrderTable)="backToMainPage()"> </app-item-details>
-
-</div>
-
-
-<!-- right sidebar  -->
-
-<div class="item-detail-right-sidebar">
-	<p-sidebar [(visible)]="rightSideBar" position="right" styleClass="p-sidebar-lg">
-		<ng-template pTemplate="headless">
-			<div class="flex justify-content-between">
-				<div>
-					<span class="sidebar-header">Ring Fence</span>
-					<p class="sidebar-header-id">ID: 01-213-100-Z</p>
-				</div>
-				<span>
-					<p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary"
-						(click)="closeCallback($event)"></p-button>
-				</span>
-			</div>
-
-
-			<div class="container">
-				<div class="flex justify-content-between">
-					<div>
-						<span class="item-detail-box-header">Item Details</span>
-						<p>Kit Box Small 9x5x2.5 (with Sealing Strip)</p>
-					</div>
-					<button (click)="toggleContent()" class="toggle-button">
-						<i class="pi" [ngClass]="{'pi-chevron-down': !showContent, 'pi-chevron-up': showContent}"></i>
-					</button>
-				</div>
-				<div class="content" *ngIf="showContent">
-					<div class="row">
-						<div class="col-3">
-							<p class="text-center"> 4</p>
-						</div>
-						<div class="col-3">
-							<p class="text-center"> 4</p>
-						</div>
-						<div class="col-3">
-							<p class="text-center"> 4</p>
-						</div>
-						<div class="col-3">
-							<p class="text-center"> 4</p>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-3">
-							<p class="text-center"> 4</p>
-						</div>
-						<div class="col-3">
-							<p class="text-center"> 4</p>
-						</div>
-						<div class="col-3">
-							<p class="text-center"> 4</p>
-						</div>
-						<div class="col-3">
-							<p class="text-center"> 4</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-3">
-							<p class="text-center"> 4</p>
-						</div>
-						<div class="col-3">
-							<p class="text-center"> 4</p>
-						</div>
-						<div class="col-3">
-							<p class="text-center"> 4</p>
-						</div>
-						<div class="col-3">
-							<p class="text-center"> 4</p>
-						</div>
-					</div>
-					<div class="mt-3">
-						<span> <b>Sponsor Details</b></span>
-						<p>Mitsubishi Tanabe Pharma</p>
-					</div>
-
-				</div>
-
-				<div class="report-card">
-					<p-chart type="pie" [data]="data" [options]="options" class="chart-container"></p-chart>
-				</div>
-
-				<div class="card">
-
-					<p-table [value]="itemData" [tableStyle]="{ 'min-width': '50rem' }">
-						<ng-template pTemplate="header">
-							<tr>
-								<th>Code</th>
-								<th>Name</th>
-								<th>Category</th>
-							</tr>
-						</ng-template>
-						<ng-template pTemplate="body" let-itemData>
-							<tr>
-								<td>{{ itemData.code }}</td>
-								<td>{{ itemData.name }}</td>
-								<td>{{ itemData.category }}</td>
-							</tr>
-						</ng-template>
-					</p-table>
-				</div>
-			</div>
-
-		</ng-template>
-	</p-sidebar>
-</div>
-
-
 
 <!-- chat side bar  -->
 
@@ -409,7 +206,7 @@
 					<p class="chat-sidebar-header">Activity History</p>
 				</div>
 				<span>
-					<p-button  type="button" (click)="closeCallback($event)" icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary"></p-button>
+					<p-button  type="button" (click)="closeCallback($event)" icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary "></p-button>
 				</span>
 			</div>
 

@@ -25,7 +25,7 @@
         </button>
        
 
-        <button class="p-link layout-topbar-button">
+        <button class="p-link layout-topbar-button"  [routerLink]="'/to-do-list'">
             <i style="color: white;" class="bi bi-inboxes"> </i>
             <span>Calendar</span>
         </button>
@@ -68,7 +68,7 @@
         <span>
             <i class="bi bi-calendar3 mx-4" style="font-size: 25px;"></i>
             <i class="bi bi-filter mx-4" style="font-size: 25px;"></i>
-          <p-button  type="button" (click)="closeCallback($event)" icon="pi pi-times text-3xl" [rounded]="true" [text]="true" severity="secondary"></p-button>
+          <p-button  type="button" (click)="closeCallback($event)" icon="pi pi-times text-3xl" [rounded]="true" [text]="true" severity="secondary "></p-button>
         </span>
       </div>
 
@@ -79,3 +79,4 @@
         
     </ng-template>
   </p-sidebar>
+
