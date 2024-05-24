@@ -1,6 +1,6 @@
 <!-- New Study Management Table -->
 <div *ngIf="!showStudyDetailPage">
-    <p-table #dt [value]="studies" [(selection)]="selectedStudies" dataKey="id" editMode="row" [rowHover]="true" [rows]="10"
+    <p-table #dt [value]="studies" [(selection)]="selectedStudies" dataKey="id" editMode="row" [rowHover]="true" [rows]="setRows"
              [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading" [paginator]="true"
              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
              [globalFilterFields]="['sponsor', 'protocol_id', 'countries', 'sites', 'sites_completed', 'subjects_screened', 'qty_of_kits_study', 'qty_of_kits_initial', 'visits', 'pre_label_y', 'kit_vendor', 'date_kit_at_first_site', 'revenue_gen']"

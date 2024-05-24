@@ -23,6 +23,8 @@ export class NewstudyTableComponent implements OnInit {
   showStudyDetailPage: boolean = false;
   tableViewOption: boolean = false;
   viewAdditionColumn = false;
+  pageSize: any;
+  setRows: any;
   
   additionalColList = [
     { name: 'PM Name', field: 'pmName' },
@@ -54,8 +56,6 @@ export class NewstudyTableComponent implements OnInit {
   @Input() allComments:any;
   @Input() unreadCommentLength:any;
   alertRightSideBar = true;
-  pageSize: any;
-  setRows: any;
   changcontrolRoweExpandButton = false;
   showInfoCard: boolean = false;
   commentText: string = '';
@@ -401,14 +401,8 @@ export class NewstudyTableComponent implements OnInit {
       study.editing = false;
     });
 
-  //   this.studyData = this.studies.map(study => ({
-  //     sponsor: study.sponsor,
-  //     protocol_id: study.protocol_id
-  // }));
-
-
-    this.setRows = this.util.getPageSize(); // Initialize with the default page size
-    this.changeExpandButton = false; // Initialize with the collapsed state
+    this.setRows = this.util.getPageSize(); // Initializing with the default page size
+     //this.changeExpandButton = false; // Initializing with the collapsed state
 }
 
 // loadStudiesLazy(event: TableLazyLoadEvent) {
@@ -442,11 +436,6 @@ selectedItems!: any[];
     this.changeExpandButton = this.setRows == this.util.getPageSize() ? false : true;
   }
 
-  // handleRowControl() {
-  //   const pageSize = this.util.getPageSize();
-  //   this.setRows = this.setRows === pageSize ? this.studies.length : pageSize;
-  //   this.changeExpandButton = this.setRows === pageSize ? true : false;
-  // }
 
   closeCallback(e: any): void {
     this.sidebarRef.close(e);
