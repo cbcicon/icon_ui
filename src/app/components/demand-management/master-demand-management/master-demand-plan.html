@@ -1,6 +1,49 @@
 <!-- master demand plan table -->
 
-<div >
+
+
+<div class="card" >
+
+	<ng-template pTemplate="caption">
+		<div class="table-header d-flex justify-content-between">
+			<div>
+				<div class="filter-sm-circle-btn" (click)="handleDateShortener('yearly')"
+					[class.selected]="selectedInterval === 'yearly'">Y</div>
+				<div class="filter-sm-circle-btn" (click)="handleDateShortener('half-yearly')"
+					[class.selected]="selectedInterval === 'half-yearly'">H</div>
+				<div class="filter-sm-circle-btn" (click)="handleDateShortener('quarterly')"
+					[class.selected]="selectedInterval === 'quarterly'">Q</div>
+				<div class="filter-sm-circle-btn" (click)="handleDateShortener('monthly')"
+					[class.selected]="selectedInterval === 'monthly'">M</div>
+			
+			</div>
+			<div>
+				<h4>Master Demand Plan</h4>
+			</div>
+			<div>
+				<span class="p-input-icon-left ml-auto">
+					<span (click)="exportExcel()">
+						<p-button [text]="true" [plain]="true"> <i class="bi bi-download"></i></p-button>
+					</span>
+				
+					<span (click)="handleAdditionanlColumn()">
+						<p-button [text]="true" [plain]="true"> <i
+								class="bi bi-layout-three-columns"></i></p-button>
+					</span>
+					<span (click)="handleRowControl()">
+						<p-button [text]="true" [plain]="true">
+							<i class="bi bi-arrows-angle-expand" *ngIf="changeExpandButton; else collapseIcon"></i>
+							<ng-template #collapseIcon>
+								<i class="bi bi-arrows-angle-contract"></i>
+							</ng-template>
+						</p-button>
+					</span>
+				</span>
+
+			</div>
+		</div>
+	</ng-template>
+
 	<p-table #dt 
 	[value]="mdpData"  
 	dataKey="id" 
@@ -179,58 +222,58 @@
 					</button>
 			
 				</td>       
-				<td>
-					{{ mdpData["productionLocation"] }}
+				<td (click)="openLocationDetail()"  >
+					<u style="color: #128474;" >{{ mdpData["productionLocation"] }}</u>
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["quantity"] }}
-				</td>
-				<td>
+				</td >
+				<td   class="text-right pr-4" >
 					{{ mdpData["price"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["discounted_price"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["discount_percentage"] }}
 				</td>
 
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["quantity1"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["price1"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["discounted_price1"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["discount_percentage1"] }}
 				</td>
 
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["quantity2"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["price2"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["discounted_price2"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["discount_percentage2"] }}
 				</td>
 
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["quantity3"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["price3"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["discounted_price3"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["discount_percentage3"] }}
 				</td>
 				
@@ -244,58 +287,58 @@
 					
 				</td>
 
-				<td>
-				 <a (click)="openLocationDetail()">{{ mdpData["productionLocation"] }}</a>	
+				<td  (click)="openLocationDetail()" >
+					<u style="color: #128474;" >{{ mdpData["productionLocation"] }}</u>
 				</td>
-				<td>
+				<td  class="text-right pr-4">
 					{{ mdpData["quantity"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["price"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["discounted_price"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["discount_percentage"] }}
 				</td>
 
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["quantity1"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["price1"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["discounted_price1"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["discount_percentage1"] }}
 				</td>
 
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["quantity2"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["price2"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["discounted_price2"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["discount_percentage2"] }}
 				</td>
 
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["quantity3"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["price3"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["discounted_price3"] }}
 				</td>
-				<td>
+				<td   class="text-right pr-4">
 					{{ mdpData["discount_percentage3"] }}
 				</td>
 
@@ -316,7 +359,319 @@
 
 
 <div class="card mt-2" *ngIf="showLocationDetail">
+	<p-table #dt [value]="productionLocationDetailsData"  dataKey="id" [rowHover]="true"
+	[rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,20,30]" [loading]="loading"
+	[paginator]="false" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+	[filterDelay]="0"
+	[tableStyle]="{'width': '500px'}"
+	styleClass=" p-datatable-gridlines p-datatable-striped p-datatable-sm" rowGroupMode="rowspan" groupRowsBy="name"
+	>
 
-	<h1>hello rak</h1>
+	
+		<ng-template pTemplate="header">
+			<tr>
+				
+				<th rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+						Production
+						Location
+					</div>
+				  </th>
+
+				  <th  rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+						Total Kit Capacity / Month
+					</div>
+				  </th>
+
+				  
+				  <th  rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+						Allotted Capacity / Month
+					</div>
+				  </th>
+
+				  <th  rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+						Sponsor
+					</div>
+				  </th>
+
+
+				  
+				  <th pSortableColumn="jan" colspan="6">
+					<div class="text-center">
+						Kit Complexity
+					</div>
+				  </th>
+				
+
+
+			</tr>
+
+			<tr>
+				<th class="text-center">level 1</th>
+			    <th class="text-center">level 2</th>
+				<th class="text-center">level 3</th>
+				<th class="text-center">level 4</th>
+				<th class="text-center">level 5</th>
+				<th class="text-center">level 6</th>
+
+			  </tr>
+
+
+		</ng-template>
+
+		<ng-template pTemplate="caption">
+		
+				<div class="d-flex justify-content-end">
+				        
+					<div   class="">
+					 <p class="mt-3 mr-4"><b>Unit</b></p>
+					</div>
+
+					<div  class="mx-3">
+		
+						<p-selectButton [options]="stateOptions" [(ngModel)]="value" optionLabel="label" optionValue="value" />
+				
+					</div>
+					
+					<div   class="mx-3">
+					
+						<input pInputText type="date" [(ngModel)]="enteredDate" (input)="dt.filterGlobal($any($event.target).value, 'contains')"  />
+					
+					</div>
+					
+					<div   class="mx-3">
+						<span (click)="handleRowControl()">
+							<p-button [text]="true" [plain]="true">
+								<i class="bi bi-arrows-angle-expand" *ngIf="changeExpandButton; else collapseIcon"></i>
+								<ng-template #collapseIcon>
+									<i class="bi bi-arrows-angle-contract"></i>
+								</ng-template>
+							</p-button>
+						</span>
+					</div>
+
+                </div>
+				
+		</ng-template>
+
+		<ng-template pTemplate="body" let-productionLocationDetailsData  let-rowgroup="rowgroup" let-rowspan="rowspan">
+			<tr class="p-selectable-row">
+			  
+			 <td  *ngIf="rowgroup" [attr.rowspan]="rowspan"  >
+				
+				<u style="color: #128474;" (click)="openAdvanceLocationDetail()" >{{productionLocationDetailsData["name"]}}</u>
+			 </td>   
+
+			 <td   class="text-right pr-4" >{{productionLocationDetailsData.total_kit_capacity_per_month}}</td>
+			 <td   class="text-right pr-4" >{{productionLocationDetailsData.allotted_capacity_per_month}}</td>
+			 <td   >{{productionLocationDetailsData.sponsor}}</td>
+			 <td   class="text-right pr-4" >{{productionLocationDetailsData.level_1}}</td>
+			 <td   class="text-right pr-4" >{{productionLocationDetailsData.level_2}}</td>
+			 <td   class="text-right pr-4" >{{productionLocationDetailsData.level_3}}</td>
+			 <td   class="text-right pr-4" >{{productionLocationDetailsData.level_4}}</td>
+			 <td   class="text-right pr-4" >{{productionLocationDetailsData.level_5}}</td>
+			 <td   class="text-right pr-4" >{{productionLocationDetailsData.level_6}}</td>
+
+
+			</tr>
+		
+		  </ng-template>
+	
+		<ng-template pTemplate="emptymessage">
+			<tr>
+				<td colspan="8">No Data found.</td>
+			</tr>
+		</ng-template>
+
+	</p-table>
+
+
+</div>
+
+<!-- Each section location detail page  -->
+
+<div class="card mt-2" *ngIf="showAdditionalDetail">
+	<p-table #dt [value]="advanceLocationDetail"  dataKey="id" [rowHover]="true"
+	[rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,20,30]" [loading]="loading"
+	[paginator]="false" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+	[filterDelay]="0"
+	[tableStyle]="{'width': '100vw'}"
+	styleClass=" p-datatable-gridlines p-datatable-striped p-datatable-sm" 
+	>
+
+	
+		<ng-template pTemplate="header">
+			<tr>
+				
+				<th rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+						Production
+						Location
+					</div>
+				  </th>
+
+				  <th  rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+						Sponsor
+					</div>
+				  </th>
+
+				  
+				  <th  rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+						Protocol
+					</div>
+				  </th>
+
+				  <th  rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+						Demand Type
+					</div>
+				  </th>
+
+				  <th  rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+						Demand (Kits)
+					</div>
+				  </th>
+
+
+				  <th  rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+						Cohort
+					</div>
+				  </th>
+				  <th  rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+						Visit
+					</div>
+				  </th>
+
+				  <th  rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+						Kit Name
+					</div>
+				  </th>
+
+
+				  <th  rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+						Fulfillment Rate
+					</div>
+				  </th>
+
+				  
+				  <th  rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+						Inventory Status
+					</div>
+				  </th>
+
+
+				  
+				  <th  colspan="6">
+					<div class="text-center">
+						Kit Complexity
+					</div>
+				  </th>
+
+			</tr>
+
+			<tr>
+				<th class="text-center">level 1</th>
+			    <th class="text-center">level 2</th>
+				<th class="text-center">level 3</th>
+				<th class="text-center">level 4</th>
+				<th class="text-center">level 5</th>
+				<th class="text-center">level 6</th>
+
+			  </tr>
+
+
+		</ng-template>
+
+		<ng-template pTemplate="caption">
+		
+			<div class="row">
+
+					<div class="col-md-3"><button type="button" (click)="openLocationDetail()" class="btn btn-success"><i class="bi bi-arrow-left" style="color: white;"></i> Back</button> </div>
+				        
+				    <div class="col-md-9 flex justify-content-end">
+					<div>
+					 <p class="mt-3 mr-4"><b>Unit</b></p>
+					</div>
+
+					<div  class="mx-3">
+		
+						<p-selectButton [options]="stateOptions" [(ngModel)]="value" optionLabel="label" optionValue="value" />
+				
+					</div>
+					
+					<div   class="mx-3">
+					
+						<input pInputText type="date" [(ngModel)]="enteredDate" (input)="dt.filterGlobal($any($event.target).value, 'contains')"  />
+					
+					</div>
+
+					<div class="mx-3">
+						<i class="bi bi-filter" style="font-size: 20px;"></i>
+					</div>
+				
+					<div class="mx-3">
+						<span (click)="handleRowControl()">
+							<p-button [text]="true" [plain]="true">
+								<i class="bi bi-arrows-angle-expand" *ngIf="changeExpandButton; else collapseIcon"></i>
+								<ng-template #collapseIcon>
+									<i class="bi bi-arrows-angle-contract"></i>
+								</ng-template>
+							</p-button>
+						</span>
+					</div>
+
+				</div>
+         </div>
+				
+		</ng-template>
+
+		<ng-template pTemplate="body" let-advanceLocationDetail  let-rowspan="rowspan">
+			<tr class="p-selectable-row">
+			  
+			 <td >
+
+				<u style="color: #128474;" >{{advanceLocationDetail["Location"]}}</u>
+			 </td>   
+			
+			 <td   class="text-right pr-4" >{{advanceLocationDetail["Sponsor"]}}</td>
+			 <td   class="text-right pr-4" >{{advanceLocationDetail["Protocol"]}}</td>
+			 <td   class="text-right pr-4" >{{advanceLocationDetail["Demand_Type"]}}</td>
+			 <td   class="text-right pr-4" >{{advanceLocationDetail["Demand_Kits"]}}</td>
+			 <td   class="text-right pr-4" >{{advanceLocationDetail["Cohort"]}}</td>
+			 <td   class="text-right pr-4" >{{advanceLocationDetail["Visit"]}}</td>
+			 <td   class="text-right pr-4" >{{advanceLocationDetail["Kit_Name"]}}</td>
+			 <td   class="text-right pr-4" >{{advanceLocationDetail["Inventory_Rate"]}}</td>
+			 <td   class="text-right pr-4" >{{advanceLocationDetail["Fulfillment_Status"]}}</td>
+			 <td   class="text-right pr-4" >{{advanceLocationDetail["Level_1"]}}</td>
+			 <td   class="text-right pr-4" >{{advanceLocationDetail["Level_2"]}}</td>
+			 <td   class="text-right pr-4" >{{advanceLocationDetail["Level_3"]}}</td>
+			 <td   class="text-right pr-4" >{{advanceLocationDetail["Level_4"]}}</td>
+			 <td   class="text-right pr-4" >{{advanceLocationDetail["Level_5"]}}</td>
+			 <td   class="text-right pr-4" >{{advanceLocationDetail["Level_6"]}}</td>
+
+
+			</tr>
+		
+		  </ng-template>
+	
+		<ng-template pTemplate="emptymessage">
+			<tr>
+				<td colspan="8">No Data found.</td>
+			</tr>
+		</ng-template>
+
+	</p-table>
+
 
 </div>
