@@ -817,6 +817,113 @@ export class DataService {
     return mdpData
     }
 
+    getProductionLocationDetailsData(){
+     return [
+        {
+          name: "Farmingdale",
+          total_kit_capacity_per_month: 25000,
+          allotted_capacity_per_month: 20000,
+          sponsor: "All",
+          level_1: "30%",
+          level_2: "50%",
+          level_3: "70%",
+          level_4: "20%",
+          level_5: "75%"
+    
+        },
+        {
+          name: "Farmingdale",
+          total_kit_capacity_per_month: 10000,
+          allotted_capacity_per_month: 10000,
+          sponsor: "Novartis",
+    
+          level_1: "15%",
+          level_2: "25%",
+          level_3: "35%",
+          level_4: "10%",
+          level_5: "30%"
+    
+        },
+        {
+          name: "Farmingdale",
+          total_kit_capacity_per_month: 10000,
+          allotted_capacity_per_month: 10000,
+          sponsor: "Molecular",
+    
+          level_1: "15%",
+          level_2: "25%",
+          level_3: "35%",
+          level_4: "10%",
+          level_5: "45%"
+    
+        },
+        {
+          name: "Buford",
+          total_kit_capacity_per_month: 35000,
+          allotted_capacity_per_month: 5000,
+          sponsor: "All",
+    
+          level_1: "40%",
+          level_2: "30%",
+          level_3: "50%",
+          level_4: "25%",
+          level_5: "45%"
+        }
+        ,
+        {
+          name: "Buford",
+          total_kit_capacity_per_month: 3000,
+          allotted_capacity_per_month: 3000,
+          sponsor: "Assembly Bio",
+    
+          level_1: "20%",
+          level_2: "15%",
+          level_3: "25%",
+          level_4: "10%",
+          level_5: "20%"
+    
+        },
+        {
+          name: "Buford",
+          total_kit_capacity_per_month: 2000,
+          allotted_capacity_per_month: 2000,
+          sponsor: "Mankind",
+    
+          level_1: "20%",
+          level_2: "15%",
+          level_3: "25%",
+          level_4: "15%",
+          level_5: "25%"
+    
+        },
+        {
+          name: "Therapak",
+          total_kit_capacity_per_month: 40000,
+          allotted_capacity_per_month: 18000,
+          sponsor: "All",
+    
+          level_1: "50%",
+          level_2: "60%",
+          level_3: "80%",
+          level_4: "35%",
+          level_5: "35%"
+    
+        },
+        {
+          name: "Therapak",
+          total_kit_capacity_per_month: 35000,
+          allotted_capacity_per_month: 35000,
+          sponsor: "Pfizer",
+    
+          level_1: "50%",
+          level_2: "60%",
+          level_3: "80%",
+          level_4: "35%",
+          level_5: "35%"
+        }
+      ]
+    }
+
    
 
   }

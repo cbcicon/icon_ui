@@ -38,7 +38,7 @@ import { SitesComponent } from './study-detail-landing/sites/sites.component';
 import { InventoryReviewComponent } from './study-detail-landing/inventory-review/inventory-review.component';
 import { SummaryComponent } from './study-detail-landing/summary/summary.component';
 import { MasterDemandPlanComponent } from './master-demand-management/master-demand-plan';
-
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 @NgModule({
 	declarations: [
@@ -75,7 +75,8 @@ import { MasterDemandPlanComponent } from './master-demand-management/master-dem
 		TagModule,
 		CalendarModule,
 		MenuModule,
-		SplitButtonModule
+		SplitButtonModule ,
+		SelectButtonModule
 	],
 	providers: [DialogService]
 
