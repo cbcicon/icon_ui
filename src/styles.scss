@@ -247,6 +247,7 @@ button {
 
 ::-webkit-scrollbar {
   width: 8px;
+  height: 2px;
 }
 
 ::-webkit-scrollbar-track {
@@ -853,7 +854,7 @@ input:focus-visible {
 
 
 .p-menu {
-  width: 19rem;
+  width: 20rem;
   height: 49vh;
 
 }

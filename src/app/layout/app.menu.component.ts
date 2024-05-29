@@ -21,6 +21,7 @@ export class AppMenuComponent implements OnInit {
                 label: 'Demand Management',
                 collapsed: true,
                 items: [
+                    { label: 'Master Demand Plan', routerLink: ['/demand-management/master-demand-plan'] },
                     { label: 'Forecast', routerLink: ['/demand-management/forecast'] },
                     { label: 'New Study', routerLink: ['/demand-management/new-study'] },
                     { label: 'Live Study', routerLink: ['/pages/empty'] }

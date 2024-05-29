@@ -37,11 +37,13 @@ import { CountriesComponent } from './study-detail-landing/countries/countries.c
 import { SitesComponent } from './study-detail-landing/sites/sites.component';
 import { InventoryReviewComponent } from './study-detail-landing/inventory-review/inventory-review.component';
 import { SummaryComponent } from './study-detail-landing/summary/summary.component';
+import { MasterDemandPlanComponent } from './master-demand-management/master-demand-plan';
 
 
 @NgModule({
 	declarations: [
-		ForecastTable, ForecastChart, NewstudyTableComponent, StudyDetailLandingComponent, CountriesComponent, SitesComponent, InventoryReviewComponent, SummaryComponent
+		ForecastTable, ForecastChart, NewstudyTableComponent, StudyDetailLandingComponent, CountriesComponent, SitesComponent, InventoryReviewComponent,
+		 SummaryComponent,MasterDemandPlanComponent
 	],
 	imports: [
 		CommonModule,

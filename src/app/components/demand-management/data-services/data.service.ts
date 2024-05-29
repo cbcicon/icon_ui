@@ -708,4 +708,117 @@ export class DataService {
         }
       };
     }
+
+
+    getMdpData(){
+     let mdpData  = [
+        {
+        action : 'action',
+        productionLocation:'hyd',
+        quantity: 2000,
+        price: 3000,
+        discounted_price: 1500,
+        discount_percentage: 80,
+       quantity1: 2000,
+        price1: 3000,
+        discounted_price1: 1500,
+        discount_percentage1: 80,
+        quantity2: 2000,
+        price2: 3000,
+        discounted_price2: 1500,
+        discount_percentage2: 80,
+        quantity3: 2000,
+        price3: 3000,
+        discounted_price3: 1500,
+        discount_percentage3: 80,
+      },
+    
+      {
+        action : 'action',
+        productionLocation:'hyd',
+        quantity: 2000,
+        price: 3000,
+        discounted_price: 1500,
+        discount_percentage: 80,
+       quantity1: 2000,
+        price1: 3000,
+        discounted_price1: 1500,
+        discount_percentage1: 80,
+        quantity2: 2000,
+        price2: 3000,
+        discounted_price2: 1500,
+        discount_percentage2: 80,
+        quantity3: 2000,
+        price3: 3000,
+        discounted_price3: 1500,
+        discount_percentage3: 80,
+      },
+      {
+        action : 'action',
+        productionLocation:'hyd',
+        quantity: 2000,
+        price: 3000,
+        discounted_price: 1500,
+        discount_percentage: 80,
+       quantity1: 2000,
+        price1: 3000,
+        discounted_price1: 1500,
+        discount_percentage1: 80,
+        quantity2: 2000,
+        price2: 3000,
+        discounted_price2: 1500,
+        discount_percentage2: 80,
+        quantity3: 2000,
+        price3: 3000,
+        discounted_price3: 1500,
+        discount_percentage3: 80,
+      },
+      {
+        action : 'action',
+        productionLocation:'hyd',
+        quantity: 2000,
+        price: 3000,
+        discounted_price: 1500,
+        discount_percentage: 80,
+       quantity1: 2000,
+        price1: 3000,
+        discounted_price1: 1500,
+        discount_percentage1: 80,
+        quantity2: 2000,
+        price2: 3000,
+        discounted_price2: 1500,
+        discount_percentage2: 80,
+        quantity3: 2000,
+        price3: 3000,
+        discounted_price3: 1500,
+        discount_percentage3: 80,
+      },
+      {
+        action : 'action1',
+        productionLocation:'hyd',
+        quantity: 2000,
+        price: 3000,
+        discounted_price: 1500,
+        discount_percentage: 80,
+       quantity1: 2000,
+        price1: 3000,
+        discounted_price1: 1500,
+        discount_percentage1: 80,
+        quantity2: 2000,
+        price2: 3000,
+        discounted_price2: 1500,
+        discount_percentage2: 80,
+        quantity3: 2000,
+        price3: 3000,
+        discounted_price3: 1500,
+        discount_percentage3: 80,
+      },
+     ]
+    return mdpData
+    }
+
+   
+
   }
+
+

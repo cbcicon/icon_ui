@@ -1,0 +1,322 @@
+<!-- master demand plan table -->
+
+<div >
+	<p-table #dt 
+	[value]="mdpData"  
+	dataKey="id" 
+	[rowHover]="true"
+	[rows]="controlRow" 
+	[showCurrentPageReport]="true" 
+	[rowsPerPageOptions]="rowsPerPageOptions" 
+	[loading]="loading"
+	[paginator]="false"
+	[filterDelay]="0"
+	styleClass={{selectedSize}} 
+	[exportHeader]="'customExportHeader'" 
+	responsiveLayout="stack" 
+    [breakpoint]="'1500px'" 
+    [tableStyle]="{'min-width': '100vw'}"
+	dataKey="action" 
+	rowGroupMode="subheader" 
+	groupRowsBy="action" 
+	rowExpandMode="single"
+	>
+
+		<ng-template pTemplate="caption">
+			<div class="table-header d-flex justify-content-between">
+				<div>
+					<div class="filter-sm-circle-btn" (click)="handleDateShortener('yearly')"
+						[class.selected]="selectedInterval === 'yearly'">Y</div>
+					<div class="filter-sm-circle-btn" (click)="handleDateShortener('half-yearly')"
+						[class.selected]="selectedInterval === 'half-yearly'">H</div>
+					<div class="filter-sm-circle-btn" (click)="handleDateShortener('quarterly')"
+						[class.selected]="selectedInterval === 'quarterly'">Q</div>
+					<div class="filter-sm-circle-btn" (click)="handleDateShortener('monthly')"
+						[class.selected]="selectedInterval === 'monthly'">M</div>
+				
+				</div>
+				<div>
+					<h4>Master Demand Plan</h4>
+				</div>
+				<div>
+					<span class="p-input-icon-left ml-auto">
+						<span (click)="exportExcel()">
+							<p-button [text]="true" [plain]="true"> <i class="bi bi-download"></i></p-button>
+						</span>
+					
+						<span (click)="handleAdditionanlColumn()">
+							<p-button [text]="true" [plain]="true"> <i
+									class="bi bi-layout-three-columns"></i></p-button>
+						</span>
+						<span (click)="handleRowControl()">
+							<p-button [text]="true" [plain]="true">
+								<i class="bi bi-arrows-angle-expand" *ngIf="changeExpandButton; else collapseIcon"></i>
+								<ng-template #collapseIcon>
+									<i class="bi bi-arrows-angle-contract"></i>
+								</ng-template>
+							</p-button>
+						</span>
+					</span>
+
+				</div>
+			</div>
+		</ng-template>
+		<ng-template pTemplate="header">
+			<tr>
+				
+				<th rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+					  Action
+					</div>
+				  </th>
+
+				  <th  rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+					 Production Location
+					</div>
+				  </th>
+
+				  
+				  <th pSortableColumn="jan" colspan="4">
+					<div class="text-center">
+					  Jan
+					</div>
+				  </th>
+				  <th pSortableColumn="feb" colspan="4">
+					<div class="text-center">
+					  Feb
+					</div>
+				  </th>
+				  <th  colspan="4">
+					<div class="text-center">
+					  March
+					</div>
+				  </th>
+
+				  <th  colspan="4">
+					<div class="text-center">
+					  Apr
+					</div>
+				  </th>
+				  
+				  <!-- <th  colspan="4">
+					<div class="text-center">
+					  may
+					</div>
+				  </th>
+				  <th  colspan="4">
+					<div class="text-center">
+					  Jun
+					</div>
+				  </th>
+
+				  <th colspan="4">
+					<div class="text-center">
+					  July
+					</div>
+				  </th> -->
+
+
+				<!-- <ng-container *ngFor="let item of tableHeaderItem">
+					<ng-container *ngIf="item.active">
+						<th pSortableColumn="{{ item.sortableColumn }}" style="min-width: 10rem">
+							<div class="flex justify-content-between align-items-center">
+								{{ item.columnName }}
+								<p-columnFilter *ngIf="item.active" type="numeric" field="balance" display="menu"
+									currency="USD" class="ml-auto">
+								</p-columnFilter>
+							</div>
+						</th>
+					</ng-container>
+				</ng-container> -->
+
+			</tr>
+
+			<tr>
+				<th class="text-center">Demand (Kits)</th>
+				<th class="text-center">Revenue</th>
+				<th class="text-center">Allocated Capacity (Kits)</th>
+				<th class="text-center">Utilization</th>
+
+				<th class="text-center">Demand (Kits)</th>
+				<th class="text-center">Revenue</th>
+				<th class="text-center">Allocated Capacity (Kits)</th>
+				<th class="text-center">Utilization</th>
+
+				<th class="text-center">Demand (Kits)</th>
+				<th class="text-center">Revenue</th>
+				<th class="text-center">Allocated Capacity (Kits)</th>
+				<th class="text-center">Utilization</th>
+
+				 <th class="text-center">Demand (Kits)</th>
+				<th class="text-center">Revenue</th>
+				<th class="text-center">Allocated Capacity (Kits)</th>
+				<th class="text-center">Utilization</th>
+
+				<!--<th class="text-center">Demand (Kits)</th>
+				<th class="text-center">Revenue</th>
+				<th class="text-center">Allocated Capacity (Kits)</th>
+				<th class="text-center">Utilization</th> -->
+
+		
+
+			  </tr>
+
+
+		</ng-template>
+
+		<ng-template pTemplate="groupheader" let-mdpData let-rowIndex="rowIndex" let-expanded="expanded">
+			<tr>
+				<td >
+					<button 
+						type="button" 
+						pButton 
+						pRipple 
+						[pRowToggler]="mdpData" 
+						class="p-button-text p-button-rounded p-button-plain mr-2" 
+						[icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+						>
+					</button>
+			
+				</td>       
+				<td>
+					{{ mdpData["productionLocation"] }}
+				</td>
+				<td>
+					{{ mdpData["quantity"] }}
+				</td>
+				<td>
+					{{ mdpData["price"] }}
+				</td>
+				<td>
+					{{ mdpData["discounted_price"] }}
+				</td>
+				<td>
+					{{ mdpData["discount_percentage"] }}
+				</td>
+
+				<td>
+					{{ mdpData["quantity1"] }}
+				</td>
+				<td>
+					{{ mdpData["price1"] }}
+				</td>
+				<td>
+					{{ mdpData["discounted_price1"] }}
+				</td>
+				<td>
+					{{ mdpData["discount_percentage1"] }}
+				</td>
+
+				<td>
+					{{ mdpData["quantity2"] }}
+				</td>
+				<td>
+					{{ mdpData["price2"] }}
+				</td>
+				<td>
+					{{ mdpData["discounted_price2"] }}
+				</td>
+				<td>
+					{{ mdpData["discount_percentage2"] }}
+				</td>
+
+				<td>
+					{{ mdpData["quantity3"] }}
+				</td>
+				<td>
+					{{ mdpData["price3"] }}
+				</td>
+				<td>
+					{{ mdpData["discounted_price3"] }}
+				</td>
+				<td>
+					{{ mdpData["discount_percentage3"] }}
+				</td>
+				
+			</tr>
+		  
+		</ng-template>
+
+		 <ng-template let-mdpData pTemplate="rowexpansion">
+			<tr class="p-selectable-row">	
+				<td >
+					
+				</td>
+
+				<td>
+				 <a (click)="openLocationDetail()">{{ mdpData["productionLocation"] }}</a>	
+				</td>
+				<td>
+					{{ mdpData["quantity"] }}
+				</td>
+				<td>
+					{{ mdpData["price"] }}
+				</td>
+				<td>
+					{{ mdpData["discounted_price"] }}
+				</td>
+				<td>
+					{{ mdpData["discount_percentage"] }}
+				</td>
+
+				<td>
+					{{ mdpData["quantity1"] }}
+				</td>
+				<td>
+					{{ mdpData["price1"] }}
+				</td>
+				<td>
+					{{ mdpData["discounted_price1"] }}
+				</td>
+				<td>
+					{{ mdpData["discount_percentage1"] }}
+				</td>
+
+				<td>
+					{{ mdpData["quantity2"] }}
+				</td>
+				<td>
+					{{ mdpData["price2"] }}
+				</td>
+				<td>
+					{{ mdpData["discounted_price2"] }}
+				</td>
+				<td>
+					{{ mdpData["discount_percentage2"] }}
+				</td>
+
+				<td>
+					{{ mdpData["quantity3"] }}
+				</td>
+				<td>
+					{{ mdpData["price3"] }}
+				</td>
+				<td>
+					{{ mdpData["discounted_price3"] }}
+				</td>
+				<td>
+					{{ mdpData["discount_percentage3"] }}
+				</td>
+
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="emptymessage">
+			<tr>
+				<td colspan="8">No Data found.</td>
+			</tr>
+		</ng-template>
+
+	</p-table>
+
+</div>
+
+
+<!-- location detail page  -->
+
+
+<div class="card mt-2" *ngIf="showLocationDetail">
+
+	<h1>hello rak</h1>
+
+</div>
