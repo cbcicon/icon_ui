@@ -30,7 +30,7 @@ export class SitesComponent implements OnInit {
 
   onCancelRow(site: any, index: number): void {
     site.editing = false;
-    // Resetting to original values.
+    
     this.sites[index] = this.dataService.getSites()[index];
   }
 }

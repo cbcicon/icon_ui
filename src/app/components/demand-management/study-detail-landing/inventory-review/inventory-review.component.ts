@@ -25,13 +25,13 @@ export class InventoryReviewComponent implements OnInit {
 
   onSaveRow(item: any): void {
     item.editing = false;
-    // Save logic here, such as updating the backend
+    
     this.dataService.updateInventoryItem(item).subscribe();
   }
 
   onCancelRow(item: any, index: number): void {
     item.editing = false;
-    // Cancel logic here, such as resetting to original values
-    this.inventoryReview[index] = this.dataService.getInventoryReviewData()[index]; // Assuming you can fetch the original values like this
+    
+    this.inventoryReview[index] = this.dataService.getInventoryReviewData()[index]; 
   }
 }

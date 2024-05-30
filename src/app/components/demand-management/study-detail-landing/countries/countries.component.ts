@@ -25,13 +25,13 @@ export class CountriesComponent implements OnInit {
 
   onSaveRow(country: any): void {
     country.editing = false;
-    // Save logic here, such as updating the backend
+    
     this.dataService.updateCountry(country).subscribe();
   }
 
   onCancelRow(country: any, index: number): void {
     country.editing = false;
-    // Cancel logic here, such as resetting to original values
-    this.countries[index] = this.dataService.getCountries()[index]; // Assuming you can fetch the original values like this
+    
+    this.countries[index] = this.dataService.getCountries()[index]; 
   }
 }
