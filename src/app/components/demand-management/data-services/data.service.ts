@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UtilService } from '../../../common/util';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -879,4 +880,17 @@ export class DataService {
       }
     ];
   }
+
+  updateCountry(country: any) {
+    return of(country); // Simulating an HTTP call
   }
+
+  updateSite(site:any){
+    return of(site);
+  }
+
+  updateInventoryItem(item: any) {
+    return of(item); 
+  }
+
+}

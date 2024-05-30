@@ -1,9 +1,8 @@
 <div class="row">
   <div class="col card below-card" style="margin-left: 15px;">
-    <!-- <div class="d-flex justify-content-between"> -->
-      <div class="accordion-header" id="headingThree">
+    <div class="accordion-header" id="headingThree">
       <div>
-          <h6><b>Sites</b></h6>
+        <h6><b>Sites</b></h6>
       </div>
     </div>
 
@@ -24,28 +23,133 @@
           <th>Qty Supplied</th>
           <th>Status</th>
           <th>Date Kit at First Site</th>
-          <th>Status</th>
+          <th>Status Y</th>
         </tr>
       </ng-template>
 
-      <ng-template pTemplate="body" let-site>
-        <tr>
-          <td><i class="bi bi-pencil"></i></td>
-          <td>{{ site.SiteID }}</td>
-          <td>{{ site.City }}</td>
-          <td>{{ site.Country }}</td>
-          <td>{{ site.Region }}</td>
-          <td>{{ site.QtyRequired }}</td>
-          <td>{{ site.QtySupplied }}</td>
-          <td>{{ site.Status }}</td>
-          <td>{{ site.DateKitatFirstSite }}</td>
-          <td>{{ site.Status }}</td>
+      <ng-template pTemplate="body" let-site let-ri="rowIndex">
+        <tr [pEditableRow]="site" style="height: 27px;">
+          <td>
+            <span class="ml-2" *ngIf="!site.editing">
+              <i class="bi bi-pencil" (click)="onEditRow(site)"></i>
+            </span>
+            <div *ngIf="site.editing" class="d-flex align-items-center">
+              <button 
+                pButton 
+                pRipple 
+                type="button" 
+                pSaveEditableRow 
+                icon="pi pi-check" 
+                (click)="onSaveRow(site)" 
+                class="p-button-rounded p-button-text p-button-success mr-0">
+              </button>
+              <button 
+                pButton 
+                pRipple 
+                type="button" 
+                pCancelEditableRow 
+                icon="pi pi-times" 
+                (click)="onCancelRow(site, ri)" 
+                class="p-button-rounded p-button-text p-button-danger">
+              </button> 
+            </div>
+          </td>
+          <td [pEditableColumn]="site.SiteID" pEditableColumnField="SiteID" [style.pointer-events]="site.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="site.SiteID" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ site.SiteID }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="site.City" pEditableColumnField="City" [style.pointer-events]="site.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="site.City" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ site.City }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="site.Country" pEditableColumnField="Country" [style.pointer-events]="site.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="site.Country" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ site.Country }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="site.Region" pEditableColumnField="Region" [style.pointer-events]="site.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="site.Region" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ site.Region }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="site.QtyRequired" pEditableColumnField="QtyRequired" [style.pointer-events]="site.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="site.QtyRequired" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ site.QtyRequired }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="site.QtySupplied" pEditableColumnField="QtySupplied" [style.pointer-events]="site.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="site.QtySupplied" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ site.QtySupplied }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="site.Status" pEditableColumnField="Status" [style.pointer-events]="site.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="site.Status" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ site.Status }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="site.DateKitatFirstSite" pEditableColumnField="DateKitatFirstSite" [style.pointer-events]="site.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="site.DateKitatFirstSite" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ site.DateKitatFirstSite }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="site.StatusY" pEditableColumnField="StatusY" [style.pointer-events]="site.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="site.StatusY" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ site.StatusY }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
         </tr>
       </ng-template>
 
       <ng-template pTemplate="emptymessage">
         <tr>
-          <td colspan="8">No Data found.</td>
+          <td colspan="10">No Data found.</td>
         </tr>
       </ng-template>
 

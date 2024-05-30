@@ -1,9 +1,8 @@
 <div class="row">
   <div class="col card below-card" style="margin-left: 15px;">
-    <!-- <div class="d-flex justify-content-between"> -->
-      <div class="accordion-header" id="headingThree">
+    <div class="accordion-header" id="headingThree">
       <div>
-          <h6><b>Inventory Review</b></h6>
+        <h6><b>Inventory Review</b></h6>
       </div>
     </div>
 
@@ -42,37 +41,155 @@
         </tr>
       </ng-template>
 
-      <ng-template pTemplate="body" let-inventoryReview>
-        <tr>
-          <td><i class="bi bi-pencil"></i><span style="margin-left: 5px;"></span><i class="bi bi-chat-left-text"></i></td>
-          <td>{{ inventoryReview.productNo }}</td>
-          <td>{{ inventoryReview.componentName }}</td>
-          <td>{{ inventoryReview.qtyNeededInitialShipment }}</td>
-          <td>{{ inventoryReview.qtyNeededStudyDuration }}</td>
+      <ng-template pTemplate="body" let-item let-ri="rowIndex">
+        <tr [pEditableRow]="item" style="height: 27px;">
           <td>
-            <div class="item-type-icons">
-              <div class="item-type-cheap" style="background-color: rgba(227, 96, 96, 0.325);">
-                <i class="bi bi-exclamation-triangle" style="color: red;"></i>
-              </div>
-              <div class="item-type-cheap" style="background-color: #D1E9F6;">
-                <i class="bi bi-thermometer-snow" style="color:#1790D0;"></i>
-              </div>
-              <div class="item-type-cheap" style="background-color: #D4FCFC;">
-                <i class="bi bi-hourglass" style="color: #004750;"></i>
-              </div>
-              <div class="item-type-cheap" style="background-color :#B3C8CB;">
-                <i class="bi bi-box-seam" style="color: #004750;"></i>
-              </div>
+            <span class="ml-2" *ngIf="!item.editing">
+              <i class="bi bi-pencil" (click)="onEditRow(item)"></i>
+            </span>
+          
+            <div *ngIf="item.editing" class="d-flex align-items-center">
+              <button 
+                pButton 
+                pRipple 
+                type="button" 
+                pSaveEditableRow 
+                icon="pi pi-check" 
+                (click)="onSaveRow(item)" 
+                class="p-button-rounded p-button-text p-button-success mr-0">
+              </button>
+              <button 
+                pButton 
+                pRipple 
+                type="button" 
+                pCancelEditableRow 
+                icon="pi pi-times" 
+                (click)="onCancelRow(item, ri)" 
+                class="p-button-rounded p-button-text p-button-danger">
+              </button> 
             </div>
+            <span class="ml-2"><i class="bi bi-chat-left-text"></i></span>
           </td>
-          <td>{{ inventoryReview.newitem }}</td>
-          <td>{{ inventoryReview.kitvendor }}</td>
-          <td>{{ inventoryReview.newItemBuford }}</td>
-          <td>{{ inventoryReview.newItemFarmingdale }}</td>
-          <td>{{ inventoryReview.newItemMidland }}</td>
-          <td>{{ inventoryReview.kitProductionLocations }}</td>
-          <td>{{ inventoryReview.replacementneeded }}</td>
-          <td></td>
+          <td [pEditableColumn]="item.productNo" pEditableColumnField="productNo" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="item.productNo" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ item.productNo }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="item.componentName" pEditableColumnField="componentName" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="item.componentName" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ item.componentName }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="item.qtyNeededInitialShipment" pEditableColumnField="qtyNeededInitialShipment" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="item.qtyNeededInitialShipment" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ item.qtyNeededInitialShipment }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="item.qtyNeededStudyDuration" pEditableColumnField="qtyNeededStudyDuration" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="item.qtyNeededStudyDuration" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ item.qtyNeededStudyDuration }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="item.itemType" pEditableColumnField="itemType" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="item.itemType" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ item.itemType }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="item.newItem" pEditableColumnField="newItem" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="item.newItem" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ item.newItem }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="item.kitVendor" pEditableColumnField="kitVendor" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="item.kitVendor" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ item.kitVendor }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="item.newItemBuford" pEditableColumnField="newItemBuford" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="item.newItemBuford" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ item.newItemBuford }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="item.newItemFarmingdale" pEditableColumnField="newItemFarmingdale" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="item.newItemFarmingdale" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ item.newItemFarmingdale }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="item.newItemMidland" pEditableColumnField="newItemMidland" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="item.newItemMidland" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ item.newItemMidland }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="item.kitProductionLocations" pEditableColumnField="kitProductionLocations" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="item.kitProductionLocations" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ item.kitProductionLocations }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="item.replacementNeeded" pEditableColumnField="replacementNeeded" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="item.replacementNeeded" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ item.replacementNeeded }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
         </tr>
       </ng-template>
 

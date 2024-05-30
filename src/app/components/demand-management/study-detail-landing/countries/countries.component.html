@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col card below-card" style="margin-left: 10px;">
-    <!-- <div class="d-flex justify-content-between"> -->
-      <div class="accordion-header" id="headingThree">
+    <div class="accordion-header" id="headingThree">
       <div>
         <h6><b>Countries</b></h6>
       </div>
@@ -25,15 +24,93 @@
         </tr>
       </ng-template>
 
-      <ng-template pTemplate="body" let-country>
-        <tr>
-          <td><i class="bi bi-pencil"></i></td>
-          <td>{{ country.Country }}</td>
-          <td>{{ country.Sites }}</td>
-          <td>{{ country['#KitComponentSupplied'] }}</td>
-          <td>{{ country['#KitComponentPending'] }}</td>
-          <td>{{ country.DateKitatFirstSite }}</td>
-          <td>{{ country.Status }}</td>
+      <ng-template pTemplate="body" let-country let-ri="rowIndex">
+        <tr [pEditableRow]="country" style="height: 27px;">
+          <td>
+            <span class="ml-2" *ngIf="!country.editing">
+              <i class="bi bi-pencil" (click)="onEditRow(country)"></i>
+            </span>
+            <div *ngIf="country.editing" class="d-flex align-items-center">
+              <button 
+                pButton 
+                pRipple 
+                type="button" 
+                pSaveEditableRow 
+                icon="pi pi-check" 
+                (click)="onSaveRow(country)" 
+                class="p-button-rounded p-button-text p-button-success mr-0">
+              </button>
+              <button 
+                pButton 
+                pRipple 
+                type="button" 
+                pCancelEditableRow 
+                icon="pi pi-times" 
+                (click)="onCancelRow(country, ri)" 
+                class="p-button-rounded p-button-text p-button-danger">
+              </button> 
+            </div>
+          </td>
+          <td [pEditableColumn]="country.Country" pEditableColumnField="Country" [style.pointer-events]="country.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="country.Country" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ country.Country }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="country.Sites" pEditableColumnField="Sites" [style.pointer-events]="country.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="country.Sites" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ country.Sites }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="country['#KitComponentSupplied']" pEditableColumnField="#KitComponentSupplied" [style.pointer-events]="country.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="country['#KitComponentSupplied']" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ country['#KitComponentSupplied'] }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="country['#KitComponentPending']" pEditableColumnField="#KitComponentPending" [style.pointer-events]="country.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="country['#KitComponentPending']" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ country['#KitComponentPending'] }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="country.DateKitatFirstSite" pEditableColumnField="DateKitatFirstSite" [style.pointer-events]="country.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="country.DateKitatFirstSite" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ country.DateKitatFirstSite }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="country.Status" pEditableColumnField="Status" [style.pointer-events]="country.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="country.Status" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ country.Status }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
         </tr>
       </ng-template>
 
