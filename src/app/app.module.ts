@@ -10,6 +10,8 @@ import { DemandManagementModule } from './components/demand-management/demand-ma
 import { SharedModule } from './shared/shared.module';
 import { UtilService } from './common/util';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderRouterModule } from "ngx-ui-loader";
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -17,11 +19,14 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
      AuthModule,
      AppRoutingModule , 
      AppLayoutModule, 
-     BrowserAnimationsModule ,
+     BrowserAnimationsModule ,                  
      FormsModule ,
      DemandManagementModule ,
      SharedModule ,
-     DragDropModule
+     DragDropModule,
+     NgxUiLoaderModule,
+     NgxUiLoaderRouterModule,
+     NgxUiLoaderHttpModule
     ],
   providers: [UtilService],
   bootstrap: [AppComponent],

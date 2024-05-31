@@ -37,13 +37,15 @@ import { CountriesComponent } from './study-detail-landing/countries/countries.c
 import { SitesComponent } from './study-detail-landing/sites/sites.component';
 import { InventoryReviewComponent } from './study-detail-landing/inventory-review/inventory-review.component';
 import { SummaryComponent } from './study-detail-landing/summary/summary.component';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+import { MasterDemandPlanComponent } from './master-demand-management/master-demand-plan';
+import { SelectButtonModule } from 'primeng/selectbutton';import { InputTextareaModule } from 'primeng/inputtextarea';
 import { AvatarModule } from 'primeng/avatar';
 import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
 	declarations: [
-		ForecastTable, ForecastChart, NewstudyTableComponent, StudyDetailLandingComponent, CountriesComponent, SitesComponent, InventoryReviewComponent, SummaryComponent
+		ForecastTable, ForecastChart, NewstudyTableComponent, StudyDetailLandingComponent, CountriesComponent, SitesComponent, InventoryReviewComponent,
+		 SummaryComponent,MasterDemandPlanComponent
 	],
 	imports: [
 		CommonModule,
@@ -75,7 +77,8 @@ import { SharedModule } from '../../shared/shared.module';
 		TagModule,
 		CalendarModule,
 		MenuModule,
-		SplitButtonModule,
+		SplitButtonModule ,
+		SelectButtonModule,
 		InputTextareaModule,
 		AvatarModule,
 		SharedModule
