@@ -13,6 +13,11 @@ export class AppTopBarComponent {
 
     items!: MenuItem[];
 
+    profileMenu: any;
+
+    showProfile:boolean = false
+
+
     alertRightSideBar :boolean = false;
     historyRightSideBar :boolean = false;
     showToDoList =  false
@@ -33,7 +38,28 @@ export class AppTopBarComponent {
 
     constructor(public layoutService: LayoutService) { }
 
-    ngOnInit(){ }
+    ngOnInit(){ 
+      this.profileMenu = [
+     
+      
+        {
+            items: [
+                {
+                    label: ' Profile Settings',
+                    icon: 'bi bi-gear', 
+                },
+                {
+                    label: 'Help Center',
+                    icon: 'bi bi-info-circle',
+                },
+                {
+                    label: 'Dark Mode',
+                    icon: 'bi bi-moon',
+                }
+            ]
+        }
+    ];
+    }
 
     get getComments(): boolean {
   
@@ -86,4 +112,10 @@ export class AppTopBarComponent {
     this.showToDoList = !this.showToDoList
    }
 
+   handleProfile(){
+     this.showProfile = !this.showProfile
+   }
+
+
+   
 }

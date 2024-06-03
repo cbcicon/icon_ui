@@ -41,9 +41,9 @@
             <i *ngIf="!getComments" style="color: white;"  class="pi pi-bell text-3xl"></i>
         </div>
        
-        <button class="p-link layout-topbar-button user-avtar ">
+        <button class="p-link layout-topbar-button user-avtar " (click)="handleProfile()">
             <i style="color: white;" class="bi bi-person-circle"></i>
-            <span>Profile</span>
+            <span >Profile</span>
         </button>
        
     </div>
@@ -80,3 +80,40 @@
     </ng-template>
   </p-sidebar>
 
+
+  <!-- Profile Menu Item -->
+
+
+<div class="profileMenu" *ngIf="showProfile">
+  <p-menu [model]="profileMenu" styleClass="w-full md:w-20rem">
+    <ng-template pTemplate="start">
+        <button pRipple class="relative overflow-hidden w-full p-link flex align-items-center p-2 pl-3 text-color hover:surface-200 border-noround">
+            <p-avatar 
+            label="R" 
+            styleClass="mr-2" 
+            size="xlarge" 
+            shape="circle" />
+            <span class="inline-flex flex-column">
+                <span class="font-bold profile-text" >Cleary, Laura</span>
+                <span class=" profile-text" >Admin</span>
+            </span>
+        </button>
+        <p-divider/>
+    </ng-template>
+  
+    <ng-template pTemplate="profileMenu" let-profileMenu>
+        <a pRipple class="flex align-items-center p-menuitem-link">
+            <span class="profile-text"> <i  [class]="profileMenu.icon"></i></span>
+            <span class="ml-2 profile-text"  >{{ profileMenu.label }}</span>
+        </a>
+    </ng-template>
+    <ng-template pTemplate="end">
+        <p-divider/>
+        <button pRipple class="relative overflow-hidden w-full p-link flex align-items-center p-2 pl-3 text-color hover:surface-200 border-noround">
+            <span class='pi pi-sign-out '></span>
+            <span class="ml-2 profile-text">Logout</span> 
+        </button>
+    </ng-template>
+</p-menu>
+
+</div>

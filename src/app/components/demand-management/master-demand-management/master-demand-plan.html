@@ -502,7 +502,6 @@
 	styleClass=" p-datatable-gridlines p-datatable-striped p-datatable-sm" 
 	>
 
-	
 		<ng-template pTemplate="header">
 			<tr>
 				
@@ -600,6 +599,7 @@
 					<div class="col-md-3"><button type="button" (click)="openLocationDetail()" class="btn btn-success"><i class="bi bi-arrow-left" style="color: white;"></i> Back</button> </div>
 				        
 				    <div class="col-md-9 flex justify-content-end">
+						
 					<div>
 					 <p class="mt-3 mr-4"><b>Unit</b></p>
 					</div>
@@ -617,7 +617,9 @@
 					</div>
 
 					<div class="mx-3">
-						<i class="bi bi-filter" style="font-size: 20px;"></i>
+						<p-button [text]="true" [plain]="true" (click)="handleFilterMenu()" >
+								<p class="pb-2"><i class="bi bi-filter" style="font-size: 20px;"></i></p>
+					    </p-button>
 					</div>
 				
 					<div class="mx-3">
@@ -633,6 +635,44 @@
 
 				</div>
          </div>
+
+		 <div class="row mt-2 filter-container" *ngIf="showFilterMenu">
+			<div class="col-md-6"> <p>one</p></div>
+			<div class="col-md-6 p-3 d-flex justify-content-end">  
+				<div class="mx-4">
+				<p-dropdown 
+				[options]="cities" 
+				[(ngModel)]="selectedCity" 
+				optionLabel="name"
+				placeholder="Production Location" />
+		     	</div>
+
+				 <div class="mx-4">
+					<p-dropdown 
+					[options]="cities" 
+					[(ngModel)]="selectedCity" 
+					optionLabel="name"
+					placeholder="Sponsor" />
+			   </div>
+
+			   <div class="mx-4">
+				<p-dropdown 
+				[options]="cities" 
+				[(ngModel)]="selectedCity" 
+				optionLabel="name"
+				placeholder="Protocol" />
+		    </div>
+
+			<div class="mx-4">
+				<p-dropdown 
+				[options]="cities" 
+				[(ngModel)]="selectedCity" 
+				optionLabel="name"
+				placeholder="Demand Type" />
+		    </div>
+
+			</div>
+		 </div>
 				
 		</ng-template>
 
