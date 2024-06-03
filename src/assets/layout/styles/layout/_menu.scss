@@ -134,4 +134,23 @@
             }
         }
     }
+
+    .additionalSidebarItem{
+        padding-top: 10px;
+         height: 35px;
+    }
+
+    .additionalSidebarItem:hover{
+      
+        background-color: var(--primary-20);
+        color:var(--primary-100);;
+        i{
+           color:var(--primary-100);
+        }
+   }
+
+   .extraTopMargine{
+       margin-top: 20rem;
+   }
+
 }

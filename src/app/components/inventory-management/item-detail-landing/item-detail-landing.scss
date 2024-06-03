@@ -1,10 +1,12 @@
 .item-detail-landing-container{
     margin-top: -7px;
+
+    
 }
 
 .activate-component{
     width: 87%;
-    }
+}
     
     
     .menu-label-text{
@@ -26,3 +28,10 @@
     text-align: left;
     
     }
+
+  
+    
+    ::ng-deep.p-menu {
+        width: 20rem;
+        height: 49vh
+     }

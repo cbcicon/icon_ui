@@ -12,119 +12,14 @@ import { DataService } from '../data-services/data.service';
 export class MasterDemandPlanComponent {
 
   productionLocationDetailsData  :any
-  advanceLocationDetail = [
-    {
-        Location: "Farmingdale",
-        Sponsor: "Pfizer",
-        Protocol: "PD- 001",
-        Demand_Type: "Forecast/ Live",
-        Demand_Kits: "300",
-        Cohort: "Standard",
-        Visit: "v3",
-        Kit_Name: "Kit v3",
-        Inventory_Rate: "30%",
-        Fulfillment_Status: "10%",
-        Level_1: "200",
-        Level_2: "",
-        Level_3: "",
-        Level_4: "",
-        Level_5: "",
-        Level_6: "4000"
-    },
-    {
-        Location: "Farmingdale",
-        Sponsor: "Pfizer",
-        Protocol: "PD- 001",
-        Demand_Type: "Current demand",
-        Demand_Kits: "800",
-        Cohort: "Standard",
-        Visit: "Unscheduled",
-        Kit_Name: "Unscheduled",
-        Inventory_Rate: "20%",
-        Fulfillment_Status: "40%",
-        Level_1: "",
-        Level_2: "",
-        Level_3: "",
-        Level_4: "",
-        Level_5: "",
-        Level_6: "100"
-    },
-    {
-        Location: "Farmingdale",
-        Sponsor: "Pfizer",
-        Protocol: "PD- 002",
-        Demand_Type: "New",
-        Demand_Kits: "500",
-        Cohort: "Standard",
-        Visit: "v5",
-        Kit_Name: "Kit v5",
-        Inventory_Rate: "15%",
-        Fulfillment_Status: "35%",
-        Level_1: "",
-        Level_2: "100",
-        Level_3: "",
-        Level_4: "",
-        Level_5: "",
-        Level_6: "300"
-    },
-    {
-        Location: "Buford",
-        Sponsor: "Molecular",
-        Protocol: "PD- 003",
-        Demand_Type: "Forecast/ Live",
-        Demand_Kits: "200",
-        Cohort: "Standard",
-        Visit: "v3",
-        Kit_Name: "Kit v3",
-        Inventory_Rate: "50%",
-        Fulfillment_Status: "45%",
-        Level_1: "",
-        Level_2: "200",
-        Level_3: "",
-        Level_4: "200",
-        Level_5: "",
-        Level_6: ""
-    },
-    {
-        Location: "Midland",
-        Sponsor: "Novaitis",
-        Protocol: "PD- 002",
-        Demand_Type: "Forecast/ Live",
-        Demand_Kits: "200",
-        Cohort: "Standard",
-        Visit: "vl",
-        Kit_Name: "Kit vl",
-        Inventory_Rate: "25%",
-        Fulfillment_Status: "70%",
-        Level_1: "",
-        Level_2: "",
-        Level_3: "",
-        Level_4: "",
-        Level_5: "",
-        Level_6: "300"
-    },
-    {
-        Location: "Therapak",
-        Sponsor: "Assembly",
-        Protocol: "PD- 002",
-        Demand_Type: "New",
-        Demand_Kits: "500",
-        Cohort: "Standard",
-        Visit: "vl",
-        Kit_Name: "Kit vl",
-        Inventory_Rate: "35%",
-        Fulfillment_Status: "68%",
-        Level_1: "300",
-        Level_2: "400",
-        Level_3: "",
-        Level_4: "",
-        Level_5: "",
-        Level_6: "100"
-    }
-]
+  cities: any;
 
+  selectedCity: any;
+
+  advanceLocationDetail :any
   stateOptions: any[] = [{ label: 'Number', value: 'number' },{ label: 'Percentage', value: 'percentage' }];
   value: string = 'off'
+  showFilterMenu = false
 
   enteredDate :string =''
   showAdditionalDetail = false
@@ -144,9 +39,19 @@ export class MasterDemandPlanComponent {
   constructor(public utilService:UtilService , public dataService  :DataService){}
 
   ngOnInit(){
+
+    this.cities = [
+      { name: 'New York', code: 'NY' },
+      { name: 'Rome', code: 'RM' },
+      { name: 'London', code: 'LDN' },
+      { name: 'Istanbul', code: 'IST' },
+      { name: 'Paris', code: 'PRS' }
+  ];
+
     this.rowsPerPageOptions =  this.divideIntoMultiplesOfTen(100)
     this.mdpData = this.dataService.getMdpData()
     this.productionLocationDetailsData = this.dataService.getProductionLocationDetailsData()
+    this.advanceLocationDetail = this.dataService.getAdvanceLocationDetail()
   }
 
 
@@ -238,6 +143,13 @@ openAdvanceLocationDetail(){
   this.showAdditionalDetail = !this.showAdditionalDetail
   this.showLocationDetail  = false
 }
+
+
+handleFilterMenu(){
+  this.showFilterMenu = !this.showFilterMenu
+}
+
+
 
 
 }
