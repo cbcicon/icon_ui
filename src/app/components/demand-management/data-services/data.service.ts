@@ -1209,7 +1209,13 @@ export class DataService {
     ]
     }
 
-   
+    updateCountry(country: any) {
+      return of(country); 
+    }
+
+    updateSite(site:any){
+      return of(site);
+    }
 
   updateInventoryItem(item: any) {
     return of(item); 
