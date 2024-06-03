@@ -1,32 +1,41 @@
-<div class="d-flex justify-content-between">
+<!-- <div class="d-flex justify-content-start ml-0" style="margin-left: 10px;">
 
-    <div class="mt-4">
-      
-      <p-menu [model]="studies">
+  <div class="ml-0">
+    
+    <p-menu [model]="studies">
 
-        <ng-template  pTemplate="start">
-         <p class=" accordion-header sidebar-label-text"><b>Protocol Details</b></p>
-          <!-- <p class=" ml-4 mt-4 text-start sidebar-label-text">Protocol Details</p>  -->
-        </ng-template>
+      <ng-template  pTemplate="start">
+        <h6><b><p class=" ml-4 mt-4 text-start sidebar-label-text">Protocol Details</p></b></h6>
+        <p class=" mt-3 mt-3 text-start accordion-header sidebar-label-text"><b>Protocol Details</b></p> -->
+       <!-- <p class=" ml-2 mt-2 text-start sidebar-label-text">Protocol Details</p>  -->
+      <!-- </ng-template> -->
+      <div class="d-flex justify-content-between">
 
-          <ng-template pTemplate="study" let-study>
-            <div class="p-4" (click)="handleComponentChange(study.activate)" >
-              <span class="mx-2"> <i class={{study.icon}}></i></span> 
-              <span class="menu-label-text "> {{ study.label }}</span>
-            </div>  
-          </ng-template>
-      </p-menu>
-    </div>
-  
-    <div class="col-md-11 mt-4 activate-component" >
-  
-      <div [ngSwitch]="activeComponent">
-        <div *ngSwitchCase="'countries'"><app-countries></app-countries></div>
-        <div *ngSwitchCase="'sites'"> <app-sites></app-sites> </div>
-        <div *ngSwitchCase="'inventory-review'"><app-inventory-review></app-inventory-review></div>
-        <div *ngSwitchCase="'summary'"><app-summary></app-summary></div>
+        <div class="mt-3" >
+            <p-menu [model]="studies">
+              
+              <ng-template  pTemplate="start">
+                <p class=" ml-4 mt-4 text-start sidebar-label-text">Protocol Details</p> 
+              </ng-template>
+    
+            <ng-template pTemplate="study" let-study>
+              <div class="p-4" (click)="handleComponentChange(study.activate)" >
+                <span class="mr-3"> <i class={{study.icon}}></i></span> 
+                <span class="menu-label-text "> {{ study.label }}</span>
+              </div>  
+            </ng-template>
+        </p-menu>
       </div>
+      
+    
+      <div class="col-md-11 mt-4 activate-component" >
+    
+        <div [ngSwitch]="activeComponent">
+          <div *ngSwitchCase="'countries'"><app-countries></app-countries></div>
+          <div *ngSwitchCase="'sites'"> <app-sites></app-sites> </div>
+          <div *ngSwitchCase="'inventory-review'"><app-inventory-review></app-inventory-review></div>
+          <div *ngSwitchCase="'summary'"><app-summary></app-summary></div>
+        </div>
+      </div>
+    
     </div>
-  
-  </div>
-  

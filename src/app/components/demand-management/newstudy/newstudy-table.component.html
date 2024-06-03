@@ -1,6 +1,6 @@
 <!-- New Study Management Table -->
 <div *ngIf="!showStudyDetailPage">
-    <p-table #dt [value]="studies" [(selection)]="selectedStudies" dataKey="id" editMode="row" [rowHover]="true" [rows]="10"
+    <p-table #dt [value]="studies" [(selection)]="selectedStudies" dataKey="id" editMode="row" [rowHover]="true" [rows]="setRows"
              [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading" [paginator]="true"
              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
              [globalFilterFields]="['sponsor', 'protocol_id', 'countries', 'sites', 'sites_completed', 'subjects_screened', 'qty_of_kits_study', 'qty_of_kits_initial', 'visits', 'pre_label_y', 'kit_vendor', 'date_kit_at_first_site', 'revenue_gen']"
@@ -11,18 +11,27 @@
                     <h4> New Study </h4> 
                 </div>
                 <div>
-                    <span class="p-input-icon-left ml-auto">
-                        <span (click)="exportExcel()">
-                            <p-button [text]="true" [plain]="true"> <i class="bi bi-download"></i></p-button>
-                        </span>
-                        <span (click)="handleTableView()">
-                            <p-button [text]="true" icon="pi pi-table" [plain]="true"> </p-button>
-                        </span>
-                        <span (click)="handleAdditionanlColumn()">
-                            <p-button [text]="true" [plain]="true"> <i class="bi bi-layout-three-columns"></i></p-button>
-                        </span>
-                        <p-button [text]="true" [plain]="true"> <i class="bi bi-arrows-angle-expand"></i></p-button>
-                    </span>
+                    <span class="p-input-icon-left ml-auto" style="padding-right: 10px;">
+                        <div class="row">
+							<div class="col">
+                                <i class="bi bi-download" (click)="exportExcel()"
+                                style="font-size: 1.25rem; cursor: pointer;"></i>
+                        </div>
+                        <div class="col">
+                            <i class="bi bi-layout-three-columns" (click)="handleAdditionanlColumn()"
+                                style="font-size: 1.25rem; cursor: pointer;"></i>
+                        </div>
+                        <div class="col">
+                            <span (click)="handleRowControl()" style="cursor: pointer;font-size: 1.25rem">
+                                <i class="bi bi-arrows-angle-expand"
+                                    *ngIf="changeExpandButton; else collapseIcon"></i>
+                                <ng-template #collapseIcon>
+                                    <i class="bi bi-arrows-angle-contract"></i>
+                                </ng-template>
+                            </span>
+                        </div>
+                    </div>
+                </span>
 
                 </div>
             </div>
@@ -112,6 +121,15 @@
                         <p-columnFilter type="text" field="revenue_gen" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
+                <ng-container *ngFor="let item of selectedItems">
+					<th pSortableColumn="{{ item.field }}" style="min-width: 10rem">
+						<div class="flex justify-content-between align-items-center">
+							{{ item.name }}
+							<p-columnFilter type="text" field="{{ item.field }}" display="menu" class="ml-auto">
+							</p-columnFilter>
+						</div>
+					</th>
+				</ng-container>
             </tr>
 
         </ng-template>
@@ -152,7 +170,7 @@
                     </div>
                     <!-- <span class="ml-2" *ngIf="study.editing"><i class="bi bi-check" (click)="onSaveRow(study)"></i></span>
                     <span class="ml-2" *ngIf="study.editing"><i class="bi bi-x" (click)="onCancelRow(study, ri)"></i></span> -->
-                    <span class="ml-2"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar()"></i></span>
+                    <span class="ml-2"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar(study)"></i></span>
                 </td>
                 <td [pEditableColumn]="study.sponsor" pEditableColumnField="sponsor" [style.pointer-events]="study.editing ? 'auto' : 'none'">
                     <p-cellEditor>
@@ -318,6 +336,9 @@
 					</div>
 
 				</td> -->
+                <ng-container *ngFor="let item of selectedItems">
+					<td *ngIf="item['field']">{{study[item.field]}}</td>
+				</ng-container>
             </tr>
             
         </ng-template>
@@ -331,9 +352,107 @@
 
 </div>
 
+<!-- table view menu -->
+<div class="table-view">
+
+
+</div>
+
+<!-- table add column -->
+<div class="addition-col-menu">
+	<p-listbox *ngIf="viewAdditionColumn" [options]="additionalColList" [(ngModel)]="selectedItems" 
+		[selectAll]="selectAll" optionLabel="name" [virtualScroll]="true" [filter]="true" [virtualScrollItemSize]="50"
+		[multiple]="true" [checkbox]="true" [showToggleAll]="false" [metaKeySelection]="false" [showToggleAll]="true"
+		(onChange)="onSelectionChange($event)" (onSelectAllChange)="onSelectAllChange($event)"
+		[listStyle]="{ 'max-height': '220px' }"></p-listbox>
+</div>
+
+<!-- chat side bar  -->
+<!-- <div class="item-detail-right-sidebar">
+	<p-sidebar [(visible)]="chatRightSideBar" position="right" styleClass="p-sidebar-lg">
+		<ng-template pTemplate="headless">
+			<div class="flex justify-content-between">
+				<div>
+					<span class="sidebar-header">Activity History</span>
+				</div>
+				<div>
+					<span class="sidebar-header">{{selectedStudies.sponsor}}</span>
+				</div>
+				<span>
+					<p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary"
+						(click)="closeCallback($event)"></p-button>
+				</span>
+			</div>
+		</ng-template>
+	</p-sidebar>
+</div> -->
+
+<div class="item-detail-right-sidebar">
+	<p-sidebar #sidebarRef [(visible)]="chatRightSideBar" position="right" styleClass="p-sidebar-lg">
+		<ng-template pTemplate="headless">
+			<div class="flex justify-content-between ml-3">
+				<div>
+					<p class="chat-sidebar-header">Activity History</p>
+				</div>
+				<span>
+					<p-button type="button" (click)="closeCallback($event)" icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary"></p-button>
+				</span>
+			</div>
+
+			<p class="ml-3">{{studyData.sponsor}}</p>
+			<p class="ml-3">{{studyData.protocol_id}}</p>
+			
+			<div class="row m-2">
+				<div class="col-10">
+					<textarea 
+						rows="2"	
+						class="w-100"
+						pInputTextarea 
+						[autoResize]="true"
+						[(ngModel)]="commentText"
+					></textarea>
+				</div>
+
+				<div class="col-2"> 
+					<button type="button" class="btn btn-success w-100 mt-2" (click)="postComment()">
+						<i style="color: white;" class="bi bi-send"></i> Post
+					</button>
+				</div>
+			</div>
+			<p-divider />
+
+			<div class="row m-2">
+				<div class="col-1">
+					<p-avatar 
+                  image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" 
+                  styleClass="mr-2" 
+                  size="xlarge" 
+                  shape="circle" />
+				</div>
+				<div class="col-11"> 
+					<p><b>Reyes, Sandra</b></p>
+					<p>Feb 05, 2024 at 03:50 PM</p>
+					<p-chip label="Ringfence"><i class="bi bi-arrow-repeat"></i></p-chip>
+				</div>
+			</div>
+
+			<p class="mx-4" style="font-size: 14px;">
+				Lorem Ipsum is simply dummy text of the printing and typesetting industry. The Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.	
+			</p>
+		</ng-template>
+	</p-sidebar>
+</div>
+
+<!-- Alert message box 
+
+<div *ngIf="alertRightSideBar" class="item-detail-right-sidebar">
+    <app-msg-right-sidebar [allComments]="allComments" [unreadCommentLength] = "unreadCommentLength" ></app-msg-right-sidebar>
+</div> -->
+
 <!-- Table below content  -->
 <div class="card" style="min-height: 500px;">
 	<div *ngIf="showDetailContent">
 		<app-study-detail-landing></app-study-detail-landing>
 	</div>
 </div>
+
