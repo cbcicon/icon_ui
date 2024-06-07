@@ -10,3 +10,12 @@
 .main-item{
     margin-left: -10px;
 }
+
+.purchase-order-card {
+    height: 49vh;
+    overflow: scroll;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
