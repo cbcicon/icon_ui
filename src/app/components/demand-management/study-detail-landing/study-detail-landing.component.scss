@@ -1,6 +1,15 @@
+.study-detail-landing-container{
+    margin-top: -7px;
+    padding: 0px;
+    border-radius: 5px;
+    gap:5px;
+    
+}
+
 .activate-component{
     width: 87%;
-    }
+
+}
     
     
     .menu-label-text{
@@ -22,3 +31,11 @@
     text-align: left;
     
     }
+
+  
+    
+    ::ng-deep.p-menu {
+        width: 20rem;
+        height: 49vh
+        
+     }
