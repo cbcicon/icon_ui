@@ -1,5 +1,6 @@
-{
+ {
     "inventory":{
-        
+       "inventory-table-data": "InventoryHeader/GetAllInventoryHeadersTbl",
+        "purchase-order-table-data" : "InventoryPO/GetAllInventoryPOTbl"
     }
-}
+ }

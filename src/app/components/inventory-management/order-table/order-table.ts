@@ -8,6 +8,8 @@ import { Sidebar } from 'primeng/sidebar';
 import { ItemSearchPopupComponent } from '../popup/itemsearchpopup/item-search-popup';
 import * as FileSaver from 'file-saver';
 import { DataShortenerService } from '../data-shortener/data-shortener.service';
+import { TableDataService } from '../../../common/table-data/table-data.service';
+import { UtilService } from '../../../common/util';
 
 
 
@@ -20,7 +22,7 @@ import { DataShortenerService } from '../data-shortener/data-shortener.service';
 export class OrderTableComponent implements OnInit {
 
 
-customers:any;
+inventoryTableData:any;
 colunms: any;
 duration: any;
 selectedDuration: any;
@@ -91,6 +93,8 @@ changeExpandButton = false
 commentText: string = ''
 chatData :any
 
+dateFilterData :any
+
 additionalColList = [
   {
     "field": "Qty to Order",
@@ -151,29 +155,24 @@ additionalColList = [
 ]
 
 
-constructor(private invetoryServices: DataService  , public dialogService: DialogService , public dataShortenerService:DataShortenerService) {}
+constructor( public tableDataService:TableDataService  ,  private invetoryServices: DataService  , public dialogService: DialogService , public util:UtilService ,  public dataShortenerService:DataShortenerService) {}
 
 
 ngOnInit() {
     this.loading = true;
 
-    this.customers =  this.invetoryServices.getData()
 
-    this.totalRecords =  this.customers.length
+    this.tableDataService.getInventoryTableData().subscribe((res:any) => {
+      this.inventoryTableData =  res
+      this.dateFilterData = res
+      this.totalRecords =  res.length
+      this.rowsPerPageOptions =  this.divideIntoMultiplesOfTen(this.totalRecords)
+      this.duration = this.invetoryServices.getDuration();
+      this.selectedDuration = this.invetoryServices.getDuration()[1];
+      this.loading = false
+    })
 
-    setTimeout(() => {
-
-    this.duration = this.invetoryServices.getDuration();
-    this.selectedDuration = this.invetoryServices.getDuration()[1];
-    this.loading = false
-  }, 2000);
-
-  this.rowsPerPageOptions =  this.divideIntoMultiplesOfTen(this.totalRecords)
-
-
-
-
-
+  
 
 this.stockFilterOption = [
   { label: 'On Stock', value: 'On Stock' },
@@ -277,7 +276,6 @@ selectedSize:string = 'p-datatable-gridlines p-datatable-striped'
 
 postComment(){
 
-
   const existingComments = JSON.parse(localStorage.getItem('comments') || '[]');
 
   existingComments.push({  commentText :this.commentText ,read: false });
@@ -317,7 +315,7 @@ this.tableHeaderItem.forEach(item => {
 
 exportExcel() {
   import('xlsx').then((xlsx) => {
-      const worksheet = xlsx.utils.json_to_sheet(this.customers);
+      const worksheet = xlsx.utils.json_to_sheet(this.inventoryTableData);
       const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
       const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
       this.saveAsExcelFile(excelBuffer, 'products');
@@ -346,29 +344,29 @@ handleDateShortener(datetype: string): void {
 
   if (this.selectedInterval === datetype) {
     this.selectedInterval = '';
-    this.customers = this.invetoryServices.getData(); 
+    this.inventoryTableData = this.invetoryServices.getData(); 
     return;
   }
 
   this.selectedInterval = datetype; 
 
-  this.customers = this.invetoryServices.getData();
+   this.inventoryTableData = this.dateFilterData
 
   switch (datetype) {
     case 'weekly':
-      this.customers = this.dataShortenerService.filterWeekly(this.customers);
+      this.inventoryTableData = this.dataShortenerService.filterWeekly(this.inventoryTableData);
       break;
     case 'monthly':
-      this.customers = this.dataShortenerService.filterMonthly(this.customers);
+      this.inventoryTableData = this.dataShortenerService.filterMonthly(this.inventoryTableData);
       break;
     case 'quarterly':
-      this.customers = this.dataShortenerService.filterQuarterly(this.customers);
+      this.inventoryTableData = this.dataShortenerService.filterQuarterly(this.inventoryTableData);
       break;
     case 'half-yearly':
-      this.customers = this.dataShortenerService.filterHalfYearly(this.customers);
+      this.inventoryTableData = this.dataShortenerService.filterHalfYearly(this.inventoryTableData);
       break;
     case 'yearly':
-      this.customers = this.dataShortenerService.filterYearly(this.customers);
+      this.inventoryTableData = this.dataShortenerService.filterYearly(this.inventoryTableData);
       break;
     default:
       break;

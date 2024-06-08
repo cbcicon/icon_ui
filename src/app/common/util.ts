@@ -72,6 +72,10 @@ export class UtilService {
     return data.filter(item => new Date(item.DUE_DATE) >= currentDate && new Date(item.DUE_DATE) <= oneYearForward);
   }
 
+
+  
+  // format date into date month year
+
   formatDate(dateString: string): string {
     const date = new Date(dateString);
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -84,6 +88,7 @@ export class UtilService {
   
     return `${day} ${monthNames[monthIndex]} ${year}`;
   }
+
 
 
   
