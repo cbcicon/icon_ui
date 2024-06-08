@@ -1,0 +1,9 @@
+.ring-fence-card{
+  height: 52vh;
+  overflow: scroll; 
+}
+
+
+::-webkit-scrollbar {
+    display: none;
+}

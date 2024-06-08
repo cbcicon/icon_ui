@@ -39,6 +39,14 @@ export class ForecastChart {
           data: this.chartData.data
         },
         {
+          type: 'line',
+          borderWidth: 2,
+          fill: false,  
+          tension: 0.4,
+          borderColor: "orange",
+          data: this.chartData.data
+        },
+        {
           backgroundColor: "#A0CEC7",
           data: this.chartData.data,
           borderColor: 'white',

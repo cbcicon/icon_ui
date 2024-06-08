@@ -1,5 +1,5 @@
 
-<div class="row mx-1 below-card" >
+<div class="row mx-1 ring-fence-card" >
 <div class="col card " >
 	<div class="d-flex justify-content-between">
 				
@@ -135,8 +135,8 @@
 
 <!-- .............. lock unlock Form............ -->
 
-<div class=" col-md-3 card mx-2 below-card" *ngIf="lockActive">
-	<h5>Lock</h5>
+<div class=" col-md-3 card mx-2 side-card " *ngIf="lockActive">
+	<h6><b>Lock</b></h6>
 
 	<div class="flex flex-wrap gap-3">
 		<div class="flex align-items-center">
@@ -180,14 +180,13 @@
 	</div>
 
 	<div>
-		<p htmlFor="state"> <b>Comment</b> </p>
-		<textarea class="w-100" rows="3" cols="15" placeholder="Your Message" pInputTextarea></textarea>
+		<!-- <p htmlFor="state"> <b>Comment</b> </p> -->
+		<textarea class="w-100" rows="2" cols="15" placeholder="Your Message" pInputTextarea></textarea>
 	</div>
 
 	<div class="d-flex justify-content-between">
-		<p-button label="Secondary" [outlined]="true" severity="secondary" (click)="handleLockUnlockShow()"></p-button>
+		<button type="button" class="btn btn-outline-dark  mt-2"  (click)="handleLockUnlockShow()"> Cancel</button>
 		<button type="button" class="btn btn-success  mt-2"> Submit</button>
-
 	 </div>
 </div>
 
