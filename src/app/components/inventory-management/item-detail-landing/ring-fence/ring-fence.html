@@ -223,7 +223,7 @@
 			</div>
 			<div>
 				<span class="p-input-icon-left ml-auto">
-					<span >
+					<span (click)="hideShowChart()" >
 						<p-button [text]="true" [plain]="true"> <i class="bi bi-graph-up-arrow"></i></p-button>
 					</span>
 	
@@ -234,7 +234,7 @@
 				</span>
 	
 			</div>
-		
+		</div>
 		
 	  <p-table #dt [value]="ringFenceData"  dataKey="id" [rowHover]="true"
 			[rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,20,30]" [loading]="loading"
@@ -346,7 +346,7 @@
 	
 		</p-table>
 	 
-	
+	</div>
 	
 	<!-- .............. lock unlock Form............ -->
 	
@@ -406,7 +406,20 @@
 		 </div>
 	</div>
 	
-
+	
+	
+	<!-- ..............  Inventory Locations chart ............ -->
+	
+	<div class=" col-md-3 card mx-2 below-card" *ngIf="chartActive">
+	
+	<div class="d-flex justify-content-between mb-4"> 	<h4 > <i class="bi bi-geo-alt"></i> Inventory Locations</h4> <p-button icon="pi pi-times" (click)="handleChartShow()" [rounded]="true" [text]="true" severity="secondary" />
+	</div>
+	
+		<p-chart type="pie" [data]="data" [options]="options" class="chart-container"></p-chart>
+		
+	</div>
+	
+	</div>
 	
 	
 	
@@ -424,59 +437,262 @@
 	
 					</span>
 				</div>
-	
-				<p class=" ml-3">01-213-100-Z</p>
-				<p class=" ml-3">Foil, Aluminum, Dispenser Cutter Box, Fisherbrand™, 12" x 200'</p>
-	
-					
-						<div class="row m-2">
-							
-							<div class="col-10">
-							
-								<textarea 
-									rows="2"	
-									class="w-100"
-									pInputTextarea 
-									[autoResize]="true"
-									[(ngModel)]="commentText"
-									>
-								</textarea>
+				<div>
+					<span class="p-input-icon-left ml-auto">
+						<span >
+							<p-button [text]="true" [plain]="true"> <i class="bi bi-graph-up-arrow"></i></p-button>
+						</span>
+		
+						<span >
+							<p-button [text]="true" [plain]="true"><i class="bi bi-arrows-angle-expand"></i></p-button>
+						</span>
+						
+					</span>
+		
+				</div>
+			
+			
+		  <p-table #dt [value]="ringFenceData"  dataKey="id" [rowHover]="true"
+				[rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,20,30]" [loading]="loading"
+				[paginator]="false" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+				[filterDelay]="0"
+				[globalFilterFields]="['ITEM_ID', 'ITEM_NAME', 'ITEM_DESCRIPTION', 'DEMAND' , 'ON_STOCK' , 'AVAILABILITY','OPEN_PO' ,'ITEM_TYPE']"
+				styleClass=" p-datatable-gridlines p-datatable-striped p-datatable-sm" >
+		
+				<ng-template pTemplate="header">
+					<tr>
+						
+						<th pSortableColumn="action-item">
+							<div class="flex justify-content-between align-items-center">
+								Action
 							</div>
-	
-							<div class="col-2"> 
-								<button type="button" class="btn btn-success w-100 mt-2" (click)="postComment()"><i style="color: white;" class="bi bi-send"></i> Post</button>
-	
+						</th>
+		
+						<th pSortableColumn="ITEM_NAME">
+							<div class="flex justify-content-between align-items-center">
+					Location
 							</div>
-	
-						</div>
-						<p-divider />
-	
-	
-						<div class="row m-2">
+						</th>
+						<th pSortableColumn="ITEM_DESCRIPTION">
+							<div class="flex justify-content-between align-items-center">
+								Lot No.
+							</div>
+						</th>
+		
+						<th pSortableColumn="DEMAND">
+							<div class="flex justify-content-between align-items-center">
+					Total Qty
+							</div>
+						</th>
+		
+						<th pSortableColumn="ON_STOCK">
+							<div class="flex justify-content-between align-items-center">
+								Qty Ring Fenced
 							
-							<div class="col-1">
-								<p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
 							</div>
-	
-							<div class="col-11"> 
-								<p> <b>Reyes, Sandra</b></p>
-								<p>Feb 05, 2024 at 03:50 PM</p>
-								<p-chip label="Ringfence"><i class="bi bi-arrow-repeat"></i></p-chip>
-							
+						</th>
+		
+						<th pSortableColumn="AVAILABILITY">
+							<div class="flex justify-content-between align-items-center">
+								Qty Available
+								
 							</div>
-						</div>
-	
-						<p class="mx-4" style="font-size: 14px;">
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-							 the Lorem Ipsum has been the industry's standard dummy text ever since the to 
-							 1500s, when an unknown printer took a galley of type and scrambled it to make 
-							 a type specimen book.	
-						</p>
-					
-	
+						</th>
+		
+						<th pSortableColumn="OPEN_PO">
+							<div class="flex justify-content-between align-items-center">
+								Locked Date
+							</div>
+						</th>
+		
+						<th pSortableColumn="DUE_DATE" style="min-width: 10rem">
+							<div class="flex justify-content-between align-items-center">
+					Unlocked Date
+							</div>
+						</th>
+		
+						<th pSortableColumn="ITEM_TYPE" style="min-width: 10rem">
+							<div class="flex justify-content-between align-items-center">
+								Expire Date
+							</div>
+						</th>
+		
+					</tr>
+				</ng-template>
+			
+				<ng-template pTemplate="body" let-ringFenceData>
+					<tr class="p-selectable-row">
+						<td>
+							<span (click)="handleLockUnlockShow()" > <i class="bi bi-unlock"></i></span>
+							<span class="ml-3" (click)="handleChatRightSidebar()"><i class="bi bi-chat-left-text" ></i></span>
+						</td>
+						<td>
+							{{ringFenceData.location}}
+						</td>
+						<td>
+							{{ringFenceData.lotNo}}
+						</td>
+						<td>
+							{{ringFenceData.totalQty}}
+						</td>
+						<td>
+							{{ringFenceData.qtyRingFenced}}
+						</td>
+						<td>
+							{{ringFenceData.qtyAvailable}}
+						</td>
+						<td>
+							{{ringFenceData.lockedDate}}
+						</td>
+						<td>
+							{{ringFenceData.unlockedDate}}
+						</td>
+						<td>
+							{{ringFenceData.expireDate}}
+						</td>
+						
+					</tr>
+				</ng-template>
 				
+				<ng-template pTemplate="emptymessage">
+					<tr>
+						<td colspan="8">No Data found.</td>
+					</tr>
+				</ng-template>
+		
+			</p-table>
+		 
+		
+		
+		<!-- .............. lock unlock Form............ -->
+		
+		<div class=" col-md-3 card mx-2 below-card" *ngIf="lockActive">
+			<h5>Lock</h5>
+		
+			<div class="flex flex-wrap gap-3">
+				<div class="flex align-items-center">
+					<p-radioButton name="pizza" value="Cheese" [(ngModel)]="ingredient" inputId="ingredient1"></p-radioButton>
+					<label for="ingredient1" class="ml-2">Lock</label>
+				</div>
+				
+				<div class="flex align-items-center">
+					<p-radioButton name="pizza" value="Mushroom" [(ngModel)]="ingredient" inputId="ingredient2"></p-radioButton>
+					<label for="ingredient2" class="ml-2">Unlock</label>
+				</div>
+				</div>
+			<div class="p-fluid p-formgrid grid">
+				
+				<div class="field md:col-6">
+					<label htmlFor="state">Sponsor *</label>
+					<p-dropdown [options]="dropdownItems" optionLabel="name" ></p-dropdown>
+				</div>
+				<div class="field md:col-6">
+					<label htmlFor="state">Protocol ID *</label>
+					<p-dropdown [options]="dropdownItems" optionLabel="name" ></p-dropdown>
+				</div>
+		
+				<div class="field md:col-6">
+					<label htmlFor="state">Location *</label>
+					<p-dropdown [options]="dropdownItems" optionLabel="name" ></p-dropdown>
+				</div>
+				<div class="field md:col-6">
+					<label htmlFor="state">Lot Number *</label>
+					<p-dropdown [options]="dropdownItems" optionLabel="name" ></p-dropdown>
+				</div>
+				<div class="field md:col-6">
+					<label htmlFor="state">Qty Unlock *</label>
+					<input pInputText id="username" type="text" />
+				</div>
+				<div class="field md:col-6">
+					<label htmlFor="state">Date *</label>
+					<p-calendar  [iconDisplay]="'input'" [showIcon]="true"></p-calendar>
+				</div>
+			
+			</div>
+		
+			<div>
+				<p htmlFor="state"> <b>Comment</b> </p>
+				<textarea class="w-100" rows="3" cols="15" placeholder="Your Message" pInputTextarea></textarea>
+			</div>
+		
+			<div class="d-flex justify-content-between">
+				<p-button label="Secondary" [outlined]="true" severity="secondary" (click)="handleLockUnlockShow()"></p-button>
+				<button type="button" class="btn btn-success  mt-2"> Submit</button>
+		
+			 </div>
+		</div>
 		
 	
-			</ng-template>
-		</p-sidebar>
-	</div>
+		
+		
+		
+		<!-- chat side bar  -->
+		
+		<div class="item-detail-right-sidebar">
+			<p-sidebar  #sidebarRef  [(visible)]="chatRightSideBar" position="right" styleClass="p-sidebar-lg">
+				<ng-template pTemplate="headless"  >
+					<div class="flex justify-content-between ml-3">
+						<div>
+							<p class="chat-sidebar-header">Activity History</p>
+						</div>
+						<span>
+							<p-button  type="button" (click)="closeCallback($event)" icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary"></p-button>
+		
+						</span>
+					</div>
+		
+					<p class=" ml-3">01-213-100-Z</p>
+					<p class=" ml-3">Foil, Aluminum, Dispenser Cutter Box, Fisherbrand™, 12" x 200'</p>
+		
+						
+							<div class="row m-2">
+								
+								<div class="col-10">
+								
+									<textarea 
+										rows="2"	
+										class="w-100"
+										pInputTextarea 
+										[autoResize]="true"
+										[(ngModel)]="commentText"
+										>
+									</textarea>
+								</div>
+		
+								<div class="col-2"> 
+									<button type="button" class="btn btn-success w-100 mt-2" (click)="postComment()"><i style="color: white;" class="bi bi-send"></i> Post</button>
+		
+								</div>
+		
+							</div>
+							<p-divider />
+		
+		
+							<div class="row m-2">
+								
+								<div class="col-1">
+									<p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
+								</div>
+		
+								<div class="col-11"> 
+									<p> <b>Reyes, Sandra</b></p>
+									<p>Feb 05, 2024 at 03:50 PM</p>
+									<p-chip label="Ringfence"><i class="bi bi-arrow-repeat"></i></p-chip>
+								
+								</div>
+							</div>
+		
+							<p class="mx-4" style="font-size: 14px;">
+								Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+								 the Lorem Ipsum has been the industry's standard dummy text ever since the to 
+								 1500s, when an unknown printer took a galley of type and scrambled it to make 
+								 a type specimen book.	
+							</p>
+						
+		
+					
+			
+		
+				</ng-template>
+			</p-sidebar>
+		</div>
