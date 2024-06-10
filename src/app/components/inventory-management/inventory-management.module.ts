@@ -43,13 +43,18 @@ import { SharedModule } from '../../shared/shared.module';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { AvatarModule } from 'primeng/avatar';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { SafetyStockComponent } from './safety-stock/safety-stock';
+import { ScrapComponent } from './scrap/scrap';
+import { InventoryPurchaseOrderComponent } from './inventory-purchase-order/inventory-purchase-order';
+
 
 
 
 @NgModule({
 	declarations: [
 		OrderTableComponent, QauntityBreakdownPopupComponent, ItemSearchPopupComponent, ItemDetailsComponent, ItemDetailLandingComponent,
-		StockAndScrapComponent, RingFenceComponent, ReplacementComponent, PurchaseOrderComponent
+		StockAndScrapComponent, RingFenceComponent, ReplacementComponent, PurchaseOrderComponent , SafetyStockComponent , ScrapComponent,
+		InventoryPurchaseOrderComponent
 	],
 	imports: [
 		CommonModule,
