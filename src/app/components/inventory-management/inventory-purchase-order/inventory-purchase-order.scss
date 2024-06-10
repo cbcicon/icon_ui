@@ -1,0 +1,12 @@
+.custom-progress-bar ::ng-deep .p-progressbar-determinate .p-progressbar-label {
+        display: none;
+    }
+
+
+.custom-progress-bar ::ng-deep .p-progressbar .p-progressbar-value {
+        background: #1a711d;
+}
+
+.custom-progress-bar ::ng-deep .p-progressbar {
+    height: 8px;     
+}

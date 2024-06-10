@@ -1,0 +1,223 @@
+<!-- scrap table -->
+
+<div class="card" >
+
+	<p-table #dt 
+	[value]="scrapData"  
+	dataKey="id" 
+	[rowHover]="true"
+	[rows]="controlRow" 
+	[showCurrentPageReport]="true" 
+	[loading]="loading"
+	[filterDelay]="0"
+	styleClass={{selectedSize}} 
+	[exportHeader]="'customExportHeader'" 
+	responsiveLayout="stack" 
+  [breakpoint]="'1200px'" 
+  [tableStyle]="{'min-width': '100vw'}"
+	dataKey="actions" 
+	rowGroupMode="subheader" 
+	groupRowsBy="action" 
+	rowExpandMode="single"
+	>
+
+  <ng-template pTemplate="caption">
+		<div class="table-header d-flex justify-content-between">
+			<div>	</div>
+			<div>
+				<h4>Scrap</h4>
+			</div>
+			<div>
+				<span class="p-input-icon-left ml-auto">
+					<span (click)="exportExcel()">
+						<p-button [text]="true" [plain]="true"> <i class="bi bi-download"></i></p-button>
+					</span>
+				
+					<span (click)="handleRowControl()">
+						<p-button [text]="true" [plain]="true">
+							<i class="bi bi-arrows-angle-expand" *ngIf="changeExpandButton; else collapseIcon"></i>
+							<ng-template #collapseIcon>
+								<i class="bi bi-arrows-angle-contract"></i>
+							</ng-template>
+						</p-button>
+					</span>
+				</span>
+
+			</div>
+		</div>
+	</ng-template>
+
+		<ng-template pTemplate="header">
+			<tr>
+				
+				<th rowspan="2" >
+					<div class="flex justify-content-between align-items-center">
+					  Action
+					</div>
+				</th>
+
+				  <th  rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+					 Production Location
+					</div>
+				  </th>
+
+				  
+          <th pSortableColumn="jan" colspan="2">
+            <div class="text-center">
+              Total Value
+            </div>
+            </th>
+
+				  <th pSortableColumn="jan" colspan="4">
+					<div class="text-center">
+					  Jan
+					</div>
+				  </th>
+
+				  <th pSortableColumn="feb" colspan="4">
+					<div class="text-center">
+					  Feb
+					</div>
+				  </th>
+				  <th  colspan="4">
+					<div class="text-center">
+					  March
+					</div>
+				  </th>
+
+				  <th  colspan="4">
+					<div class="text-center">
+					  Apr
+					</div>
+				  </th>
+
+				  
+
+			</tr>
+
+			<tr>
+        <th class="text-center">Expired</th>
+				<th class="text-center">Short Life</th>
+
+				<th class="text-center">Week 1</th>
+				<th class="text-center">Week 2</th>
+        <th class="text-center">Week 3</th>
+				<th class="text-center">Week 4</th>
+				
+
+				<th class="text-center">Week 1</th>
+				<th class="text-center">Week 2</th>
+        <th class="text-center">Week 3</th>
+				<th class="text-center">Week 4</th>
+
+				<th class="text-center">Week 1</th>
+				<th class="text-center">Week 2</th>
+        <th class="text-center">Week 3</th>
+				<th class="text-center">Week 4</th>
+
+				<th class="text-center">Week 1</th>
+				<th class="text-center">Week 2</th>
+        <th class="text-center">Week 3</th>
+				<th class="text-center">Week 4</th>
+
+			  </tr>
+		</ng-template>
+
+		<ng-template pTemplate="groupheader" let-scrapData let-rowIndex="rowIndex" let-expanded="expanded">
+			<tr>
+				<td >
+					<button 
+						type="button" 
+						pButton 
+						pRipple 
+						[pRowToggler]="scrapData" 
+						class="p-button-text p-button-rounded p-button-plain mr-2" 
+						[icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+						>
+					</button>
+  
+			
+				</td>       
+				<td  >
+					{{ scrapData["ProductionLocation"] }}
+				</td>
+				<td   class="text-right pr-4">
+					{{ scrapData["Expired"] }}
+				</td >
+				<td   class="text-right pr-4" >
+					{{ scrapData["ShortLite"] }}
+				</td>
+        
+				<td   class="text-right pr-4">{{ scrapData["Week1"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week2"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week3"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week4"] }}</td>
+
+        <td   class="text-right pr-4">{{ scrapData["Week1"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week2"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week3"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week4"] }}</td>
+        
+        <td   class="text-right pr-4">{{ scrapData["Week1"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week2"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week3"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week4"] }}</td>
+ 
+        <td   class="text-right pr-4">{{ scrapData["Week1"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week2"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week3"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week4"] }}</td>
+
+      
+				
+			</tr>
+		  
+		</ng-template>
+
+		 <ng-template let-scrapData pTemplate="rowexpansion">
+			<tr class="p-selectable-row">	
+        <td >
+        <p class="text-end mr-4"><i class="bi bi-chat-left-text"></i></p>  
+				</td>       
+				<td  >
+					{{ scrapData["ProductionLocation"] }}
+				</td>
+				<td   class="text-right pr-4">
+					{{ scrapData["Expired"] }}
+				</td >
+				<td   class="text-right pr-4" >
+					{{ scrapData["ShortLite"] }}
+				</td>
+        
+				<td   class="text-right pr-4">{{ scrapData["Week1"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week2"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week3"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week4"] }}</td>
+
+        <td   class="text-right pr-4">{{ scrapData["Week1"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week2"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week3"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week4"] }}</td>
+        
+        <td   class="text-right pr-4">{{ scrapData["Week1"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week2"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week3"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week4"] }}</td>
+ 
+        <td   class="text-right pr-4">{{ scrapData["Week1"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week2"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week3"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["Week4"] }}</td>
+        				
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="emptymessage">
+			<tr>
+				<td colspan="8">No Data found.</td>
+			</tr>
+		</ng-template>
+
+	</p-table>
+
+</div>

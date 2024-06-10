@@ -38,7 +38,8 @@ import { SitesComponent } from './study-detail-landing/sites/sites.component';
 import { InventoryReviewComponent } from './study-detail-landing/inventory-review/inventory-review.component';
 import { SummaryComponent } from './study-detail-landing/summary/summary.component';
 import { MasterDemandPlanComponent } from './master-demand-management/master-demand-plan';
-import { SelectButtonModule } from 'primeng/selectbutton';import { InputTextareaModule } from 'primeng/inputtextarea';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 import { AvatarModule } from 'primeng/avatar';
 import { SharedModule } from '../../shared/shared.module';
 
