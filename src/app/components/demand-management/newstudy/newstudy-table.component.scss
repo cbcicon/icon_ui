@@ -17,7 +17,8 @@
 
 
 .container {
-  margin-top: 5px;
+  margin-top: 0; /* Adjusted to remove gap */
+  // margin-top: 5px;
   position: relative;
   width: 100%;
 }
