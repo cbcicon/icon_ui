@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { UtilService } from './common/util';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderRouterModule } from "ngx-ui-loader";
+import { TableDataService } from './common/table-data/table-data.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +29,7 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderRouterModule } fro
      NgxUiLoaderRouterModule,
      NgxUiLoaderHttpModule
     ],
-  providers: [UtilService],
+  providers: [UtilService , TableDataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

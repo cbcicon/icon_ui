@@ -1,8 +1,8 @@
 export const environment = {
+  
   dev:true,
 
-  baseUrl:'',
+  baseUrl:'http://localhost:5050/api',
 
-  
 
 };

@@ -204,8 +204,8 @@
 	
 	</div>
 	
-	<div class=" col-md-3 card mx-2 " *ngIf="showReversal">
-		<h5>Replacement Action</h5>
+	<div class="col-md-3 card mx-2 side-card " *ngIf="showReversal">
+		<h6> <b>Replacement Action</b></h6>
 	
 		<div class="p-fluid p-formgrid grid">
 			
@@ -234,18 +234,15 @@
 				<label htmlFor="state">Lot Number *</label>
 				<input pInputText id="username" type="text" />
 			</div>
-			
-		
-	
 		</div>
 	
-		<div>
-			<p htmlFor="state"> <b>Comment</b> </p>
-			<textarea class="w-100" rows="3" cols="15" placeholder="Your Message" pInputTextarea></textarea>
+		<div class="">
+			<p htmlFor="state" class="mb-0 mt-0" > <b>Comment</b> </p>
+			<textarea class="w-100" rows="2" cols="15" placeholder="Your Message" pInputTextarea></textarea>
 		</div>
 	
 		<div class="d-flex justify-content-between">
-			<p-button label="Cancel" [outlined]="true" severity="secondary"  (click)="handleShowReplacement()"></p-button>
+			<button type="button" class="btn btn-outline-dark  mt-2" (click)="handleShowReplacement()"> cancel</button>
 			<button type="button" class="btn btn-success  mt-2"> Submit</button>
 		 </div>
 	</div>

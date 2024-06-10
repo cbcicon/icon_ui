@@ -872,9 +872,13 @@ i {
 
 .p-menu .p-menuitem:not(.p-highlight):not(.p-disabled) > .p-menuitem-content:hover {
   color: #128474;
-   background: #E7F3F1;
+  background: #E7F3F1;
 }
 
+
+.side-card{
+  height: 49vh;
+}
 
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";

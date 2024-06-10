@@ -1,4 +1,4 @@
-<div class="card below-card" >
+<div class="card purchase-order-card" >
 
   <h4 class="text-start">Purchase Order</h4>
 
@@ -33,74 +33,88 @@
         </div>
       </th>
 
-      <th pSortableColumn="ITEM_NAME">
+      <th pSortableColumn="poNo">
         <div class="flex justify-content-between align-items-center">
            PO#
-          <p-columnFilter type="text" field="ITEM_NAME" display="menu" class="ml-auto"></p-columnFilter>
+          <p-columnFilter type="text" field="poNo" display="menu" class="ml-auto"></p-columnFilter>
         </div>
       </th>
-      <th pSortableColumn="ITEM_DESCRIPTION">
+      <th pSortableColumn="productionLocationNumber">
         <div class="flex justify-content-between align-items-center">
-          Vendor
-          <p-columnFilter type="text" field="ITEM_DESCRIPTION" display="menu"
+          Production Location
+          <p-columnFilter type="text" field="productionLocationNumber" display="menu"
             class="ml-auto"></p-columnFilter>
         </div>
       </th>
 
-      <th pSortableColumn="DEMAND">
+      <th pSortableColumn="status">
         <div class="flex justify-content-between align-items-center">
           Status
-          <p-columnFilter type="text" field="DEMAND" display="menu" class="ml-auto"></p-columnFilter>
+          <p-columnFilter type="text" field="status" display="menu" class="ml-auto"></p-columnFilter>
         </div>
       </th>
 
-      <th pSortableColumn="ON_STOCK">
+      <th pSortableColumn="sponsor">
         <div class="flex justify-content-between align-items-center">
           Sponsor
-          <p-columnFilter type="text" field="ON_STOCK" display="menu" class="ml-auto"></p-columnFilter>
+          <p-columnFilter type="text" field="sponsor" display="menu" class="ml-auto"></p-columnFilter>
         </div>
       </th>
 
-      <th pSortableColumn="AVAILABILITY">
+      <th pSortableColumn="qtyOrdered">
         <div class="flex justify-content-between align-items-center">
-          Qty Order
-          <p-columnFilter type="text" field="AVAILABILITY" display="menu"
+          qtyOrdered
+          <p-columnFilter type="text" field="qtyOrdered" display="menu"
             class="ml-auto"></p-columnFilter>
         </div>
       </th>
 
-      <th pSortableColumn="OPEN_PO">
+      <th pSortableColumn="qtyReceived">
         <div class="flex justify-content-between align-items-center">
           Qty Recieved
-          <p-columnFilter type="text" field="OPEN_PO" display="menu" class="ml-auto"></p-columnFilter>
+          <p-columnFilter type="text" field="qtyReceived" display="menu" class="ml-auto"></p-columnFilter>
+        </div>
+      </th>
+
+      <th pSortableColumn="qtyOpen" style="min-width: 10rem">
+        <div class="flex justify-content-between align-items-center">
+          Qty Open
+
+          <p-columnFilter type="date" field="qtyOpen" display="menu" class="ml-auto"></p-columnFilter>
         </div>
       </th>
 
       <th pSortableColumn="DUE_DATE" style="min-width: 10rem">
         <div class="flex justify-content-between align-items-center">
-          Qty Open
-
+          Price
           <p-columnFilter type="date" field="DUE_DATE" display="menu" class="ml-auto"></p-columnFilter>
         </div>
       </th>
 
-      <th pSortableColumn="ITEM_TYPE" style="min-width: 10rem">
+      <th pSortableColumn="DUE_DATE" style="min-width: 10rem">
+        <div class="flex justify-content-between align-items-center">
+          Lead Time (Days)
+          <p-columnFilter type="date" field="DUE_DATE" display="menu" class="ml-auto"></p-columnFilter>
+        </div>
+      </th>
+
+
+
+      <th pSortableColumn="orderedDate" style="min-width: 10rem">
         <div class="flex justify-content-between align-items-center">
           Ordered Date
-          <p-columnFilter type="numeric" field="ITEM_TYPE" display="menu" currency="USD"
+          <p-columnFilter type="numeric" field="orderedDate" display="menu" currency="USD"
             class="ml-auto"></p-columnFilter>
         </div>
       </th>
 
-      <th pSortableColumn="ITEM_TYPE" style="min-width: 10rem">
+      <th pSortableColumn="dateDue" style="min-width: 10rem">
         <div class="flex justify-content-between align-items-center">
           Due Date
-          <p-columnFilter type="numeric" field="ITEM_TYPE" display="menu" currency="USD"
+          <p-columnFilter type="numeric" field="dateDue" display="menu" currency="USD"
             class="ml-auto"></p-columnFilter>
         </div>
       </th>
-   
-
     </tr>
   </ng-template>
 
@@ -110,15 +124,19 @@
         <span> <i class="bi bi-eye" ></i></span>
         <span class="ml-3"><i class="bi bi-chat-left-text" ></i></span>
       </td>
-      <td>{{purchaseOrderData['PO#']}}</td>
-      <td>{{purchaseOrderData['Vendor']}}</td>
-      <td>{{purchaseOrderData['Status']}}</td>
-      <td>{{purchaseOrderData['Sponsor']}}</td>
-      <td>{{purchaseOrderData['QtyOrdered']}}</td>
-      <td>{{purchaseOrderData['QtyReceived']}}</td>
-      <td>{{purchaseOrderData['QtyOpen']}}</td>
-      <td>{{purchaseOrderData['Ordered Date']}}</td>
-      <td>{{purchaseOrderData['DateDue']}}</td>
+      <td>{{purchaseOrderData['poNo']}}</td>
+      <td>{{purchaseOrderData['productionLocationNumber']}}</td>
+      <td>{{purchaseOrderData['status']}}</td>
+      <td>{{purchaseOrderData['sponsor']}}</td>
+      <td>{{purchaseOrderData['qtyOrdered']}}</td>
+      <td>{{purchaseOrderData['qtyReceived']}}</td>
+      <td>{{purchaseOrderData['qtyOpen']}}</td>
+
+      <td>{{purchaseOrderData['qtyOpen']}}</td>
+      <td>{{purchaseOrderData['qtyOpen']}}</td>
+      
+      <td>{{util.formatDate( purchaseOrderData['orderedDate'])}}</td>
+      <td>{{util.formatDate(purchaseOrderData['dateDue'])}}</td>
     </tr>
   </ng-template> 
   

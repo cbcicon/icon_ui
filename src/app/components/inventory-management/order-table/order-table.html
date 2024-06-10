@@ -1,10 +1,13 @@
 <!-- Inventory table -->
 <div>
-	<p-table #dt [value]="customers" [(selection)]="selectedCustomers" dataKey="id" [rowHover]="true"
+	<p-table #dt [value]="inventoryTableData" [(selection)]="selectedCustomers" dataKey="id" [rowHover]="true"
 		[rows]="controlRow" [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading"
 		[paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
 		[filterDelay]="0"
-		[globalFilterFields]="['ITEM_ID', 'ITEM_NAME', 'ITEM_DESCRIPTION', 'DEMAND' , 'ON_STOCK' , 'AVAILABILITY','OPEN_PO' ,'ITEM_TYPE']"
+		[globalFilterFields]="['item', 'itemDescription',  'demand',    'onStock',    'availability',    'openPurchaseOrder',    'earlyExpiryDate',    'itemType',    'quantityOrdered',    'replacement',    'kitProductLocation',    'excessStock',    'leadTime',    'consumption',    'componentType',    'forecast',    'totalDemand',    'scrap',    'warehouse',    'inventoryLocation',    'carton',    'kitCategory']"
+		responsiveLayout="stack" 
+		[breakpoint]="'900px'" 
+		[tableStyle]="{'min-width': '100vw'}"
 		styleClass={{selectedSize}} [exportHeader]="'customExportHeader'">
 		<ng-template pTemplate="caption">
 			<div class="table-header d-flex justify-content-between">
@@ -50,66 +53,97 @@
 				
 				<th pSortableColumn="action-item">
 					<div class="flex justify-content-between align-items-center">
-						Action Item
+						Action 
 					</div>
 				</th>
 
-				<th pSortableColumn="ITEM_NAME">
+				<th pSortableColumn="item">
 					<div class="flex justify-content-between align-items-center">
 						Item
-						<p-columnFilter type="text" field="ITEM_NAME" display="menu" class="ml-auto"></p-columnFilter>
+						<p-columnFilter type="text" field="item" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
-				<th pSortableColumn="ITEM_DESCRIPTION">
+				<th pSortableColumn="itemDescription">
 					<div class="flex justify-content-between align-items-center">
 						Item Description
-						<p-columnFilter type="text" field="ITEM_DESCRIPTION" display="menu"
+						<p-columnFilter type="text" field="itemDescription" display="menu"
 							class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="DEMAND">
+				<th pSortableColumn="demand">
 					<div class="flex justify-content-between align-items-center">
 						Demand
-						<p-columnFilter type="text" field="DEMAND" display="menu" class="ml-auto"></p-columnFilter>
+						<p-columnFilter type="text" field="demand" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="ON_STOCK">
+				<th pSortableColumn="onStock">
 					<div class="flex justify-content-between align-items-center">
 						On Stock
-						<p-columnFilter type="text" field="ON_STOCK" display="menu" class="ml-auto"></p-columnFilter>
+						<p-columnFilter type="text" field="onStock" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="AVAILABILITY">
+				<th pSortableColumn="availability">
 					<div class="flex justify-content-between align-items-center">
 						Availablity
-						<p-columnFilter type="text" field="AVAILABILITY" display="menu"
+						<p-columnFilter type="text" field="availability" display="menu"
 							class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="OPEN_PO">
+				<th pSortableColumn="openPurchaseOrder">
 					<div class="flex justify-content-between align-items-center">
-						Open Po
-						<p-columnFilter type="text" field="OPEN_PO" display="menu" class="ml-auto"></p-columnFilter>
+						PO Status
+						<p-columnFilter type="text" field="openPurchaseOrder" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="DUE_DATE" style="min-width: 10rem">
+				<th pSortableColumn="earlyExpiryDate" style="min-width: 10rem">
 					<div class="flex justify-content-between align-items-center">
 						Early Expire Date
 
-						<p-columnFilter type="date" field="DUE_DATE" display="menu" class="ml-auto"></p-columnFilter>
+						<p-columnFilter type="date" field="earlyExpiryDate" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="ITEM_TYPE" style="min-width: 10rem">
+				<th pSortableColumn="consumption" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Consumption
+
+						<p-columnFilter type="date" field="consumption" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+				<th pSortableColumn="excessStock" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Excess Stock
+						<p-columnFilter type="date" field="excessStock" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="replacement" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Replacement 
+						<p-columnFilter type="date" field="replacement" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="scrap" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Scrap
+
+						<p-columnFilter type="numeric" field="scrap" display="menu" currency="USD"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+		
+
+				<th pSortableColumn="itemType" style="min-width: 10rem">
 					<div class="flex justify-content-between align-items-center">
 						Item Type
 
-						<p-columnFilter type="numeric" field="ITEM_TYPE" display="menu" currency="USD"
+						<p-columnFilter type="numeric" field="itemType" display="menu" currency="USD"
 							class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
@@ -129,33 +163,43 @@
 
 			</tr>
 		</ng-template>
-		<ng-template pTemplate="body" let-customer>
+		<ng-template pTemplate="body" let-inventoryTableData>
 			<tr class="p-selectable-row">
 				<td>
 					<span> <i class="bi bi-eye" (click)="hanldeBelowContent()"></i></span>
-					<span class="ml-3"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar(customer)"></i></span>
+					<span class="ml-3"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar(inventoryTableData)"></i></span>
 				</td>
 				<td>
-					<div class="item-section"> <span style="color: green;"> {{ customer["ITEM_NAME"] }} </span> </div>
+					<div class="item-section"> <span style="color: green;"> {{ inventoryTableData["item"]}} </span> </div>
 				</td>
 				<td>
-					{{ customer["ITEM_DESCRIPTION"] }}
+					{{ inventoryTableData["itemDescription"] }}
 				</td>
 				<td>
-					{{ customer['DEMAND'] }}
+					{{ inventoryTableData['demand'] }}
 				</td>
-				<td [style.color]="customer['ON_STOCK'] === 'Out of Stock' || customer['AVAILABILITY'] === 'Out of Stock' ? 'red' : 'green'">
-					{{ customer['ON_STOCK'] }}
+				<td [style.color]="inventoryTableData['onStock'] === 'Out of Stock' || inventoryTableData['availability'] === 'Out of Stock' ? 'red' : 'green'">
+					{{ inventoryTableData['onStock'] }}
 				</td>
 
-				<td [ngClass]="{'text-danger': customer.AVAILABILITY === 'Out of Stock'}"
-					(click)="rightSideBar = customer.AVAILABILITY !== 'Out of Stock'">
-					{{ customer.AVAILABILITY }}
+				<td [ngClass]="{'text-danger': inventoryTableData.availability === 'Out of Stock'}"
+					(click)="rightSideBar = inventoryTableData.availability !== 'Out of Stock'">
+					{{ inventoryTableData.availability }}
 				</td>
 
-				<td *ngIf="customer['OPEN_PO'] === 'No Open PO'" style="color: red;">{{ customer['OPEN_PO'] }}</td>
-				<td *ngIf="customer['OPEN_PO'] !== 'No Open PO'"> {{ customer['OPEN_PO'] }}</td>
-				<td>{{ dataShortenerService.formatDate(customer['DUE_DATE']) }}</td>
+				<td *ngIf="inventoryTableData['openPurchaseOrder'] === 'No Open PO'" style="color: red;">{{ inventoryTableData['openPurchaseOrder'] }}</td>
+
+				<td *ngIf="inventoryTableData['openPurchaseOrder'] !== 'No Open PO'"> {{ inventoryTableData['openPurchaseOrder'] }}</td>
+
+				<td>{{ util.formatDate(inventoryTableData['earlyExpiryDate']) }}</td>
+
+				<td>{{ inventoryTableData['consumption'] }}</td>
+
+				<td>{{ inventoryTableData['excessStock'] }}</td>
+
+				<td>{{ inventoryTableData['replacement'] }}</td>
+
+				<td>{{ inventoryTableData['scrap'] }}</td>
 
 				<td>
 					<div class="item-type-icons">

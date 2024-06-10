@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from '../../data-services/data.service';
+import { TableDataService } from '../../../../common/table-data/table-data.service';
+import { UtilService } from '../../../../common/util';
 
 @Component({
   selector: 'app-purchase-order',
@@ -8,16 +10,23 @@ import { DataService } from '../../data-services/data.service';
 })
 export class PurchaseOrderComponent {
 
-  constructor(private dataService: DataService ) {}
+  constructor( public tableDataService:TableDataService  , public util : UtilService ) {}
 
   purchaseOrderData :any
   loading: boolean = true
 
  ngOnInit(){
-   this.purchaseOrderData = this.dataService.purchase_order_table
-   setTimeout(() => {
-     this.loading =  false
-   },1000)
+
+  this.tableDataService.getPurchaseOrderTableData().subscribe((res:any) => {
+  
+    this.purchaseOrderData = res
+
+    setTimeout(() => {
+      this.loading =  false
+    },1000)
+
+  })
+   
  }
 
 
