@@ -1,6 +1,6 @@
 <!-- Inventory table -->
-<div>
-	<p-table #dt [value]="inventoryTableData" [(selection)]="selectedCustomers" dataKey="id" [rowHover]="true"
+<div >
+	<p-table #dt [value]="inventoryTableData" dataKey="id" [rowHover]="true"
 		[rows]="controlRow" [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading"
 		[paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
 		[filterDelay]="0"
@@ -167,10 +167,12 @@
 			<tr class="p-selectable-row">
 				<td>
 					<span> <i class="bi bi-eye" (click)="hanldeBelowContent()"></i></span>
+					<span><i class="bi bi-graph-up-arrow mx-3" (click)="handleChartShow()"></i></span>
 					<span class="ml-3"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar(inventoryTableData)"></i></span>
 				</td>
+
 				<td>
-					<div class="item-section"> <span style="color: green;"> {{ inventoryTableData["item"]}} </span> </div>
+					<div class="item-section">  {{ inventoryTableData["item"]}}  </div>
 				</td>
 				<td>
 					{{ inventoryTableData["itemDescription"] }}
@@ -178,14 +180,14 @@
 				<td>
 					{{ inventoryTableData['demand'] }}
 				</td>
-				<td [style.color]="inventoryTableData['onStock'] === 'Out of Stock' || inventoryTableData['availability'] === 'Out of Stock' ? 'red' : 'green'">
+				<td [style.color]="inventoryTableData['onStock'] < inventoryTableData['demand'] ? 'red' : 'green'">
 					{{ inventoryTableData['onStock'] }}
 				</td>
 
-				<td [ngClass]="{'text-danger': inventoryTableData.availability === 'Out of Stock'}"
-					(click)="rightSideBar = inventoryTableData.availability !== 'Out of Stock'">
+				<td [style.color]="(inventoryTableData['onStock'] - inventoryTableData['demand'] > 0 && inventoryTableData['availability'] > 0) ? '#1790D0' : (inventoryTableData['availability'] > 0 ? 'black' : 'red')">
 					{{ inventoryTableData.availability }}
 				</td>
+				
 
 				<td *ngIf="inventoryTableData['openPurchaseOrder'] === 'No Open PO'" style="color: red;">{{ inventoryTableData['openPurchaseOrder'] }}</td>
 
@@ -202,17 +204,18 @@
 				<td>{{ inventoryTableData['scrap'] }}</td>
 
 				<td>
+	
 					<div class="item-type-icons">
-						<div class="item-type-cheap" style="background-color: rgba(227, 96, 96, 0.325);">
+						<div class="item-type-cheap" *ngIf="inventoryTableData.itemType === 'Dangerous'"  style="background-color: rgba(227, 96, 96, 0.325);">
 							<i class="bi bi-exclamation-triangle" style="color: red;"></i>
 						</div>
-						<div class="item-type-cheap" style="background-color: #D1E9F6;">
+						<div class="item-type-cheap"  *ngIf="inventoryTableData.itemType === 'Temperature'" style="background-color: #D1E9F6;">
 							<i class="bi bi-thermometer-snow" style="color:#1790D0;"></i>
 						</div>
-						<div class="item-type-cheap" style="background-color: #D4FCFC;">
+						<div class="item-type-cheap" *ngIf="inventoryTableData.itemType === 'Kit'" style="background-color: #D4FCFC;">
 							<i class="bi bi-hourglass" style="color: #004750;"></i>
 						</div>
-						<div class="item-type-cheap" style="background-color :#B3C8CB;">
+						<div class="item-type-cheap" *ngIf="inventoryTableData.itemType === 'Special'" style="background-color :#B3C8CB;">
 							<i class="bi bi-box-seam" style="color: #004750;"></i>
 						</div>
 
@@ -233,11 +236,13 @@
 
 <!-- table add column -->
 <div class="addition-col-menu">
-	<p-listbox *ngIf="viewAdditionColumn" [options]="additionalColList" [(ngModel)]="selectedItems"
-		[selectAll]="selectAll" optionLabel="field" [style]="{ width: '20rem' }" [virtualScroll]="true" [filter]="true"
-		[virtualScrollItemSize]="50" [multiple]="true" [checkbox]="true" [showToggleAll]="false"
-		[metaKeySelection]="false" [showToggleAll]="true" (onChange)="addedColumnConfig($event)"
-		[listStyle]="{ 'max-height': '220px' }"></p-listbox>
+	<p-listbox *ngIf="viewAdditionColumn" [options]="tableHeaderItem" [(ngModel)]="selectedItems"
+		[selectAll]="selectAll" optionLabel="columnName" [style]="{ width: '20rem' }" [virtualScroll]="true"
+		[filter]="true" [virtualScrollItemSize]="50" [multiple]="true" [checkbox]="true" [showToggleAll]="false"
+		[metaKeySelection]="false" [showToggleAll]="true" (onChange)="onSelectionChange($event)"
+		(onSelectAllChange)="onSelectAllChange($event)" [listStyle]="{ 'max-height': '220px' }">
+	</p-listbox>
+
 </div>
 
 <!-- chat side bar  -->
@@ -312,5 +317,14 @@
 <div *ngIf="showDetailContent">
 
 	<app-item-detail-landing></app-item-detail-landing>
+
+</div>
+
+
+<!-- inventory Chart -->
+
+<div class="card inventory-chart mt-2" *ngIf="chartShow">
+
+	<p-chart #chartElement type="line" [data]="inventoryChartData" [options]="options" /> 
 
 </div>

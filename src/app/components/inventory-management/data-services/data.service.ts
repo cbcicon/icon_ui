@@ -2598,45 +2598,26 @@ ipoEntityDetail = [
     }
 ]
 
-
-
-  getColumns() {
-    let dropdownData = [
-      {
-        id: 1,
-        name: "Vendor",
-        val: "1"
-      },
-      {
-        id: 2,
-        name: "Order Type",
-        val: "2"
-      },
-      {
-        id: 3,
-        name: "Warehouse",
-        val: "3"
-      }]
-    return dropdownData;
-  }
-  getDuration() {
-    let dropdownData = [
-      {
-        id: 2,
-        name: "15 Days",
-        val: "15Days"
-      },{
-        id: 1,
-        name: "3 Months",
-        val: "3Months"
-      },
-      {
-        id: 3,
-        name: "6 Months",
-        val: "6Months"
-      }]
-    return dropdownData;
-  }
+additionalHeaderInventoryTable=[
+    {id: "1", columnName: "Replacement", sortableColumn: "replacement", active: false},
+    {id: "2", columnName: "Scrap", sortableColumn: "scrap", active: false},
+    {id: "3", columnName: "Excess Stock", sortableColumn: "excessStock", active: false},
+    {id: "4", columnName: "Kit Production Location", sortableColumn: "kitProductionLocation", active: false},
+    {id: "5", columnName: "Current Demand", sortableColumn: "currentDemand", active: false},
+    {id: "6", columnName: "Lead Time", sortableColumn: "leadTime", active: false},
+    {id: "7", columnName: "Month on Hand", sortableColumn: "monthOnHand", active: false},
+    {id: "8", columnName: "Week on Hand", sortableColumn: "weekOnHand", active: false},
+    {id: "9", columnName: "Consumption", sortableColumn: "consumption", active: false},
+    {id: "10", columnName: "Qty to Order", sortableColumn: "qtyToOrder", active: false},
+    {id: "11", columnName: "Component Type", sortableColumn: "componentType", active: false},
+    {id: "12", columnName: "Total Demand", sortableColumn: "totalDemand", active: false},
+    {id: "13", columnName: "Warehouse", sortableColumn: "warehouse", active: false},
+    {id: "14", columnName: "Inventory Location", sortableColumn: "inventoryLocation", active: false},
+    {id: "15", columnName: "Carton", sortableColumn: "carton", active: false},
+    {id: "16", columnName: "Kit Category", sortableColumn: "kitCategory", active: false}
+  ]
+  
+  
 
   constructor(private http: HttpClient) { }
 

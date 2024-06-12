@@ -11,32 +11,32 @@ export class DataShortenerService {
   filterWeekly(data: any[]): any[] {
     const currentDate = new Date();
     const oneWeekForward = new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000);
-    return data.filter(item => new Date(item.DUE_DATE) >= currentDate && new Date(item.DUE_DATE) <= oneWeekForward);
+    return data.filter(item => new Date(item.earlyExpiryDate) >= currentDate && new Date(item.earlyExpiryDate) <= oneWeekForward);
   }
 
   filterMonthly(data: any[]): any[] {
     const currentDate = new Date();
     const oneMonthForward = new Date(currentDate.getTime() + 30 * 24 * 60 * 60 * 1000);
-    return data.filter(item => new Date(item.DUE_DATE) >= currentDate && new Date(item.DUE_DATE) <= oneMonthForward);
+    return data.filter(item => new Date(item.earlyExpiryDate) >= currentDate && new Date(item.earlyExpiryDate) <= oneMonthForward);
   }
 
   filterQuarterly(data: any[]): any[] {
     const currentDate = new Date();
     const ninetyDaysForward = new Date(currentDate.getTime() + 90 * 24 * 60 * 60 * 1000);
-    return data.filter(item => new Date(item.DUE_DATE) >= currentDate && new Date(item.DUE_DATE) <= ninetyDaysForward);
+    return data.filter(item => new Date(item.earlyExpiryDate) >= currentDate && new Date(item.earlyExpiryDate) <= ninetyDaysForward);
   }
 
 
   filterHalfYearly(data: any[]): any[] {
     const currentDate = new Date();
     const sixMonthsForward = new Date(currentDate.getTime() + 180 * 24 * 60 * 60 * 1000);
-    return data.filter(item => new Date(item.DUE_DATE) >= currentDate && new Date(item.DUE_DATE) <= sixMonthsForward);
+    return data.filter(item => new Date(item.earlyExpiryDate) >= currentDate && new Date(item.earlyExpiryDate) <= sixMonthsForward);
   }
 
   filterYearly(data: any[]): any[] {
     const currentDate = new Date();
     const oneYearForward = new Date(currentDate.getTime() + 360 * 24 * 60 * 60 * 1000);
-    return data.filter(item => new Date(item.DUE_DATE) >= currentDate && new Date(item.DUE_DATE) <= oneYearForward);
+    return data.filter(item => new Date(item.earlyExpiryDate) >= currentDate && new Date(item.earlyExpiryDate) <= oneYearForward);
   }
 
   formatDate(dateString: string): string {

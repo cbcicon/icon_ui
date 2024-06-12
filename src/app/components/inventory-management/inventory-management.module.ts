@@ -90,7 +90,7 @@ import { InventoryPurchaseOrderComponent } from './inventory-purchase-order/inve
 		SharedModule ,
 		RadioButtonModule ,
 		AvatarModule,
-		InputTextareaModule
+		InputTextareaModule,
 	],
 	providers: [DialogService]
 
