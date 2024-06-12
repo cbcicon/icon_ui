@@ -55,7 +55,7 @@ export class ForecastTable implements OnInit {
       this.loading = false
       this.monthlyData = this.util.generateMonthlyData(startDate, '', 9);
       this.chartData = this.util.generateMonthlyData(chartStartDate, '', 12);
-      console.log(this.forecastService.getForecastChartData());
+
       //Add to additional columns after 6 months;
       this.additionalColList = this.monthlyData.filter((f: any) => f['value'] > 6);
     }, 1000);
