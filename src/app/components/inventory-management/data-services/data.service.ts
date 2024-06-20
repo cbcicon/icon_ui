@@ -1785,6 +1785,8 @@ ring_fence =  [
 
 
 stock_and_scrap =  [
+
+[
     {
         "Name": "Farmingdale",
         "LotNo.": "2384",
@@ -1829,7 +1831,20 @@ stock_and_scrap =  [
         "Max": "1000",
         "Re-OrderDate": "14Aug2024"
     },
+    {
+        "Name": "TOTAL",
+        "LotNo.": "",
+        "TotalQty": "22000",
+        "Category": "",
+        "Days": "",
+        "Date": "" ,
+        "Min": "",
+        "Max": "",
+        "Re-OrderDate": "",
+    } 
+],
  
+[ 
     {
         "Name": "Buford",
         "LotNo.": "2384",
@@ -1874,6 +1889,19 @@ stock_and_scrap =  [
         "Max": "1000",
         "Re-OrderDate": "14Aug2024"
     }
+    ,
+    {
+        "Name": "TOTAL",
+        "LotNo.": "",
+        "TotalQty": "22000",
+        "Category": "",
+        "Days": "",
+        "Date": "" ,
+        "Min": "",
+        "Max": "",
+        "Re-OrderDate": "",
+    }
+]
 
 ]
 

@@ -13,6 +13,7 @@ export class StockAndScrapComponent {
 
   stockAndScrap :any
   loading: boolean = true
+  
 
  ngOnInit(){
   this.stockAndScrap = this.dataService.stock_and_scrap;
@@ -20,6 +21,7 @@ export class StockAndScrapComponent {
      this.loading =  false
    },1000)
  }
+
 
 
 }

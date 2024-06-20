@@ -16,7 +16,7 @@ import { UtilService } from '../../../common/util';
 @Component({
   selector: 'app-order-table',
   templateUrl: './order-table.html',
-  styleUrl: './order-table.scss'
+  styleUrls: ['./order-table.scss']
 })
 
 export class OrderTableComponent implements OnInit {
@@ -380,5 +380,9 @@ inventoryChartInitialise(){
 }
 
 
+currentDate: Date = new Date()
+isExpired(expiryDate: Date): boolean {
+  return expiryDate < this.currentDate;
+}
 
 }

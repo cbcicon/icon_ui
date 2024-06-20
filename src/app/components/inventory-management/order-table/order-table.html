@@ -13,9 +13,9 @@
 			<div class="table-header d-flex justify-content-between">
 				<div>
 					<div class="filter-sm-circle-btn" (click)="handleDateShortener('yearly')"
-						[class.selected]="selectedInterval === 'yearly'">Y</div>
-					<div class="filter-sm-circle-btn" (click)="handleDateShortener('half-yearly')"
-						[class.selected]="selectedInterval === 'half-yearly'">H</div>
+						[class.selected]="selectedInterval === 'yearly'">A</div>
+					<div class="filter-sm-circle-btn" (click)="handleDateShortener('half-yearly')"	
+						[class.selected]="selectedInterval === 'half-yearly'">SA</div>
 					<div class="filter-sm-circle-btn" (click)="handleDateShortener('quarterly')"
 						[class.selected]="selectedInterval === 'quarterly'">Q</div>
 					<div class="filter-sm-circle-btn" (click)="handleDateShortener('monthly')"
@@ -193,7 +193,9 @@
 
 				<td *ngIf="inventoryTableData['openPurchaseOrder'] !== 'No Open PO'"> {{ inventoryTableData['openPurchaseOrder'] }}</td>
 
-				<td>{{ util.formatDate(inventoryTableData['earlyExpiryDate']) }}</td>
+				<td>
+				     <p  [ngClass]="{'expired': !isExpired(inventoryTableData['earlyExpiryDate']), 'not-expired': isExpired(inventoryTableData['earlyExpiryDate'])}"> {{util.formatDate(inventoryTableData['earlyExpiryDate']) }}</p>	
+				</td>
 
 				<td>{{ inventoryTableData['consumption'] }}</td>
 
@@ -325,6 +327,6 @@
 
 <div class="card inventory-chart mt-2" *ngIf="chartShow">
 
-	<p-chart #chartElement type="line" [data]="inventoryChartData" [options]="options" /> 
-
+	<p-chart #chartElement type="line"   height="350" [data]="inventoryChartData" [options]="options"  /> 
+ 
 </div>

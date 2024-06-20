@@ -14,7 +14,117 @@
     <p-divider class="solid"></p-divider>
 
 
-  <p-table #dt [value]="stockAndScrap"  dataKey="id" [rowHover]="true"
+  <div *ngFor="let stockAndScrapItem of stockAndScrap ;let i = index" >
+
+
+    <p-table #dt [value]="stockAndScrapItem"  dataKey="id" [rowHover]="true"
+    [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,20,30]" [loading]="loading"
+    [paginator]="false" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [filterDelay]="0"
+    styleClass=" p-datatable-gridlines p-datatable-striped p-datatable-sm" rowGroupMode="rowspan" groupRowsBy="Name"
+   >
+   
+    
+  <ng-template pTemplate="header">
+      <tr *ngIf="i==0">
+        <th pSortableColumn="action-item" rowspan="2" style="width: 164px;">
+          <div class="flex justify-content-between align-items-center">
+            Location
+          </div>
+        </th>
+
+
+        <th pSortableColumn="ITEM_NAME"  rowspan="2" >
+          <div class="flex justify-content-between align-items-center">
+            Lot No. 
+          </div>
+        </th>
+        <th pSortableColumn="ITEM_DESCRIPTION"  rowspan="2">
+          <div class="flex justify-content-between align-items-center">
+            Total Qty
+          </div>
+        </th>
+
+        <th pSortableColumn="DEMAND"  rowspan="2">
+        fas
+        </th>
+
+        <th pSortableColumn="ON_STOCK" colspan="3">
+          <div class="text-center">
+            Expiry
+          </div>
+        </th>
+
+        <th pSortableColumn="AVAILABILITY"  rowspan="2">
+          <div class="flex justify-content-between align-items-center">
+            Max
+            
+          </div>
+        </th>
+
+        <th pSortableColumn="AVAILABILITY"  rowspan="2">
+          <div class="flex justify-content-between align-items-center">
+            Re-Order Date
+            
+          </div>
+        </th>
+
+      </tr>
+
+      <tr *ngIf="i==0" >
+       
+        <th class="text-center">Category</th>
+        <th class="text-center">Days</th>
+        
+        <th class="text-center">Date</th>
+      
+      </tr>
+
+    </ng-template> 
+
+    
+    <ng-template pTemplate="body" let-stockAndScrapItem  let-rowgroup="rowgroup" let-rowspan="rowspan" let-rowIndex="rowIndex">
+      <tr class="p-selectable-row">
+        
+        <td *ngIf="rowgroup" [attr.rowspan]="rowspan">
+              
+        <ng-container *ngIf="stockAndScrapItem.Name === 'TOTAL'; else normal">
+            <p> <b>{{ stockAndScrapItem.Name }}</b></p>
+        </ng-container>
+        <ng-template #normal>
+           <p>{{ stockAndScrapItem.Name }}</p>
+        </ng-template>
+        </td>  
+       <td >{{stockAndScrapItem['LotNo.']  }}{{rowspan}}</td>
+       <td>
+        <ng-container *ngIf="stockAndScrapItem.Name === 'TOTAL'; else normal">
+          <p> <b>{{stockAndScrapItem.TotalQty}}</b></p>
+      </ng-container>
+      <ng-template #normal>
+         <p>{{stockAndScrapItem.TotalQty}}</p>
+      </ng-template>
+      </td>
+       <td>{{stockAndScrapItem.Category}}</td>
+       <td>{{stockAndScrapItem.Days}}</td>
+       <td>{{stockAndScrapItem.Date}}</td>
+       <td>{{stockAndScrapItem.Min}}</td>
+       <td>{{stockAndScrapItem.Max}}</td>
+       <td>{{stockAndScrapItem["Re-OrderDate"]}}</td>
+      </tr>
+
+    </ng-template>
+
+  
+  <!-- <ng-template pTemplate="footer" >
+   <p><b>TOTAL</b></p> <span *ngIf="stockAndScrapItem.Name === 'TOTAL'"> <b>{{stockAndScrapItem.TotalQty}}</b></span>
+  </ng-template> -->
+
+  </p-table>
+
+  </div>
+
+
+  <!-- <p-table #dt [value]="stockAndScrap"  dataKey="id" [rowHover]="true"
       [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,20,30]" [loading]="loading"
       [paginator]="false" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
       [filterDelay]="0"
@@ -24,7 +134,6 @@
       
     <ng-template pTemplate="header">
         <tr>
-          
           <th pSortableColumn="action-item" rowspan="2">
             <div class="flex justify-content-between align-items-center">
               Location
@@ -79,40 +188,49 @@
         </tr>
 
       </ng-template> 
+
       
-      
-      <ng-template pTemplate="body" let-stockAndScrap  let-rowgroup="rowgroup" let-rowspan="rowspan">
+      <ng-template pTemplate="body" let-stockAndScrap  let-rowgroup="rowgroup" let-rowspan="rowspan" let-rowIndex="rowIndex">
         <tr class="p-selectable-row">
           
-         <td  *ngIf="rowgroup" [attr.rowspan]="rowspan" >
-            {{stockAndScrap.Name}}
-         </td>   
-         <td >{{stockAndScrap['LotNo.']}}</td>
-         <td>{{stockAndScrap.TotalQty}}</td>
+          <td *ngIf="rowgroup" [attr.rowspan]="rowspan">
+                
+          <ng-container *ngIf="stockAndScrap.Name === 'TOTAL'; else normal">
+              <p> <b>{{ stockAndScrap.Name }}</b></p>
+          </ng-container>
+          <ng-template #normal>
+             <p>{{ stockAndScrap.Name }}</p>
+          </ng-template>
+          </td>  
+         <td >{{stockAndScrap['LotNo.']  }}{{rowspan}}</td>
+         <td>
+          <ng-container *ngIf="stockAndScrap.Name === 'TOTAL'; else normal">
+            <p> <b>{{stockAndScrap.TotalQty}}</b></p>
+        </ng-container>
+        <ng-template #normal>
+           <p>{{stockAndScrap.TotalQty}}</p>
+        </ng-template>
+        </td>
          <td>{{stockAndScrap.Category}}</td>
          <td>{{stockAndScrap.Days}}</td>
          <td>{{stockAndScrap.Date}}</td>
          <td>{{stockAndScrap.Min}}</td>
          <td>{{stockAndScrap.Max}}</td>
          <td>{{stockAndScrap["Re-OrderDate"]}}</td>
-
         </tr>
-    
+  
       </ng-template>
-    
-      <!-- <ng-template pTemplate="footer">
-        <tr>
-            <td colspan="3" class="text-right">Totals</td>
-    
 
-        </tr>
-    </ng-template> -->
 
        <ng-template pTemplate="emptymessage">
         <tr>
           <td colspan="12">No Data found.</td>
         </tr>
-      </ng-template>
+      </ng-template>  
   
-    </p-table>
+    </p-table> -->
+
+
+
+
   </div>
