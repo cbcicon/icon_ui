@@ -1,6 +1,8 @@
  {
     "inventory":{
        "inventory-table-data": "InventoryHeader/GetAllInventoryHeadersTbl",
-        "purchase-order-table-data" : "InventoryPO/GetAllInventoryPOTbl"
+        "purchase-order-table-data" : "InventoryPO/GetAllInventoryPOTbl",
+        "ring-fence-table-data":"InventoryRingFence/GetRingFenceWithUnlockDetails",
+        "stockAndScrapData":"InventoryLocation/GetAllInventoryLocationTbl"
     }
  }

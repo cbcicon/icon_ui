@@ -50,7 +50,7 @@ export class AppMenuComponent implements OnInit {
                     { label: 'Purchase Orders', routerLink: ['/inventory-management/inventory-purchase-order'] },
                     { label: 'Saftey Stocks', routerLink: ['/inventory-management/safety-stock'] },
                     { label: 'Scrap', routerLink: ['/inventory-management/scrap'] },
-                    { label: 'Configurations', routerLink: ['/pages/empty'] }
+                    { label: 'Configurations', routerLink: ['/inventory-management/inventory-configuration'] }
                 ]
             },
             {

@@ -13,18 +13,19 @@
 
     <p-divider class="solid"></p-divider>
 
+  <pre>{{stockAndScrap|json}}</pre>
 
-  <p-table #dt [value]="stockAndScrap"  dataKey="id" [rowHover]="true"
-      [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,20,30]" [loading]="loading"
-      [paginator]="false" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-      [filterDelay]="0"
-      styleClass=" p-datatable-gridlines p-datatable-striped p-datatable-sm" rowGroupMode="rowspan" groupRowsBy="Name"
-     >
-     
-      
-    <ng-template pTemplate="header">
+    <p-table 
+    [value]="stockAndScrap"
+    sortField="location" 
+    sortMode="single" 
+    [scrollable]="true" 
+    scrollHeight="400px" 
+    rowGroupMode="subheader" 
+    groupRowsBy="location" 
+    [tableStyle]="{'min-width': '60rem'}">
+      <ng-template pTemplate="header">
         <tr>
-          
           <th pSortableColumn="action-item" rowspan="2">
             <div class="flex justify-content-between align-items-center">
               Location
@@ -77,42 +78,33 @@
           <th class="text-center">Date</th>
         
         </tr>
-
-      </ng-template> 
-      
-      
-      <ng-template pTemplate="body" let-stockAndScrap  let-rowgroup="rowgroup" let-rowspan="rowspan">
-        <tr class="p-selectable-row">
-          
-         <td  *ngIf="rowgroup" [attr.rowspan]="rowspan" >
-            {{stockAndScrap.Name}}
-         </td>   
-         <td >{{stockAndScrap['LotNo.']}}</td>
-         <td>{{stockAndScrap.TotalQty}}</td>
-         <td>{{stockAndScrap.Category}}</td>
-         <td>{{stockAndScrap.Days}}</td>
-         <td>{{stockAndScrap.Date}}</td>
-         <td>{{stockAndScrap.Min}}</td>
-         <td>{{stockAndScrap.Max}}</td>
-         <td>{{stockAndScrap["Re-OrderDate"]}}</td>
-
-        </tr>
-    
       </ng-template>
-    
-      <!-- <ng-template pTemplate="footer">
+       
+      <ng-template pTemplate="groupfooter" let-stockAndScrap>
         <tr>
-            <td colspan="3" class="text-right">Totals</td>
-    
-
-        </tr>
-    </ng-template> -->
-
-       <ng-template pTemplate="emptymessage">
-        <tr>
-          <td colspan="12">No Data found.</td>
+          <td class="text-right font-bold pr-6"> Total</td>
+          <td colspan="2" class="text-right font-bold pr-6">
+           {{calculateTotal(stockAndScrap.location)}}
+          </td>
         </tr>
       </ng-template>
   
-    </p-table>
+      <ng-template pTemplate="body" let-stockAndScrap  let-rowIndex="rowIndex">
+        <tr>
+          <td >{{ stockAndScrap.location }}</td>  
+          <td >{{stockAndScrap.lotNo  }}</td>
+          <td>{{stockAndScrap.totalQty}}</td>
+           <td>{{stockAndScrap.expiryCategory}}</td>
+           <td>{{stockAndScrap.expiryDays}}</td>
+           <td>{{stockAndScrap.expiryDate}}</td>
+           <td>{{stockAndScrap.min}}</td>
+           <td>{{stockAndScrap.max}}</td>
+           <td>{{stockAndScrap.reOrderDate}}</td>
+          
+        </tr>
+      </ng-template>
+  </p-table>
+
+
+
   </div>

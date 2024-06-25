@@ -1,33 +1,31 @@
 .blockTagStyle{
   min-width: 30%;
-  height: 75px;
   gap: 0px;
   opacity: 0px;
   background-color: #F5FBF6;
   margin: 10px;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 
 .blockTagStylePrimary{
   width: 109.25px;
-  height: 75px;
   gap: 0px;
   opacity: 0px;
   background-color:#F0F0F0;
   margin: 10px;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 
 
 .blockTagStyleDanger{
-  width: 109.25px;
-  height: 75px;
+  min-width: 30%;
   gap: 0px;
   opacity: 0px;
   background-color:#FEEFF0;
   margin: 10px;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 20px;
+
 }
