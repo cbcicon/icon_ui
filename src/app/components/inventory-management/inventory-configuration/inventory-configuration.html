@@ -1,0 +1,23 @@
+<div class="row">
+
+  <div class="col-2 card h-100">
+ 
+    <ul class="option-list">
+      <li *ngFor="let item of items"  [class.active]="item === activeItem" (click)="selectItem(item)">
+          <i [class]="item.icon" ></i> <span class="mx-4"> {{ item.name }}</span> 
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="col-10 card">
+    <div [ngSwitch]="activeItem.name">
+      <div *ngSwitchCase="'Move Stock'" class="mr-4"> <h2>hirak</h2> </div>
+      <div *ngSwitchCase="'Create PO'"><h1> Create PO</h1>  </div>
+      <div *ngSwitchCase="'Need Replacement'"><h1>Need Replacement</h1></div>
+      <div *ngSwitchCase="'Review Excess Stock'"> <h1>Review Excess Stock</h1></div>
+    </div>
+
+  </div>
+
+</div>

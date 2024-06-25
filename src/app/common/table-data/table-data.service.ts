@@ -18,6 +18,15 @@ export class TableDataService {
     return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['purchase-order-table-data']}`)
   }
 
+  getRingFenceData(): Observable<any> {
+    return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['ring-fence-table-data']}`)
+  }
+   
+  getStockScrapTableData(): Observable<any>{
+    return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['stockAndScrapData']}`)
+  }
+
+
   private handleError(error: any) {
     console.error('An error occurred:', error);
     throw error;

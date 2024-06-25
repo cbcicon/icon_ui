@@ -46,6 +46,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SafetyStockComponent } from './safety-stock/safety-stock';
 import { ScrapComponent } from './scrap/scrap';
 import { InventoryPurchaseOrderComponent } from './inventory-purchase-order/inventory-purchase-order';
+import { InventoryConfigurationComponent } from './inventory-configuration/inventory-configuration';
 
 
 
@@ -54,7 +55,7 @@ import { InventoryPurchaseOrderComponent } from './inventory-purchase-order/inve
 	declarations: [
 		OrderTableComponent, QauntityBreakdownPopupComponent, ItemSearchPopupComponent, ItemDetailsComponent, ItemDetailLandingComponent,
 		StockAndScrapComponent, RingFenceComponent, ReplacementComponent, PurchaseOrderComponent , SafetyStockComponent , ScrapComponent,
-		InventoryPurchaseOrderComponent
+		InventoryPurchaseOrderComponent ,InventoryConfigurationComponent
 	],
 	imports: [
 		CommonModule,
