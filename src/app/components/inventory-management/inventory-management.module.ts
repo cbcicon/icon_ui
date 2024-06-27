@@ -48,7 +48,7 @@ import { ScrapComponent } from './scrap/scrap';
 import { InventoryPurchaseOrderComponent } from './inventory-purchase-order/inventory-purchase-order';
 import { InventoryConfigurationComponent } from './inventory-configuration/inventory-configuration';
 
-
+import { PanelMenuModule } from 'primeng/panelmenu';
 
 
 @NgModule({
@@ -92,6 +92,7 @@ import { InventoryConfigurationComponent } from './inventory-configuration/inven
 		RadioButtonModule ,
 		AvatarModule,
 		InputTextareaModule,
+		PanelMenuModule
 	],
 	providers: [DialogService]
 

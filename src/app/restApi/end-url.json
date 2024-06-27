@@ -3,6 +3,8 @@
        "inventory-table-data": "InventoryHeader/GetAllInventoryHeadersTbl",
         "purchase-order-table-data" : "InventoryPO/GetAllInventoryPOTbl",
         "ring-fence-table-data":"InventoryRingFence/GetRingFenceWithUnlockDetails",
-        "stockAndScrapData":"InventoryLocation/GetAllInventoryLocationTbl"
+        "stockAndScrapData":"InventoryLocation/GetAllInventoryLocationTbl",
+        "replacementTablesData":"InventoryReplacement/GetAllInventoryReplacementTbl",
+        "replacementActionData":"InventoryReplacementAction/GetAllInventoryReplacementActionTbl"
     }
  }
