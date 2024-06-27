@@ -20,6 +20,7 @@ export class StockAndScrapComponent {
 
   this.tableDataService.getStockScrapTableData().subscribe((res:any) => {
     this.stockAndScrap = res;
+    this.loading =  false
   })
 
    setTimeout(() => {
