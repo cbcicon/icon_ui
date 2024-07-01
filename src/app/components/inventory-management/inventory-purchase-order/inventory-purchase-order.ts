@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import FileSaver from 'file-saver';
 import { DataService } from '../data-services/data.service';
+import { TableDataService } from '../../../common/table-data/table-data.service';
 
 @Component({
   selector: 'app-inventory-purchase-order',
@@ -23,11 +24,18 @@ export class InventoryPurchaseOrderComponent {
 
   ipoEntityDetail:any;
 
-  constructor(public dataServices:DataService){}
+  constructor(public dataServices:DataService , private tableDataService :TableDataService){}
 
   ngOnInit(){
-    this.inventoryPurchaseOrderData = this.dataServices.inventoryPurchaseOrderData
-    this.ipoEntityDetail = this.dataServices.ipoEntityDetail
+  
+    this.tableDataService.getPurchaseOrderMain().subscribe((res:any) => {
+      this.inventoryPurchaseOrderData = res
+    })
+
+    this.tableDataService.getPurchaseOrderMainDetail().subscribe((res:any) => {
+      this.ipoEntityDetail = res
+    })
+
   }
 
 

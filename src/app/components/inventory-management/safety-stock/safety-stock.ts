@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from '../data-services/data.service';
 import FileSaver from 'file-saver';
+import { TableDataService } from '../../../common/table-data/table-data.service';
 
 @Component({
   selector: 'app-safety-stock',
@@ -37,11 +38,16 @@ additionalColList = [
   },
 ]
 
-  constructor(public dataServices:DataService){}
+  constructor(public dataServices:DataService , private tableDataService: TableDataService){}
 
   ngOnInit(){
-    this.safetyStockData = this.dataServices.safety_stock_data
-    this.totalRecords =   this.safetyStockData.length
+  //  this.safetyStockData = this.dataServices.safety_stock_data
+  //  this.totalRecords =   this.safetyStockData.length
+
+    this.tableDataService.getAllSafetyStockMainTbl().subscribe((res:any) => {
+      this.safetyStockData = res
+      this.totalRecords =  res.length
+    })
 
     this.rowsPerPageOptions =  this.divideIntoMultiplesOfTen(this.totalRecords)
   }

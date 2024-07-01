@@ -164,37 +164,35 @@
 
 		<ng-template pTemplate="body" let-safetyStockData>
 			<tr class="p-selectable-row">
-				<td>
-					<span class="ml-3"><i class="bi bi-chat-left-text" ></i></span>
-				</td>
-				<td>{{ safetyStockData["Item #"]}} </td>
+		
+		<td><span class="ml-3"><i class="bi bi-chat-left-text" ></i></span> </td>
+		
+		<td>{{ safetyStockData["itemNo"]}} </td>
 
-        <td>{{ safetyStockData["Item Description"]}} </td>
+        <td>{{ safetyStockData["itemDesc"]}} </td>
 		     
-        <td>{{ safetyStockData["Min"]}} </td>
+        <td>{{ safetyStockData["min"]}} </td>
 
-        <td>{{ safetyStockData["Max"]}} </td>
+        <td>{{ safetyStockData["max"]}} </td>
 
-        <td>{{ safetyStockData["WOH"]}} </td>
+        <td>{{ safetyStockData["woh"]}} </td>
 
-        <td>{{ safetyStockData["MOH"]}} </td>
+        <td>{{ safetyStockData["moh"]}} </td>
 		     
-        <td>{{ safetyStockData["Current Stock"]}} </td>
+        <td>{{ safetyStockData["currentStock"]}} </td>
 
-        <td>{{ safetyStockData["Lead Time (Days)"]}} </td>
+        <td>{{ safetyStockData["leadTimeDays"]}} </td>
 
-        
-        <td>{{ safetyStockData["UOM"]}} </td>
+        <td>{{ safetyStockData["uom"]}} </td>
 
-        <td>{{ safetyStockData["Reorderd Date"]}} </td>
+        <td>{{ safetyStockData["reorderDate"]}} </td>
 
-        <td>{{ safetyStockData["Location"]}} </td>
+        <td>{{ safetyStockData["location"]}} </td>
 		     
-        <td>{{ safetyStockData["Vendor"]}} </td>
+        <td>{{ safetyStockData["location"]}} </td>
 
-        <td>{{ safetyStockData["Lost Order Date"]}} </td>
+        <td>{{ safetyStockData["lastOrderDate"]}} </td>
 
-  
 
 			</tr>
 		</ng-template>

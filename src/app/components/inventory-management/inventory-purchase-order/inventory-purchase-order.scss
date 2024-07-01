@@ -10,3 +10,8 @@
 .custom-progress-bar ::ng-deep .p-progressbar {
     height: 8px;     
 }
+
+.detail-card{
+    height: 46vh;
+    overflow-y: scroll;
+}

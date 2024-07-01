@@ -30,4 +30,22 @@
       color: #128474;
     }
   
+    .inventory-configuration-main{
+  display: flex;
+  justify-content: space-between;
+    }
+
     
+    .inventory-configuration-sidebar{
+      border-radius: 6px;
+      min-height: 100vh;
+      width: 18vw;
+       padding: 3px;
+    }
+
+    .inventory-configuration-content{
+      border-radius: 6px;
+      min-height: 100vh;
+      width: 81vw;
+    }
+   

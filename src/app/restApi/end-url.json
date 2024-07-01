@@ -5,6 +5,9 @@
         "ring-fence-table-data":"InventoryRingFence/GetRingFenceWithUnlockDetails",
         "stockAndScrapData":"InventoryLocation/GetAllInventoryLocationTbl",
         "replacementTablesData":"InventoryReplacement/GetAllInventoryReplacementTbl",
-        "replacementActionData":"InventoryReplacementAction/GetAllInventoryReplacementActionTbl"
+        "replacementActionData":"InventoryReplacementAction/GetAllInventoryReplacementActionTbl",
+        "purchaseOrderMain": "PurchaseOrderMain/GetAllPurchaseOrderMainTbl" ,
+        "purchaseOrderMainDetail":"PurchaseOrderMainDetail/GetAllPurchaseOrderMainDetailTbl", 
+        "safetyStockMain":"SafetyStockMain/GetAllSafetyStockMainTbl"
     }
  }
