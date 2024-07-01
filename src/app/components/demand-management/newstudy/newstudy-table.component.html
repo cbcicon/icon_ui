@@ -3,12 +3,12 @@
     <p-table #dt [value]="studies" [(selection)]="selectedStudies" dataKey="id" editMode="row" [rowHover]="true" [rows]="setRows"
              [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading" [paginator]="true"
              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
-             [globalFilterFields]="['sponsor', 'protocol_id', 'countries', 'sites', 'sites_completed', 'subjects_screened', 'qty_of_kits_study', 'qty_of_kits_initial', 'visits', 'pre_label_y', 'kit_vendor', 'date_kit_at_first_site', 'revenue_gen']"
+             [globalFilterFields]="['sponsor', 'protocol_id','study_type', 'countries', 'sites', 'sites_remaining', 'subjects_screened', 'qty_of_kits_study', 'qty_of_kits_initial', 'visits', 'pre_label_y', 'production_location', 'date_kos', 'revenue_gen']"
              styleClass={{selectedSize}} [exportHeader]="'customExportHeader'">
         <ng-template pTemplate="caption">
             <div class="table-header d-flex justify-content-between">
                 <div>
-                    <h4> New Study </h4> 
+                    <h5><b> Study Planning </b></h5> 
                 </div>
                 <div>
                     <span class="p-input-icon-left ml-auto" style="padding-right: 10px;">
@@ -55,6 +55,12 @@
                         <p-columnFilter type="text" field="protocol_id" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
+                <th pSortableColumn="study_type" style="min-width: 8rem">
+                    <div class="flex justify-content-between align-items-center">
+                        Study Type
+                        <p-columnFilter type="text" field="study_type" display="menu" class="ml-auto"></p-columnFilter>
+                    </div>
+                </th>
                 <th pSortableColumn="countries">
                     <div class="flex justify-content-between align-items-center">
                         Countries
@@ -67,10 +73,10 @@
                         <p-columnFilter type="text" field="sites" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
-                <th pSortableColumn="sites_completed">
+                <th pSortableColumn="sites_remaining">
                     <div class="flex justify-content-between align-items-center">
-                        Sites Completed
-                        <p-columnFilter type="text" field="sites_completed" display="menu" class="ml-auto"></p-columnFilter>
+                        Sites Remaining
+                        <p-columnFilter type="text" field="sites_remaining" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
                 <th pSortableColumn="subjects_screened">
@@ -103,16 +109,16 @@
                         <p-columnFilter type="text" field="pre_label_y" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
-                <th pSortableColumn="kit_vendor">
+                <th pSortableColumn="production_location">
                     <div class="flex justify-content-between align-items-center">
-                        Kit Vendor
-                        <p-columnFilter type="text" field="kit_vendor" display="menu" class="ml-auto"></p-columnFilter>
+                        Production Location
+                        <p-columnFilter type="text" field="production_location" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
-                <th pSortableColumn="date_kit_at_first_site" style="min-width: 7rem">
+                <th pSortableColumn="date_kos" style="min-width: 7rem">
                     <div class="flex justify-content-between align-items-center">
-                        Date Kit at First Site
-                        <p-columnFilter type="text" field="date_kit_at_first_site" display="menu" class="ml-auto"></p-columnFilter>
+                        Date KOS
+                        <p-columnFilter type="text" field="date_kos" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
                 <th pSortableColumn="revenue_gen">
@@ -137,6 +143,8 @@
             <tr class="p-selectable-row" [pEditableRow]="study" style="height: 27px;">
                 <td>
                     <span> <i class="bi bi-eye" (click)="hanldeBelowContent()"></i></span>
+                    <span class="ml-2"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar(study)"></i></span>
+                    <ng-container *ngIf="study.study_type === 'New'">
                     <span class="ml-2" *ngIf="!study.editing"><i class="bi bi-pencil" (click)="onEditRow(study)"></i></span>
                     <!-- <button 
                         *ngIf="!study.editing" 
@@ -168,11 +176,12 @@
                             class="p-button-rounded p-button-text p-button-danger">
                         </button> 
                     </div>
+                    </ng-container>
                     <!-- <span class="ml-2" *ngIf="study.editing"><i class="bi bi-check" (click)="onSaveRow(study)"></i></span>
                     <span class="ml-2" *ngIf="study.editing"><i class="bi bi-x" (click)="onCancelRow(study, ri)"></i></span> -->
-                    <span class="ml-2"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar(study)"></i></span>
+                    
                 </td>
-                <td [pEditableColumn]="study.sponsor" pEditableColumnField="sponsor" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                <td [pEditableColumn]="study.sponsor" pEditableColumnField="sponsor" [style.pointer-events]="study.editing && study.study_type === 'New' ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.sponsor" />
@@ -183,7 +192,7 @@
                     </p-cellEditor>
                     <!-- {{ study.sponsor }} -->
                 </td>
-                <td [pEditableColumn]="study.protocol_id" pEditableColumnField="protocol_id" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                <td [pEditableColumn]="study.protocol_id" pEditableColumnField="protocol_id" [style.pointer-events]="study.editing && study.study_type === 'New' ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.protocol_id" />
@@ -194,7 +203,18 @@
                     </p-cellEditor>
                     <!-- {{ study.protocol_id }} -->
                 </td>
-                <td [pEditableColumn]="study.countries" pEditableColumnField="countries" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                <td [pEditableColumn]="study.study_type" pEditableColumnField="study_type" [style.pointer-events]="study.editing && study.study_type === 'New' ? 'auto' : 'none'">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="study.study_type" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ study.study_type }}
+                        </ng-template>
+                    </p-cellEditor>
+                    <!-- {{ study.study_type }} -->
+                </td>
+                <td [pEditableColumn]="study.countries" pEditableColumnField="countries" [style.pointer-events]="study.editing && study.study_type === 'New' ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.countries" />
@@ -205,7 +225,7 @@
                     </p-cellEditor>
                     <!-- {{ study.countries }} -->
                 </td>
-                <td [pEditableColumn]="study.sites" pEditableColumnField="sites" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                <td [pEditableColumn]="study.sites" pEditableColumnField="sites" [style.pointer-events]="study.editing && study.study_type === 'New' ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.sites" />
@@ -216,18 +236,18 @@
                     </p-cellEditor>
                     <!-- {{ study.sites }} -->
                 </td>
-                <td [pEditableColumn]="study.sites_completed" pEditableColumnField="sites_completed" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                <td [pEditableColumn]="study.sites_remaining" pEditableColumnField="sites_remaining" [style.pointer-events]="study.editing && study.study_type === 'New' ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="study.sites_completed" />
+                            <input pInputText type="text" [(ngModel)]="study.sites_remaining" />
                         </ng-template>
                         <ng-template pTemplate="output">
-                            {{ study.sites_completed }}
+                            {{ study.sites_remaining }}
                         </ng-template>
                     </p-cellEditor>
-                    <!-- {{ study.sites_completed }} -->
+                    <!-- {{ study.sites_remaining }} -->
                 </td>
-                <td [pEditableColumn]="study.subjects_screened" pEditableColumnField="subjects_screened" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                <td [pEditableColumn]="study.subjects_screened" pEditableColumnField="subjects_screened" [style.pointer-events]="study.editing && study.study_type === 'New' ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.subjects_screened" />
@@ -238,7 +258,7 @@
                     </p-cellEditor>
                     <!-- {{ study.subjects_screened }} -->
                 </td>
-                <td [pEditableColumn]="study.qty_of_kits_study" pEditableColumnField="qty_of_kits_study" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                <td [pEditableColumn]="study.qty_of_kits_study" pEditableColumnField="qty_of_kits_study" [style.pointer-events]="study.editing && study.study_type === 'New' ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.qty_of_kits_study" />
@@ -249,7 +269,7 @@
                     </p-cellEditor>
                     <!-- {{ study.qty_of_kits_study }} -->
                 </td>
-                <td [pEditableColumn]="study.qty_of_kits_initial" pEditableColumnField="qty_of_kits_initial" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                <td [pEditableColumn]="study.qty_of_kits_initial" pEditableColumnField="qty_of_kits_initial" [style.pointer-events]="study.editing && study.study_type === 'New' ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.qty_of_kits_initial" />
@@ -260,7 +280,7 @@
                     </p-cellEditor>
                     <!-- {{ study.qty_of_kits_initial }} -->
                 </td>
-                <td [pEditableColumn]="study.visits" pEditableColumnField="visits" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                <td [pEditableColumn]="study.visits" pEditableColumnField="visits" [style.pointer-events]="study.editing && study.study_type === 'New' ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.visits" />
@@ -271,7 +291,7 @@
                     </p-cellEditor>
                     <!-- {{ study.visits }} -->
                 </td>
-                <td [style.color]="study['pre_label_y'] === 'Yes' ? 'green' : 'red'" [pEditableColumn]="study.pre_label_y" pEditableColumnField="pre_label_y" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                <td [style.color]="study['pre_label_y'] === 'Yes' ? 'green' : 'red'" [pEditableColumn]="study.pre_label_y" pEditableColumnField="pre_label_y" [style.pointer-events]="study.editing && study.study_type === 'New' ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input pInputText type="text" [(ngModel)]="study.pre_label_y" />
@@ -282,29 +302,29 @@
                     </p-cellEditor>
                     <!-- {{ study.pre_label_y }} -->
                 </td>
-                <td [pEditableColumn]="study.kit_vendor" pEditableColumnField="kit_vendor" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                <td [pEditableColumn]="study.production_location" pEditableColumnField="production_location" [style.pointer-events]="study.editing && study.study_type === 'New' ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="study.kit_vendor" />
+                            <input pInputText type="text" [(ngModel)]="study.production_location" />
                         </ng-template>
                         <ng-template pTemplate="output">
-                            {{ study.kit_vendor }}
+                            {{ study.production_location }}
                         </ng-template>
                     </p-cellEditor>
-                    <!-- {{ study.kit_vendor }} -->
+                    <!-- {{ study.production_location }} -->
                 </td>
-                <td [pEditableColumn]="study.date_kit_at_first_site" pEditableColumnField="date_kit_at_first_site" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                <td [pEditableColumn]="study.date_kos" pEditableColumnField="date_kos" [style.pointer-events]="study.editing && study.study_type === 'New' ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="study.date_kit_at_first_site" />
+                            <input pInputText type="text" [(ngModel)]="study.date_kos" />
                         </ng-template>
                         <ng-template pTemplate="output">
-                            {{ study.date_kit_at_first_site }}
+                            {{ study.date_kos }}
                         </ng-template>
                     </p-cellEditor>
-                    <!-- {{ study.date_kit_at_first_site }} -->
+                    <!-- {{ study.date_kos }} -->
                 </td>
-                <td [pEditableColumn]="study.revenue_gen" pEditableColumnField="revenue_gen" [style.pointer-events]="study.editing ? 'auto' : 'none'">
+                <td [pEditableColumn]="study.revenue_gen" pEditableColumnField="revenue_gen" [style.pointer-events]="study.editing && study.study_type === 'New' ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
                             <input 
