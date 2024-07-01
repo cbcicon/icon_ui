@@ -33,6 +33,20 @@ export class TableDataService {
     return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['replacementActionData']}`)
   }
 
+  getPurchaseOrderMain(): Observable<any>{
+    return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['purchaseOrderMain']}`)
+  }
+
+  getPurchaseOrderMainDetail(): Observable<any>{
+    return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['purchaseOrderMainDetail']}`)
+  }
+
+  
+  getAllSafetyStockMainTbl(): Observable<any>{
+    return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['safetyStockMain']}`)
+  }
+
+
   private handleError(error: any) {
     console.error('An error occurred:', error);
     throw error;

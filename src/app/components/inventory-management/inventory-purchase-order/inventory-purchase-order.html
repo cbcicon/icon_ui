@@ -127,7 +127,7 @@
 
 				<th pSortableColumn="itemType" style="min-width: 10rem">
 					<div class="flex justify-content-between align-items-center">
-						Due Date
+						Expected Date
 						<p-columnFilter type="numeric" field="itemType" display="menu" currency="USD"
 							class="ml-auto"></p-columnFilter>
 					</div>
@@ -141,12 +141,12 @@
 					<span class="ml-3"><i class="bi bi-chat-left-text" ></i></span>
 				</td>
 
-                <td>{{inventoryPurchaseOrderData["poNumber"]}}</td>
+                <td>{{inventoryPurchaseOrderData["poNo"]}}</td>
                 <td>{{inventoryPurchaseOrderData["status"]}}</td>
                 <td>{{inventoryPurchaseOrderData["vendor"]}}</td>
-                <td>{{inventoryPurchaseOrderData["sponsor"]}}</td>
+                <td>{{inventoryPurchaseOrderData["createdBy"]}}</td>
 
-                <td>{{inventoryPurchaseOrderData["protocol"]}}</td>
+                <td>{{inventoryPurchaseOrderData["protocolId"]}}</td>
                 <td>{{inventoryPurchaseOrderData["uom"]}}</td>
                 <td>{{inventoryPurchaseOrderData["qtyOrdered"]}}</td>
                 <td>{{inventoryPurchaseOrderData["qtyReceived"]}}</td>
@@ -154,7 +154,7 @@
                 <td>{{inventoryPurchaseOrderData["qtyOpen"]}}</td>
                 <td>{{inventoryPurchaseOrderData["amount"]}}</td>
                 <td>{{inventoryPurchaseOrderData["createdDate"]}}</td>
-                <td>{{inventoryPurchaseOrderData["dueDate"]}}</td>
+                <td>{{inventoryPurchaseOrderData["expectedDate"]}}</td>
 				
 			</tr>
 		</ng-template>
@@ -210,7 +210,7 @@
         
     </div>
 </div>
-<div class="col-md-9">
+<div class="col-md-9 detail-card">
     <div class="card"> 
         <p-table #dt [value]="ipoEntityDetail"  dataKey="id" [rowHover]="true"
 		[rows]="controlRow" [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading"
@@ -266,6 +266,13 @@
 					</div>
 				</th>
 
+				<th pSortableColumn="availability">
+					<div class="flex justify-content-between align-items-center">
+						Due Date
+						<p-columnFilter type="text" field="availability" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
 				<th pSortableColumn="openPurchaseOrder">
 					<div class="flex justify-content-between align-items-center">
 						Total Price
@@ -279,14 +286,15 @@
 			<tr class="p-selectable-row">
 				
 
-                <td>{{ipoEntityDetail["itemNumber"]}}</td>
+                <td>{{ipoEntityDetail["item"]}}</td>
                 <td>{{ipoEntityDetail["itemDescription"]}}</td>
                 <td>{{ipoEntityDetail["qtyOrdered"]}}</td>
                 <td>{{ipoEntityDetail["qtyReceived"]}}</td>
 
                 <td>{{ipoEntityDetail["qtyOpen"]}}</td>
                 <td>{{ipoEntityDetail["unitPrice"]}}</td>
-                <td>{{ipoEntityDetail["totalPrice"]}}</td>
+                <td>{{ipoEntityDetail["dueDate"]}}</td>
+				<td>{{ipoEntityDetail["totalPrice"]}}</td>
 			</tr>
 		</ng-template>
 		<ng-template pTemplate="emptymessage">
