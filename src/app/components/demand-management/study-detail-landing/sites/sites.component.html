@@ -15,15 +15,15 @@
       <ng-template pTemplate="header">
         <tr>
           <th>Actions</th>
-          <th>Site ID</th>
-          <th>City</th>
+          <th>Site #</th>
           <th>Country</th>
+          <th>City</th>
           <th>Region</th>
           <th>Qty Required</th>
-          <th>Qty Supplied</th>
+          <th>Qty Remaining</th>
           <th>Status</th>
-          <th>Date Kit at First Site</th>
-          <th>Status Y</th>
+          <th>Date KOS</th>
+          <th>Progress</th>
         </tr>
       </ng-template>
 
@@ -54,23 +54,13 @@
               </button> 
             </div>
           </td>
-          <td [pEditableColumn]="site.SiteID" pEditableColumnField="SiteID" [style.pointer-events]="site.editing ? 'auto' : 'none'">
+          <td [pEditableColumn]="site.Site" pEditableColumnField="Site" [style.pointer-events]="site.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="site.SiteID" />
+                <input pInputText type="text" [(ngModel)]="site.Site" />
               </ng-template>
               <ng-template pTemplate="output">
-                {{ site.SiteID }}
-              </ng-template>
-            </p-cellEditor>
-          </td>
-          <td [pEditableColumn]="site.City" pEditableColumnField="City" [style.pointer-events]="site.editing ? 'auto' : 'none'">
-            <p-cellEditor>
-              <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="site.City" />
-              </ng-template>
-              <ng-template pTemplate="output">
-                {{ site.City }}
+                {{ site.Site }}
               </ng-template>
             </p-cellEditor>
           </td>
@@ -81,6 +71,16 @@
               </ng-template>
               <ng-template pTemplate="output">
                 {{ site.Country }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="site.City" pEditableColumnField="City" [style.pointer-events]="site.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="site.City" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ site.City }}
               </ng-template>
             </p-cellEditor>
           </td>
@@ -104,13 +104,13 @@
               </ng-template>
             </p-cellEditor>
           </td>
-          <td [pEditableColumn]="site.QtySupplied" pEditableColumnField="QtySupplied" [style.pointer-events]="site.editing ? 'auto' : 'none'">
+          <td [pEditableColumn]="site.QtyRemaining" pEditableColumnField="QtyRemaining" [style.pointer-events]="site.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="site.QtySupplied" />
+                <input pInputText type="text" [(ngModel)]="site.QtyRemaining" />
               </ng-template>
               <ng-template pTemplate="output">
-                {{ site.QtySupplied }}
+                {{ site.QtyRemaining }}
               </ng-template>
             </p-cellEditor>
           </td>
@@ -124,23 +124,23 @@
               </ng-template>
             </p-cellEditor>
           </td>
-          <td [pEditableColumn]="site.DateKitatFirstSite" pEditableColumnField="DateKitatFirstSite" [style.pointer-events]="site.editing ? 'auto' : 'none'">
+          <td [pEditableColumn]="site.DateKOS" pEditableColumnField="DateKOS" [style.pointer-events]="site.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="site.DateKitatFirstSite" />
+                <input pInputText type="text" [(ngModel)]="site.DateKOS" />
               </ng-template>
               <ng-template pTemplate="output">
-                {{ site.DateKitatFirstSite }}
+                {{ site.DateKOS }}
               </ng-template>
             </p-cellEditor>
           </td>
-          <td [pEditableColumn]="site.StatusY" pEditableColumnField="StatusY" [style.pointer-events]="site.editing ? 'auto' : 'none'">
+          <td [pEditableColumn]="site.Progress" pEditableColumnField="Progress" [style.pointer-events]="site.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="site.StatusY" />
+                <input pInputText type="text" [(ngModel)]="site.Progress" />
               </ng-template>
               <ng-template pTemplate="output">
-                {{ site.StatusY }}
+                {{ site.Progress }}
               </ng-template>
             </p-cellEditor>
           </td>

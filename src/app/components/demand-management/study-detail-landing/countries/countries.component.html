@@ -19,8 +19,9 @@
           <th>Sites</th>
           <th># Kit Component Supplied</th>
           <th># Kit Component Pending</th>
-          <th>Date Kit at First Site</th>
-          <th>Status</th>
+          <th>Date KOS</th>
+          <th>FPFV</th>
+          <th>Progress</th>
         </tr>
       </ng-template>
 
@@ -91,23 +92,33 @@
               </ng-template>
             </p-cellEditor>
           </td>
-          <td [pEditableColumn]="country.DateKitatFirstSite" pEditableColumnField="DateKitatFirstSite" [style.pointer-events]="country.editing ? 'auto' : 'none'">
+          <td [pEditableColumn]="country.DateKOS" pEditableColumnField="DateKOS" [style.pointer-events]="country.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="country.DateKitatFirstSite" />
+                <input pInputText type="text" [(ngModel)]="country.DateKOS" />
               </ng-template>
               <ng-template pTemplate="output">
-                {{ country.DateKitatFirstSite }}
+                {{ country.DateKOS }}
               </ng-template>
             </p-cellEditor>
           </td>
-          <td [pEditableColumn]="country.Status" pEditableColumnField="Status" [style.pointer-events]="country.editing ? 'auto' : 'none'">
+          <td [pEditableColumn]="country.FPFV" pEditableColumnField="FPFV" [style.pointer-events]="country.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="country.Status" />
+                <input pInputText type="text" [(ngModel)]="country.FPFV" />
               </ng-template>
               <ng-template pTemplate="output">
-                {{ country.Status }}
+                {{ country.FPFV }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="country.Progress" pEditableColumnField="Progress" [style.pointer-events]="country.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="country.Progress" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ country.Progress }}
               </ng-template>
             </p-cellEditor>
           </td>

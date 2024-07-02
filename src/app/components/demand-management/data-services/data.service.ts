@@ -453,8 +453,9 @@ export class DataService {
         "Sites": "5",
         "#KitComponentSupplied": "10",
         "#KitComponentPending": "80",
-        "DateKitatFirstSite": "15Mar2024",
-        "Status": "50%"
+        "DateKOS": "15Mar2024",
+        "FPFV": "15Mar2024",
+        "Progress": "50%"
       },
       {
         "Actions": "",
@@ -462,8 +463,9 @@ export class DataService {
         "Sites": "30",
         "#KitComponentSupplied": "30",
         "#KitComponentPending": "30",
-        "DateKitatFirstSite": "14Feb2024",
-        "Status": "20%"
+        "DateKOS": "14Feb2024",
+        "FPFV": "14Feb2024",
+        "Progress": "20%"
       },
       {
         "Actions": "",
@@ -471,8 +473,9 @@ export class DataService {
         "Sites": "10",
         "#KitComponentSupplied": "20",
         "#KitComponentPending": "0",
-        "DateKitatFirstSite": "15Mar2024",
-        "Status": "100%"
+        "DateKOS": "15Mar2024",
+        "FPFV": "15Mar2024",
+        "Progress": "100%"
       },
       {
         "Actions": "",
@@ -480,8 +483,9 @@ export class DataService {
         "Sites": "5",
         "#KitComponentSupplied": "10",
         "#KitComponentPending": "90",
-        "DateKitatFirstSite": "15May2024",
-        "Status": "40%"
+        "DateKOS": "15May2024",
+        "FPFV": "15May2024",
+        "Progress": "40%"
       },
       {
         "Actions": "",
@@ -489,8 +493,9 @@ export class DataService {
         "Sites": "23",
         "#KitComponentSupplied": "10",
         "#KitComponentPending": "95",
-        "DateKitatFirstSite": "15May2024",
-        "Status": "85%"
+        "DateKOS": "15May2024",
+        "FPFV": "15May2024",
+        "Progress": "85%"
       }
     ];
   }
@@ -498,58 +503,64 @@ export class DataService {
   getSites() {
     return [
       {
-        "SiteID": "1112",
-        "City": "CityName",
+        "Actions": "",
+        "Site": "1112",
         "Country": "USA",
-        "Region": "Europe",
+        "City": "Phoenix",
+        "Region": "NA",
         "QtyRequired": "5",
-        "QtySupplied": "3",
+        "QtyRemaining": "3",
         "Status": "Planned",
-        "DateKitatFirstSite": "15Mar2024",
-        "Status Y": "50%"
+        "DateKOS": "15Mar2024",
+        "Progress": "50%"
       },
       {
-        "SiteID": "1156",
-        "City": "CityName",
-        "Country": "Singapore",
-        "Region": "Europe",
+        "Actions": "",
+        "Site": "1156",
+        "Country": "Japan",
+        "City": "Tokyo",
+        "Region": "APAC",
         "QtyRequired": "4",
-        "QtySupplied": "2",
+        "QtyRemaining": "2",
         "Status": "Un-Planned",
-        "DateKitatFirstSite": "14Mar2024",
-        "Status Y": "20%"
+        "DateKOS": "14Mar2024",
+        "Progress": "20%"
       },
       {
-        "SiteID": "1025",
-        "City": "CityName",
+        "Actions": "",
+        "Site": "1025",
         "Country": "Russia",
-        "Region": "Europe",
+        "City": "Moscow",
+        "Region": "EMEA",
         "QtyRequired": "10",
-        "QtySupplied": "3",
+        "QtyRemaining": "3",
         "Status": "DateExceeded",
-        "DateKitatFirstSite": "15Mar2024"
+        "DateKOS": "15Mar2024",
+        "Progress":"50%"
       },
       {
-        "SiteID": "1015",
-        "City": "City Name",
-        "Country": "Ireland",
-        "Region": "Europe",
+        "Actions": "",
+        "Site": "1015",
+        "Country": "India",
+        "City": "Hyderabad",
+        "Region": "APAC",
         "QtyRequired": "3",
-        "QtySupplied": "3",
+        "QtyRemaining": "3",
         "Status": "Un-Planned",
-        "DateKitatFirstSite": "15Mar2024",
-        "Status Y": "40%"
+        "DateKOS": "15Mar2024",
+        "Progress": "40%"
       },
       {
-        "SiteID": "2015",
-        "City": "CityName",
-        "Country": "China",
-        "Region": "Asia",
+        "Actions": "",
+        "Site": "2015",
+        "Country": "Italy",
+        "City": "Rome",
+        "Region": "EMEA",
         "QtyRequired": "4",
-        "QtySupplied": "2",
+        "QtyRemaining": "2",
         "Status": "Planned",
-        "DateKitatFirstSite": "15Mar2024",
-        "Status Y": "85%"
+        "DateKOS": "15Mar2024",
+        "Progress": "85%"
       }
     ];
   }
