@@ -1,41 +1,53 @@
-.study-detail-landing-container{
+.study-detail-landing-container {
     margin-top: -7px;
     padding: 0px;
     border-radius: 5px;
-    gap:5px;
-    
+    gap: 5px;
 }
 
-.activate-component{
+.activate-component {
     width: 87%;
-
 }
-    
-    
-    .menu-label-text{
-    font-family: Poppins;
+
+.menu-label-text {
+    font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 21px;
-    letter-spacing: 0.10000000149011612px;
+    letter-spacing: 0.1px;
     text-align: left;
-    
-    }
-    
-    .sidebar-label-text{
-    font-family: Poppins;
+}
+
+.sidebar-label-text {
+    font-family: 'Poppins', sans-serif;
     font-size: 16px;
     font-weight: 600;
     line-height: 24px;
-    letter-spacing: 0.15000000596046448px;
+    letter-spacing: 0.15px;
     text-align: left;
-    
-    }
+    margin: 0; /* Ensure there is no additional margin */
+}
 
-  
-    
-    ::ng-deep.p-menu {
-        width: 20rem;
-        height: 49vh
-        
-     }
+.new-study-heading {
+    display: flex;
+    align-items: center;
+    color: rgba(117, 117, 117, 1);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.25px;
+    opacity: 1;
+    margin-top: 1px; /* Adjust this to control vertical spacing */
+
+    i {
+        color: rgba(59, 130, 246, 1);
+        font-size: small;
+        margin-right: 5px; /* Adjust this if you need a specific spacing between the icon and text */
+    }
+}
+
+::ng-deep .p-menu {
+    width: 20rem;
+    height: 49vh;
+}
