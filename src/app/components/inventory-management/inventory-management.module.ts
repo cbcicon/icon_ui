@@ -49,13 +49,18 @@ import { InventoryPurchaseOrderComponent } from './inventory-purchase-order/inve
 import { InventoryConfigurationComponent } from './inventory-configuration/inventory-configuration';
 
 import { PanelMenuModule } from 'primeng/panelmenu';
+import { InvConfigItemComponent } from './inventory-configuration/inv-config-item/inv-config-item';
+import { InvConfigSafetyStockComponent } from './inventory-configuration/inv-config-safety-stock/inv-config-safety-stock';
+import { InvConfigSelfLifeComponent } from './inventory-configuration/inv-config-self-life/inv-config-self-life';
+import { InvConfigPurchaseOrderComponent } from './inventory-configuration/inv-config-purchase-order/inv-config-purchase-order';
 
 
 @NgModule({
 	declarations: [
 		OrderTableComponent, QauntityBreakdownPopupComponent, ItemSearchPopupComponent, ItemDetailsComponent, ItemDetailLandingComponent,
 		StockAndScrapComponent, RingFenceComponent, ReplacementComponent, PurchaseOrderComponent , SafetyStockComponent , ScrapComponent,
-		InventoryPurchaseOrderComponent ,InventoryConfigurationComponent
+		InventoryPurchaseOrderComponent ,InventoryConfigurationComponent , InvConfigItemComponent ,InvConfigSafetyStockComponent,
+		InvConfigSelfLifeComponent,InvConfigPurchaseOrderComponent
 	],
 	imports: [
 		CommonModule,

@@ -12,10 +12,10 @@
 
   <div class="card inventory-configuration-content">
     <div [ngSwitch]="activeItem.name">
-      <div *ngSwitchCase="'Move Stock'" class="mr-4"> <h2 class="check">hirak</h2> </div>
-      <div *ngSwitchCase="'Create PO'"><h1> Create PO</h1>  </div>
-      <div *ngSwitchCase="'Need Replacement'"><h1>Need Replacement</h1></div>
-      <div *ngSwitchCase="'Review Excess Stock'"> <h1>Review Excess Stock</h1></div>
+      <div *ngSwitchCase="'Item Configs'" class="mr-4"> <app-inv-config-item></app-inv-config-item> </div>
+      <div *ngSwitchCase="'Safety Stock'"><app-inv-config-safety-stock></app-inv-config-safety-stock> </div>
+      <div *ngSwitchCase="'Shelf Life'"><app-inv-config-self-life></app-inv-config-self-life></div>
+      <div *ngSwitchCase="'Purchase Orders'"> <app-inv-config-purchase-order></app-inv-config-purchase-order>  </div>
     </div>
 
   </div>
