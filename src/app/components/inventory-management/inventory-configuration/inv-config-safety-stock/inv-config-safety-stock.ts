@@ -5,4 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './inv-config-safety-stock.html',
   styleUrls:['./inv-config-safety-stock.scss']
 })
-export class InvConfigSafetyStockComponent {}
+export class InvConfigSafetyStockComponent {
+  
+}
+
