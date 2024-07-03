@@ -34,7 +34,9 @@ export class NewstudyTableComponent implements OnInit {
     { name: 'CLW Version #', field: 'clwVersion' },
     { name: 'CSTR Version #', field: 'cstrVersion' }
   ];
-  showDetailContent = false;
+  // showDetailContent = false;
+  showNewStudyDetailContent = false;
+  showLiveStudyDetailContent = false;
   chatRightSideBar = false;
   changeExpandButton = false;
 
@@ -528,11 +530,25 @@ handleTableView() {
 // }
 
 //Method to handle content display based on study type
+// handleBelowContent(studyType: string) {
+//   if (studyType === 'New') {
+//     this.showDetailContent = true;
+//   } else {
+//     this.showDetailContent = false;
+//   }
+// }
+
+// Method to handle content display based on study type
 handleBelowContent(studyType: string) {
   if (studyType === 'New') {
-    this.showDetailContent = true;
+    this.showNewStudyDetailContent = true;
+    this.showLiveStudyDetailContent = false;
+  } else if (studyType === 'Live') {
+    this.showNewStudyDetailContent = false;
+    this.showLiveStudyDetailContent = true;
   } else {
-    this.showDetailContent = false;
+    this.showNewStudyDetailContent = false;
+    this.showLiveStudyDetailContent = false;
   }
 }
 

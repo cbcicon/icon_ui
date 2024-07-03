@@ -469,10 +469,20 @@
     <app-msg-right-sidebar [allComments]="allComments" [unreadCommentLength] = "unreadCommentLength" ></app-msg-right-sidebar>
 </div> -->
 
-<!-- Table below content  -->
+<!-- Table below content 
 <div class="card" style="min-height: 500px;">
 	<div *ngIf="showDetailContent">
 		<app-study-detail-landing></app-study-detail-landing>
 	</div>
-</div>
+</div> -->
+
+<!-- Table below content  -->
+<div class="card" style="min-height: 500px;">
+    <div *ngIf="showNewStudyDetailContent">
+      <app-study-detail-landing></app-study-detail-landing>
+    </div>
+    <div *ngIf="showLiveStudyDetailContent">
+      <app-live-study-detail-landing></app-live-study-detail-landing>
+    </div>
+  </div>
 
