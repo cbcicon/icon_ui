@@ -523,8 +523,17 @@ handleTableView() {
   this.tableViewOption = !this.tableViewOption
 }
   
-hanldeBelowContent() {
-  this.showDetailContent = !this.showDetailContent
+// hanldeBelowContent() {
+//   this.showDetailContent = !this.showDetailContent
+// }
+
+//Method to handle content display based on study type
+handleBelowContent(studyType: string) {
+  if (studyType === 'New') {
+    this.showDetailContent = true;
+  } else {
+    this.showDetailContent = false;
+  }
 }
 
 handleChatRightSidebar(study:any) {

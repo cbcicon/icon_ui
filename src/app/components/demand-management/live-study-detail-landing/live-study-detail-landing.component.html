@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-between study-detail-landing-container">
+    <div class="mt-4">
+        <p-menu [model]="studies">
+            <ng-template pTemplate="start">
+                <p class="ml-4 mt-4 text-start sidebar-label-text">Study Details</p>
+                <div class="live-study-heading ml-4">
+                    <i class="pi pi-circle-on"></i>
+                    <span>Live Study</span>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="study" let-study>
+                <div class="p-4" (click)="handleComponentChange(study.activate)">
+                    <span class="mr-3"><i class={{study.icon}}></i></span>
+                    <span class="menu-label-text">{{ study.label }}</span>
+                </div>
+            </ng-template>
+        </p-menu>
+    </div>
+
+    <div class="col-md-11 mt-4 activate-component">
+        <div [ngSwitch]="activeComponent">
+            <div *ngSwitchCase="'countries'"><app-livecountries></app-livecountries></div>
+            <div *ngSwitchCase="'sites'"><app-livesites></app-livesites></div>
+            <div *ngSwitchCase="'visits'"><app-livevisits></app-livevisits></div>
+            <div *ngSwitchCase="'work-orders'"><app-liveworkorders></app-liveworkorders></div>
+            <div *ngSwitchCase="'kits'"><app-livekits></app-livekits></div>
+        </div>
+    </div>
+</div>

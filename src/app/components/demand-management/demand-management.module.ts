@@ -33,19 +33,26 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { ForecastChart } from './forecast/chart/forecast-chart';
 import { NewstudyTableComponent } from './newstudy/newstudy-table.component';
 import { StudyDetailLandingComponent } from './study-detail-landing/study-detail-landing.component';
+import { LiveStudyDetailLandingComponent } from './live-study-detail-landing/live-study-detail-landing.component';
 import { CountriesComponent } from './study-detail-landing/countries/countries.component';
 import { SitesComponent } from './study-detail-landing/sites/sites.component';
 import { InventoryReviewComponent } from './study-detail-landing/inventory-review/inventory-review.component';
 import { SummaryComponent } from './study-detail-landing/summary/summary.component';
 import { MasterDemandPlanComponent } from './master-demand-management/master-demand-plan';
-import { SelectButtonModule } from 'primeng/selectbutton';import { InputTextareaModule } from 'primeng/inputtextarea';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 import { AvatarModule } from 'primeng/avatar';
 import { SharedModule } from '../../shared/shared.module';
+import { LiveCountriesComponent } from './live-study-detail-landing/livecountries/livecountries.component';
+import { LiveSitesComponent } from './live-study-detail-landing/livesites/livesites.component';
+import { LiveVisitsComponent } from './live-study-detail-landing/livevisits/livevisits.component';
+import { LiveWorkOrdersComponent } from './live-study-detail-landing/liveworkorders/liveworkorders.component';
+import { LiveKitsComponent } from './live-study-detail-landing/livekits/livekits.component';
 
 @NgModule({
 	declarations: [
 		ForecastTable, ForecastChart, NewstudyTableComponent, StudyDetailLandingComponent, CountriesComponent, SitesComponent, InventoryReviewComponent,
-		 SummaryComponent,MasterDemandPlanComponent
+		 SummaryComponent,MasterDemandPlanComponent, LiveStudyDetailLandingComponent,LiveCountriesComponent,LiveSitesComponent,LiveVisitsComponent,LiveWorkOrdersComponent,LiveKitsComponent
 	],
 	imports: [
 		CommonModule,

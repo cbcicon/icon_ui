@@ -142,7 +142,7 @@
         <ng-template pTemplate="body" let-study let-ri="rowIndex" let-editing="editing">
             <tr class="p-selectable-row" [pEditableRow]="study" style="height: 27px;">
                 <td>
-                    <span> <i class="bi bi-eye" (click)="hanldeBelowContent()"></i></span>
+                    <span> <i class="bi bi-eye" (click)="handleBelowContent(study.study_type)"></i></span>
                     <span class="ml-2"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar(study)"></i></span>
                     <ng-container *ngIf="study.study_type === 'New'">
                     <span class="ml-2" *ngIf="!study.editing"><i class="bi bi-pencil" (click)="onEditRow(study)"></i></span>

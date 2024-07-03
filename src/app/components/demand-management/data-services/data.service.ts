@@ -1243,4 +1243,398 @@ export class DataService {
     return of(item); 
   }
 
+  getLiveCountries() {
+    return [
+      {
+        "Actions": "",
+        "Country": "USA",
+        "Sites": "5",
+        "#KitSupplied": "10",
+        "#KitPending": "80",
+        "DateKOS": "15Mar2024",
+        "FPFV": "15Mar2024",
+        "Progress": "50%"
+      },
+      {
+        "Actions": "",
+        "Country": "Singapore",
+        "Sites": "30",
+        "#KitSupplied": "30",
+        "#KitPending": "30",
+        "DateKOS": "14Feb2024",
+        "FPFV": "14Feb2024",
+        "Progress": "20%"
+      },
+      {
+        "Actions": "",
+        "Country": "Russia",
+        "Sites": "10",
+        "#KitSupplied": "20",
+        "#KitPending": "0",
+        "DateKOS": "15Mar2024",
+        "FPFV": "15Mar2024",
+        "Progress": "100%"
+      },
+      {
+        "Actions": "",
+        "Country": "Ireland",
+        "Sites": "5",
+        "#KitSupplied": "10",
+        "#KitPending": "90",
+        "DateKOS": "15May2024",
+        "FPFV": "15May2024",
+        "Progress": "40%"
+      },
+      {
+        "Actions": "",
+        "Country": "China",
+        "Sites": "23",
+        "#KitSupplied": "10",
+        "#KitPending": "95",
+        "DateKOS": "15May2024",
+        "FPFV": "15May2024",
+        "Progress": "85%"
+      }
+    ];
+  }
+
+  getLiveSites() {
+    return [
+      {
+        "Actions": "",
+        "Site": "1112",
+        "Country": "USA",
+        "City": "Phoenix",
+        "Region": "NA",
+        "QtyRequired": "5",
+        "QtyRemaining": "3",
+        "DateKOS": "15Mar2024",
+        "StudyStartDate": "15Mar2024",
+        "Progress": "50%"
+      },
+      {
+        "Actions": "",
+        "Site": "1156",
+        "Country": "Japan",
+        "City": "Tokyo",
+        "Region": "APAC",
+        "QtyRequired": "4",
+        "QtyRemaining": "2",
+        "DateKOS": "14Mar2024",
+        "StudyStartDate": "14Mar2024",
+        "Progress": "20%"
+      },
+      {
+        "Actions": "",
+        "Site": "1025",
+        "Country": "Russia",
+        "City": "Moscow",
+        "Region": "EMEA",
+        "QtyRequired": "10",
+        "QtyRemaining": "3",
+        "DateKOS": "15Mar2024",
+        "StudyStartDate": "15Mar2024",
+        "Progress":"50%"
+      },
+      {
+        "Actions": "",
+        "Site": "1015",
+        "Country": "India",
+        "City": "Hyderabad",
+        "Region": "APAC",
+        "QtyRequired": "3",
+        "QtyRemaining": "3",
+        "DateKOS": "15Mar2024",
+        "StudyStartDate": "15Mar2024",
+        "Progress": "40%"
+      },
+      {
+        "Actions": "",
+        "Site": "2015",
+        "Country": "Italy",
+        "City": "Rome",
+        "Region": "EMEA",
+        "QtyRequired": "4",
+        "QtyRemaining": "2",
+        "DateKOS": "15Mar2024",
+        "StudyStartDate": "15Mar2024",
+        "Progress": "85%"
+      }
+    ];
+  }
+
+  getLiveVisits() {
+    return [
+      {
+        "VisitName": "A2 C11 D1",
+        "VisitType": "Scheduled",
+        "VisitCategory": "Study in Setup",
+        "VisitInterval": "10",
+        "MultiVisit": "Yes",
+        "Cohort": "Standard Cohort",
+        "Kits": "2",
+        "ScheduledDate": "15Mar2024"
+      },
+      {
+        "VisitName": "A2 C13 D1",
+        "VisitType": "Scheduled",
+        "VisitCategory": "Baseline",
+        "VisitInterval": "20",
+        "MultiVisit": "Yes",
+        "Cohort": "Standard Cohort",
+        "Kits": "2",
+        "ScheduledDate": "18Jan2024"
+      },
+      {
+        "VisitName": "A2 C15 D1",
+        "VisitType": "Unscheduled",
+        "VisitCategory": "Current Subjects -Scheduled ",
+        "VisitInterval": "-10",
+        "MultiVisit": "No",
+        "Cohort": "Standard Cohort",
+        "Kits": "4",
+        "ScheduledDate": "23Jan2024"
+      },
+      {
+        "VisitName": "A2 C17 D1",
+        "VisitType": "Unscheduled",
+        "VisitCategory": "Future Subjects - Scheduled",
+        "VisitInterval": "-5",
+        "MultiVisit": "No",
+        "Cohort": "Standard Cohort",
+        "Kits": "2",
+        "ScheduledDate": "7Feb2024"
+      },
+      {
+        "VisitName": "A2 C19 D1",
+        "VisitType": "Unscheduled",
+        "VisitCategory": "Optional",
+        "VisitInterval": "20",
+        "MultiVisit": "Yes",
+        "Cohort": "Standard Cohort",
+        "Kits": "5",
+        "ScheduledDate": "10Feb2024"
+      },
+      {
+        "VisitName": "A2 C1 D1",
+        "VisitType": "Scheduled",
+        "VisitCategory": "Screen",
+        "VisitInterval": "10",
+        "MultiVisit": "No",
+        "Cohort": "Standard Cohort",
+        "Kits": "10",
+        "ScheduledDate": "19Feb2024"
+      },
+      {
+        "VisitName": "A2 C1 D15",
+        "VisitType": "Scheduled",
+        "VisitCategory": "Initial Supplies",
+        "VisitInterval": "20",
+        "MultiVisit": "Yes",
+        "Cohort": "Standard Cohort",
+        "Kits": "3",
+        "ScheduledDate": "22Feb2024"
+      }
+    ];
+  }
+
+  getLiveKits() {
+    return [
+      {
+        "Actions": "",
+        "KitName": "A2 Tissue Kit",
+        "KitQty": "4",
+        "KitCategory": "PCR Tube",
+        "ItemComponents": "7",
+        "PreLabel": "Yes",
+        "Complexity": "High",
+        "SpecialInstructions": "This Kit Requires It"
+      },
+      {
+        "Actions": "",
+        "KitName": "Week 52",
+        "KitQty": "5",
+        "KitCategory": "Cryptube",
+        "ItemComponents": "5",
+        "PreLabel": "Yes",
+        "Complexity": "High",
+        "SpecialInstructions": "For Canada Sites"
+      },
+      {
+        "Actions": "",
+        "KitName": "PK Kit",
+        "KitQty": "6",
+        "KitCategory": "Microcentrifuge Tube",
+        "ItemComponents": "5",
+        "PreLabel": "No",
+        "Complexity": "Low",
+        "SpecialInstructions": "All orders going to "
+      },
+      {
+        "Actions": "",
+        "KitName": "Genkit 07",
+        "KitQty": "3",
+        "KitCategory": "Collection Tubes",
+        "ItemComponents": "3",
+        "PreLabel": "No",
+        "Complexity": "Low",
+        "SpecialInstructions": ""
+      },
+      {
+        "Actions": "",
+        "KitName": "Final Visit Kit",
+        "KitQty": "8",
+        "KitCategory": "Reagent",
+        "ItemComponents": "10",
+        "PreLabel": "Yes",
+        "Complexity": "High",
+        "SpecialInstructions": "If Ordered In Bulk"
+      },
+      {
+        "Actions": "",
+        "KitName": "Baseline Kit",
+        "KitQty": "3",
+        "KitCategory": "Buffer",
+        "ItemComponents": "5",
+        "PreLabel": "Yes",
+        "Complexity": "High",
+        "SpecialInstructions": ""
+      },
+      {
+        "Actions": "",
+        "KitName": "Multivisit",
+        "KitQty": "7",
+        "KitCategory": "Syringe",
+        "ItemComponents": "5",
+        "PreLabel": "No",
+        "Complexity": "Low",
+        "SpecialInstructions": "If Ordered In Bulk"
+      }
+    ];
+  }
+
+  getLiveWorkOrders() {
+    return [
+      {
+        "Actions": "",
+        "WorkOrder": "W04583435",
+        "ProductionLocation": "Midland",
+        "OrderType": "Re-order",
+        "Site": "2432",
+        "Kits": "5",
+        "Recipient": "Karfidova",
+        "Status": "Batch Picked",
+        "DaysCreated": "10",
+        "MultiLabel": "Yes",
+        "CreatedDate":"22Feb2024",
+        "DueDate":"15Jan2024",
+        "EstShippingDate":"15Jan2024",
+        "AssignedTo":"Shannon",
+        "PMApproval":"Yes"
+      },
+      {
+        "Actions": "",
+        "WorkOrder": "W03453434",
+        "ProductionLocation": "Farmingdale",
+        "OrderType": "Initial",
+        "Site": "4234",
+        "Kits": "3",
+        "Recipient": "Karfidova",
+        "Status": "Pending",
+        "DaysCreated": "12",
+        "MultiLabel": "Yes",
+        "CreatedDate":"19Feb2024",
+        "DueDate":"18Jan2024",
+        "EstShippingDate":"23Jan2024",
+        "AssignedTo":"Chole Sim",
+        "PMApproval":"Yes"
+      },
+      {
+        "Actions": "",
+        "WorkOrder": "W06578678",
+        "ProductionLocation": "Buford",
+        "OrderType": "Initial",
+        "Site": "5345",
+        "Kits": "4",
+        "Recipient": "Rebollar",
+        "Status": "Awaiting QC",
+        "DaysCreated": "2",
+        "MultiLabel": "No",
+        "CreatedDate":"10Feb2024",
+        "DueDate":"23Jan2024",
+        "EstShippingDate":"7Feb2024",
+        "AssignedTo":"Shon Evans",
+        "PMApproval":"No"
+      },
+      {
+        "Actions": "",
+        "WorkOrder": "W03243534",
+        "ProductionLocation": "Farmingdale",
+        "OrderType": "Portal",
+        "Site": "546",
+        "Kits": "3",
+        "Recipient": "Efron Beatriz",
+        "Status": "Staged",
+        "DaysCreated": "4",
+        "MultiLabel": "No",
+        "CreatedDate":"7Feb2024",
+        "DueDate":"7Feb2024",
+        "EstShippingDate":"10Feb2024",
+        "AssignedTo":"Benjamin",
+        "PMApproval":"No"
+      },
+      {
+        "Actions": "",
+        "WorkOrder": "W06576877",
+        "ProductionLocation": "Midland",
+        "OrderType": "Re-order",
+        "Site": "5667",
+        "Kits": "2",
+        "Recipient": "Rio Julieta",
+        "Status": "Batch Picked",
+        "DaysCreated": "6",
+        "MultiLabel": "No",
+        "CreatedDate":"23an2024",
+        "DueDate":"10Feb2024",
+        "EstShippingDate":"19Feb2024",
+        "AssignedTo":"Chloe Sim",
+        "PMApproval":"No"
+      },
+      {
+        "Actions": "",
+        "WorkOrder": "W07899897",
+        "ProductionLocation": "Therepak",
+        "OrderType": "Initial",
+        "Site": "6787",
+        "Kits": "6",
+        "Recipient": "Choi Mi",
+        "Status": "Batch Picked",
+        "DaysCreated": "3",
+        "MultiLabel": "Yes",
+        "CreatedDate":"18Jan2024",
+        "DueDate":"19Feb2024",
+        "EstShippingDate":"22Feb2024",
+        "AssignedTo":"Benjamin",
+        "PMApproval":"No"
+      },
+      {
+        "Actions": "",
+        "WorkOrder": "W02321333",
+        "ProductionLocation": "Therepak",
+        "OrderType": "Manual",
+        "Site": "787",
+        "Kits": "4",
+        "Recipient": "Choi Kevin",
+        "Status": "Staged",
+        "DaysCreated": "17",
+        "MultiLabel": "Yes",
+        "CreatedDate":"15Jan2024",
+        "DueDate":"22Feb2024",
+        "EstShippingDate":"22Mar2024",
+        "AssignedTo":"Shon Evans",
+        "PMApproval":"Yes"
+      }
+    ];
+  }
+  
 }
