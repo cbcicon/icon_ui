@@ -11,7 +11,7 @@ export class LiveKitsComponent {
 
   constructor(private dataService: DataService ) {}
 
-  kits :any
+  kits :any;
   loading: boolean = true
 
  ngOnInit(){
