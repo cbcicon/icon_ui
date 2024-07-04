@@ -1,68 +1,67 @@
 <div class="row">
     <div class="col card below-card" style="margin-left: 10px;">
-      <div class="accordion-header" id="headingThree">
-        <div>
-          <h6><b>Work Orders</b></h6>
+        <div class="accordion-header" id="headingThree">
+            <div>
+                <h6><b>Work Orders</b></h6>
+            </div>
         </div>
-      </div>
-  
-      <p-table [value]="workorders" dataKey="WorkOrder" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
-               [rowsPerPageOptions]="[10, 20, 30]" [paginator]="false"
-               currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-               [filterDelay]="0"
-               styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm">
-  
-        <ng-template pTemplate="header">
-          <tr>
-            <th>Actions</th>
-            <th>Work Order</th>
-            <th>Production Location</th>
-            <th>Order Type</th>
-            <th>Site</th>
-            <th>Kits</th>
-            <th>Recipient</th>
-            <th>Status</th>
-            <th>Days Created</th>
-            <th>Multi Label</th>
-            <th>Created Date</th>
-            <th>Due Date</th>
-            <th>Estimated Shipping Date</th>
-            <th>Assigned To</th>
-            <th>PM Approval</th>
-          </tr>
-        </ng-template>
-  
-        <ng-template pTemplate="body" let-order>
-          <tr>
-            <td>
-              <span class="ml-2">
-                <i class="bi bi-chat-left-text"></i>
-              </span>
-            </td>
-            <td>{{ order.WorkOrder }}</td>
-            <td>{{ order.ProductionLocation }}</td>
-            <td>{{ order.OrderType }}</td>
-            <td>{{ order.Site }}</td>
-            <td>{{ order.Kits }}</td>
-            <td>{{ order.Recipient }}</td>
-            <td>{{ order.Status }}</td>
-            <td>{{ order.DaysCreated }}</td>
-            <td>{{ order.MultiLabel }}</td>
-            <td>{{ order.CreatedDate }}</td>
-            <td>{{ order.DueDate }}</td>
-            <td>{{ order.EstShippingDate }}</td>
-            <td>{{ order.AssignedTo }}</td>
-            <td>{{ order.PMApproval }}</td>
-          </tr>
-        </ng-template>
-  
-        <ng-template pTemplate="emptymessage">
-          <tr>
-            <td colspan="15">No Data found.</td>
-          </tr>
-        </ng-template>
-  
-      </p-table>
+
+        <p-table [value]="workorders" dataKey="WorkOrder" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
+                [rowsPerPageOptions]="[10, 20, 30]" [paginator]="false"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [filterDelay]="0"
+                styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm">
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Actions</th>
+                    <th>Work Order</th>
+                    <th>Production Location</th>
+                    <th>Order Type</th>
+                    <th>Site</th>
+                    <th>Kits</th>
+                    <th>Recipient</th>
+                    <th>Status</th>
+                    <th>Days Created</th>
+                    <th>Multi Label</th>
+                    <th>Created Date</th>
+                    <th>Due Date</th>
+                    <th>Estimated Shipping Date</th>
+                    <th>Assigned To</th>
+                    <th>PM Approval</th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-workorder let-ri="rowIndex">
+                <tr style="height: 27px;">
+                    <td>
+                        <span class="ml-2">
+                            <i class="bi bi-chat-left-text"></i>
+                        </span>
+                    </td>
+                    <td>{{ workorder.WorkOrder }}</td>
+                    <td>{{ workorder.ProductionLocation }}</td>
+                    <td>{{ workorder.OrderType }}</td>
+                    <td>{{ workorder.Site }}</td>
+                    <td>{{ workorder.Kits }}</td>
+                    <td>{{ workorder.Recipient }}</td>
+                    <td>{{ workorder.Status }}</td>
+                    <td>{{ workorder.DaysCreated }}</td>
+                    <td>{{ workorder.MultiLabel }}</td>
+                    <td>{{ workorder.CreatedDate }}</td>
+                    <td>{{ workorder.DueDate }}</td>
+                    <td>{{ workorder.EstShippingDate }}</td>
+                    <td>{{ workorder.AssignedTo }}</td>
+                    <td>{{ workorder.PMApproval }}</td>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No Data found.</td>
+                </tr>
+            </ng-template>
+
+        </p-table>
     </div>
-  </div>
-  
+</div>

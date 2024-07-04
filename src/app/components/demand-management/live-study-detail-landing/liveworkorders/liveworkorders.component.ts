@@ -11,7 +11,7 @@ export class LiveWorkOrdersComponent {
 
   constructor(private dataService: DataService ) {}
 
-  workorders :any
+  workorders :any;
   loading: boolean = true
 
  ngOnInit(){

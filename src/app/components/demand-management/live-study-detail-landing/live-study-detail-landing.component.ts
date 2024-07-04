@@ -30,7 +30,7 @@ export class LiveStudyDetailLandingComponent {
             activate:"visits"
           },
           {
-            label:'WorkOrders',
+            label:'Work Orders',
             icon:'bi bi-receipt',
             activate:"workorders"
           },
