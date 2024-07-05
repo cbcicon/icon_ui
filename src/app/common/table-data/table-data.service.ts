@@ -46,6 +46,13 @@ export class TableDataService {
     return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['safetyStockMain']}`)
   }
 
+ getAllScrapMainTbl(): Observable<any>{
+    return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['scrapMainComponent']}`)
+  }
+
+  getAllScrapDetailTbl(): Observable<any>{
+    return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['allScrapDetailTbl']}`)
+  }
 
   private handleError(error: any) {
     console.error('An error occurred:', error);

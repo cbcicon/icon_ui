@@ -8,6 +8,9 @@
         "replacementActionData":"InventoryReplacementAction/GetAllInventoryReplacementActionTbl",
         "purchaseOrderMain": "PurchaseOrderMain/GetAllPurchaseOrderMainTbl" ,
         "purchaseOrderMainDetail":"PurchaseOrderMainDetail/GetAllPurchaseOrderMainDetailTbl", 
-        "safetyStockMain":"SafetyStockMain/GetAllSafetyStockMainTbl"
+        "safetyStockMain":"SafetyStockMain/GetAllSafetyStockMainTbl" ,
+        "scrapMainComponent":"ScrapMain/GetAllScrapMainTbl" ,
+        "allScrapDetailTbl":"ScrapDetail/GetAllScrapDetailTbl"
+
     }
  }

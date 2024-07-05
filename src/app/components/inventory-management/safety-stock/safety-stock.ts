@@ -24,7 +24,7 @@ export class SafetyStockComponent {
 
   selectedSize:string = 'p-datatable-gridlines p-datatable-striped'
 
-
+ 
   
 tableHeaderItem = [
   { id: '1', columnName: 'Lot Number', sortableColumn: 'item', active: false },
@@ -37,6 +37,8 @@ additionalColList = [
     "id": 1
   },
 ]
+
+
 
   constructor(public dataServices:DataService , private tableDataService: TableDataService){}
 
