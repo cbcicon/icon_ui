@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import FileSaver from 'file-saver';
 import { DataService } from '../data-services/data.service';
+import { TableDataService } from '../../../common/table-data/table-data.service';
 
 @Component({
   selector: 'app-scrap',
@@ -11,17 +12,41 @@ export class ScrapComponent {
 
   scrapData:any;
   loading  = false;
-  controlRow = 10;
+  controlRow = 20;
   changeExpandButton = false
 
   selectedSize:string = 'p-datatable-gridlines p-datatable-striped'
 
+  rowsPerPageOptions:any
 
-  constructor( public dataServices : DataService){}
+  
+  selectedValue:any;
+
+  totalRecords:number = 0 ;
+
+  showDetailTables:boolean =false;
+  
+  showScrapDetailMore:boolean = false;
+
+  scrapItemDetailData:any 
+
+  scrapDetailMoreData = {sponsor:'' ,vendor:'',poNo:'',lotNumber:''}
+
+  constructor(  public tableDataService : TableDataService){}
 
   ngOnInit(){
-    this.scrapData = this.dataServices.scrapData
-  }
+ 
+     this.tableDataService.getAllScrapMainTbl().subscribe((res:any) => {
+      this.scrapData = res
+     this.rowsPerPageOptions = this.divideIntoMultiplesOfTen(res.length)
+      
+     })
+
+     this.tableDataService.getAllScrapDetailTbl().subscribe((res:any) => {
+      this.scrapItemDetailData = res
+      
+     })
+}
 
 
   
@@ -49,5 +74,49 @@ export class ScrapComponent {
     this.changeExpandButton = this.controlRow == 10 ? false:true;
   }
   
+
+  divideIntoMultiplesOfTen(number:any) {
+    const multiplesOfTen = [];
+    let currentMultiple = 10;
+
+    while (currentMultiple <= number) {
+        multiplesOfTen.push(currentMultiple);
+        currentMultiple += 10;
+    }
+
+    return multiplesOfTen;
+}
+
+
+
+
+calculateTotalSum (val:any , field:any){
+  let total  =0 ;
+
+  if (this.scrapData) {
+    for (let x of this.scrapData) {
+        if (x.productionLocation === val) {
+            total = total + x[field];
+        }
+    }
+}
+
+return total;
+
+}
+
+
+handleScrapDetailMore(data:any){
+  
+  this.scrapDetailMoreData = data
+
+  this.showScrapDetailMore = !this.showScrapDetailMore
+}
+
+handleScarpDetailShow(){
+  this.showDetailTables = !this.showDetailTables
+}
+
+
 
 }
