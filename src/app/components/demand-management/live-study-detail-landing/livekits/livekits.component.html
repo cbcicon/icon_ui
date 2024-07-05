@@ -30,7 +30,11 @@
             <td>
               <span class="ml-2">
                 <i class="bi bi-chat-left-text"></i>
-                <i class="bi bi-chevron-right ml-2"></i>
+                <i
+                  [class]="iconState[ri] ? 'bi bi-chevron-down ml-2' : 'bi bi-chevron-right ml-2'"
+                  (click)="handleKits(ri)"
+                  style="cursor: pointer;">
+                </i>
               </span>
             </td>
             <td>{{ kit.KitName }}</td>

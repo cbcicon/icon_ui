@@ -1,23 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../data-services/data.service';
 
 @Component({
-    selector: 'app-livekits',
-    templateUrl: './livekits.component.html',
-    styleUrls: ['./livekits.component.scss']
-  })
-export class LiveKitsComponent {
+  selector: 'app-livekits',
+  templateUrl: './livekits.component.html',
+  styleUrls: ['./livekits.component.scss']
+})
+export class LiveKitsComponent implements OnInit {
 
+  kits: any[] = [];
+  loading: boolean = true;
+  iconState: boolean[] = []; // Array to track the icon state for each row
 
-  constructor(private dataService: DataService ) {}
+  constructor(private dataService: DataService) { }
 
-  kits :any;
-  loading: boolean = true
+  ngOnInit() {
+    this.kits = this.dataService.getLiveKits();
+    this.iconState = new Array(this.kits.length).fill(false); // Initializing the icon state array
+    setTimeout(() => {
+      this.loading = false;
+    }, 1000);
+  }
 
- ngOnInit(){
-  this.kits = this.dataService.getLiveKits();
-   setTimeout(() => {
-     this.loading =  false
-   },1000)
- }
+  handleKits(index: number) {
+    this.iconState[index] = !this.iconState[index]; // Toggling the icon state for the clicked row
+  }
 }
