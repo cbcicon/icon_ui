@@ -1,0 +1,40 @@
+/* Styles for main Kits table */
+.kits-table {
+    width: 100%; /* Full width */
+    border-collapse: collapse;
+    //margin-bottom: 20px; /* Adjust margin as needed */
+    
+    th,
+    td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+  }
+  
+  /* Styles for expanded details table */
+  .expanded-details-table {
+    width: 100%; /* Full width */
+    border-collapse: collapse;
+    
+    th,
+    td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    .actions-icons {
+        display: flex; /* Ensures icons are displayed in a row */
+        gap: 1px; /* Adds a gap of 1px between icons */
+        
+        .bi {
+          width: 20px; /* Example width */
+          height: 20px; /* Example height */
+        }
+      }
+      
+  }
+
+  

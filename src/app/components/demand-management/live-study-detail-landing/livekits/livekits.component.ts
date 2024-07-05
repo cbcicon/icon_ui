@@ -8,7 +8,8 @@ import { DataService } from '../../data-services/data.service';
 })
 export class LiveKitsComponent implements OnInit {
 
-  kits: any[] = [];
+  kits: any;
+  advancedKits: any;
   loading: boolean = true;
   iconState: boolean[] = []; // Array to track the icon state for each row
 
@@ -16,6 +17,7 @@ export class LiveKitsComponent implements OnInit {
 
   ngOnInit() {
     this.kits = this.dataService.getLiveKits();
+    this.advancedKits = this.dataService.getLiveAdvancedKits();
     this.iconState = new Array(this.kits.length).fill(false); // Initializing the icon state array
     setTimeout(() => {
       this.loading = false;

@@ -1637,4 +1637,99 @@ export class DataService {
     ];
   }
   
+  getLiveAdvancedKits() {
+    return [
+      {
+        "Actions": "",
+        "Item": "MD-001",
+        "ItemDescription": "10ml Pregnancy HCG urine kit (CE Marked)W/Instructions",
+        "ItemType": "",
+        "ComponentType": "Container",
+        "BOMQty": "5",
+        "TotalQty": "20",
+        "ExpiryDate": "15Jan2024",
+		    "OnStock":"3452",
+		    "Ringfence":"3452",
+		    "Replacement":"Yes"
+      },
+      {
+        "Actions": "",
+        "Item": "0178",
+        "ItemDescription": "Lab Certificate-ICL",
+        "ItemType": "",
+        "ComponentType": "Other",
+        "BOMQty": "6",
+        "TotalQty": "24",
+        "ExpiryDate": "15Jan2024",
+		    "OnStock":"4564",
+		    "Ringfence":"4564",
+		    "Replacement":"Yes"
+      },
+      {
+        "Actions": "",
+        "Item": "8169",
+        "ItemDescription": "Summary/Collection Guide English",
+        "ItemType": "",
+        "ComponentType": "Bundle",
+        "BOMQty": "4",
+        "TotalQty": "16",
+        "ExpiryDate": "13Feb2024",
+		    "OnStock":"34565",
+		    "Ringfence":"34565",
+		    "Replacement":"No"
+      },
+      {
+        "Actions": "",
+        "Item": "GAHCG-102a",
+        "ItemDescription": "Pregnancy HCG urine kit (CE Marked)W/Instructions",
+        "ItemType": "",
+        "ComponentType": "Document",
+        "BOMQty": "5",
+        "TotalQty": "20",
+        "ExpiryDate": "09Feb2024",
+		    "OnStock":"34535",
+		    "Ringfence":"34535",
+		    "Replacement":"Yes"
+      },
+      {
+        "Actions": "",
+        "Item": "10316",
+        "ItemDescription": "6 Segmented Absorbent Pouch",
+        "ItemType": "",
+        "ComponentType": "Bundle",
+        "BOMQty": "7",
+        "TotalQty": "28",
+        "ExpiryDate": "09Mar2024",
+		    "OnStock":"43232",
+		    "Ringfence":"43232",
+		    "Replacement":"No"
+      },
+      {
+        "Actions": "",
+        "Item": "BM087X12ICON",
+        "ItemDescription": " 7 * 11 95KPA Biohazard Bag",
+        "ItemType": "",
+        "ComponentType": "Other",
+        "BOMQty": "10",
+        "TotalQty": "40",
+        "ExpiryDate": "13Mar2024",
+		    "OnStock":"76867",
+		    "Ringfence":"76867",
+		    "Replacement":"Yes"
+      },
+      {
+        "Actions": "",
+        "Item": "135030Bag",
+        "ItemDescription": "Bag of 100 3ml Transfer Pipette",
+        "ItemType": "",
+        "ComponentType": "Container",
+        "BOMQty": "3",
+        "TotalQty": "12",
+        "ExpiryDate": "13Apr2024",
+		    "OnStock":"23445",
+		    "Ringfence":"23445",
+		    "Replacement":"Yes"
+      }
+    ];
+  }
 }

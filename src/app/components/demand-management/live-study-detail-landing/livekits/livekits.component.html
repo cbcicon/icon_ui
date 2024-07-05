@@ -30,10 +30,10 @@
             <td>
               <span class="ml-2">
                 <i class="bi bi-chat-left-text"></i>
-                <i
-                  [class]="iconState[ri] ? 'bi bi-chevron-down ml-2' : 'bi bi-chevron-right ml-2'"
-                  (click)="handleKits(ri)"
-                  style="cursor: pointer;">
+                <i class="bi"
+                   [ngClass]="iconState[ri] ? 'bi-chevron-down ml-2' : 'bi-chevron-right ml-2'"
+                   (click)="handleKits(ri)"
+                   style="cursor: pointer;">
                 </i>
               </span>
             </td>
@@ -44,6 +44,62 @@
             <td>{{ kit.PreLabel }}</td>
             <td>{{ kit.Complexity }}</td>
             <td>{{ kit.SpecialInstructions }}</td>
+          </tr>
+          <!-- Additional row for expanded details -->
+          <tr *ngIf="iconState[ri]">
+            <td colspan="8">
+              <div class="expanded-details">
+                <table class="expanded-details-table">
+                  <thead>
+                    <tr>
+                      <th>Actions</th>
+                      <th># Item</th>
+                      <th># Item Description</th>
+                      <th>Item Type</th>
+                      <th>Component Type</th>
+                      <th>BOM Qty</th>
+                      <th>Total Qty</th>
+                      <th>Expiry Date</th>
+                      <th>On Stock</th>
+                      <th>Ringfence</th>
+                      <th>Replacement</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of advancedKits; let i = index">
+                      <td>
+                        <div class="actions-icons">
+                          <i class="bi bi-unlock"></i>
+                          <i class="bi bi-arrow-left-right"></i>
+                        </div>
+                      </td>
+                      <td>{{ item.Item }}</td>
+                      <td>{{ item.ItemDescription }}</td>
+                      <td>
+                        <div class="item-type-icons">
+                          <div *ngIf="i < 3" class="item-type-cheap" style="background-color :#B3C8CB;">
+                            <i class="bi bi-box-seam" style="color: #004750;"></i>
+                          </div>
+                          <div *ngIf="i >= 3 && i < 5" class="item-type-cheap" style="background-color: #D1E9F6;">
+                            <i class="bi bi-thermometer-snow" style="color:#1790D0;"></i>
+                          </div>
+                          <div *ngIf="i >= 5" class="item-type-cheap" style="background-color: rgba(227, 96, 96, 0.325);">
+                            <i class="bi bi-exclamation-triangle" style="color: red;"></i>
+                          </div>
+                        </div>
+                      </td>
+                      <td>{{ item.ComponentType }}</td>
+                      <td>{{ item.BOMQty }}</td>
+                      <td>{{ item.TotalQty }}</td>
+                      <td>{{ item.ExpiryDate }}</td>
+                      <td>{{ item.OnStock }}</td>
+                      <td>{{ item.Ringfence }}</td>
+                      <td>{{ item.Replacement }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </td>
           </tr>
         </ng-template>
   
