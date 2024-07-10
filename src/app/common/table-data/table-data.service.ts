@@ -54,6 +54,12 @@ export class TableDataService {
     return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['allScrapDetailTbl']}`)
   }
 
+
+  getAllItemConfigurationTbl(){
+    return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['allItemConfigurationTbl']}`)
+  }
+
+
   private handleError(error: any) {
     console.error('An error occurred:', error);
     throw error;

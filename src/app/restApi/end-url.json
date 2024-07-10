@@ -10,7 +10,8 @@
         "purchaseOrderMainDetail":"PurchaseOrderMainDetail/GetAllPurchaseOrderMainDetailTbl", 
         "safetyStockMain":"SafetyStockMain/GetAllSafetyStockMainTbl" ,
         "scrapMainComponent":"ScrapMain/GetAllScrapMainTbl" ,
-        "allScrapDetailTbl":"ScrapDetail/GetAllScrapDetailTbl"
+        "allScrapDetailTbl":"ScrapDetail/GetAllScrapDetailTbl" ,
+        "allItemConfigurationTbl": "ItemConfiguration/GetAllItemConfigurationTbl"
 
     }
  }
