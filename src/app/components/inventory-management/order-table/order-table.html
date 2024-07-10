@@ -224,6 +224,19 @@
 					</div>
 
 				</td>
+
+
+				<ng-container *ngFor="let item of tableHeaderItem">
+					<ng-container *ngIf="item.active">
+						<td style="min-width: 10rem">
+							<div class="flex justify-content-between align-items-center">
+								{{ inventoryTableData[item.sortableColumn] }}
+							</div>
+						</td>
+					</ng-container>
+				</ng-container>
+
+
 			</tr>
 		</ng-template>
 		<ng-template pTemplate="emptymessage">
@@ -233,7 +246,6 @@
 		</ng-template>
 
 	</p-table>
-
 </div>
 
 <!-- table add column -->
