@@ -43,13 +43,24 @@ import { SharedModule } from '../../shared/shared.module';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { AvatarModule } from 'primeng/avatar';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { SafetyStockComponent } from './safety-stock/safety-stock';
+import { ScrapComponent } from './scrap/scrap';
+import { InventoryPurchaseOrderComponent } from './inventory-purchase-order/inventory-purchase-order';
+import { InventoryConfigurationComponent } from './inventory-configuration/inventory-configuration';
 
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { InvConfigItemComponent } from './inventory-configuration/inv-config-item/inv-config-item';
+import { InvConfigSafetyStockComponent } from './inventory-configuration/inv-config-safety-stock/inv-config-safety-stock';
+import { InvConfigSelfLifeComponent } from './inventory-configuration/inv-config-self-life/inv-config-self-life';
+import { InvConfigPurchaseOrderComponent } from './inventory-configuration/inv-config-purchase-order/inv-config-purchase-order';
 
 
 @NgModule({
 	declarations: [
 		OrderTableComponent, QauntityBreakdownPopupComponent, ItemSearchPopupComponent, ItemDetailsComponent, ItemDetailLandingComponent,
-		StockAndScrapComponent, RingFenceComponent, ReplacementComponent, PurchaseOrderComponent
+		StockAndScrapComponent, RingFenceComponent, ReplacementComponent, PurchaseOrderComponent , SafetyStockComponent , ScrapComponent,
+		InventoryPurchaseOrderComponent ,InventoryConfigurationComponent , InvConfigItemComponent ,InvConfigSafetyStockComponent,
+		InvConfigSelfLifeComponent,InvConfigPurchaseOrderComponent
 	],
 	imports: [
 		CommonModule,
@@ -85,7 +96,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 		SharedModule ,
 		RadioButtonModule ,
 		AvatarModule,
-		InputTextareaModule
+		InputTextareaModule,
+		PanelMenuModule
 	],
 	providers: [DialogService]
 

@@ -1,0 +1,353 @@
+<!-- scrap table -->
+
+<div class="card" >
+
+	<p-table #dt 
+	[value]="scrapData"  
+	dataKey="productionLocation" 
+	sortField="productionLocation" 
+
+	[rowHover]="true"
+	[rows]="controlRow" 
+	[showCurrentPageReport]="true" 
+	[loading]="loading"
+	[filterDelay]="0"
+	styleClass={{selectedSize}} 
+	[exportHeader]="'customExportHeader'" 
+	responsiveLayout="stack" 
+	[paginator]="true"
+	[rowsPerPageOptions]="rowsPerPageOptions" 
+  [breakpoint]="'1200px'" 
+  [tableStyle]="{'min-width': '100vw'}"
+	rowGroupMode="subheader" 
+	groupRowsBy="productionLocation" 
+	rowExpandMode="single"
+	>
+
+  <ng-template pTemplate="caption">
+		<div class="table-header d-flex justify-content-between">
+			<div>	</div>
+			<div>
+				<h4>Scrap</h4>
+			</div>
+			<div>
+				<span class="p-input-icon-left ml-auto">
+					<span (click)="exportExcel()">
+						<p-button [text]="true" [plain]="true"> <i class="bi bi-download"></i></p-button>
+					</span>
+				
+					<span (click)="handleRowControl()">
+						<p-button [text]="true" [plain]="true">
+							<i class="bi bi-arrows-angle-expand" *ngIf="changeExpandButton; else collapseIcon"></i>
+							<ng-template #collapseIcon>
+								<i class="bi bi-arrows-angle-contract"></i>
+							</ng-template>
+						</p-button>
+					</span>
+				</span>
+
+			</div>
+		</div>
+	</ng-template>
+
+		<ng-template pTemplate="header">
+			<tr>
+				
+				<th rowspan="2" >
+					<div class="flex justify-content-between align-items-center">
+					  Action
+					</div>
+				</th>
+
+				  <th  rowspan="2">
+					<div class="flex justify-content-between align-items-center">
+					 Production Location
+					</div>
+				  </th>
+
+				  
+          <th pSortableColumn="jan" colspan="2">
+            <div class="text-center">
+              Total Value
+            </div>
+            </th>
+
+				  <th pSortableColumn="jan" colspan="4">
+					<div class="text-center">
+					  Jan
+					</div>
+				  </th>
+
+				  <th pSortableColumn="feb" colspan="4">
+					<div class="text-center">
+					  Feb
+					</div>
+				  </th>
+				  <th  colspan="4">
+					<div class="text-center">
+					  March
+					</div>
+				  </th>
+
+				  <th  colspan="4">
+					<div class="text-center">
+					  Apr
+					</div>
+				  </th>
+				  <th  colspan="4">
+					<div class="text-center">
+					  May
+					</div>
+				  </th>
+
+				  <th  colspan="4">
+					<div class="text-center">
+					  June
+					</div>
+				  </th>
+
+				  
+
+			</tr>
+
+			<tr>
+        <th class="text-center">Expired</th>
+				<th class="text-center">Short Life</th>
+
+				<th class="text-center">Week 1</th>
+				<th class="text-center">Week 2</th>
+                <th class="text-center">Week 3</th>
+				<th class="text-center">Week 4</th>
+				
+
+				<th class="text-center">Week 1</th>
+				<th class="text-center">Week 2</th>
+                <th class="text-center">Week 3</th>
+				<th class="text-center">Week 4</th>
+
+				<th class="text-center">Week 1</th>
+				<th class="text-center">Week 2</th>
+                <th class="text-center">Week 3</th>
+				<th class="text-center">Week 4</th>
+
+				<th class="text-center">Week 1</th>
+				<th class="text-center">Week 2</th>
+                <th class="text-center">Week 3</th>
+				<th class="text-center">Week 4</th>
+
+				<th class="text-center">Week 1</th>
+				<th class="text-center">Week 2</th>
+                <th class="text-center">Week 3</th>
+				<th class="text-center">Week 4</th>
+
+				<th class="text-center">Week 1</th>
+				<th class="text-center">Week 2</th>
+                <th class="text-center">Week 3</th>
+				<th class="text-center">Week 4</th>
+
+			  </tr>
+		</ng-template>
+
+		<ng-template pTemplate="groupheader" let-scrapData let-rowIndex="rowIndex" let-expanded="expanded">
+			<tr>
+				<td >
+					<button 
+						type="button" 
+						pButton 
+						pRipple 
+						[pRowToggler]="scrapData" 
+						class="p-button-text p-button-rounded p-button-plain mr-2" 
+						[icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+						>
+					</button>
+  
+				      </td>  
+
+					  <td> {{ scrapData["productionLocation"] }} </td>
+
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "expired") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "shortlife") }}</td>
+
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week1") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week2") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week3") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week4") }}</td>
+
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week5") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week6") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week7") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week8") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week9") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week10") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week11") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week12") }}</td>
+
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week13") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week14") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week15") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week16") }}</td>
+
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week17") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week18") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week19") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week20") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week21") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week22") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week23") }}</td>
+                      <td class="text-right pr-4">{{ calculateTotalSum(scrapData["productionLocation"], "week24") }}</td>
+
+			</tr>
+		  
+		</ng-template>
+
+		 <ng-template let-scrapData pTemplate="rowexpansion">
+			<tr class="p-selectable-row">	
+        <td>
+        <p class="text-end mr-4"><i class="bi bi-chat-left-text"></i></p>  
+		</td>       
+				<td  >
+				 <p> <u style="color: rgba(18, 132, 116, 1);"(click)="handleScarpDetailShow()" >{{ scrapData["productionLocation"] }}</u></p>	
+				</td>
+				<td   class="text-right pr-4">
+					{{ scrapData["expired"] }}
+				</td >
+				<td   class="text-right pr-4" >
+					{{ scrapData["shortlife"] }}
+				</td>
+        
+				<td   class="text-right pr-4">{{ scrapData["week1"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week2"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week3"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week4"] }}</td>
+
+                <td   class="text-right pr-4">{{ scrapData["week5"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week6"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week7"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week8"] }}</td>
+        
+                <td   class="text-right pr-4">{{ scrapData["week9"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week10"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week11"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week12"] }}</td>
+ 
+                <td   class="text-right pr-4">{{ scrapData["week13"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week14"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week15"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week16"] }}</td>
+
+				<td   class="text-right pr-4">{{ scrapData["week17"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week18"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week19"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week20"] }}</td>
+
+				<td   class="text-right pr-4">{{ scrapData["week21"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week22"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week23"] }}</td>
+				<td   class="text-right pr-4">{{ scrapData["week24"] }}</td>
+        				
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="emptymessage">
+			<tr>
+				<td colspan="8">No Data found.</td>
+			</tr>
+		</ng-template>
+
+	</p-table>
+
+</div>
+
+
+<div class="row" *ngIf="showDetailTables"  >
+<div class="col card">
+	<p-table #dt [value]="scrapItemDetailData"  dataKey="itemNo" [rowHover]="true" [paginator]="true"
+		[rows]="10" [showCurrentPageReport]="true"  [loading]="loading"
+		currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+		[filterDelay]="0"
+		styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm"  >
+	   
+		 <ng-template pTemplate="header">
+		  <tr>
+			<th pSortableColumn="action-item">
+			  <div class="flex justify-content-between align-items-center">
+				Item #
+			  </div>
+			</th>
+	  
+			<th pSortableColumn="ITEM_NAME">
+			  <div class="flex justify-content-between align-items-center">
+				Item Description
+				<p-columnFilter type="text" field="ITEM_NAME" display="menu" class="ml-auto"></p-columnFilter>
+			  </div>
+			</th>
+
+			<th pSortableColumn="ITEM_NAME">
+				<div class="flex justify-content-between align-items-center">
+					Manufacturer
+				  <p-columnFilter type="text" field="ITEM_NAME" display="menu" class="ml-auto"></p-columnFilter>
+				</div>
+			  </th>
+
+			
+			<th pSortableColumn="ITEM_NAME">
+				<div class="flex justify-content-between align-items-center">
+					Expiry Date
+				  <p-columnFilter type="text" field="ITEM_NAME" display="menu" class="ml-auto"></p-columnFilter>
+				</div>
+			  </th>
+			<th pSortableColumn="ITEM_DESCRIPTION">
+			  <div class="flex justify-content-between align-items-center">
+				Qty Expired
+				<p-columnFilter type="text" field="ITEM_DESCRIPTION" display="menu"
+				  class="ml-auto"></p-columnFilter>
+			  </div>
+			</th>
+	  
+			<th pSortableColumn="DEMAND">
+			  <div class="flex justify-content-between align-items-center">
+              Value
+				<p-columnFilter type="text" field="DEMAND" display="menu" class="ml-auto"></p-columnFilter>
+			  </div>
+			</th>
+	  
+	  
+		  </tr>
+		</ng-template>
+	  
+	
+   <ng-template pTemplate="body" let-scrapItemDetailData>
+		  <tr class="p-selectable-row">
+			<td><u style="color: rgba(18, 132, 116, 1);" (click)="handleScrapDetailMore(scrapItemDetailData)" >{{scrapItemDetailData['itemNo']}}</u></td>
+			<td>{{scrapItemDetailData['itemDescription']}}</td>
+			<td>{{scrapItemDetailData['manufacturer']}}</td>
+            <td>{{scrapItemDetailData['expiryDate']}}</td>
+			<td>{{scrapItemDetailData['qtyExpired']}}</td>
+            <td>{{scrapItemDetailData['value']}}</td>
+		  </tr>
+		</ng-template>  
+		
+		<ng-template pTemplate="emptymessage">
+		  <tr>
+			<td colspan="8">No Data found.</td>
+		  </tr>
+		</ng-template>
+	  
+	  </p-table>
+</div>
+
+<div class="col-3 card" *ngIf="showScrapDetailMore">
+
+	<h5 class="mx-4 mt-2">Item Details</h5>
+
+	<p-divider/>
+
+	<p class="label-scrap  mx-4 "><b> Sponsor  : </b>  &nbsp; &nbsp; &nbsp;  &nbsp; <span> {{scrapDetailMoreData.sponsor}} </span></p>
+	<p class="label-scrap mx-4 "><b> Vendor : </b>  &nbsp; &nbsp; &nbsp;  &nbsp; <span> {{scrapDetailMoreData.vendor}} </span></p>
+
+	<p class="label-scrap mx-4 "><b> PO No : </b>  &nbsp; &nbsp; &nbsp;  &nbsp; <span> {{scrapDetailMoreData.poNo}} </span></p>
+
+	<p class="label-scrap mx-4 "><b> Lot No : </b>  &nbsp; &nbsp; &nbsp;  &nbsp; <span> {{scrapDetailMoreData.lotNumber}} </span></p>
+
+
+</div>
+</div>

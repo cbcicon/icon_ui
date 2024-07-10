@@ -1,0 +1,311 @@
+
+<!-- Inventory Purchase order Table -->
+<div class="card">
+    <p-table #dt [value]="inventoryPurchaseOrderData"  dataKey="id" [rowHover]="true"
+		[rows]="controlRow" [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading"
+		[paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+		[filterDelay]="0"
+		[globalFilterFields]="['item', 'itemDescription',  'demand',    'onStock',    'availability',    'openPurchaseOrder',    'earlyExpiryDate',    'itemType',    'quantityOrdered',    'replacement',    'kitProductLocation',    'excessStock',    'leadTime',    'consumption',    'componentType',    'forecast',    'totalDemand',    'scrap',    'warehouse',    'inventoryLocation',    'carton',    'kitCategory']"
+		responsiveLayout="stack" 
+		[breakpoint]="'900px'" 
+		[tableStyle]="{'min-width': '100vw'}"
+		styleClass={{selectedSize}} [exportHeader]="'customExportHeader'">
+		<ng-template pTemplate="caption">
+			<div class="table-header d-flex justify-content-between">
+				<div></div>
+				<div>
+					<h4>Inventory Purchase Order</h4>
+				</div>
+				<div>
+					<span class="p-input-icon-left ml-auto">
+						<span (click)="exportExcel()">
+							<p-button [text]="true" [plain]="true"> <i class="bi bi-download"></i></p-button>
+						</span>
+					
+
+						<span (click)="handleRowControl()">
+							<p-button [text]="true" [plain]="true">
+								<i class="bi bi-arrows-angle-expand" *ngIf="changeExpandButton; else collapseIcon"></i>
+								<ng-template #collapseIcon>
+									<i class="bi bi-arrows-angle-contract"></i>
+								</ng-template>
+							</p-button>
+						</span>
+					</span>
+
+				</div>
+			</div>
+		</ng-template>
+		<ng-template pTemplate="header">
+			<tr>
+				
+				<th pSortableColumn="action-item">
+					<div class="flex justify-content-between align-items-center">
+						Action 
+					</div>
+				</th>
+
+				<th pSortableColumn="item">
+					<div class="flex justify-content-between align-items-center">
+						PO #
+						<p-columnFilter type="text" field="item" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+				<th pSortableColumn="itemDescription">
+					<div class="flex justify-content-between align-items-center">
+					    Status
+						<p-columnFilter type="text" field="itemDescription" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="demand">
+					<div class="flex justify-content-between align-items-center">
+						Vendor
+						<p-columnFilter type="text" field="demand" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="onStock">
+					<div class="flex justify-content-between align-items-center">
+						Sponsor
+						<p-columnFilter type="text" field="onStock" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="availability">
+					<div class="flex justify-content-between align-items-center">
+						Protocol
+						<p-columnFilter type="text" field="availability" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="openPurchaseOrder">
+					<div class="flex justify-content-between align-items-center">
+						UOM
+						<p-columnFilter type="text" field="openPurchaseOrder" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="earlyExpiryDate" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+					Qty Orderd
+						<p-columnFilter type="date" field="earlyExpiryDate" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="consumption" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Qty Recieved
+
+						<p-columnFilter type="date" field="consumption" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+				<th pSortableColumn="excessStock" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Qty Open
+						<p-columnFilter type="date" field="excessStock" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="replacement" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Amount
+						<p-columnFilter type="date" field="replacement" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="scrap" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Created Date
+						<p-columnFilter type="numeric" field="scrap" display="menu" currency="USD"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+		
+
+				<th pSortableColumn="itemType" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Expected Date
+						<p-columnFilter type="numeric" field="itemType" display="menu" currency="USD"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="body" let-inventoryPurchaseOrderData>
+			<tr class="p-selectable-row">
+				<td>
+					<span> <i class="bi bi-eye" (click)="hanldeBelowContent()"></i></span>
+					<span class="ml-3"><i class="bi bi-chat-left-text" ></i></span>
+				</td>
+
+                <td>{{inventoryPurchaseOrderData["poNo"]}}</td>
+                <td>{{inventoryPurchaseOrderData["status"]}}</td>
+                <td>{{inventoryPurchaseOrderData["vendor"]}}</td>
+                <td>{{inventoryPurchaseOrderData["createdBy"]}}</td>
+
+                <td>{{inventoryPurchaseOrderData["protocolId"]}}</td>
+                <td>{{inventoryPurchaseOrderData["uom"]}}</td>
+                <td>{{inventoryPurchaseOrderData["qtyOrdered"]}}</td>
+                <td>{{inventoryPurchaseOrderData["qtyReceived"]}}</td>
+
+                <td>{{inventoryPurchaseOrderData["qtyOpen"]}}</td>
+                <td>{{inventoryPurchaseOrderData["amount"]}}</td>
+                <td>{{inventoryPurchaseOrderData["createdDate"]}}</td>
+                <td>{{inventoryPurchaseOrderData["expectedDate"]}}</td>
+				
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="emptymessage">
+			<tr>
+				<td colspan="8">No Data found.</td>
+			</tr>
+		</ng-template>
+
+	</p-table>
+</div>
+
+<!-- Table below content  -->
+
+<div *ngIf="showDetailContent" class="row">
+
+<div class="col-md-3">
+
+    <div class="card">
+        <h5> <b>Purchase Order Details</b></h5>
+        <p-divider/>
+
+        <div class="row">
+            <div class="col-md-3">
+                <p><b>PO Number</b></p>
+                <p><b>Status</b></p>
+                <p><b>Vendor</b></p>
+                <p><b>Sponsor</b></p>
+                <p><b>Protocol No </b></p>
+                <p><b>Created By</b></p>
+                <p><b>Approved By</b></p>
+                <p><b>Created Date</b></p>
+                <p><b>Due Date </b></p>
+        
+            </div>
+            <div class="col-md-9">
+                <p>AP2023047856</p>
+                <p>Open</p>
+                <p>AERO- MED</p>
+                <p>Assembly Bioscie...</p>
+                <p>NN9931-4553</p>
+                <p>EA</p>
+                <p>35000</p>
+                <p>24 Feb 2024</p>
+                <p>15 May 2024</p>
+                <p></p>
+            </div>
+	
+		</div>
+        <div class="custom-progress-bar">
+            <p-progressBar [value]="80" />
+        </div>
+        
+    </div>
+</div>
+<div class="col-md-9 detail-card">
+    <div class="card"> 
+        <p-table #dt [value]="ipoEntityDetail"  dataKey="id" [rowHover]="true"
+		[rows]="controlRow" [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading"
+		[paginator]="false" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+		[filterDelay]="0"
+		[globalFilterFields]="['item', 'itemDescription',  'demand',    'onStock',    'availability',    'openPurchaseOrder',    'earlyExpiryDate',    'itemType',    'quantityOrdered',    'replacement',    'kitProductLocation',    'excessStock',    'leadTime',    'consumption',    'componentType',    'forecast',    'totalDemand',    'scrap',    'warehouse',    'inventoryLocation',    'carton',    'kitCategory']"
+		responsiveLayout="stack" 
+		[breakpoint]="'900px'" 
+		[tableStyle]="{'min-width': '100vw'}"
+		styleClass={{selectedSize}} [exportHeader]="'customExportHeader'">
+	
+		<ng-template pTemplate="header">
+			<tr>
+				<th pSortableColumn="action-item">
+					<div class="flex justify-content-between align-items-center">
+						Item 
+					</div>
+				</th>
+
+				<th pSortableColumn="item">
+					<div class="flex justify-content-between align-items-center">
+						Item Description
+						<p-columnFilter type="text" field="item" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+				<th pSortableColumn="itemDescription">
+					<div class="flex justify-content-between align-items-center">
+					    Qty Ordered
+						<p-columnFilter type="text" field="itemDescription" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="demand">
+					<div class="flex justify-content-between align-items-center">
+                        Qty Recieved
+						<p-columnFilter type="text" field="demand" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="onStock">
+					<div class="flex justify-content-between align-items-center">
+                        Qty Open
+						<p-columnFilter type="text" field="onStock" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="availability">
+					<div class="flex justify-content-between align-items-center">
+						Unit Price 
+						<p-columnFilter type="text" field="availability" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="availability">
+					<div class="flex justify-content-between align-items-center">
+						Due Date
+						<p-columnFilter type="text" field="availability" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+				<th pSortableColumn="openPurchaseOrder">
+					<div class="flex justify-content-between align-items-center">
+						Total Price
+						<p-columnFilter type="text" field="openPurchaseOrder" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+	
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="body" let-ipoEntityDetail>
+			<tr class="p-selectable-row">
+				
+
+                <td>{{ipoEntityDetail["item"]}}</td>
+                <td>{{ipoEntityDetail["itemDescription"]}}</td>
+                <td>{{ipoEntityDetail["qtyOrdered"]}}</td>
+                <td>{{ipoEntityDetail["qtyReceived"]}}</td>
+
+                <td>{{ipoEntityDetail["qtyOpen"]}}</td>
+                <td>{{ipoEntityDetail["unitPrice"]}}</td>
+                <td>{{ipoEntityDetail["dueDate"]}}</td>
+				<td>{{ipoEntityDetail["totalPrice"]}}</td>
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="emptymessage">
+			<tr>
+				<td colspan="8">No Data found.</td>
+			</tr>
+		</ng-template>
+
+	</p-table>
+
+    </div>
+</div>
+
+</div>

@@ -126,3 +126,16 @@ letter-spacing: 0.25px;
 text-align: left;
 
 }
+
+
+.inventory-chart{
+min-height: 40vh !important;
+}
+
+.expired {
+  color: red;
+}
+
+.not-expired {
+  color: green;
+}

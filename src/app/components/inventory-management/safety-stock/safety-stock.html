@@ -1,0 +1,218 @@
+<p-table #dt [value]="safetyStockData"  dataKey="id" [rowHover]="true"
+		[rows]="controlRow" [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading"
+		[paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+		[filterDelay]="0"
+		[globalFilterFields]="['Item #', 'Item Description', 'Min Y', 'Max', 'WOH', 'MOH', 'Current Stock', 'Lead Time (Days)', 'UOM', 'Reorder Date', 'Location', 'Vendor', 'Last Order Date Y', 'Action']"
+		responsiveLayout="stack" 
+		[breakpoint]="'900px'" 
+		[tableStyle]="{'min-width': '100vw'}"
+		styleClass={{selectedSize}} [exportHeader]="'customExportHeader'">
+		<ng-template pTemplate="caption">
+			<div class="table-header d-flex justify-content-between">
+        <div></div>
+			  <div><h4>Safety Stock</h4></div>
+				<div>
+					<span class="p-input-icon-left ml-auto">
+						<span (click)="exportExcel()">
+							<p-button [text]="true" [plain]="true"> <i class="bi bi-download"></i></p-button>
+						</span>
+					
+						<span (click)="handleAdditionanlColumn()">
+							<p-button [text]="true" [plain]="true"> <i
+									class="bi bi-layout-three-columns"></i></p-button>
+						</span>
+						<span (click)="handleRowControl()">
+							<p-button [text]="true" [plain]="true">
+								<i class="bi bi-arrows-angle-expand" *ngIf="changeExpandButton; else collapseIcon"></i>
+								<ng-template #collapseIcon>
+									<i class="bi bi-arrows-angle-contract"></i>
+								</ng-template>
+							</p-button>
+						</span>
+					</span>
+
+				</div>
+			</div>
+		</ng-template>
+		<ng-template pTemplate="header">
+			<tr>
+				
+				<th pSortableColumn="action-item">
+					<div class="flex justify-content-between align-items-center">
+            Action
+					</div>
+				</th>
+
+				<th pSortableColumn="item">
+					<div class="flex justify-content-between align-items-center">
+            Item #
+						<p-columnFilter type="text" field="item" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+				<th pSortableColumn="itemDescription">
+					<div class="flex justify-content-between align-items-center">
+						Item Description
+						<p-columnFilter type="text" field="itemDescription" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="demand">
+					<div class="flex justify-content-between align-items-center">
+						Min
+						<p-columnFilter type="text" field="demand" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="onStock">
+					<div class="flex justify-content-between align-items-center">
+						Max
+						<p-columnFilter type="text" field="onStock" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="availability">
+					<div class="flex justify-content-between align-items-center">
+						WOH
+						<p-columnFilter type="text" field="availability" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="openPurchaseOrder">
+					<div class="flex justify-content-between align-items-center">
+						MOH
+						<p-columnFilter type="text" field="openPurchaseOrder" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="earlyExpiryDate" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Current Stock
+
+						<p-columnFilter type="date" field="earlyExpiryDate" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="consumption" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Lead Time (Days)
+
+						<p-columnFilter type="date" field="consumption" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+				<th pSortableColumn="excessStock" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						UOM
+						<p-columnFilter type="date" field="excessStock" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="replacement" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Reorderd Date
+						<p-columnFilter type="date" field="replacement" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="scrap" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Location
+
+						<p-columnFilter type="numeric" field="scrap" display="menu" currency="USD"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+		
+
+				<th pSortableColumn="itemType" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+					  Vendor
+
+						<p-columnFilter type="numeric" field="itemType" display="menu" currency="USD"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+        
+				<th pSortableColumn="itemType" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+					  Lost Order Date 
+
+						<p-columnFilter type="numeric" field="itemType" display="menu" currency="USD"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<ng-container *ngFor="let item of tableHeaderItem">
+					<ng-container *ngIf="item.active">
+						<th pSortableColumn="{{ item.sortableColumn }}" style="min-width: 10rem">
+							<div class="flex justify-content-between align-items-center">
+								{{ item.columnName }}
+								<p-columnFilter *ngIf="item.active" type="numeric" field="balance" display="menu"
+									currency="USD" class="ml-auto">
+								</p-columnFilter>
+							</div>
+						</th>
+					</ng-container>
+				</ng-container>
+
+			</tr>
+		</ng-template>
+
+
+
+		<ng-template pTemplate="body" let-safetyStockData>
+			<tr class="p-selectable-row">
+		
+		<td><span class="ml-3"><i class="bi bi-chat-left-text" ></i></span> </td>
+		
+		<td>{{ safetyStockData["itemNo"]}} </td>
+
+        <td>{{ safetyStockData["itemDesc"]}} </td>
+		     
+        <td>{{ safetyStockData["min"]}} </td>
+
+        <td>{{ safetyStockData["max"]}} </td>
+
+        <td>{{ safetyStockData["woh"]}} </td>
+
+        <td>{{ safetyStockData["moh"]}} </td>
+		     
+        <td>{{ safetyStockData["currentStock"]}} </td>
+
+        <td>{{ safetyStockData["leadTimeDays"]}} </td>
+
+        <td>{{ safetyStockData["uom"]}} </td>
+
+        <td>{{ safetyStockData["reorderDate"]}} </td>
+
+        <td>{{ safetyStockData["location"]}} </td>
+		     
+        <td>{{ safetyStockData["location"]}} </td>
+
+        <td>{{ safetyStockData["lastOrderDate"]}} </td>
+
+
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="emptymessage">
+			<tr>
+				<td colspan="8">No Data found.</td>
+			</tr>
+		</ng-template>
+
+	</p-table>
+
+
+
+
+
+  <!-- table add column -->
+<div class="addition-col-menu">
+	<p-listbox *ngIf="viewAdditionColumn" [options]="additionalColList" [(ngModel)]="selectedItems"
+		[selectAll]="selectAll" optionLabel="field" [style]="{ width: '20rem' }" [virtualScroll]="true" [filter]="true"
+		[virtualScrollItemSize]="50" [multiple]="true" [checkbox]="true" [showToggleAll]="false"
+		[metaKeySelection]="false" [showToggleAll]="true" (onChange)="addedColumnConfig($event)"
+		[listStyle]="{ 'max-height': '220px' }"></p-listbox>
+</div>

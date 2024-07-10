@@ -1,0 +1,121 @@
+<h3>Scrap Configs </h3>
+
+<p-divider />
+
+
+
+<div class="d-flex justify-content-start self-life ">
+			
+
+    <div class="mx-4">
+          <p class="m-0"><b>Expiry Duration</b></p>
+        <p-dropdown 
+				[options]="monthList"
+				[(ngModel)]="selectedValue"
+				optionLabel="name"
+				[filter]="true"
+				filterBy="name"
+				[showClear]="true"
+				 (onChange)="onSponsorChange($event)"
+				placeholder="Select">
+					<ng-template pTemplate="selectedItem" let-selectedOption>
+						<div class="flex align-items-center gap-2">
+							
+							<div>{{ selectedOption.name }}</div>
+						</div>
+					</ng-template>
+					<ng-template let-sponsors pTemplate="item">
+						<div class="flex align-items-center gap-2">
+							
+							<div>{{ sponsors.name }}</div>
+						</div>
+					</ng-template>
+			</p-dropdown>
+    </div>
+
+    <div class="mx-4">
+          <p class="m-0"><b>Short Shelf Life Duration</b></p>
+        <p-dropdown 
+				[options]="monthList"
+				[(ngModel)]="selectedValue"
+				optionLabel="name"
+				[filter]="true"
+				filterBy="name"
+				[showClear]="true"
+			   
+				 (onChange)="onSponsorChange($event)"
+		         placeholder="Select">
+					<ng-template pTemplate="selectedItem" let-selectedOption>
+						<div class="flex align-items-center gap-2">
+							
+							<div>{{ selectedOption.name }}</div>
+						</div>
+					</ng-template>
+					<ng-template let-sponsors pTemplate="item">
+						<div class="flex align-items-center gap-2">
+							
+							<div>{{ sponsors.name }}</div>
+						</div>
+					</ng-template>
+			</p-dropdown>
+    </div>
+    
+    <div class="mx-4">
+        <p class="m-0"><b>Medium Shelf Life</b></p>
+        <p-dropdown 
+				[options]="monthList"
+				[(ngModel)]="selectedValue"
+				optionLabel="name"
+				[filter]="true"
+				filterBy="name"
+				[showClear]="true"
+			     
+				 (onChange)="onSponsorChange($event)"
+				placeholder="Select">
+					<ng-template pTemplate="selectedItem" let-selectedOption>
+						<div class="flex align-items-center gap-2">
+							
+							<div>{{ selectedOption.name }}</div>
+						</div>
+					</ng-template>
+					<ng-template let-sponsors pTemplate="item">
+						<div class="flex align-items-center gap-2">
+							
+							<div>{{ sponsors.name }}</div>
+						</div>
+					</ng-template>
+			</p-dropdown>
+    </div>
+
+    <div class="mx-4">
+        <p class="m-0"><b>Long Shelf Life</b></p>
+        <p-dropdown 
+				[options]="monthList"
+				[(ngModel)]="selectedValue"
+				optionLabel="name"
+				[filter]="true"
+				filterBy="name"
+				[showClear]="true"
+
+				 (onChange)="onSponsorChange($event)"
+				placeholder="Select">
+					<ng-template pTemplate="selectedItem" let-selectedOption>
+						<div class="flex align-items-center gap-2">
+							
+							<div>{{ selectedOption.name }}</div>
+						</div>
+					</ng-template>
+					<ng-template let-sponsors pTemplate="item">
+						<div class="flex align-items-center gap-2">
+							
+							<div>{{ sponsors.name }}</div>
+						</div>
+					</ng-template>
+			</p-dropdown>
+    </div>
+    
+ <div>
+    <button type="button" class="btn btn-success mx-4 mt-4"> Submit</button>
+ </div>
+
+</div>

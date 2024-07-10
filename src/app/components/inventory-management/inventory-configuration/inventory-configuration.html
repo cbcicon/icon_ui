@@ -1,0 +1,23 @@
+<div class="row inventory-configuration-main">
+
+  <div class=" card inventory-configuration-sidebar">
+ 
+    <ul class="option-list">
+      <li *ngFor="let item of items"  [class.active]="item === activeItem" (click)="selectItem(item)">
+          <i [class]="item.icon" ></i> <span class="mx-4"> {{ item.name }}</span> 
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="card inventory-configuration-content">
+    <div [ngSwitch]="activeItem.name">
+      <div *ngSwitchCase="'Item Configs'" class="mr-4"> <app-inv-config-item></app-inv-config-item> </div>
+      <div *ngSwitchCase="'Safety Stock'"><app-inv-config-safety-stock></app-inv-config-safety-stock> </div>
+      <div *ngSwitchCase="'Shelf Life'"><app-inv-config-self-life></app-inv-config-self-life></div>
+      <div *ngSwitchCase="'Purchase Orders'"> <app-inv-config-purchase-order></app-inv-config-purchase-order>  </div>
+    </div>
+
+  </div>
+
+</div>

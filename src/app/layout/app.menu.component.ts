@@ -47,10 +47,10 @@ export class AppMenuComponent implements OnInit {
                 icon: 'bi bi-clipboard-data',
                 items: [
                     { label: 'Inventory', routerLink: ['/inventory-management/order-list'] },
-                    { label: 'Purchase Orders', routerLink: ['/inventory-management/purchase-orders'] },
-                    { label: 'Saftey Stocks', routerLink: ['/pages/empty'] },
-                    { label: 'Scarp', routerLink: ['/pages/empty'] },
-                    { label: 'Configurations', routerLink: ['/pages/empty'] }
+                    { label: 'Purchase Orders', routerLink: ['/inventory-management/inventory-purchase-order'] },
+                    { label: 'Saftey Stocks', routerLink: ['/inventory-management/safety-stock'] },
+                    { label: 'Scrap', routerLink: ['/inventory-management/scrap'] },
+                    { label: 'Configurations', routerLink: ['/inventory-management/inventory-configuration'] }
                 ]
             },
             {

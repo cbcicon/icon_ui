@@ -1785,6 +1785,8 @@ ring_fence =  [
 
 
 stock_and_scrap =  [
+
+[
     {
         "Name": "Farmingdale",
         "LotNo.": "2384",
@@ -1829,7 +1831,20 @@ stock_and_scrap =  [
         "Max": "1000",
         "Re-OrderDate": "14Aug2024"
     },
+    {
+        "Name": "TOTAL",
+        "LotNo.": "",
+        "TotalQty": "22000",
+        "Category": "",
+        "Days": "",
+        "Date": "" ,
+        "Min": "",
+        "Max": "",
+        "Re-OrderDate": "",
+    } 
+],
  
+[ 
     {
         "Name": "Buford",
         "LotNo.": "2384",
@@ -1874,46 +1889,763 @@ stock_and_scrap =  [
         "Max": "1000",
         "Re-OrderDate": "14Aug2024"
     }
+    ,
+    {
+        "Name": "TOTAL",
+        "LotNo.": "",
+        "TotalQty": "22000",
+        "Category": "",
+        "Days": "",
+        "Date": "" ,
+        "Min": "",
+        "Max": "",
+        "Re-OrderDate": "",
+    }
+]
 
 ]
 
-  getColumns() {
-    let dropdownData = [
-      {
-        id: 1,
-        name: "Vendor",
-        val: "1"
-      },
-      {
-        id: 2,
-        name: "Order Type",
-        val: "2"
-      },
-      {
-        id: 3,
-        name: "Warehouse",
-        val: "3"
-      }]
-    return dropdownData;
-  }
-  getDuration() {
-    let dropdownData = [
-      {
-        id: 2,
-        name: "15 Days",
-        val: "15Days"
-      },{
-        id: 1,
-        name: "3 Months",
-        val: "3Months"
-      },
-      {
-        id: 3,
-        name: "6 Months",
-        val: "6Months"
-      }]
-    return dropdownData;
-  }
+
+safety_stock_data = [
+    {
+        "Item #": "S- 1689",
+        "Item Description": "PACKING LIST ENVELOPE SIDE LOA...",
+        "Min Y": 1000,
+        "Max": 100000,
+        "WOH": 12,
+        "MOH": 1500,
+        "Current Stock": 500,
+        "Lead Time (Days)": "",
+        "UOM": "EA",
+        "Reorder Date": "19 May 2024",
+        "Location": "Farmingdale",
+        "Vendor": "4+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "24270-100",
+        "Item Description": "NUNC CRYOTUBE WHITE INSERT(C...",
+        "Min Y": 8000,
+        "Max": 100000,
+        "WOH": 10,
+        "MOH": 2000,
+        "Current Stock": 1200,
+        "Lead Time (Days)": 15,
+        "UOM": "EA",
+        "Reorder Date": "18 May 2024",
+        "Location": "Farmingdale",
+        "Vendor": "3+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "S- 1689",
+        "Item Description": "PACKING LIST ENVELOPE SIDE LOA..",
+        "Min Y": 1000,
+        "Max": 100000,
+        "WOH": 15,
+        "MOH": 1500,
+        "Current Stock": 8500,
+        "Lead Time (Days)": 15,
+        "UOM": "EA",
+        "Reorder Date": "19 May 2024",
+        "Location": "Farmingdale",
+        "Vendor": "2+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "24270-100",
+        "Item Description": "NUNC CRYOTUBE WHITE INSERT(C...",
+        "Min Y": 800,
+        "Max": 100000,
+        "WOH": 25,
+        "MOH": 2000,
+        "Current Stock": 6000,
+        "Lead Time (Days)": 15,
+        "UOM": "EA",
+        "Reorder Date": "18 May 2024",
+        "Location": "Farmingdale",
+        "Vendor": "3+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "24270-104",
+        "Item Description": "NUNC CRYOTUBE RED INSERT (CA..",
+        "Min Y": 500,
+        "Max": 100000,
+        "WOH": 30,
+        "MOH": 1000,
+        "Current Stock": 35000,
+        "Lead Time (Days)": 23,
+        "UOM": "EA",
+        "Reorder Date": "16 May 2024",
+        "Location": "Farmingdale",
+        "Vendor": "2+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "450076",
+        "Item Description": "GREINER GREEN 21G X 1.5\" BLOOD...",
+        "Min Y": 1500,
+        "Max": 100000,
+        "WOH": 40,
+        "MOH": 1000,
+        "Current Stock": 21000,
+        "Lead Time (Days)": 19,
+        "UOM": "EA",
+        "Reorder Date": "06 May 2024",
+        "Location": "New York",
+        "Vendor": "INMARK, LLC",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "24270-104",
+        "Item Description": "NUNC CRYOTUBE RED INSERT(CA..",
+        "Min Y": 500,
+        "Max": 5000,
+        "WOH": 52,
+        "MOH": 1000,
+        "Current Stock": 7000,
+        "Lead Time (Days)": 23,
+        "UOM": "EA",
+        "Reorder Date": "16 May 2024",
+        "Location": "Farmingdale",
+        "Vendor": "5+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "450076",
+        "Item Description": "GREINER GREEN 21G X 1.5\" BLOOD..",
+        "Min Y": 1500,
+        "Max": 5000,
+        "WOH": 15,
+        "MOH": 1000,
+        "Current Stock": 7000,
+        "Lead Time (Days)": 19,
+        "UOM": "EA",
+        "Reorder Date": "06 May 2024",
+        "Location": "New York",
+        "Vendor": "4+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "450076",
+        "Item Description": "GREINER GREEN 21G X 1.5\" BLOOD..",
+        "Min Y": 1000,
+        "Max": 5000,
+        "WOH": 10,
+        "MOH": 1000,
+        "Current Stock": 7000,
+        "Lead Time (Days)": 20,
+        "UOM": "EA",
+        "Reorder Date": "05 Apr 2024",
+        "Location": "New York",
+        "Vendor": "2+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "12092",
+        "Item Description": "KIT BOX, MEDIUM, 10\" X 7-1/ 4\" x 4\"",
+        "Min Y": 1000,
+        "Max": 100000,
+        "WOH": 20,
+        "MOH": 1500,
+        "Current Stock": 1500,
+        "Lead Time (Days)": "",
+        "UOM": "EA",
+        "Reorder Date": "17 Mar 2024",
+        "Location": "New York",
+        "Vendor": "INMARK, LLC",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "450076",
+        "Item Description": "GREINER GREEN 21G X 1.5\" BLOOD..",
+        "Min Y": 1000,
+        "Max": 100000,
+        "WOH": 19,
+        "MOH": 1000,
+        "Current Stock": 1000,
+        "Lead Time (Days)": 20,
+        "UOM": "EA",
+        "Reorder Date": "05 Apr 2024",
+        "Location": "New York",
+        "Vendor": "INMARK, LLC",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "12092",
+        "Item Description": "KIT BOX, MEDIUM, 10\" X 7-1/ 4\" x 4\"",
+        "Min Y": 1000,
+        "Max": 100000,
+        "WOH": 16,
+        "MOH": 1500,
+        "Current Stock": 1500,
+        "Lead Time (Days)": "",
+        "UOM": "EA",
+        "Reorder Date": "17 Mar 2024",
+        "Location": "New York",
+        "Vendor": "INMARK, LLC",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "16608",
+        "Item Description": "KIT BOX, SMALL, 9\" X 5\" x 2.5\"",
+        "Min Y": 1000,
+        "Max": 100000,
+        "WOH": 28,
+        "MOH": 900,
+        "Current Stock": 900,
+        "Lead Time (Days)": 5,
+        "UOM": "EA",
+        "Reorder Date": "20 Apr 2024",
+        "Location": "Seattle",
+        "Vendor": "2+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "AVE24411",
+        "Item Description": "MARKS- A- LOT DESK- STYLE DRY ER...",
+        "Min Y": 5000,
+        "Max": 100000,
+        "WOH": 47,
+        "MOH": 2000,
+        "Current Stock": 2000,
+        "Lead Time (Days)": 6,
+        "UOM": "EA",
+        "Reorder Date": "19 Apr 2024",
+        "Location": "Seattle",
+        "Vendor": "2+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "16608",
+        "Item Description": "KIT BOX, SMALL, 9' x 5\" x 2.5\"",
+        "Min Y": 1000,
+        "Max": 100000,
+        "WOH": 36,
+        "MOH": 900,
+        "Current Stock": 900,
+        "Lead Time (Days)": 5,
+        "UOM": "EA",
+        "Reorder Date": "20 Apr 2024",
+        "Location": "Seattle",
+        "Vendor": "3+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "AVE24411",
+        "Item Description": "MARKS- A- LOT DESK- STYLE DRY ER...",
+        "Min Y": 5000,
+        "Max": 100000,
+        "WOH": 42,
+        "MOH": 2000,
+        "Current Stock": 2000,
+        "Lead Time (Days)": 6,
+        "UOM": "EA",
+        "Reorder Date": "19 Apr 2024",
+        "Location": "Seattle",
+        "Vendor": "3+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "95057-247",
+        "Item Description": "GREINER 6ML LAVENDER/ BLACK K2...",
+        "Min Y": 500,
+        "Max": 100000,
+        "WOH": 52,
+        "MOH": 2000,
+        "Current Stock": 2000,
+        "Lead Time (Days)": 16,
+        "UOM": "EA",
+        "Reorder Date": "23 Mar 2024",
+        "Location": "Seattle",
+        "Vendor": "",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "PKG222222",
+        "Item Description": "CORRUGATED BOX, 22 X 22 X 22 (-",
+        "Min Y": 1500,
+        "Max": 100000,
+        "WOH": 13,
+        "MOH": 1500,
+        "Current Stock": 1500,
+        "Lead Time (Days)": 18,
+        "UOM": "EA",
+        "Reorder Date": "15 Feb 2024",
+        "Location": "Dublin",
+        "Vendor": "2+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "95057-247",
+        "Item Description": "GREINER 6ML LAVENDER/ BLACK K2..",
+        "Min Y": 500,
+        "Max": 100000,
+        "WOH": 16,
+        "MOH": 2000,
+        "Current Stock": 2000,
+        "Lead Time (Days)": 16,
+        "UOM": "EA",
+        "Reorder Date": "23 Mar 2024",
+        "Location": "Seattle",
+        "Vendor": "2+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "95057-247",
+        "Item Description": "GREINER 6ML LAVENDER/ BLACK K2..",
+        "Min Y": 500,
+        "Max": 100000,
+        "WOH": 16,
+        "MOH": 2000,
+        "Current Stock": 2000,
+        "Lead Time (Days)": 16,
+        "UOM": "EA",
+        "Reorder Date": "23 Mar 2024",
+        "Location": "Seattle",
+        "Vendor": "3+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "PKG222222",
+        "Item Description": "CORRUGATED BOX, 22 x 22 x 22 (..",
+        "Min Y": 1500,
+        "Max": 100000,
+        "WOH": 20,
+        "MOH": 1500,
+        "Current Stock": 1500,
+        "Lead Time (Days)": 18,
+        "UOM": "EA",
+        "Reorder Date": "15 Feb 2024",
+        "Location": "Dublin",
+        "Vendor": "3+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "WBM181818",
+        "Item Description": "CORRUGATED BOX, 18 X 18 X 18(P..",
+        "Min Y": 2000,
+        "Max": 100000,
+        "WOH": 38,
+        "MOH": 2500,
+        "Current Stock": 2500,
+        "Lead Time (Days)": 19,
+        "UOM": "EA",
+        "Reorder Date": "15 May 2024",
+        "Location": "Dublin",
+        "Vendor": "2+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "PKG222222",
+        "Item Description": "CORRUGATED BOX, 22 x 22 x 22 (..",
+        "Min Y": 1500,
+        "Max": 100000,
+        "WOH": 20,
+        "MOH": 1500,
+        "Current Stock": 1500,
+        "Lead Time (Days)": 18,
+        "UOM": "EA",
+        "Reorder Date": "15 Feb 2024",
+        "Location": "Dublin",
+        "Vendor": "4+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    },
+    {
+        "Item #": "WBM181818",
+        "Item Description": "CORRUGATED BOX, 18 X 18 X 18 (P..",
+        "Min Y": 2000,
+        "Max": 100000,
+        "WOH": 38,
+        "MOH": 2500,
+        "Current Stock": 2500,
+        "Lead Time (Days)": 19,
+        "UOM": "EA",
+        "Reorder Date": "15 May 2024",
+        "Location": "Dublin",
+        "Vendor": "5+",
+        "Last Order Date Y": "22 May 2024",
+        "Action": ""
+    }
+]
+
+
+scrapData = [
+    {
+      Actions: "action",
+      ProductionLocation: "Farminguale",
+      Expired: "$300",
+      ShortLite: "$100",
+      Week1: "$5200",
+      Week2: "$3100",
+      Week3: "$100",
+      Week4: "$50",
+      Week5: "$0",
+      Week6: "$34",
+      Week7: "$577",
+      Week8: "$547",
+      Week9: "$547",
+      Week10: "$45",
+      Week11: "$550",
+      Week12: "$200",
+      Week13: "$200",
+      Week14: "$50",
+      Week15: "$550",
+      Week16: "$100",
+      Week17: "160",
+      Week18: "$140"
+    },
+    {
+      Actions: "action",
+      ProductionLocation: "Buford",
+      Expired: "$300",
+      ShortLite: "$100",
+      Week1: "$200",
+      Week2: "$1300",
+      Week3: "$250",
+      Week4: "$100",
+      Week5: "$90",
+      Week6: "$950",
+      Week7: "$25",
+      Week8: "$30",
+      Week9: "$100",
+      Week10: "$80",
+      Week11: "$50",
+      Week12: "$100",
+      Week13: "$100",
+      Week14: "$20",
+      Week15: "160",
+      Week16: "$140",
+      Week17: "",
+      Week18: ""
+    }
+  ]
+  
+
+inventoryPurchaseOrderData = [
+    {
+        poNumber: "AP2023047856",
+        status: "Open",
+        vendor: "AERO- MED",
+        sponsor: "Assembly Bioscie...",
+        protocol: "NN9931-4553",
+        uom: "EA",
+        qtyOrdered: 35000,
+        qtyReceived: 25000,
+        qtyOpen: 10000,
+        amount: "$ 239",
+        createdDate: "24 Feb 2024",
+        dueDate: "15 May 2024",
+        action: ""
+    },
+    {
+        poNumber: "AP2022044678",
+        status: "Open",
+        vendor: "DELTON SCIENTIFIC",
+        sponsor: "Nova Nordisk",
+        protocol: "NN9931-4553",
+        uom: "EA",
+        qtyOrdered: 25000,
+        qtyReceived: 21400,
+        qtyOpen: 36000,
+        amount: "$ 489",
+        createdDate: "26 Mar 2024",
+        dueDate: "15 Feb 2024",
+        action: ""
+    },
+    {
+        poNumber: "AP2022044679",
+        status: "Open",
+        vendor: "DELTON SCIENTIFIC",
+        sponsor: "Bluefield Project",
+        protocol: "NSP001",
+        uom: "EA",
+        qtyOrdered: 32000,
+        qtyReceived: 74000,
+        qtyOpen: 24600,
+        amount: "$ 400",
+        createdDate: "28 Apr 2024",
+        dueDate: "23 Mar 2024",
+        action: ""
+    },
+    {
+        poNumber: "AP2022046467",
+        status: "Open",
+        vendor: "INMARK, LLC",
+        sponsor: "Purdue Pharma L.P.",
+        protocol: "OAG1030",
+        uom: "EA",
+        qtyOrdered: 21600,
+        qtyReceived: 16800,
+        qtyOpen: 4800,
+        amount: "$ 394",
+        createdDate: "02 May 2024",
+        dueDate: "19 Apr 2024",
+        action: ""
+    },
+    {
+        poNumber: "AP2023047805",
+        status: "Open",
+        vendor: "INMARK, LLC",
+        sponsor: "UCB Pharma, Ltd.",
+        protocol: "PD0053",
+        uom: "EA",
+        qtyOrdered: 22500,
+        qtyReceived: 15000,
+        qtyOpen: 7500,
+        amount: "$ 694",
+        createdDate: "18 Jun 2024",
+        dueDate: "20 Apr 2024",
+        action: ""
+    },
+    {
+        poNumber: "AP2022044323",
+        status: "Open",
+        vendor: "INMARK, LLC",
+        sponsor: "Duke Clinical Rese...",
+        protocol: "PREVENTABLE",
+        uom: "EA",
+        qtyOrdered: 50000,
+        qtyReceived: 35625,
+        qtyOpen: 14375,
+        amount: "$ 794",
+        createdDate: "12 Jul 2024",
+        dueDate: "17 Mar 2024",
+        action: ""
+    },
+    {
+        poNumber: "AP2023048058",
+        status: "Open",
+        vendor: "INMARK, LLC",
+        sponsor: "Protagonist Thera...",
+        protocol: "PTG- 300-11",
+        uom: "EA",
+        qtyOrdered: 10000,
+        qtyReceived: 7000,
+        qtyOpen: 3000,
+        amount: "$ 1459",
+        createdDate: "06 Aug 2024",
+        dueDate: "05 Apr 2024",
+        action: ""
+    },
+    {
+        poNumber: "AP2023048080",
+        status: "Open",
+        vendor: "AERO- MED",
+        sponsor: "Regeneron Pharm...",
+        protocol: "R0000- HEMB- 2187",
+        uom: "EA",
+        qtyOrdered: 5000,
+        qtyReceived: 2000,
+        qtyOpen: 3000,
+        amount: "$ 945",
+        createdDate: "09 Sep 2024",
+        dueDate: "06 May 2024",
+        action: ""
+    },
+    {
+        poNumber: "AP2023048164",
+        status: "Open",
+        vendor: "FISHER",
+        sponsor: "NA",
+        protocol: "NA",
+        uom: "EA",
+        qtyOrdered: 10000,
+        qtyReceived: "",
+        qtyOpen: 10000,
+        amount: "$ 445",
+        createdDate: "20 Oct 2024",
+        dueDate: "16 May 2024",
+        action: ""
+    },
+    {
+        poNumber: "AP2023048186",
+        status: "Open",
+        vendor: "VWR- L",
+        sponsor: "NA",
+        protocol: "NA",
+        uom: "EA",
+        qtyOrdered: 10000,
+        qtyReceived: "",
+        qtyOpen: 10000,
+        amount: "$ 945",
+        createdDate: "14 Nov 2024",
+        dueDate: "18 May 2024",
+        action: ""
+    },
+    {
+        poNumber: "AP2023048187",
+        status: "Open",
+        vendor: "THERAPAK- L",
+        sponsor: "River 2 Renal Corp...",
+        protocol: "R2R01- HRS- 201",
+        uom: "EA",
+        qtyOrdered: 2000,
+        qtyReceived: "",
+        qtyOpen: 2000,
+        amount: "$ 345",
+        createdDate: "22 Dec 2024",
+        dueDate: "19 May 2024",
+        action: ""
+    }
+]
+
+// ipoEntityDetail - > inventory Purchase OrderData Entity Detail
+ipoEntityDetail = [
+    {
+        itemNumber: "456292P",
+        itemDescription: "GREINER 4ML RED/ YELLOW Z SERUM CLOT ACTIVATOR VACU",
+        qtyOrdered: 2000,
+        qtyReceived: 500,
+        qtyOpen: 1500,
+        unitPrice: "$ 9",
+        totalPrice: "$ 18000"
+    },
+    {
+        itemNumber: "364992",
+        itemDescription: "BD 8ML RED/ YELLOW PLASTIC URINALYSIS VACUTAINER TU",
+        qtyOrdered: 3000,
+        qtyReceived: 1200,
+        qtyOpen: 1800,
+        unitPrice: "$ 3",
+        totalPrice: "$ 9000"
+    },
+    {
+        itemNumber: "367884",
+        itemDescription: "BD 4ML GREEN LITHIUM HEPARIN VACUTAINER TUBE",
+        qtyOrdered: 2500,
+        qtyReceived: 200,
+        qtyOpen: 2300,
+        unitPrice: "$ 2",
+        totalPrice: "$ 5000"
+    },
+    {
+        itemNumber: "367886",
+        itemDescription: "BD 6ML GREEN LITHIUM HEPARIN VACUTAINER TUBE",
+        qtyOrdered: 4500,
+        qtyReceived: 600,
+        qtyOpen: 3900,
+        unitPrice: "$ 4",
+        totalPrice: "$ 18000"
+    },
+    {
+        itemNumber: "450095",
+        itemDescription: "GREINER 21G SAFETY BLOOD COLLECTION SET W/ HOLDER",
+        qtyOrdered: 2300,
+        qtyReceived: 1000,
+        qtyOpen: 1300,
+        unitPrice: "$ 8",
+        totalPrice: "$ 18400"
+    },
+    {
+        itemNumber: "450096",
+        itemDescription: "GREINER 23G SAFETY BLOOD COLLECTION SET W/ HOLDER",
+        qtyOrdered: 3500,
+        qtyReceived: 400,
+        qtyOpen: 3100,
+        unitPrice: "$ 7",
+        totalPrice: "$ 24500"
+    },
+    {
+        itemNumber: "454209",
+        itemDescription: "GREINER 4ML LAVENDER/ BLACK K2 EDTA VACUETTE TUBE",
+        qtyOrdered: 2000,
+        qtyReceived: 700,
+        qtyOpen: 1300,
+        unitPrice: "$ 8",
+        totalPrice: "$ 16000"
+    },
+    {
+        itemNumber: "454238",
+        itemDescription: "GREINER 2ML GREY/ WHITE SODIUM FLUORIDE VACUETTE TU",
+        qtyOrdered: 1800,
+        qtyReceived: 1800,
+        qtyOpen: 0,
+        unitPrice: "$ 3",
+        totalPrice: "$ 5400"
+    },
+    {
+        itemNumber: "454243P",
+        itemDescription: "GREINER 2.5ML RED/ WHITE Z SERUM W/ CLOT ACTIVATOR V",
+        qtyOrdered: 1700,
+        qtyReceived: 1300,
+        qtyOpen: 400,
+        unitPrice: "$ 1",
+        totalPrice: "$ 1700"
+    },
+    {
+        itemNumber: "454246",
+        itemDescription: "GREINER 3ML LAVENDER/ BLACK K2 ## DISCONTINUED##",
+        qtyOrdered: 5000,
+        qtyReceived: 2500,
+        qtyOpen: 2500,
+        unitPrice: "$ 5",
+        totalPrice: "$ 25000"
+    },
+    {
+        itemNumber: "454334",
+        itemDescription: "GREINER 3ML BLUE/ BLACK SODIUM CITRATE VACUETTE TUB",
+        qtyOrdered: 4500,
+        qtyReceived: 3800,
+        qtyOpen: 700,
+        unitPrice: "$ 6",
+        totalPrice: "$ 27000"
+    },
+    {
+        itemNumber: "456089",
+        itemDescription: "GREINER 6ML RED/ BLACK Z SERUM CLOT ACTIVATOR VACUE",
+        qtyOrdered: 2200,
+        qtyReceived: 2100,
+        qtyOpen: 100,
+        unitPrice: "$ 5",
+        totalPrice: "$ 11000"
+    }
+]
+
+additionalHeaderInventoryTable=[
+    {id: "1", columnName: "Replacement", sortableColumn: "replacement", active: false},
+    {id: "2", columnName: "Scrap", sortableColumn: "scrap", active: false},
+    {id: "3", columnName: "Excess Stock", sortableColumn: "excessStock", active: false},
+    {id: "4", columnName: "Kit Production Location", sortableColumn: "kitProductionLocation", active: false},
+    {id: "5", columnName: "Current Demand", sortableColumn: "currentDemand", active: false},
+    {id: "6", columnName: "Lead Time", sortableColumn: "leadTime", active: false},
+    {id: "7", columnName: "Month on Hand", sortableColumn: "monthOnHand", active: false},
+    {id: "8", columnName: "Week on Hand", sortableColumn: "weekOnHand", active: false},
+    {id: "9", columnName: "Consumption", sortableColumn: "consumption", active: false},
+    {id: "10", columnName: "Qty to Order", sortableColumn: "qtyToOrder", active: false},
+    {id: "11", columnName: "Component Type", sortableColumn: "componentType", active: false},
+    {id: "12", columnName: "Total Demand", sortableColumn: "totalDemand", active: false},
+    {id: "13", columnName: "Warehouse", sortableColumn: "warehouse", active: false},
+    {id: "14", columnName: "Inventory Location", sortableColumn: "inventoryLocation", active: false},
+    {id: "15", columnName: "Carton", sortableColumn: "carton", active: false},
+    {id: "16", columnName: "Kit Category", sortableColumn: "kitCategory", active: false}
+  ]
+  
+  
 
   constructor(private http: HttpClient) { }
 

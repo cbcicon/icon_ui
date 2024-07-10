@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/api';
 import { Table, TableLazyLoadEvent } from 'primeng/table';
 import { DataService } from '../data-services/data.service';
@@ -16,76 +16,41 @@ import { UtilService } from '../../../common/util';
 @Component({
   selector: 'app-order-table',
   templateUrl: './order-table.html',
-  styleUrl: './order-table.scss'
+  styleUrls: ['./order-table.scss']
 })
 
 export class OrderTableComponent implements OnInit {
 
 
 inventoryTableData:any;
-colunms: any;
-duration: any;
-selectedDuration: any;
+
 totalRecords!: number;
 
 loading: boolean = false;
-rightSideBar:boolean = false
-
-representatives: any = [];
 
 selectAll: boolean = false;
 
-selectedCustomers!:any
 
 rowsPerPageOptions:any
 
 selectedInterval: string | null = null;
 
-tableHeaderItem = [
-  { id: '1', columnName: 'Item', sortableColumn: 'item', active: false },
-  { id: '2', columnName: 'Item Description', sortableColumn: 'description', active: false },
-  { id: '3', columnName: 'Demand', sortableColumn: 'demand', active: false },
-  { id: '4', columnName: 'On Stock', sortableColumn: 'onstock', active: false },
-  { id: '5', columnName: 'Availablity', sortableColumn: 'availability', active: false },
-  { id: '6', columnName: 'Open Po', sortableColumn: 'open_po', active: false },
-  { id: '7', columnName: 'Due Date', sortableColumn: 'due_date', active: false },
-  { id: '8', columnName: 'Item Type', sortableColumn: 'item_type', active: false },
-  { id: '9', columnName: 'Qty to Order', sortableColumn: 'qty_to_order', active: false },
-  { id: '10', columnName: 'Study Type', sortableColumn: 'study_type', active: false },
-  { id: '11', columnName: 'Kit Production Location', sortableColumn: 'kit_production_location', active: false },
-  { id: '12', columnName: 'Order Type', sortableColumn: 'order_type', active: false },
-  { id: '13', columnName: 'Lead Time', sortableColumn: 'lead_time', active: false },
-  { id: '14', columnName: 'Consumption', sortableColumn: 'consumption', active: false },
-  { id: '15', columnName: 'Component Type', sortableColumn: 'component_type', active: false },
-  { id: '16', columnName: 'Forecaste', sortableColumn: 'forecaste', active: false },
-  { id: '17', columnName: 'Total Demand', sortableColumn: 'total_demand', active: false },
-  { id: '18', columnName: 'Scrap', sortableColumn: 'scrap', active: false },
-  { id: '19', columnName: 'Warehouse', sortableColumn: 'warehouse', active: false },
-  { id: '20', columnName: 'Inventory Location', sortableColumn: 'inventory_location', active: false },
-  { id: '21', columnName: 'Carton', sortableColumn: 'carton', active: false },
-  { id: '22', columnName: 'Kit Category', sortableColumn: 'kit_category', active: false }
-];
-
-
+tableHeaderItem :any;
 
 ref: DynamicDialogRef | undefined;
 
-data: any;
 
-options: any;
 chatRightSideBar = false
 
-tableViewOption:boolean = false;
+inventoryChartData: any;
+options: any;
+
+
 
 @ViewChild('sidebarRef') sidebarRef!: Sidebar;
 
-itemData: any= [];
 
-setRows: number = 10;
-stockFilterOption:any =[];
-availbiltyFilterOption :any;
-openPoFilterOption: any;
-itemTypeFilterOption: any;
+
 viewAdditionColumn = false
 showDetailContent  = false
 controlRow = 10;
@@ -93,66 +58,8 @@ changeExpandButton = false
 commentText: string = ''
 chatData :any
 
+selectedItems!: any[];
 dateFilterData :any
-
-additionalColList = [
-  {
-    "field": "Qty to Order",
-    "id": 1
-  },
-  {
-    "field": "Study Type",
-    "id": 2
-  },
-  {
-    "field": "Kit Production Location",
-    "id": 3
-  },
-  {
-    "field": "Order Type",
-    "id": 4
-  },
-  {
-    "field": "Lead Time",
-    "id": 5
-  },
-  {
-    "field": "Consumption",
-    "id": 6
-  },
-  {
-    "field": "Component Type",
-    "id": 7
-  },
-  {
-    "field": "Forecaste",
-    "id": 8
-  },
-  {
-    "field": "Total Demand",
-    "id": 9
-  },
-  {
-    "field": "Scrap",
-    "id": 10
-  },
-  {
-    "field": "Warehouse",
-    "id": 11
-  },
-  {
-    "field": "Inventory Location",
-    "id": 12
-  },
-  {
-    "field": "Carton",
-    "id": 13
-  },
-  {
-    "field": "Kit Category",
-    "id": 14
-  }
-]
 
 
 constructor( public tableDataService:TableDataService  ,  private invetoryServices: DataService  , public dialogService: DialogService , public util:UtilService ,  public dataShortenerService:DataShortenerService) {}
@@ -161,46 +68,38 @@ constructor( public tableDataService:TableDataService  ,  private invetoryServic
 ngOnInit() {
     this.loading = true;
 
+this.componentInitilization()
 
-    this.tableDataService.getInventoryTableData().subscribe((res:any) => {
-      this.inventoryTableData =  res
-      this.dateFilterData = res
-      this.totalRecords =  res.length
-      this.rowsPerPageOptions =  this.divideIntoMultiplesOfTen(this.totalRecords)
-      this.duration = this.invetoryServices.getDuration();
-      this.selectedDuration = this.invetoryServices.getDuration()[1];
-      this.loading = false
-    })
-
+this.tableHeaderItem = this.invetoryServices.additionalHeaderInventoryTable
   
+this.inventoryChartInitialise()
 
-this.stockFilterOption = [
-  { label: 'On Stock', value: 'On Stock' },
-  { label: 'Out Of Stock', value: 'Out Of Stock' },
-  { label: 'Stock Deficiency', value: 'Stock Deficiency' },
-];
 
-this.availbiltyFilterOption = [
-  { label: 'On Stock', value: 'On Stock' },
-  { label: 'Out Of Stock', value: 'Out Of Stock' },
-  { label: 'Stock Of Limit', value: 'Stock Of Limit' },
-];
+}
 
-this.openPoFilterOption = [
-  { label: 'Open Po', value: 'Open Po' },
-  { label: 'No Open Po', value: 'No Open Po' },
-];
 
-this.itemTypeFilterOption = [
-  { name: 'Temperature Specific',  value: 'Temperature Specific' },
-  { name: 'Bulk Item',  value:  'Bulk Item' },
-  { name: 'Dangerous Goods',  value: 'Dangerous Goods' },
-  
-];
+// configure component inititialization
+componentInitilization(){
 
-  }
+  this.tableDataService.getInventoryTableData().subscribe(
+      (res: any) => {
+        this.inventoryTableData = res;
+        this.dateFilterData = res;
+        this.totalRecords = res.length;
+        this.rowsPerPageOptions = this.divideIntoMultiplesOfTen(this.totalRecords)
+        this.loading = false;
+      },
+      (error) => {
+          console.error('Error fetching inventory table data:', error);
+          this.loading = false;
+      }
+  );
 
-  divideIntoMultiplesOfTen(number:any) {
+ ;
+}
+
+
+divideIntoMultiplesOfTen(number:any) {
     const multiplesOfTen = [];
     let currentMultiple = 10;
 
@@ -212,24 +111,44 @@ this.itemTypeFilterOption = [
     return multiplesOfTen;
 }
 
+
+
 loadCustomers(event: TableLazyLoadEvent) {
     this.loading = true;
 }
 
-onSelectionChange(value = []) {
-    this.selectAll = value.length === this.totalRecords;
-    this.selectedCustomers = value;
+
+onSelectionChange(event:any) {
+
+  const selectedIds = event.value.map((item: any) => item.id);
+
+  this.tableHeaderItem.forEach((item:any) => {
+    item.active = false;
+  });
+
+  selectedIds.forEach((itemId: string) => {
+    this.tableHeaderItem.forEach((item: any) => {
+      if (item.id === itemId) {
+        item.active = true;
+      }
+    });
+  });
 }
 
+
 onSelectAllChange(event: any) {
-    const checked = event.checked;
+   const checked = event.checked;
+  this.selectedItems = checked ? this.tableHeaderItem : [];
+  this.selectAll = checked;
 
     if (checked) {
-        this.selectedCustomers =  this.invetoryServices.getData();
-        this.selectAll = true;
+      this.tableHeaderItem.forEach((item:any) => {
+        item.active = true;
+      });
     } else {
-        this.selectedCustomers = [];
-        this.selectAll = false;
+      this.tableHeaderItem.forEach((item:any) => {
+        item.active = false;
+      });
     }
 }
 
@@ -260,16 +179,12 @@ closeCallback(e:any): void {
 }
 
 
-
 handleChatRightSidebar(customer:any){
   this.chatRightSideBar = !this.chatRightSideBar
   this.chatData = customer
 }
 
 
-handleTableView(){
-  this.tableViewOption = !this.tableViewOption
-}
 
 selectedSize:string = 'p-datatable-gridlines p-datatable-striped'
 
@@ -292,33 +207,12 @@ handleAdditionanlColumn(){
 
 
 
-selectedItems!: any[];
-
-
-addedColumnConfig(event:any){
-  this.selectedItems.forEach(selection => {
-    
-    const matchingItem = this.tableHeaderItem.find(item => item.columnName === selection.field);
-    if (matchingItem) {
-        matchingItem.active = true;
-    }
-});
-
-this.tableHeaderItem.forEach(item => {
-  if (!this.selectedItems.some(selection => selection.field === item.columnName)) {
-      item.active = false;
-  }
-});
-}
-
-
-
 exportExcel() {
   import('xlsx').then((xlsx) => {
       const worksheet = xlsx.utils.json_to_sheet(this.inventoryTableData);
       const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
       const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
-      this.saveAsExcelFile(excelBuffer, 'products');
+      this.saveAsExcelFile(excelBuffer, 'Inventory Data');
   });
 }
 
@@ -344,13 +238,13 @@ handleDateShortener(datetype: string): void {
 
   if (this.selectedInterval === datetype) {
     this.selectedInterval = '';
-    this.inventoryTableData = this.invetoryServices.getData(); 
+    this.inventoryTableData =  this.dateFilterData
     return;
   }
 
   this.selectedInterval = datetype; 
-
-   this.inventoryTableData = this.dateFilterData
+  
+  this.inventoryTableData = this.dateFilterData
 
   switch (datetype) {
     case 'weekly':
@@ -373,6 +267,122 @@ handleDateShortener(datetype: string): void {
   }
 }
 
+chartShow = false
 
+handleChartShow(){
+  this.chartShow = !this.chartShow
+}
+
+
+inventoryChartInitialise(){
+  const documentStyle = getComputedStyle(document.documentElement);
+        const textColor = documentStyle.getPropertyValue('--text-color');
+        const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+        const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+        
+        this.inventoryChartData = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [
+                {
+                    type: 'bar',
+                    label: 'Dataset 1',
+                    backgroundColor: '#41B34E', // Green
+                    data: [5, 6, 6, 5, 7, 6, 6],
+                    borderColor: 'white',
+                    borderWidth: 3,
+                    barThickness: 20, // Width of the bar
+                    borderRadius: {
+                       topLeft: 10,
+                        topRight: 10,
+                        bottomLeft: 0,
+                        bottomRight: 0
+                    }
+                },
+                {
+                    type: 'bar',
+                    label: 'Dataset 2',
+                    backgroundColor: '#757575', // Gray
+                    data: [6, 7, 5, 6, 7, 5, 6],
+                    borderColor: 'white',
+                    borderWidth: 3,
+                    barThickness: 20, // Width of the bar
+                    borderRadius: {
+                       topLeft: 10,
+                        topRight: 10,
+                        bottomLeft: 0,
+                        bottomRight: 0
+                    }
+                },
+                {
+                    type: 'bar',
+                    label: 'Dataset 3',
+                    backgroundColor: '#1790D0', // Blue
+                    data: [6, 5, 7, 6, 6, 7, 5],
+                    borderColor: 'white',
+                    borderWidth: 3,
+                    barThickness: 20, // Width of the bar
+                    borderRadius: {
+                       topLeft: 10,
+                        topRight: 10,
+                        bottomLeft: 0,
+                        bottomRight: 0
+                    }
+                },
+                {
+                    type: 'bar',
+                    label: 'Dataset 4',
+                    backgroundColor: '#FCB415', // Orange
+                    data: [5, 7, 6, 6, 5, 6, 7],
+                    borderColor: 'white',
+                    borderWidth: 3,
+                    barThickness: 20, // Width of the bar
+                    borderRadius: {
+                       topLeft: 10,
+                        topRight: 10,
+                        bottomLeft: 0,
+                        bottomRight: 0
+                    }
+                }
+            ]
+        };
+        
+        this.options = {
+            maintainAspectRatio: false,
+            aspectRatio: 0.6,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: textColor
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        color: textColorSecondary
+                    },
+                    grid: {
+                        color: surfaceBorder
+                    }
+                },
+                y: {
+                    max: 20, // Adjusted max value
+                    ticks: {
+                        color: textColorSecondary
+                    },
+                    grid: {
+                        color: surfaceBorder
+                    }
+                }
+            }
+        };  
+
+}
+
+
+currentDate: Date = new Date()
+isExpired(expiryDate: Date): boolean {
+  return expiryDate < this.currentDate;
+}
 
 }

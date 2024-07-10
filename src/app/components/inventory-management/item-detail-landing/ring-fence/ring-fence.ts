@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { DataService } from '../../data-services/data.service';
 import { Sidebar } from 'primeng/sidebar';
+import { TableDataService } from '../../../../common/table-data/table-data.service';
 
 @Component({
   selector: 'app-ring-fence',
@@ -11,7 +12,7 @@ export class RingFenceComponent implements OnInit  {
 
   chartActive = false;
 
-  constructor(private dataService: DataService ) {}
+  constructor(private dataService: DataService , public tableDataServices:TableDataService ) {}
 
    ringFenceData :any
    loading: boolean = true
@@ -28,7 +29,12 @@ export class RingFenceComponent implements OnInit  {
    
 
   ngOnInit(){
-    this.ringFenceData = this.dataService.ring_fence
+ 
+    this.tableDataServices.getRingFenceData().subscribe((res:any) => {
+      this.ringFenceData  =  this.transformData(res)
+  
+    })
+
     setTimeout(() => {
       this.loading =  false
     },1000)
@@ -64,6 +70,14 @@ export class RingFenceComponent implements OnInit  {
 
   }
 
+
+  transformData(data:any) {
+    return data.map((entry:any) => {
+        const transformedEntry = { ...entry.mainarray, ...entry.subarrays };
+        return transformedEntry;
+    });
+}
+
 commentText:string = ''
 
 
@@ -82,6 +96,7 @@ dropdownItems = [
 ];
 
 
+
 handleLockUnlockShow(){
 
   if(!this.lockActive){
@@ -90,6 +105,39 @@ handleLockUnlockShow(){
     this.lockActive = false
   }
 
+}
+
+sponsorList:any
+protocolList:any
+lotNumberList:any
+countryList:any
+qtyUnlockList:any
+
+
+handleLockUnlockForm(data:any){
+  this.sponsorList = []
+  this.protocolList = []
+  this.lotNumberList  = []
+  this.countryList = []
+  this.qtyUnlockList = []
+
+  this.countryList.push({id:0 , value:data.location})
+
+  for(let i =0 ; i<data.sponsor.length; i++ ){
+    this.sponsorList.push({id:i, value:data.sponsor[i]})
+  }
+  for(let i =0 ; i<data.protocolId.length; i++ ){
+    this.protocolList.push({id:i, value:data.protocolId[i]})
+  }
+
+  for(let i =0 ; i<data.lotNumber.length; i++ ){
+    this.lotNumberList.push({id:i, value:data.lotNumber[i]})
+  }
+  for(let i =0 ; i<data.qtyUnlock.length; i++ ){
+    this.qtyUnlockList.push({id:i, value:data.qtyUnlock[i]})
+  }
+
+ 
 }
 
 handleChartShow(){
@@ -111,6 +159,20 @@ closeCallback(e:any): void {
 
 hideShowChart(){
   this.chartActive = !this.chartActive
+}
+
+calculateCustomerTotal(location: string) {
+  let total = 0;
+
+  if (this.ringFenceData) {
+      for (let customer of this.ringFenceData) {
+          if (customer.location === location) {
+              total = total + customer.totaL_QTY;
+          }
+      }
+  }
+
+  return total;
 }
 
 }
