@@ -1,16 +1,17 @@
- {
-    "inventory":{
-       "inventory-table-data": "InventoryHeader/GetAllInventoryHeadersTbl",
-        "purchase-order-table-data" : "InventoryPO/GetAllInventoryPOTbl",
-        "ring-fence-table-data":"InventoryRingFence/GetRingFenceWithUnlockDetails",
-        "stockAndScrapData":"InventoryLocation/GetAllInventoryLocationTbl",
-        "replacementTablesData":"InventoryReplacement/GetAllInventoryReplacementTbl",
-        "replacementActionData":"InventoryReplacementAction/GetAllInventoryReplacementActionTbl",
-        "purchaseOrderMain": "PurchaseOrderMain/GetAllPurchaseOrderMainTbl" ,
-        "purchaseOrderMainDetail":"PurchaseOrderMainDetail/GetAllPurchaseOrderMainDetailTbl", 
-        "safetyStockMain":"SafetyStockMain/GetAllSafetyStockMainTbl" ,
-        "scrapMainComponent":"ScrapMain/GetAllScrapMainTbl" ,
-        "allScrapDetailTbl":"ScrapDetail/GetAllScrapDetailTbl"
+{
+   "inventory":{
+      "inventory-table-data": "InventoryHeader/GetAllInventoryHeadersTbl",
+       "purchase-order-table-data" : "InventoryPO/GetAllInventoryPOTbl",
+       "ring-fence-table-data":"InventoryRingFence/GetRingFenceWithUnlockDetails",
+       "stockAndScrapData":"InventoryLocation/GetAllInventoryLocationTbl",
+       "replacementTablesData":"InventoryReplacement/GetAllInventoryReplacementTbl",
+       "replacementActionData":"InventoryReplacementAction/GetAllInventoryReplacementActionTbl",
+       "purchaseOrderMain": "PurchaseOrderMain/GetAllPurchaseOrderMainTbl" ,
+       "purchaseOrderMainDetail":"PurchaseOrderMainDetail/GetAllPurchaseOrderMainDetailTbl", 
+       "safetyStockMain":"SafetyStockMain/GetAllSafetyStockMainTbl" ,
+       "scrapMainComponent":"ScrapMain/GetAllScrapMainTbl" ,
+       "allScrapDetailTbl":"ScrapDetail/GetAllScrapDetailTbl" ,
+       "allItemConfigurationTbl": "ItemConfiguration/GetAllItemConfigurationTbl"
 
-    }
- }
+   }
+}
