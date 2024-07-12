@@ -1,6 +1,57 @@
 <div>
     <h4 class="mb-4">Item Configs</h4>
 
+    <!-- Upload Excel and Add Item buttons -->
+    <div class="table-header d-flex justify-content-between">
+        <div></div>
+        <div>
+            <span class="p-input-icon-left ml-auto">
+                <input type="file" (change)="onFileSelected($event)" accept=".xlsx, .xls"/>
+                <p-button [text]="true" [plain]="true">
+                    <i class="bi bi-upload" click="uploadExcel()"></i>
+                </p-button>
+            </span>
+
+            <!-- Add Item button -->
+            <span class="p-input-icon-left ml-auto">
+                <span (click)="addItem()">
+                    <p-button [text]="true" [plain]="true">
+                        <i class="bi bi-plus-lg mx-2"></i> <span>Add Item</span>
+                    </p-button>
+                </span>
+            </span>
+
+            <!-- Expand/Collapse button -->
+            <span class="p-input-icon-left ml-auto">
+                <span (click)="handleRowControl()">
+                    <p-button [text]="true" [plain]="true">
+                        <i class="bi bi-arrows-angle-expand" *ngIf="!changeExpandButton; else collapseIcon"></i>
+                        <ng-template #collapseIcon>
+                            <i class="bi bi-arrows-angle-contract"></i>
+                        </ng-template>
+                    </p-button>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <!-- Display uploaded Excel data -->
+    <div *ngIf="excelData && excelData.length > 0" class="p-mb-3">
+        <!-- <h5>Uploaded Excel Data</h5> -->
+        <table class="p-table">
+            <thead>
+                <tr>
+                    <th *ngFor="let header of excelHeaders">{{ header }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of excelData">
+                    <td *ngFor="let key of excelHeaders">{{ row[key] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
     <p-table #dt [value]="itemDataConfig" dataKey="id" [rowHover]="true"
         [rows]="controlRow" [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading"
         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -11,95 +62,73 @@
         [tableStyle]="{'min-width': '100vw'}"
         styleClass={{selectedSize}} [exportHeader]="'customExportHeader'">
 
-        <ng-template pTemplate="caption">
-            <div class="table-header d-flex justify-content-between">
-                <div>
-                </div>
-                <div>
-                    <span class="p-input-icon-left ml-auto">
-                        <span >
-                            <p-button [text]="true" [plain]="true">
-                                <i class="bi bi-upload"></i>
-                            </p-button>
-                        </span>
-                    </span>
-                    
-                    <span class="p-input-icon-left ml-auto">
-                        <span (click)="addItem()">
-                            <p-button [text]="true" [plain]="true">
-                                <i class="bi bi-plus-lg mx-2"></i> <span>Add Item</span>
-                            </p-button>
-                        </span>
-                    </span>
-                    <span class="p-input-icon-left ml-auto">
-                        <span (click)="handleRowControl()">
-                            <p-button [text]="true" [plain]="true">
-                                <i class="bi bi-arrows-angle-expand" *ngIf="!changeExpandButton; else collapseIcon"></i>
-                                <ng-template #collapseIcon>
-                                    <i class="bi bi-arrows-angle-contract"></i>
-                                </ng-template>
-                            </p-button>
-                        </span>
-                    </span>
-                </div>
-            </div>
-        </ng-template>
 
         <ng-template pTemplate="header">
             <tr>
                 <th pSortableColumn="action-item">
                     <div class="flex justify-content-between align-items-center">Actions</div>
                 </th>
+                
                 <th pSortableColumn="itemNo">
                     <div class="flex justify-content-between align-items-center">Item #
                         <p-columnFilter type="text" field="itemNo" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
+                
                 <th pSortableColumn="itemDescription">
                     <div class="flex justify-content-between align-items-center">Item Description
                         <p-columnFilter type="text" field="itemDescription" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
+                
                 <th pSortableColumn="criticality">
                     <div class="flex justify-content-between align-items-center">Criticality
                         <p-columnFilter type="text" field="criticality" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
+                
                 <th pSortableColumn="itemType">
                     <div class="flex justify-content-between align-items-center">Item Type
                         <p-columnFilter type="text" field="itemType" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
+                
                 <th pSortableColumn="weight">
                     <div class="flex justify-content-between align-items-center">Weight
                         <p-columnFilter type="text" field="weight" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
+                
                 <th pSortableColumn="price">
                     <div class="flex justify-content-between align-items-center">Price
                         <p-columnFilter type="text" field="price" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
+                
                 <th pSortableColumn="status" style="min-width: 10rem">
                     <div class="flex justify-content-between align-items-center">Status
                         <p-columnFilter type="text" field="status" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
+                
                 <th pSortableColumn="approvedCountry" style="min-width: 10rem">
                     <div class="flex justify-content-between align-items-center">Approved Countries
                         <p-columnFilter type="text" field="approvedCountry" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
+                
                 <th pSortableColumn="replacement" style="min-width: 10rem">
                     <div class="flex justify-content-between align-items-center">Replacement
                         <p-columnFilter type="text" field="replacement" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
+                
                 <th pSortableColumn="minoq" style="min-width: 10rem">
                     <div class="flex justify-content-between align-items-center">Min Order Qty
                         <p-columnFilter type="text" field="minoq" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
+                
             </tr>
         </ng-template>
 
@@ -140,6 +169,7 @@
                         </ng-template>
                     </p-cellEditor>
                 </td>
+                
                 <td [pEditableColumn]="itemDataConfig.itemDescription" pEditableColumnField="itemDescription" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
@@ -239,8 +269,8 @@
             </tr>
         </ng-template>
     </p-table>
-</div>
 
+   
 <div class="item-confic-down-content">
     <h5><b>Criticality Config</b></h5>
     <p-divider />

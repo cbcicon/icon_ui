@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import * as XLSX from 'xlsx';
+import { Table } from 'primeng/table';
 import { TableDataService } from '../../../../common/table-data/table-data.service';
 import { MessageService } from 'primeng/api';
 
@@ -10,6 +12,9 @@ import { MessageService } from 'primeng/api';
 })
 export class InvConfigItemComponent implements OnInit {
   itemDataConfig: any[] = [];
+  @ViewChild('dt') table!: Table;
+  excelData: any[] = [];
+  excelHeaders: string[] = [];
   rowsPerPageOptions: any;
   controlRow = 10;
   selectedValue: any;
@@ -55,6 +60,77 @@ export class InvConfigItemComponent implements OnInit {
     }
 
     return multiplesOfTen;
+  }
+
+  // Method to handle file selection
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    const reader: FileReader = new FileReader();
+
+    reader.onload = (e: any) => {
+      const binaryString: string = e.target.result;
+      const workbook: XLSX.WorkBook = XLSX.read(binaryString, { type: 'binary' });
+
+      const sheetName: string = workbook.SheetNames[0];
+      const worksheet: XLSX.WorkSheet = workbook.Sheets[sheetName];
+
+      // Convert Excel data to JSON format
+      this.excelData = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+
+      // Extract headers
+      this.excelHeaders = Object.keys(this.excelData[0]);
+
+      // Map Excel data to match table structure
+      this.itemDataConfig = this.excelData.map((item: any) => ({
+        itemNo: item['ITEM'] || item['item'] || item['Item'] || item['item'],
+        itemDescription: item['Description'] || item['description'],
+        criticality: item['Criticality'] || item['criticality'],
+        itemType: item['Item Type'] || item['item type'] || item['Item Type'] || item['item type'],
+        weight: item['Weight'] || item['weight'],
+        price: this.parsePrice(item['Price']),
+        status: item['Status']?.trim() || item['Stotus']?.trim() || item['status']?.trim() || '',
+        approvedCountry: this.parseApprovedCountry(item),
+        replacement: item['Replocement'] || item['replacement'],
+        minoq: item['Min Order Qty'] || item['min order qty'],
+        editing: false // Initialize editing flag for each item
+      }));
+
+      // Clear raw Excel data
+      this.excelData = [];
+      this.excelHeaders = [];
+
+      // Fetch existing item configuration data
+      this.loadItemConfigData();
+    };
+
+    reader.readAsBinaryString(file);
+  }
+
+  // Method to parse price from string to number
+  private parsePrice(price: any): number {
+    if (typeof price === 'string') {
+      const cleanedPrice = price.replace(/[^\d.-]/g, ''); // Remove non-numeric characters
+      return parseFloat(cleanedPrice) || 0; // Parse to float, default to 0 if NaN
+    }
+    return parseFloat(price) || 0; // If already a number, parse and default to 0 if NaN
+  }
+
+  // Method to parse approved country field
+  private parseApprovedCountry(item: any): string {
+    const countryFields = ['Approved Countries', 'approved countries']; // List of possible field names
+
+    // Iterate through possible field names and return the first valid value found
+    for (const field of countryFields) {
+      if (item[field]) {
+        return item[field];
+      }
+    }
+    return ''; // Return empty string if no valid value found
+  }
+
+  uploadExcel() {
+    // Trigger file upload process
+    document.getElementById('fileInput')?.click();
   }
 
   onSponsorChange(event: any) {
@@ -129,12 +205,12 @@ export class InvConfigItemComponent implements OnInit {
     this.editing = false; // Exit editing mode
   }
 
-  startEditing(itemDataConfig:any):void {
-    itemDataConfig.editing=true;
+  startEditing(itemDataConfig: any): void {
+    itemDataConfig.editing = true;
     this.editing = true;
   }
-  
-  cancelEdit(itemDataConfig:any,ri:number):void {
+
+  cancelEdit(itemDataConfig: any, ri: number): void {
     itemDataConfig.editing = false; // Setting editing to false after canceling
     this.editing = false; // Cancel editing mode
   }
