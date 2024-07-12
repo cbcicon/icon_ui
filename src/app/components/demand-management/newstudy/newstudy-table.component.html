@@ -313,17 +313,27 @@
                     </p-cellEditor>
                     <!-- {{ study.production_location }} -->
                 </td>
-                <td [pEditableColumn]="study.date_kos" pEditableColumnField="date_kos" [style.pointer-events]="study.editing && study.study_type === 'New' ? 'auto' : 'none'">
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="study.date_kos" />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ study.date_kos }}
-                        </ng-template>
-                    </p-cellEditor>
-                    <!-- {{ study.date_kos }} -->
-                </td>
+                <td [pEditableColumn]="study.date_kos" pEditableColumnField="date_kos" 
+    [style.pointer-events]="study.editing && study.study_type === 'New' ? 'auto' : 'none'">
+    <p-cellEditor>
+        <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="study.date_kos" />
+        </ng-template>
+        <ng-template pTemplate="output">
+            <div class="date-kos-column">
+                <ng-container *ngIf="isIconVisible(study, 'warning')">
+                    <i class="bi bi-exclamation-circle-fill warning-icon" style="color: rgba(252, 180, 21, 1);"></i>
+                </ng-container>
+                <ng-container *ngIf="isIconVisible(study, 'success')">
+                    <i class="bi bi-check-circle-fill success-icon" style="color: rgba(65, 179, 78, 1);"></i>
+                </ng-container>
+                {{ study.date_kos }}
+            </div>
+        </ng-template>
+    </p-cellEditor>
+</td>
+
+
                 <td [pEditableColumn]="study.revenue_gen" pEditableColumnField="revenue_gen" [style.pointer-events]="study.editing && study.study_type === 'New' ? 'auto' : 'none'">
                     <p-cellEditor>
                         <ng-template pTemplate="input">

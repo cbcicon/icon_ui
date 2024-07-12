@@ -455,7 +455,7 @@ export class DataService {
         "#KitComponentPending": "80",
         "DateKOS": "15Mar2024",
         "FPFV": "15Mar2024",
-        "Progress": "50%"
+        "Progress": "50"
       },
       {
         "Actions": "",
@@ -465,7 +465,7 @@ export class DataService {
         "#KitComponentPending": "30",
         "DateKOS": "14Feb2024",
         "FPFV": "14Feb2024",
-        "Progress": "20%"
+        "Progress": "50"
       },
       {
         "Actions": "",
@@ -475,7 +475,7 @@ export class DataService {
         "#KitComponentPending": "0",
         "DateKOS": "15Mar2024",
         "FPFV": "15Mar2024",
-        "Progress": "100%"
+        "Progress": "50"
       },
       {
         "Actions": "",
@@ -485,7 +485,7 @@ export class DataService {
         "#KitComponentPending": "90",
         "DateKOS": "15May2024",
         "FPFV": "15May2024",
-        "Progress": "40%"
+        "Progress": "50"
       },
       {
         "Actions": "",
@@ -495,7 +495,7 @@ export class DataService {
         "#KitComponentPending": "95",
         "DateKOS": "15May2024",
         "FPFV": "15May2024",
-        "Progress": "85%"
+        "Progress": "50"
       }
     ];
   }

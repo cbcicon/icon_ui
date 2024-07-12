@@ -88,27 +88,47 @@
                 <input pInputText type="text" [(ngModel)]="country['#KitComponentPending']" />
               </ng-template>
               <ng-template pTemplate="output">
-                {{ country['#KitComponentPending'] }}
+                <span [style.color]="getTextColor(country['#KitComponentPending'])">
+                  {{ country['#KitComponentPending'] }}
+                </span>
               </ng-template>
             </p-cellEditor>
           </td>
+                         
           <td [pEditableColumn]="country.DateKOS" pEditableColumnField="DateKOS" [style.pointer-events]="country.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
                 <input pInputText type="text" [(ngModel)]="country.DateKOS" />
               </ng-template>
               <ng-template pTemplate="output">
-                {{ country.DateKOS }}
+                <span class="date-kos-column">
+                  <ng-container *ngIf="DisplayIcon(country, 'warning')">
+                    <i class="bi bi-exclamation-circle-fill warning-icon" style="color: rgba(241, 92, 97, 1);"></i>
+                </ng-container>
+                <ng-container *ngIf="DisplayIcon(country, 'success')">
+                    <i class="bi bi-check-circle-fill success-icon" style="color: rgba(65, 179, 78, 1);"></i>
+                </ng-container>
+                  {{ country.DateKOS }}
+                </span>
               </ng-template>
             </p-cellEditor>
           </td>
+          
           <td [pEditableColumn]="country.FPFV" pEditableColumnField="FPFV" [style.pointer-events]="country.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
                 <input pInputText type="text" [(ngModel)]="country.FPFV" />
               </ng-template>
               <ng-template pTemplate="output">
-                {{ country.FPFV }}
+                <span class="fpfv-column">
+                  <ng-container *ngIf="DisplayIcon(country, 'warning')">
+                    <i class="bi bi-exclamation-circle-fill warning-icon" style="color: rgba(241, 92, 97, 1);"></i>
+                </ng-container>
+                <ng-container *ngIf="DisplayIcon(country, 'success')">
+                    <i class="bi bi-check-circle-fill success-icon" style="color: rgba(65, 179, 78, 1);"></i>
+                </ng-container>
+                  {{ country.FPFV }}
+                </span>
               </ng-template>
             </p-cellEditor>
           </td>
@@ -118,10 +138,12 @@
                 <input pInputText type="text" [(ngModel)]="country.Progress" />
               </ng-template>
               <ng-template pTemplate="output">
-                {{ country.Progress }}
+                <span class="progress-bar" [style.width.%]="country.Progress">
+                  <span class="progress-value">{{ country.Progress }}%</span>
+                </span>
               </ng-template>
             </p-cellEditor>
-          </td>
+          </td>          
         </tr>
       </ng-template>
 
