@@ -59,6 +59,17 @@ export class TableDataService {
     return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['allItemConfigurationTbl']}`)
   }
 
+  addItem(item: any): Observable<any> {
+    return this.http.post<any>(`${this.apiBaseUrl}/your-add-item-endpoint`, item);
+  }
+
+  updateItem(item: any): Observable<any> {
+    return this.http.put<any>(`${this.apiBaseUrl}/your-update-item-endpoint/${item.id}`, item);
+  }
+
+  fetchItemConfigData(): Observable<any> {
+    return this.http.get<any>(`${this.apiBaseUrl}/your-fetch-item-config-endpoint`);
+  }
 
   private handleError(error: any) {
     console.error('An error occurred:', error);
