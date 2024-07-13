@@ -512,7 +512,7 @@ export class DataService {
         "QtyRemaining": "3",
         "Status": "Planned",
         "DateKOS": "15Mar2024",
-        "Progress": "50%"
+        "Progress": "50"
       },
       {
         "Actions": "",
@@ -524,7 +524,7 @@ export class DataService {
         "QtyRemaining": "2",
         "Status": "Un-Planned",
         "DateKOS": "14Mar2024",
-        "Progress": "20%"
+        "Progress": ""
       },
       {
         "Actions": "",
@@ -534,9 +534,9 @@ export class DataService {
         "Region": "EMEA",
         "QtyRequired": "10",
         "QtyRemaining": "3",
-        "Status": "DateExceeded",
+        "Status": "Date Exceeded",
         "DateKOS": "15Mar2024",
-        "Progress":"50%"
+        "Progress":""
       },
       {
         "Actions": "",
@@ -548,7 +548,7 @@ export class DataService {
         "QtyRemaining": "3",
         "Status": "Un-Planned",
         "DateKOS": "15Mar2024",
-        "Progress": "40%"
+        "Progress": ""
       },
       {
         "Actions": "",
@@ -560,7 +560,7 @@ export class DataService {
         "QtyRemaining": "2",
         "Status": "Planned",
         "DateKOS": "15Mar2024",
-        "Progress": "85%"
+        "Progress": "50"
       }
     ];
   }

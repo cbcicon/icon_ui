@@ -1,21 +1,28 @@
 .progress-bar {
-    display: inline-block;
-    width: 99.64px; /* Example value based on your requirement */
-    height: 15px; /* Example value based on your requirement */
-    border-radius: 10px 0 0 10px; /* Example border radius */
-    background-color: rgba(65, 179, 78, 1); /* Example color */
-    overflow: hidden; /* Ensures the text does not overflow outside the progress bar */
-    position: relative; /* Allows positioning of the inner text */
+    display: flex;
+    align-items: center;
+    height: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(to right, rgba(65, 179, 78, 1) 50%, rgba(225, 225, 226, 1) 50%);
+    width: 150.56px; // Adjust width as needed
   }
   
   .progress-value {
+    width: 75.28px;
+    height: 15px;
+    opacity: 1;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0.4px;
+    text-align: center;
+    color: var(--Base-White, rgba(255, 255, 255, 1));
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 25%; /* Adjusted to be in the middle of the first 50% of the progress bar */
     transform: translate(-50%, -50%);
-    color: white; /* Example color for the progress value text */
-    font-size: 12px; /* Example font size */
-    font-weight: bold; /* Example font weight */
-    white-space: nowrap; /* Ensures the text does not wrap */
   }
   

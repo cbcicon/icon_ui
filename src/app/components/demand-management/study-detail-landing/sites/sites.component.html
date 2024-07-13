@@ -120,30 +120,44 @@
                 <input pInputText type="text" [(ngModel)]="site.Status" />
               </ng-template>
               <ng-template pTemplate="output">
+                <span [ngClass]="getStatusIcon(site.Status, sites.indexOf(site))" [style.color]="getIconColor(site.Status)">
+                </span>
                 {{ site.Status }}
               </ng-template>
             </p-cellEditor>
-          </td>
+          </td>          
           <td [pEditableColumn]="site.DateKOS" pEditableColumnField="DateKOS" [style.pointer-events]="site.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
                 <input pInputText type="text" [(ngModel)]="site.DateKOS" />
               </ng-template>
               <ng-template pTemplate="output">
-                {{ site.DateKOS }}
+                <span class="date-kos-column">
+                  <ng-container *ngIf="DisplayIcon(site, 'warning')">
+                    <i class="bi bi-exclamation-circle-fill warning-icon" style="color: rgba(241, 92, 97, 1);"></i>
+                  </ng-container>
+                  <ng-container *ngIf="DisplayIcon(site, 'success')">
+                    <i class="bi bi-check-circle-fill success-icon" style="color: rgba(65, 179, 78, 1);"></i>
+                  </ng-container>
+                  {{ site.DateKOS }}
+                </span>
               </ng-template>
             </p-cellEditor>
-          </td>
+          </td>          
           <td [pEditableColumn]="site.Progress" pEditableColumnField="Progress" [style.pointer-events]="site.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
                 <input pInputText type="text" [(ngModel)]="site.Progress" />
               </ng-template>
               <ng-template pTemplate="output">
-                {{ site.Progress }}
+                <div class="progress-bar" [ngStyle]="getProgressBarStyle(sites.indexOf(site))">
+                  <span class="progress-value">
+                    {{ site.Progress }}<ng-container *ngIf="shouldDisplayPercentage(sites.indexOf(site))">%</ng-container>
+                  </span>
+                </div>
               </ng-template>
             </p-cellEditor>
-          </td>
+          </td>          
         </tr>
       </ng-template>
 

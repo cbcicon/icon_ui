@@ -138,12 +138,14 @@
                 <input pInputText type="text" [(ngModel)]="country.Progress" />
               </ng-template>
               <ng-template pTemplate="output">
-                <span class="progress-bar" [style.width.%]="country.Progress">
-                  <span class="progress-value">{{ country.Progress }}%</span>
-                </span>
+                <div class="progress-bar" [ngStyle]="getProgressBarStyle()">
+                  <span class="progress-value">
+                    {{ country.Progress }}<ng-container *ngIf="shouldDisplayPercentage()">%</ng-container>
+                  </span>
+                </div>
               </ng-template>
             </p-cellEditor>
-          </td>          
+          </td>    
         </tr>
       </ng-template>
 
