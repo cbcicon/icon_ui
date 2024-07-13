@@ -110,15 +110,23 @@
               </ng-template>
             </p-cellEditor>
           </td>
-          <td [pEditableColumn]="item.itemType" pEditableColumnField="itemType" [style.pointer-events]="item.editing ? 'auto' : 'none'">
-            <p-cellEditor>
-              <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="item.itemType" />
-              </ng-template>
-              <ng-template pTemplate="output">
-                {{ item.itemType }}
-              </ng-template>
-            </p-cellEditor>
+          <td>
+            <div class="item-type-icons">
+              <div *ngIf="ri < 4" class="item-type-cheap" style="background-color: #B3C8CB;">
+                <i class="bi bi-box-seam" style="color: #004750;"></i>
+              </div>
+              <div *ngIf="ri >= 4 && ri < 6" class="item-type-cheap" style="background-color: #D1E9F6;">
+                <i class="bi bi-thermometer-snow" style="color: #1790D0;"></i>
+              </div>
+              <div *ngIf="ri >= 6 && ri<= 7" class="item-type-cheap" style="background-color: rgba(227, 96, 96, 0.325);">
+                <i class="bi bi-exclamation-triangle" style="color: red;"></i>
+              </div>              
+              <div *ngIf="ri >= 8" 
+                class="item-type-cheap" 
+                style="background-color: rgba(212, 252, 252, 1);">
+                <i class="bi bi-hourglass" style="color: rgba(0, 71, 80, 1);"></i>
+              </div>                
+            </div>
           </td>
           <td [pEditableColumn]="item.newItem" pEditableColumnField="newItem" [style.pointer-events]="item.editing ? 'auto' : 'none'">
             <p-cellEditor>

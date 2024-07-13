@@ -570,7 +570,7 @@ export class DataService {
         {
           "productNo": "MD-001",
           "componentName": "InvestigatorManual English",
-          "itemType": "B",
+          "itemType": "",
           "newitem":"",
           "kitvendor":"",
           "qtyNeededInitialShipment": 1,
@@ -598,7 +598,7 @@ export class DataService {
         {
           "productNo": "8169",
           "componentName": "Summary/CollectionGuideEnglish",
-          "itemType": "D",
+          "itemType": "",
           "newitem":"",
           "kitvendor":"",
           "qtyNeededInitialShipment": 1,
@@ -654,7 +654,7 @@ export class DataService {
         {
           "productNo": "135030Bag",
           "componentName": "Bagof1003mlTransferPipette",
-          "itemType": "A",
+          "itemType": "",
           "newitem":"",
           "kitvendor":"",
           "qtyNeededInitialShipment": 1,
@@ -668,7 +668,7 @@ export class DataService {
         {
           "productNo": "95.064.981",
           "componentName": "81Insert(Iml,1.8ml or2mlTube)CryoBoxw/Large95KPA...",
-          "itemType": "A",
+          "itemType": "",
           "newitem":"",
           "kitvendor":"",
           "qtyNeededInitialShipment": 12,
@@ -682,7 +682,7 @@ export class DataService {
         {
           "productNo": "243610",
           "componentName": "90mlYellow NoAdditivePlasticParterMedicalScrew To....",
-          "itemType": "g",
+          "itemType": "",
           "newitem":"",
           "kitvendor":"",
           "qtyNeededInitialShipment": 42,
