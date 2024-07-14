@@ -12,19 +12,47 @@
              [filterDelay]="0"
              styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm">
 
-      <ng-template pTemplate="header">
-        <tr>
-          <th>Actions</th>
-          <th>Country</th>
-          <th>Sites</th>
-          <th># Kit Component Supplied</th>
-          <th># Kit Component Pending</th>
-          <th>Date KOS</th>
-          <th>FPFV</th>
-          <th>Progress</th>
-        </tr>
-      </ng-template>
-
+             <ng-template pTemplate="header">
+              <tr>
+                  <th style="background-color: rgba(255, 248, 232, 1);">
+                      Actions
+                  </th>
+                  <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="country">
+                      <div class="flex justify-content-between align-items-center">
+                          Country
+                          <p-columnFilter type="text" field="country" display="menu" class="ml-auto"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th style="background-color: rgba(255, 248, 232, 1);">
+                      Sites
+                  </th>
+                  <th style="background-color: rgba(255, 248, 232, 1);">
+                      # Kit Component Supplied
+                  </th>
+                  <th style="background-color: rgba(255, 248, 232, 1);">
+                      # Kit Component Pending
+                  </th>
+                  <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="date_kos">
+                      <div class="flex justify-content-between align-items-center">
+                          Date KOS
+                          <p-columnFilter type="text" field="date_kos" display="menu" class="ml-auto"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="fpfv">
+                      <div class="flex justify-content-between align-items-center">
+                          FPFV
+                          <p-columnFilter type="text" field="fpfv" display="menu" class="ml-auto"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="progress">
+                      <div class="flex justify-content-between align-items-center">
+                          Progress
+                          <p-columnFilter type="text" field="progress" display="menu" class="ml-auto"></p-columnFilter>
+                      </div>
+                  </th>
+              </tr>
+          </ng-template>
+          
       <ng-template pTemplate="body" let-country let-ri="rowIndex">
         <tr [pEditableRow]="country" style="height: 27px;">
           <td>

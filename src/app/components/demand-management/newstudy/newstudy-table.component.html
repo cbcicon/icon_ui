@@ -38,95 +38,96 @@
         </ng-template>
         <ng-template pTemplate="header">
             <tr>
-                <th pSortableColumn="action-item" style="min-width: 5rem">
+                <th pSortableColumn="action-item" style="min-width: 5rem; background-color: rgba(255, 248, 232, 1);">
                     <div class="flex justify-content-between align-items-center">
                         Action Item
                     </div>
                 </th>
-                <th pSortableColumn="sponsor" style="min-width: 12rem">
+                <th pSortableColumn="sponsor" style="min-width: 12rem; background-color: rgba(255, 248, 232, 1);">
                     <div class="flex justify-content-between align-items-center">
                         Sponsor
                         <p-columnFilter type="text" field="sponsor" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
-                <th pSortableColumn="protocol_id" style="min-width: 8rem">
+                <th pSortableColumn="protocol_id" style="min-width: 8rem; background-color: rgba(255, 248, 232, 1);">
                     <div class="flex justify-content-between align-items-center">
                         Protocol ID
                         <p-columnFilter type="text" field="protocol_id" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
-                <th pSortableColumn="study_type" style="min-width: 8rem">
+                <th pSortableColumn="study_type" style="min-width: 8rem; background-color: rgba(255, 248, 232, 1);">
                     <div class="flex justify-content-between align-items-center">
                         Study Type
                         <p-columnFilter type="text" field="study_type" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
-                <th pSortableColumn="countries">
+                <th pSortableColumn="countries" style="background-color: rgba(255, 248, 232, 1);">
                     <div class="flex justify-content-between align-items-center">
                         Countries
                         <p-columnFilter type="text" field="countries" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
-                <th pSortableColumn="sites">
+                <th pSortableColumn="sites" style="background-color: rgba(255, 248, 232, 1);">
                     <div class="flex justify-content-between align-items-center">
                         Sites
                         <p-columnFilter type="text" field="sites" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
-                <th pSortableColumn="sites_remaining">
+                <th pSortableColumn="sites_remaining" style="background-color: rgba(255, 248, 232, 1);">
                     <div class="flex justify-content-between align-items-center">
                         Sites Remaining
                         <p-columnFilter type="text" field="sites_remaining" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
-                <th pSortableColumn="subjects_screened">
+                <th pSortableColumn="subjects_screened" style="background-color: rgba(255, 248, 232, 1);">
                     <div class="flex justify-content-between align-items-center">
                         Subjects Screened
                         <p-columnFilter type="text" field="subjects_screened" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
-                <th pSortableColumn="qty_of_kits_study">
+                <th pSortableColumn="qty_of_kits_study" style="background-color: rgba(255, 248, 232, 1);">
                     <div class="flex justify-content-between align-items-center">
                         Qty of Kits(Study)
                         <p-columnFilter type="text" field="qty_of_kits_study" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
-                <th pSortableColumn="qty_of_kits_initial">
+                <th pSortableColumn="qty_of_kits_initial" style="background-color: rgba(255, 248, 232, 1);">
                     <div class="flex justify-content-between align-items-center">
                         Qty of Kits(Initial)
                         <p-columnFilter type="text" field="qty_of_kits_initial" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
-                <th pSortableColumn="visits">
+                <th pSortableColumn="visits" style="background-color: rgba(255, 248, 232, 1);">
                     <div class="flex justify-content-between align-items-center">
                         Visits
                         <p-columnFilter type="text" field="visits" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
-                <th pSortableColumn="pre_label_y">
+                <th pSortableColumn="pre_label_y" style="background-color: rgba(255, 248, 232, 1);">
                     <div class="flex justify-content-between align-items-center">
                         Pre-Label
                         <p-columnFilter type="text" field="pre_label_y" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
-                <th pSortableColumn="production_location">
+                <th pSortableColumn="production_location" style="background-color: rgba(255, 248, 232, 1);">
                     <div class="flex justify-content-between align-items-center">
                         Production Location
                         <p-columnFilter type="text" field="production_location" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
-                <th pSortableColumn="date_kos" style="min-width: 7rem">
+                <th pSortableColumn="date_kos" style="min-width: 7rem; background-color: rgba(255, 248, 232, 1);">
                     <div class="flex justify-content-between align-items-center">
                         Date KOS
                         <p-columnFilter type="text" field="date_kos" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
-                <th pSortableColumn="revenue_gen">
+                <th pSortableColumn="revenue_gen" style="background-color: rgba(255, 248, 232, 1);">
                     <div class="flex justify-content-between align-items-center">
                         Revenue Gen
                         <p-columnFilter type="text" field="revenue_gen" display="menu" class="ml-auto"></p-columnFilter>
                     </div>
                 </th>
+                
                 <ng-container *ngFor="let item of selectedItems">
 					<th pSortableColumn="{{ item.field }}" style="min-width: 10rem">
 						<div class="flex justify-content-between align-items-center">
