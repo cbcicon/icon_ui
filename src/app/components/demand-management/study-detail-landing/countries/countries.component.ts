@@ -35,13 +35,18 @@ export class CountriesComponent implements OnInit {
     this.countries[index] = this.dataService.getCountries()[index]; 
   }
 
-  getTextColor(value: number): string {
-    if (value === 0) {
-      return 'rgba(34, 34, 34, 1)'; // Dark gray for 0 value
-    } else {
-      return 'rgba(241, 92, 97, 1)'; // Red for non-zero values
-    }
-  }
+  // getTextColor(value: number): string {
+  //   if (value === 0) {
+  //     return 'rgba(34, 34, 34, 1)'; // Dark gray for 0 value
+  //   } else {
+  //     return 'rgba(241, 92, 97, 1)'; // Red for non-zero values
+  //   }
+  // }
+
+  getTextColor(value: any): string {
+    const numericValue = Number(value);
+    return numericValue === 0 ? 'rgba(34, 34, 34, 1)' : 'rgba(241, 92, 97, 1)';
+  }   
 
   DisplayIcon(country: any, type: string): boolean {
     const index = this.countries.indexOf(country);
