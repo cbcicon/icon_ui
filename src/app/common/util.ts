@@ -90,7 +90,25 @@ export class UtilService {
   }
 
 
+  // check expiry date 
 
+currentDate: Date = new Date()
+isExpired(expiryDate: Date): boolean {
+  return expiryDate < this.currentDate;
+}
+
+
+// min max value comparison function
+  minValue: number = 5;
+  maxValue: number = 10;
+
+  getMinValue(a: number, b: number): number {
+    return Math.min(a, b);
+  }
+
+  getMaxValue(a: number, b: number): number {
+    return Math.max(a, b);
+  }
   
 
 }
