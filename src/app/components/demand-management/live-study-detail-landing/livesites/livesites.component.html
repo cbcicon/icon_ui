@@ -16,16 +16,63 @@
   
         <ng-template pTemplate="header">
           <tr>
-            <th>Actions</th>
-            <th>Site</th>
-            <th>Country</th>
-            <th>City</th>
-            <th>Region</th>
-            <th>Qty Required</th>
-            <th>Qty Remaining</th>
-            <th>Date KOS</th>
-            <th>Study Start Date</th>
-            <th>Progress</th>
+            <th style="background-color: rgba(255, 248, 232, 1);">
+              Actions
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="site">
+              <div class="flex justify-content-between align-items-center">
+                  Site
+                  <p-columnFilter type="text" field="site" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="country">
+              <div class="flex justify-content-between align-items-center">
+                  Country
+                  <p-columnFilter type="text" field="country" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="city">
+              <div class="flex justify-content-between align-items-center">
+                  City
+                  <p-columnFilter type="text" field="city" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="region">
+              <div class="flex justify-content-between align-items-center">
+                  Region
+                  <p-columnFilter type="text" field="region" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="QtyRequired">
+              <div class="flex justify-content-between align-items-center">
+                  Qty Required
+                  <p-columnFilter type="text" field="QtyRequired" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="QtyRemaining">
+              <div class="flex justify-content-between align-items-center">
+                  Qty Remaining
+                  <p-columnFilter type="text" field="QtyRemaining" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="DateKOS">
+              <div class="flex justify-content-between align-items-center">
+                  Date KOS
+                  <p-columnFilter type="date" field="DateKOS" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="StudyStartDate">
+              <div class="flex justify-content-between align-items-center">
+                  Study Start Date
+                  <p-columnFilter type="date" field="StudyStartDate" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="progress">
+              <div class="flex justify-content-between align-items-center">
+                  Progress
+                  <p-columnFilter type="text" field="progress" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
           </tr>
         </ng-template>
   
@@ -44,7 +91,13 @@
             <td>{{ site.QtyRemaining }}</td>
             <td>{{ site.DateKOS }}</td>
             <td>{{ site.StudyStartDate }}</td>
-            <td>{{ site.Progress }}</td>
+            <td>
+              <div class="progress-bar" [ngStyle]="getProgressBarStyle()">
+                <span class="progress-value">
+                  {{ site.Progress }}<ng-container *ngIf="shouldDisplayPercentage()">%</ng-container>
+                </span>
+              </div>
+            </td>     
           </tr>
         </ng-template>
   

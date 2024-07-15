@@ -14,21 +14,93 @@
 
             <ng-template pTemplate="header">
                 <tr>
-                    <th>Actions</th>
-                    <th>Work Order</th>
-                    <th>Production Location</th>
-                    <th>Order Type</th>
-                    <th>Site</th>
-                    <th>Kits</th>
-                    <th>Recipient</th>
-                    <th>Status</th>
-                    <th>Days Created</th>
-                    <th>Multi Label</th>
-                    <th>Created Date</th>
-                    <th>Due Date</th>
-                    <th>Estimated Shipping Date</th>
-                    <th>Assigned To</th>
-                    <th>PM Approval</th>
+                    <th style="background-color: rgba(255, 248, 232, 1);">
+                        Actions
+                    </th>
+                    <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="WorkOrder">
+                        <div class="flex justify-content-between align-items-center">
+                            Work Order #
+                            <p-columnFilter type="text" field="WorkOrder" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                      </th>
+                      <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="ProductionLocation">
+                        <div class="flex justify-content-between align-items-center">
+                            Production Location
+                            <p-columnFilter type="text" field="ProductionLocation" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                      </th>
+                      <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="OrderType">
+                        <div class="flex justify-content-between align-items-center">
+                            Order Type
+                            <p-columnFilter type="text" field="OrderType" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                      </th>
+                      <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="Site">
+                        <div class="flex justify-content-between align-items-center">
+                            Site #
+                            <p-columnFilter type="text" field="Site" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                      </th>
+                      <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="Kits">
+                        <div class="flex justify-content-between align-items-center">
+                           # Kits
+                            <p-columnFilter type="text" field="Kits" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                      </th>
+                      <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="Recipient">
+                        <div class="flex justify-content-between align-items-center">
+                            Recipient
+                            <p-columnFilter type="text" field="Recipient" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                      </th>
+                      <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="Status">
+                        <div class="flex justify-content-between align-items-center">
+                            Status
+                            <p-columnFilter type="text" field="Status" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                      </th>
+                      <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="DaysCreated">
+                        <div class="flex justify-content-between align-items-center">
+                            Days Created
+                            <p-columnFilter type="text" field="DaysCreated" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                      </th>
+                      <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="MultiLabel">
+                        <div class="flex justify-content-between align-items-center">
+                            Multi Label
+                            <p-columnFilter type="text" field="MultiLabel" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                      </th>
+                      <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="CreatedDate">
+                        <div class="flex justify-content-between align-items-center">
+                            Created Date
+                            <p-columnFilter type="date" field="CreatedDate" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                      </th>
+                      <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="DueDate">
+                        <div class="flex justify-content-between align-items-center">
+                            Due Date
+                            <p-columnFilter type="date" field="DueDate" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                      </th>
+                      <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="EstShippingDate">
+                        <div class="flex justify-content-between align-items-center">
+                            Est. Shipping Date
+                            <p-columnFilter type="date" field="EstShippingDate" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                      </th>
+                      <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="AssignedTo">
+                        <div class="flex justify-content-between align-items-center">
+                            Assigned To
+                            <p-columnFilter type="text" field="AssignedTo" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                      </th>
+                      <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="PMApproval">
+                        <div class="flex justify-content-between align-items-center">
+                            PM Approval
+                            <p-columnFilter type="text" field="PMApproval" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                      </th>
                 </tr>
             </ng-template>
 

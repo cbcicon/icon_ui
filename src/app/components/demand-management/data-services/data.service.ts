@@ -1253,7 +1253,7 @@ export class DataService {
         "#KitPending": "80",
         "DateKOS": "15Mar2024",
         "FPFV": "15Mar2024",
-        "Progress": "50%"
+        "Progress": "50"
       },
       {
         "Actions": "",
@@ -1263,7 +1263,7 @@ export class DataService {
         "#KitPending": "30",
         "DateKOS": "14Feb2024",
         "FPFV": "14Feb2024",
-        "Progress": "20%"
+        "Progress": "50"
       },
       {
         "Actions": "",
@@ -1273,7 +1273,7 @@ export class DataService {
         "#KitPending": "0",
         "DateKOS": "15Mar2024",
         "FPFV": "15Mar2024",
-        "Progress": "100%"
+        "Progress": "50"
       },
       {
         "Actions": "",
@@ -1283,7 +1283,7 @@ export class DataService {
         "#KitPending": "90",
         "DateKOS": "15May2024",
         "FPFV": "15May2024",
-        "Progress": "40%"
+        "Progress": "50"
       },
       {
         "Actions": "",
@@ -1293,7 +1293,7 @@ export class DataService {
         "#KitPending": "95",
         "DateKOS": "15May2024",
         "FPFV": "15May2024",
-        "Progress": "85%"
+        "Progress": "50"
       }
     ];
   }
@@ -1310,7 +1310,7 @@ export class DataService {
         "QtyRemaining": "3",
         "DateKOS": "15Mar2024",
         "StudyStartDate": "15Mar2024",
-        "Progress": "50%"
+        "Progress": "50"
       },
       {
         "Actions": "",
@@ -1322,7 +1322,7 @@ export class DataService {
         "QtyRemaining": "2",
         "DateKOS": "14Mar2024",
         "StudyStartDate": "14Mar2024",
-        "Progress": "20%"
+        "Progress": "50"
       },
       {
         "Actions": "",
@@ -1334,7 +1334,7 @@ export class DataService {
         "QtyRemaining": "3",
         "DateKOS": "15Mar2024",
         "StudyStartDate": "15Mar2024",
-        "Progress":"50%"
+        "Progress":"50"
       },
       {
         "Actions": "",
@@ -1346,7 +1346,7 @@ export class DataService {
         "QtyRemaining": "3",
         "DateKOS": "15Mar2024",
         "StudyStartDate": "15Mar2024",
-        "Progress": "40%"
+        "Progress": "50"
       },
       {
         "Actions": "",
@@ -1358,7 +1358,7 @@ export class DataService {
         "QtyRemaining": "2",
         "DateKOS": "15Mar2024",
         "StudyStartDate": "15Mar2024",
-        "Progress": "85%"
+        "Progress": "50"
       }
     ];
   }
@@ -1647,7 +1647,7 @@ export class DataService {
         "ComponentType": "Container",
         "BOMQty": "5",
         "TotalQty": "20",
-        "ExpiryDate": "15Jan2024",
+        "QtyEarlyExpiry": "1000",
 		    "OnStock":"3452",
 		    "Ringfence":"3452",
 		    "Replacement":"Yes"
@@ -1660,7 +1660,7 @@ export class DataService {
         "ComponentType": "Other",
         "BOMQty": "6",
         "TotalQty": "24",
-        "ExpiryDate": "15Jan2024",
+        "QtyEarlyExpiry": "200",
 		    "OnStock":"4564",
 		    "Ringfence":"4564",
 		    "Replacement":"Yes"
@@ -1673,7 +1673,7 @@ export class DataService {
         "ComponentType": "Bundle",
         "BOMQty": "4",
         "TotalQty": "16",
-        "ExpiryDate": "13Feb2024",
+        "QtyEarlyExpiry": "400",
 		    "OnStock":"34565",
 		    "Ringfence":"34565",
 		    "Replacement":"No"
@@ -1686,7 +1686,7 @@ export class DataService {
         "ComponentType": "Document",
         "BOMQty": "5",
         "TotalQty": "20",
-        "ExpiryDate": "09Feb2024",
+        "QtyEarlyExpiry": "100",
 		    "OnStock":"34535",
 		    "Ringfence":"34535",
 		    "Replacement":"Yes"
@@ -1699,7 +1699,7 @@ export class DataService {
         "ComponentType": "Bundle",
         "BOMQty": "7",
         "TotalQty": "28",
-        "ExpiryDate": "09Mar2024",
+        "QtyEarlyExpiry": "200",
 		    "OnStock":"43232",
 		    "Ringfence":"43232",
 		    "Replacement":"No"
@@ -1712,7 +1712,7 @@ export class DataService {
         "ComponentType": "Other",
         "BOMQty": "10",
         "TotalQty": "40",
-        "ExpiryDate": "13Mar2024",
+        "QtyEarlyExpiry": "500",
 		    "OnStock":"76867",
 		    "Ringfence":"76867",
 		    "Replacement":"Yes"
@@ -1725,7 +1725,7 @@ export class DataService {
         "ComponentType": "Container",
         "BOMQty": "3",
         "TotalQty": "12",
-        "ExpiryDate": "13Apr2024",
+        "QtyEarlyExpiry": "1000",
 		    "OnStock":"23445",
 		    "Ringfence":"23445",
 		    "Replacement":"Yes"

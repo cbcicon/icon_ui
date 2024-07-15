@@ -28,3 +28,32 @@
     display: flex;
     align-items: center; /* ensure text is centered */
 }
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+    height: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(to right, rgba(65, 179, 78, 1) 50%, rgba(225, 225, 226, 1) 50%);
+    width: 150.56px; // Adjust width as needed
+  }
+  
+  .progress-value {
+    width: 75.28px;
+    height: 15px;
+    opacity: 1;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0.4px;
+    text-align: center;
+    color: var(--Base-White, rgba(255, 255, 255, 1));
+    position: absolute;
+    top: 50%;
+    left: 25%; /* Adjusted to be in the middle of the first 50% of the progress bar */
+    transform: translate(-50%, -50%);
+  }
+  

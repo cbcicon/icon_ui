@@ -14,14 +14,51 @@
   
         <ng-template pTemplate="header">
           <tr>
-            <th>Actions</th>
-            <th>Country</th>
-            <th>Sites</th>
-            <th># Kit Supplied</th>
-            <th># Kit Pending</th>
-            <th>Date KOS</th>
-            <th>FPFV</th>
-            <th>Progress</th>
+            <th style="background-color: rgba(255, 248, 232, 1);">
+              Actions
+          </th>
+          <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="country">
+            <div class="flex justify-content-between align-items-center">
+                Country
+                <p-columnFilter type="text" field="country" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+          <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="sites">
+            <div class="flex justify-content-between align-items-center">
+                Sites
+                <p-columnFilter type="text" field="sites" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+          <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="#KitSupplied">
+            <div class="flex justify-content-between align-items-center">
+                # Kit Supplied
+                <p-columnFilter type="text" field="#KitSupplied" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+          <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="#KitPending">
+            <div class="flex justify-content-between align-items-center">
+                # Kit Pending
+                <p-columnFilter type="text" field="#KitPending" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+          <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="DateKOS">
+            <div class="flex justify-content-between align-items-center">
+                Date KOS
+                <p-columnFilter type="date" field="DateKOS" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+          <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="FPFV">
+            <div class="flex justify-content-between align-items-center">
+                FPFV
+                <p-columnFilter type="date" field="FPFV" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+          <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="progress">
+            <div class="flex justify-content-between align-items-center">
+                Progress
+                <p-columnFilter type="text" field="progress" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+        </th>
           </tr>
         </ng-template>
   
@@ -51,8 +88,12 @@
               {{ country.FPFV }}
             </td>
             <td>
-              {{ country.Progress }}
-            </td>
+              <div class="progress-bar" [ngStyle]="getProgressBarStyle()">
+                <span class="progress-value">
+                  {{ country.Progress }}<ng-container *ngIf="shouldDisplayPercentage()">%</ng-container>
+                </span>
+              </div>
+            </td>                     
           </tr>
         </ng-template>
   
