@@ -33,19 +33,19 @@
 
   <ng-template pTemplate="header">
     <tr>
-      <th pSortableColumn="action-item">
+      <th class="po-header" pSortableColumn="action-item">
         <div class="flex justify-content-between align-items-center">
           Action 
         </div>
       </th>
 
-      <th pSortableColumn="poNo">
+      <th  class="po-header" pSortableColumn="poNo">
         <div class="flex justify-content-between align-items-center">
            PO#
           <p-columnFilter type="text" field="poNo" display="menu" class="ml-auto"></p-columnFilter>
         </div>
       </th>
-      <th pSortableColumn="productionLocationNumber">
+      <th class="po-header" pSortableColumn="productionLocationNumber">
         <div class="flex justify-content-between align-items-center">
           Production Location
           <p-columnFilter type="text" field="productionLocationNumber" display="menu"
@@ -53,21 +53,21 @@
         </div>
       </th>
 
-      <th pSortableColumn="status">
+      <th class="po-header" pSortableColumn="status">
         <div class="flex justify-content-between align-items-center">
           Status
           <p-columnFilter type="text" field="status" display="menu" class="ml-auto"></p-columnFilter>
         </div>
       </th>
 
-      <th pSortableColumn="sponsor">
+      <th class="po-header" pSortableColumn="sponsor">
         <div class="flex justify-content-between align-items-center">
           Sponsor
           <p-columnFilter type="text" field="sponsor" display="menu" class="ml-auto"></p-columnFilter>
         </div>
       </th>
 
-      <th pSortableColumn="sponsor">
+      <th class="po-header" pSortableColumn="sponsor">
         <div class="flex justify-content-between align-items-center">
           Manufacture
           <p-columnFilter type="text" field="sponsor" display="menu" class="ml-auto"></p-columnFilter>
@@ -75,7 +75,7 @@
       </th>
       
 
-      <th pSortableColumn="qtyOrdered">
+      <th class="po-header" pSortableColumn="qtyOrdered">
         <div class="flex justify-content-between align-items-center">
           qtyOrdered
           <p-columnFilter type="text" field="qtyOrdered" display="menu"
@@ -83,14 +83,14 @@
         </div>
       </th>
 
-      <th pSortableColumn="qtyReceived">
+      <th class="po-header" pSortableColumn="qtyReceived">
         <div class="flex justify-content-between align-items-center">
           Qty Recieved
           <p-columnFilter type="text" field="qtyReceived" display="menu" class="ml-auto"></p-columnFilter>
         </div>
       </th>
 
-      <th pSortableColumn="qtyOpen" style="min-width: 10rem">
+      <th class="po-header" pSortableColumn="qtyOpen" style="min-width: 10rem">
         <div class="flex justify-content-between align-items-center">
           Qty Open
 
@@ -98,14 +98,14 @@
         </div>
       </th>
 
-      <th pSortableColumn="DUE_DATE" style="min-width: 10rem">
+      <th class="po-header" pSortableColumn="DUE_DATE" style="min-width: 10rem">
         <div class="flex justify-content-between align-items-center">
           Price
           <p-columnFilter type="date" field="DUE_DATE" display="menu" class="ml-auto"></p-columnFilter>
         </div>
       </th>
 
-      <th pSortableColumn="DUE_DATE" style="min-width: 10rem">
+      <th class="po-header" pSortableColumn="DUE_DATE" style="min-width: 10rem">
         <div class="flex justify-content-between align-items-center">
           Lead Time (Days)
           <p-columnFilter type="date" field="DUE_DATE" display="menu" class="ml-auto"></p-columnFilter>
@@ -114,7 +114,7 @@
 
 
 
-      <th pSortableColumn="orderedDate" style="min-width: 10rem">
+      <th class="po-header" pSortableColumn="orderedDate" style="min-width: 10rem">
         <div class="flex justify-content-between align-items-center">
           Ordered Date
           <p-columnFilter type="numeric" field="orderedDate" display="menu" currency="USD"
@@ -122,7 +122,7 @@
         </div>
       </th>
 
-      <th pSortableColumn="dateDue" style="min-width: 10rem">
+      <th class="po-header" pSortableColumn="dateDue" style="min-width: 10rem">
         <div class="flex justify-content-between align-items-center">
           Due Date
           <p-columnFilter type="numeric" field="dateDue" display="menu" currency="USD"

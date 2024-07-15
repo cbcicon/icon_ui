@@ -16,3 +16,11 @@ table {
     padding: 8px;
   }
   
+
+  .replacement-main-card::ng-deep.p-dropdown {
+    border: none;
+  }
+
+  .replacement-header{
+    background: #FFF8E8;
+  }

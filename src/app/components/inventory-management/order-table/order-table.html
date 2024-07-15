@@ -10,7 +10,7 @@
 		[tableStyle]="{'min-width': '100vw'}"
 		styleClass={{selectedSize}} [exportHeader]="'customExportHeader'">
 		<ng-template pTemplate="caption">
-			<div class="table-header d-flex justify-content-between">
+			<div class="d-flex justify-content-between">
 				<div>
 					<div class="filter-sm-circle-btn" (click)="handleDateShortener('yearly')"
 						[class.selected]="selectedInterval === 'yearly'">A</div>
@@ -49,21 +49,21 @@
 			</div>
 		</ng-template>
 		<ng-template pTemplate="header">
-			<tr>
+			<tr  >
 				
-				<th pSortableColumn="action-item">
+				<th pSortableColumn="action-item" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Action 
 					</div>
 				</th>
 
-				<th pSortableColumn="item">
+				<th pSortableColumn="item" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Item
 						<p-columnFilter type="text" field="item" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
-				<th pSortableColumn="itemDescription">
+				<th pSortableColumn="itemDescription" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Item Description
 						<p-columnFilter type="text" field="itemDescription" display="menu"
@@ -71,21 +71,21 @@
 					</div>
 				</th>
 
-				<th pSortableColumn="demand">
+				<th pSortableColumn="demand" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Demand
 						<p-columnFilter type="text" field="demand" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="onStock">
+				<th pSortableColumn="onStock" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						On Stock
 						<p-columnFilter type="text" field="onStock" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="availability">
+				<th pSortableColumn="availability" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Availablity
 						<p-columnFilter type="text" field="availability" display="menu"
@@ -93,14 +93,14 @@
 					</div>
 				</th>
 
-				<th pSortableColumn="openPurchaseOrder">
+				<th pSortableColumn="openPurchaseOrder" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Order Status
 						<p-columnFilter type="text" field="openPurchaseOrder" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="earlyExpiryDate" style="min-width: 10rem">
+				<th pSortableColumn="earlyExpiryDate" style="min-width: 10rem" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Early Expire Date
 
@@ -108,28 +108,28 @@
 					</div>
 				</th>
 
-				<th pSortableColumn="consumption" style="min-width: 10rem">
+				<th pSortableColumn="consumption" style="min-width: 10rem" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Consumption
 
 						<p-columnFilter type="date" field="consumption" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
-				<th pSortableColumn="excessStock" style="min-width: 10rem">
+				<th pSortableColumn="excessStock" style="min-width: 10rem" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Excess Stock
 						<p-columnFilter type="date" field="excessStock" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="replacement" style="min-width: 10rem">
+				<th pSortableColumn="replacement" style="min-width: 10rem" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Replacement 
 						<p-columnFilter type="date" field="replacement" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="scrap" style="min-width: 10rem">
+				<th pSortableColumn="scrap" style="min-width: 10rem" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Scrap
 
@@ -139,7 +139,7 @@
 				</th>
 		
 
-				<th pSortableColumn="itemType" style="min-width: 10rem">
+				<th pSortableColumn="itemType" style="min-width: 10rem" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Item Type
 
@@ -150,7 +150,7 @@
 
 				<ng-container *ngFor="let item of tableHeaderItem">
 					<ng-container *ngIf="item.active">
-						<th pSortableColumn="{{ item.sortableColumn }}" style="min-width: 10rem">
+						<th pSortableColumn="{{ item.sortableColumn }}" style="min-width: 10rem" class="main-table-header">
 							<div class="flex justify-content-between align-items-center">
 								{{ item.columnName }}
 								<p-columnFilter *ngIf="item.active" type="numeric" field="balance" display="menu"
@@ -207,7 +207,7 @@
 				</td>
 				  
 				  <!-- onStock field -->
-				<td [style.color]="inventoryTableData['onStock'] < inventoryTableData['demand'] ? 'red' : 'green'">
+				<td  [style.color]="inventoryTableData['onStock'] < inventoryTableData['demand'] ? 'red' : 'green'">
 					{{ inventoryTableData['onStock'] }}
 				</td>
 
