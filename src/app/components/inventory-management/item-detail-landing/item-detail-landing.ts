@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-item-detail-landing',
@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
 })
 export class ItemDetailLandingComponent {
 
+ @Input() totalAcessStock:any
+ @Input() scrapValueEach:any
+ @Input() itemData:any
+ 
 
   items: any;
 

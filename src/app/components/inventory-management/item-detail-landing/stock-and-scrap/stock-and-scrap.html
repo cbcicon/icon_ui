@@ -2,12 +2,13 @@
 
   <h4 class="text-start"> Stock & Scrap </h4>
 
+
   <p-divider></p-divider>
     <div class="d-flex align-items-start">
-      <app-block-tag [blockTagStyle]="'blockTagStyle'" [blockData]="{label:'Total Ring Fenced ' , qtyNum:'15000'}" ></app-block-tag>
-      <app-block-tag [blockTagStyle]="'blockTagStyle'" [blockData]="{label:'Total Replacement Excess Stock' , qtyNum:'18000'}" ></app-block-tag>
-      <app-block-tag [blockTagStyle]="'blockTagStyleDanger'" [blockData]="{label:'Scrap Volume' , qtyNum:'11'}" ></app-block-tag>
-      <app-block-tag [blockTagStyle]="'blockTagStyleDanger'" [blockData]="{label:'Scrap Volume' , qtyNum:'1100'}" ></app-block-tag>
+      <app-block-tag [blockTagStyle]="'blockTagStyleDanger'" [blockData]="{label:'Total Ring Fenced ' , qtyNum:totalRingFenced}" ></app-block-tag>
+      <app-block-tag [blockTagStyle]="'blockTagStyle'" [blockData]="{label:'Total Replacement Excess Stock' , qtyNum:totalAcessStock}" ></app-block-tag>
+      <app-block-tag [blockTagStyle]="'blockTagStyle'" [blockData]="{label:'Scrap Volume' , qtyNum:totalVolumeAndScrap }" ></app-block-tag>
+      <app-block-tag [blockTagStyle]="'blockTagStyleDanger'" [blockData]="{label:'Scrap Value' , qtyNum: scrapValue}" ></app-block-tag>
 
     </div>
 
@@ -43,16 +44,18 @@
               Total Qty
             </div>
           </th>
-  
-          <th pSortableColumn="DEMAND"  rowspan="2">
-          fas
-          </th>
+   
   
           <th pSortableColumn="ON_STOCK" colspan="3">
             <div class="text-center">
               Expiry
             </div>
           </th>
+
+          
+          <th pSortableColumn="DEMAND"  rowspan="2">
+             Min
+            </th>
   
           <th pSortableColumn="AVAILABILITY"  rowspan="2">
             <div class="flex justify-content-between align-items-center">
@@ -74,7 +77,6 @@
          
           <th class="text-center">Category</th>
           <th class="text-center">Days</th>
-          
           <th class="text-center">Date</th>
         
         </tr>
@@ -94,12 +96,30 @@
           <td >{{ stockAndScrap.location }}</td>  
           <td >{{stockAndScrap.lotNo  }}</td>
           <td>{{stockAndScrap.totalQty}}</td>
-           <td>{{stockAndScrap.expiryCategory}}</td>
+
+           <td style="font-weight: 500;" [style.background-color]="getExpireCategoryBgColor(stockAndScrap.expiryCategory)" >{{stockAndScrap.expiryCategory}}</td>
+
            <td>{{stockAndScrap.expiryDays}}</td>
-           <td>{{stockAndScrap.expiryDate}}</td>
+
+           <td>
+
+            <ng-container *ngIf="stockAndScrap?.expiryDays; else expiredBlock">
+              <span *ngIf="util.isExpired(stockAndScrap.expiryDays)">
+                {{ util.formatDate(stockAndScrap.expiryDays) }}
+              </span>
+            </ng-container>
+          
+            <ng-template #expiredBlock>
+              <span style="color: red;">
+                {{ util.formatDate(stockAndScrap?.expiryDays) }}
+              </span>
+            </ng-template>
+          </td>
+
+           
            <td>{{stockAndScrap.min}}</td>
            <td>{{stockAndScrap.max}}</td>
-           <td>{{stockAndScrap.reOrderDate}}</td>
+           <td>{{ util.formatDate(stockAndScrap?.reOrderDate) }}</td>
           
         </tr>
       </ng-template>

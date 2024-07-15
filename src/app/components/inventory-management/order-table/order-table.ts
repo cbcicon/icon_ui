@@ -45,6 +45,7 @@ chatRightSideBar = false
 inventoryChartData: any;
 options: any;
 
+totalAcessStock:number = 0;
 
 
 @ViewChild('sidebarRef') sidebarRef!: Sidebar;
@@ -57,22 +58,33 @@ controlRow = 10;
 changeExpandButton = false
 commentText: string = ''
 chatData :any
+ringFenceData:any
+ringFenceMainData:any
 
 selectedItems!: any[];
 dateFilterData :any
 
+scrapValueEach:any
 
 constructor( public tableDataService:TableDataService  ,  private invetoryServices: DataService  , public dialogService: DialogService , public util:UtilService ,  public dataShortenerService:DataShortenerService) {}
-
+itemData:any
 
 ngOnInit() {
-    this.loading = true;
+ this.loading = true;
 
 this.componentInitilization()
 
 this.tableHeaderItem = this.invetoryServices.additionalHeaderInventoryTable
   
 this.inventoryChartInitialise()
+
+this.tableDataService.getRingFenceData().subscribe((res:any) => {
+  this.ringFenceData = res
+})
+this.tableDataService.getRingFenceMainData().subscribe((res:any) => {
+  this.ringFenceMainData = res
+})
+
 
 
 }
@@ -88,14 +100,14 @@ componentInitilization(){
         this.totalRecords = res.length;
         this.rowsPerPageOptions = this.divideIntoMultiplesOfTen(this.totalRecords)
         this.loading = false;
+        this.totalAcessStock = res.reduce((sum:any, item:any) => sum + item.onStock, 0);
+      
       },
       (error) => {
           console.error('Error fetching inventory table data:', error);
           this.loading = false;
       }
   );
-
- ;
 }
 
 
@@ -225,7 +237,11 @@ saveAsExcelFile(buffer: any, fileName: string): void {
   FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
 }
 
-hanldeBelowContent(){
+hanldeBelowContent(scrapVal:any , item:any){
+
+  this.itemData = item
+
+   this.scrapValueEach =  scrapVal
   this.showDetailContent = !this.showDetailContent
 }
 
@@ -267,10 +283,13 @@ handleDateShortener(datetype: string): void {
   }
 }
 
-chartShow = false
+chartShow = false;
+
 
 handleChartShow(){
-  this.chartShow = !this.chartShow
+
+ this.chartShow = !this.chartShow
+ 
 }
 
 
@@ -380,9 +399,27 @@ inventoryChartInitialise(){
 }
 
 
-currentDate: Date = new Date()
-isExpired(expiryDate: Date): boolean {
-  return expiryDate < this.currentDate;
+handleInventoryAvailability(onStock:any , itemId:any){
+
+  let qtyRingFencedVal = 0;
+
+  if(this.ringFenceMainData){
+
+    const ringFencedItem = this.ringFenceMainData.find((x: any) => x.item === itemId);
+  
+    if (ringFencedItem) {
+      qtyRingFencedVal = ringFencedItem.qtyRingFenced;
+    }
+  }
+
+  return onStock - qtyRingFencedVal;
 }
+
+
+
+
+
+
+
 
 }

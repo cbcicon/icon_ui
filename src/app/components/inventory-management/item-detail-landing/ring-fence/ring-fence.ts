@@ -2,6 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular
 import { DataService } from '../../data-services/data.service';
 import { Sidebar } from 'primeng/sidebar';
 import { TableDataService } from '../../../../common/table-data/table-data.service';
+import { UtilService } from '../../../../common/util';
 
 @Component({
   selector: 'app-ring-fence',
@@ -12,7 +13,7 @@ export class RingFenceComponent implements OnInit  {
 
   chartActive = false;
 
-  constructor(private dataService: DataService , public tableDataServices:TableDataService ) {}
+  constructor( public tableDataServices:TableDataService , public util:UtilService ) {}
 
    ringFenceData :any
    loading: boolean = true
@@ -161,13 +162,14 @@ hideShowChart(){
   this.chartActive = !this.chartActive
 }
 
-calculateCustomerTotal(location: string) {
+calculateCustomerTotal(location: string , field:any) {
   let total = 0;
+console.log("testRak : " , this.ringFenceData);
 
   if (this.ringFenceData) {
       for (let customer of this.ringFenceData) {
           if (customer.location === location) {
-              total = total + customer.totaL_QTY;
+              total = total + customer[field];
           }
       }
   }

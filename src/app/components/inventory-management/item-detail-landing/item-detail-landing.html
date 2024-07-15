@@ -19,10 +19,10 @@
   <div class="col-md-11 mt-4 activate-component" >
 
     <div [ngSwitch]="activeComponent">
-      <div *ngSwitchCase="'stock-and-scrap'"><app-stock-and-scrap></app-stock-and-scrap></div>
+      <div *ngSwitchCase="'stock-and-scrap'"><app-stock-and-scrap [scrapValueEach]="scrapValueEach" [totalAcessStock] = "totalAcessStock" ></app-stock-and-scrap></div>
       <div *ngSwitchCase="'replacement'"> <app-replacement></app-replacement> </div>
       <div *ngSwitchCase="'ring-fence'"><app-ring-fence></app-ring-fence></div>
-      <div *ngSwitchCase="'purchase-bill'"><app-purchase-order></app-purchase-order></div>
+      <div *ngSwitchCase="'purchase-bill'"><app-purchase-order [itemData]="itemData"></app-purchase-order></div>
     </div>
   </div>
 

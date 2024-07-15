@@ -101,7 +101,16 @@
 			<tr>
 				<td class="text-right font-bold pr-6"> Total</td>
 				<td colspan="3" class="text-right font-bold pr-6">
-				 {{calculateCustomerTotal(ringFenceData.location)}}
+				 {{calculateCustomerTotal(ringFenceData.location , 'totaL_QTY')}}
+				</td>
+				<td  class="text-right font-bold pr-6">
+					{{calculateCustomerTotal(ringFenceData.location ,'qtY_RING_FENCED')}}
+				</td>
+				<td  class="text-right font-bold pr-6">
+					{{calculateCustomerTotal(ringFenceData.location ,'qtyconsumed')}}
+				</td>
+				<td  class="text-right font-bold pr-6">
+					{{calculateCustomerTotal(ringFenceData.location ,'qtY_AVAILBALE')}}
 				</td>
 			</tr>
 		</ng-template>
@@ -131,13 +140,13 @@
 					{{ringFenceData.qtY_AVAILBALE}}
 				</td>
 				<td>
-					{{ringFenceData.lockeD_DATE}}
+					{{ util.formatDate(ringFenceData.lockeD_DATE)}}
 				</td>
 				<td>
-					{{ringFenceData.unlockeD_DATE}}
+					{{ util.formatDate(ringFenceData.unlockeD_DATE)}}
 				</td>
 				<td>
-					{{ringFenceData.expirE_DATE}}
+					{{ util.formatDate(ringFenceData.expirE_DATE)}}
 				</td>
 				
 			</tr>
