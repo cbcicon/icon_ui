@@ -349,3 +349,286 @@
         </div>
     </div>
 </div>
+
+<div>
+    <h4 class="mb-4">Item Configs</h4>
+
+	<p-table #dt [value]="itemDataConfig" dataKey="id" [rowHover]="true"
+		[rows]="controlRow" [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading"
+		[paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+		[filterDelay]="0"
+		[globalFilterFields]="['item', 'itemDescription',  'demand',    'onStock',    'availability',    'openPurchaseOrder',    'earlyExpiryDate',    'itemType',    'quantityOrdered',    'replacement',    'kitProductLocation',    'excessStock',    'leadTime',    'consumption',    'componentType',    'forecast',    'totalDemand',    'scrap',    'warehouse',    'inventoryLocation',    'carton',    'kitCategory']"
+		responsiveLayout="stack" 
+		[breakpoint]="'900px'" 
+		[tableStyle]="{'min-width': '100vw'}"
+		styleClass={{selectedSize}} [exportHeader]="'customExportHeader'">
+
+		<ng-template pTemplate="caption">
+			<div class="table-header d-flex justify-content-between">
+				<div>
+                  
+				</div>
+				
+				<div>
+
+
+                    <span class="p-input-icon-left ml-auto">
+						<span >
+							<p-button [text]="true" [plain]="true">
+								<i class="bi bi-upload"></i>
+							</p-button>
+						</span>
+					</span>
+
+
+                    <span class="p-input-icon-left ml-auto">
+						<span >
+							<p-button [text]="true" [plain]="true">
+								<i class="bi bi-plus-lg mx-2"></i> <span>Add</span>
+							</p-button>
+						</span>
+					</span>
+
+					<span class="p-input-icon-left ml-auto">
+						<span (click)="handleRowControl()">
+							<p-button [text]="true" [plain]="true">
+								<i class="bi bi-arrows-angle-expand" *ngIf="changeExpandButton; else collapseIcon"></i>
+								<ng-template #collapseIcon>
+									<i class="bi bi-arrows-angle-contract"></i>
+								</ng-template>
+							</p-button>
+						</span>
+					</span>
+
+   
+
+				</div>
+			</div>
+		</ng-template>
+
+		<ng-template pTemplate="header">
+			<tr>
+				
+				<th pSortableColumn="action-item">
+					<div class="flex justify-content-between align-items-center">
+                        Actions
+					</div>
+				</th>
+
+				<th pSortableColumn="item">
+					<div class="flex justify-content-between align-items-center">
+						Item #
+						<p-columnFilter type="text" field="item" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+				<th pSortableColumn="itemDescription">
+					<div class="flex justify-content-between align-items-center">
+						Item Description
+						<p-columnFilter type="text" field="itemDescription" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="demand">
+					<div class="flex justify-content-between align-items-center">
+						Criticality
+						<p-columnFilter type="text" field="demand" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="onStock">
+					<div class="flex justify-content-between align-items-center">
+                        Item Type
+						<p-columnFilter type="text" field="onStock" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="availability">
+					<div class="flex justify-content-between align-items-center">
+						Weight
+						<p-columnFilter type="text" field="availability" display="menu"
+							class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="openPurchaseOrder">
+					<div class="flex justify-content-between align-items-center">
+						Price
+						<p-columnFilter type="text" field="openPurchaseOrder" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="earlyExpiryDate" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Status
+
+						<p-columnFilter type="date" field="earlyExpiryDate" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="consumption" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+                        Approved Countries
+						<p-columnFilter type="date" field="consumption" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+				<th pSortableColumn="excessStock" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Replacement
+						<p-columnFilter type="date" field="excessStock" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+
+				<th pSortableColumn="replacement" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+						Min Order Qty
+						<p-columnFilter type="date" field="replacement" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+			</tr>
+		</ng-template>
+
+		<ng-template pTemplate="body" let-itemDataConfig>
+			<tr class="p-selectable-row">
+			
+                <td> <i class="bi bi-pencil mx-2"></i> <i class="bi bi-eye mx-2" ></i> <i class="bi bi-chat-left-text mx-2" ></i> </td>
+
+
+				<td>{{ itemDataConfig['itemNo'] }}</td>
+
+				<td>{{ itemDataConfig['itemDescription'] }}</td>
+
+				<td>{{ itemDataConfig['criticality'] }}</td>
+
+                <td>{{ itemDataConfig['weight'] }}</td>
+                
+				<td>{{ itemDataConfig['weight'] }}</td>
+
+				<td>{{ itemDataConfig['price'] }}</td>
+
+				<td>{{ itemDataConfig['status'] }}</td>
+
+				<td>{{ itemDataConfig['approvedCountry'] }}</td>
+				
+                
+				<td>{{ itemDataConfig['replacement'] }}</td>
+
+				<td>{{ itemDataConfig['minoq'] }}</td>
+
+		
+
+
+			</tr>
+		</ng-template>
+
+		<ng-template pTemplate="emptymessage">
+			<tr>
+				<td colspan="8">No Data found.</td>
+			</tr>
+		</ng-template>
+
+	</p-table>
+
+</div>
+
+
+
+
+
+
+<div class="item-confic-down-content" >
+    <h5> <b>Criticality Config</b> </h5>
+
+<p-divider />
+
+
+
+<div class="d-flex justify-content-start self-life ">
+			
+
+    <div class="mx-4">
+          <p class="m-0"><b>Low</b></p>
+        <p-dropdown 
+				[options]="monthList"
+				[(ngModel)]="selectedValue"
+				optionLabel="name"
+				[filter]="true"
+				filterBy="name"
+				[showClear]="true"
+				 (onChange)="onSponsorChange($event)"
+				placeholder="Select">
+					<ng-template pTemplate="selectedItem" let-selectedOption>
+						<div class="flex align-items-center gap-2">
+							
+							<div>{{ selectedOption.name }}</div>
+						</div>
+					</ng-template>
+					<ng-template let-sponsors pTemplate="item">
+						<div class="flex align-items-center gap-2">
+							
+							<div>{{ sponsors.name }}</div>
+						</div>
+					</ng-template>
+			</p-dropdown>
+    </div>
+
+    <div class="mx-4">
+          <p class="m-0"><b>Medium</b></p>
+        <p-dropdown 
+				[options]="monthList"
+				[(ngModel)]="selectedValue"
+				optionLabel="name"
+				[filter]="true"
+				filterBy="name"
+				[showClear]="true"
+			   
+				 (onChange)="onSponsorChange($event)"
+		         placeholder="Select">
+					<ng-template pTemplate="selectedItem" let-selectedOption>
+						<div class="flex align-items-center gap-2">
+							
+							<div>{{ selectedOption.name }}</div>
+						</div>
+					</ng-template>
+					<ng-template let-sponsors pTemplate="item">
+						<div class="flex align-items-center gap-2">
+							
+							<div>{{ sponsors.name }}</div>
+						</div>
+					</ng-template>
+			</p-dropdown>
+    </div>
+    
+    <div class="mx-4">
+        <p class="m-0"><b>High</b></p>
+        <p-dropdown 
+				[options]="monthList"
+				[(ngModel)]="selectedValue"
+				optionLabel="name"
+				[filter]="true"
+				filterBy="name"
+				[showClear]="true"
+			     
+				 (onChange)="onSponsorChange($event)"
+				placeholder="Select">
+					<ng-template pTemplate="selectedItem" let-selectedOption>
+						<div class="flex align-items-center gap-2">
+							
+							<div>{{ selectedOption.name }}</div>
+						</div>
+					</ng-template>
+					<ng-template let-sponsors pTemplate="item">
+						<div class="flex align-items-center gap-2">
+							
+							<div>{{ sponsors.name }}</div>
+						</div>
+					</ng-template>
+			</p-dropdown>
+    </div>
+    
+ <div>
+    <button type="button" class="btn btn-success mx-4 mt-4"> Submit</button>
+ </div>
+
+</div>
+</div>

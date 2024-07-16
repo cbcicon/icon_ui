@@ -10,7 +10,7 @@
 		[tableStyle]="{'min-width': '100vw'}"
 		styleClass={{selectedSize}} [exportHeader]="'customExportHeader'">
 		<ng-template pTemplate="caption">
-			<div class="table-header d-flex justify-content-between">
+			<div class="d-flex justify-content-between">
 				<div>
 					<div class="filter-sm-circle-btn" (click)="handleDateShortener('yearly')"
 						[class.selected]="selectedInterval === 'yearly'">A</div>
@@ -49,21 +49,21 @@
 			</div>
 		</ng-template>
 		<ng-template pTemplate="header">
-			<tr>
+			<tr  >
 				
-				<th pSortableColumn="action-item">
+				<th pSortableColumn="action-item" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Action 
 					</div>
 				</th>
 
-				<th pSortableColumn="item">
+				<th pSortableColumn="item" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Item
 						<p-columnFilter type="text" field="item" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
-				<th pSortableColumn="itemDescription">
+				<th pSortableColumn="itemDescription" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Item Description
 						<p-columnFilter type="text" field="itemDescription" display="menu"
@@ -71,21 +71,21 @@
 					</div>
 				</th>
 
-				<th pSortableColumn="demand">
+				<th pSortableColumn="demand" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Demand
 						<p-columnFilter type="text" field="demand" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="onStock">
+				<th pSortableColumn="onStock" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						On Stock
 						<p-columnFilter type="text" field="onStock" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="availability">
+				<th pSortableColumn="availability" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Availablity
 						<p-columnFilter type="text" field="availability" display="menu"
@@ -93,14 +93,14 @@
 					</div>
 				</th>
 
-				<th pSortableColumn="openPurchaseOrder">
+				<th pSortableColumn="openPurchaseOrder" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
-						PO Status
+						Order Status
 						<p-columnFilter type="text" field="openPurchaseOrder" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="earlyExpiryDate" style="min-width: 10rem">
+				<th pSortableColumn="earlyExpiryDate" style="min-width: 10rem" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Early Expire Date
 
@@ -108,28 +108,28 @@
 					</div>
 				</th>
 
-				<th pSortableColumn="consumption" style="min-width: 10rem">
+				<th pSortableColumn="consumption" style="min-width: 10rem" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Consumption
 
 						<p-columnFilter type="date" field="consumption" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
-				<th pSortableColumn="excessStock" style="min-width: 10rem">
+				<th pSortableColumn="excessStock" style="min-width: 10rem" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Excess Stock
 						<p-columnFilter type="date" field="excessStock" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="replacement" style="min-width: 10rem">
+				<th pSortableColumn="replacement" style="min-width: 10rem" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Replacement 
 						<p-columnFilter type="date" field="replacement" display="menu" class="ml-auto"></p-columnFilter>
 					</div>
 				</th>
 
-				<th pSortableColumn="scrap" style="min-width: 10rem">
+				<th pSortableColumn="scrap" style="min-width: 10rem" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Scrap
 
@@ -139,7 +139,7 @@
 				</th>
 		
 
-				<th pSortableColumn="itemType" style="min-width: 10rem">
+				<th pSortableColumn="itemType" style="min-width: 10rem" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
 						Item Type
 
@@ -150,7 +150,7 @@
 
 				<ng-container *ngFor="let item of tableHeaderItem">
 					<ng-container *ngIf="item.active">
-						<th pSortableColumn="{{ item.sortableColumn }}" style="min-width: 10rem">
+						<th pSortableColumn="{{ item.sortableColumn }}" style="min-width: 10rem" class="main-table-header">
 							<div class="flex justify-content-between align-items-center">
 								{{ item.columnName }}
 								<p-columnFilter *ngIf="item.active" type="numeric" field="balance" display="menu"
@@ -166,7 +166,7 @@
 		<ng-template pTemplate="body" let-inventoryTableData>
 			<tr class="p-selectable-row">
 				<td>
-					<span> <i class="bi bi-eye" (click)="hanldeBelowContent()"></i></span>
+					<span> <i class="bi bi-eye" (click)="hanldeBelowContent( inventoryTableData['scrap'] ,inventoryTableData)"></i></span>
 					<span><i class="bi bi-graph-up-arrow mx-3" (click)="handleChartShow()"></i></span>
 					<span class="ml-3"><i class="bi bi-chat-left-text" (click)="handleChatRightSidebar(inventoryTableData)"></i></span>
 				</td>
@@ -177,24 +177,73 @@
 				<td>
 					{{ inventoryTableData["itemDescription"] }}
 				</td>
+				<!-- demand field -->
 				<td>
-					{{ inventoryTableData['demand'] }}
+					<ng-container *ngIf="inventoryTableData['consumption'] && inventoryTableData['forecast']; else checkForecast">
+					  {{ (util.getMaxValue(inventoryTableData['consumption'], inventoryTableData['forecast']) / 3) | number:'1.0-0' }}
+					</ng-container>
+				  
+					<ng-template #checkForecast>
+					  <ng-container *ngIf="inventoryTableData['consumption']; else checkConsumption">
+						<div>
+						  {{ (inventoryTableData['forecast'] / 3) | number:'1.0-0' }}
+						</div>
+					  </ng-container>
+					</ng-template>
+				  
+					<ng-template #checkConsumption>
+					  <ng-container *ngIf="inventoryTableData['currentDemand']; else checkCurrentDemand">
+						<div>
+						  {{ (inventoryTableData['consumption'] / 3) | number:'1.0-0' }}
+						</div>
+					  </ng-container>
+					</ng-template>
+				  
+					<ng-template #checkCurrentDemand>
+					  <div>
+						{{ (inventoryTableData['currentDemand'] / 3) | number:'1.0-0' }}
+					  </div>
+					</ng-template>
 				</td>
-				<td [style.color]="inventoryTableData['onStock'] < inventoryTableData['demand'] ? 'red' : 'green'">
+				  
+				  <!-- onStock field -->
+				<td  [style.color]="inventoryTableData['onStock'] < inventoryTableData['demand'] ? 'red' : 'green'">
 					{{ inventoryTableData['onStock'] }}
 				</td>
 
-				<td [style.color]="(inventoryTableData['onStock'] - inventoryTableData['demand'] > 0 && inventoryTableData['availability'] > 0) ? '#1790D0' : (inventoryTableData['availability'] > 0 ? 'black' : 'red')">
-					{{ inventoryTableData.availability }}
-				</td>
+			  <!-- onStock Availability -->
+			  <td>
+				<ng-container *ngIf="handleInventoryAvailability(inventoryTableData['onStock'], inventoryTableData['item']) > 0; else availabilityZero">
+				  {{ handleInventoryAvailability(inventoryTableData['onStock'], inventoryTableData['item']) }}
+				</ng-container>
+			  
+				<ng-template #availabilityZero>
+				  <span style="color: red;">0</span>
+				</ng-template>
+			  </td>
 				
 
-				<td *ngIf="inventoryTableData['openPurchaseOrder'] === 'No Open PO'" style="color: red;">{{ inventoryTableData['openPurchaseOrder'] }}</td>
-
-				<td *ngIf="inventoryTableData['openPurchaseOrder'] !== 'No Open PO'"> {{ inventoryTableData['openPurchaseOrder'] }}</td>
-
+					<!-- order Status -->
 				<td>
-				     <p  [ngClass]="{'expired': !isExpired(inventoryTableData['earlyExpiryDate']), 'not-expired': isExpired(inventoryTableData['earlyExpiryDate'])}"> {{util.formatDate(inventoryTableData['earlyExpiryDate']) }}</p>	
+					<ng-container *ngIf="inventoryTableData['openPurchaseOrder'] !== undefined && inventoryTableData['openPurchaseOrder'] !== null; else zeroPoAvailable">
+					
+					<span class="mx-2" style="color: rgba(23, 144, 208, 1);">{{ inventoryTableData['openPurchaseOrder'] }} </span>	
+					</ng-container>
+				  
+					<ng-template #zeroPoAvailable>
+					  <ng-container *ngIf="inventoryTableData['openPurchaseOrder'] === 0">
+						<i class="bi bi-flag-fill" style="color: rgba(241, 92, 97, 1);"></i> Required
+					  </ng-container>
+					</ng-template>
+
+					<ng-container *ngIf="inventoryTableData['quantityOrdered'] && !inventoryTableData['openPurchaseOrder']">
+						Not Required
+					</ng-container>
+
+				</td>
+				  
+				<td>
+				     <p  [ngClass]="{'expired': !util.isExpired(inventoryTableData['earlyExpiryDate']), 'not-expired': util.isExpired(inventoryTableData['earlyExpiryDate'])}"> {{util.formatDate(inventoryTableData['earlyExpiryDate']) }}</p>	
 				</td>
 
 				<td>{{ inventoryTableData['consumption'] }}</td>
@@ -330,7 +379,7 @@
 
 <div *ngIf="showDetailContent">
 
-	<app-item-detail-landing></app-item-detail-landing>
+	<app-item-detail-landing [itemData]="itemData" [scrapValueEach]="scrapValueEach"  [totalAcessStock] = "totalAcessStock" ></app-item-detail-landing>
 
 </div>
 
