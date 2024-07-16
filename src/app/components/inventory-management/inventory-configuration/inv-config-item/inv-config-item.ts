@@ -106,9 +106,12 @@ onFileSelected(event: any) {
   reader.readAsBinaryString(file);
 }
 
-// Method to trigger file upload process
-uploadExcel() {
-  document.getElementById('fileInput')?.click();
+// Method to trigger file selection by clicking the icon
+uploadExcel(): void {
+  const fileInput = document.getElementById('fileInput');
+  if (fileInput) {
+    fileInput.click(); // Trigger file input click event
+  }
 }
 
   onSponsorChange(event: any) {
