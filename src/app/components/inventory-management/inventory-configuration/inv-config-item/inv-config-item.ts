@@ -3,7 +3,7 @@ import * as XLSX from 'xlsx';
 import { Table } from 'primeng/table';
 import { TableDataService } from '../../../../common/table-data/table-data.service';
 import { MessageService } from 'primeng/api';
-import { TableDataService } from '../../../../common/table-data/table-data.service';
+
 
 @Component({
   selector: 'app-inv-config-item',

@@ -21,6 +21,11 @@ export class TableDataService {
   getRingFenceData(): Observable<any> {
     return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['ring-fence-table-data']}`)
   }
+
+  getRingFenceMainData(): Observable<any> {
+    return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['ring-fence-main']}`)
+  }
+   
    
   getStockScrapTableData(): Observable<any>{
     return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['stockAndScrapData']}`)
