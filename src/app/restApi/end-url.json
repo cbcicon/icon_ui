@@ -12,8 +12,7 @@
        "safetyStockMain":"SafetyStockMain/GetAllSafetyStockMainTbl" ,
        "scrapMainComponent":"ScrapMain/GetAllScrapMainTbl" ,
        "allScrapDetailTbl":"ScrapDetail/GetAllScrapDetailTbl" ,
-       "allItemConfigurationTbl": "ItemConfiguration/GetAllItemConfigurationTbl" ,
-        "allItemConfigurationTbl": "ItemConfiguration/GetAllItemConfigurationTbl"
+       "allItemConfigurationTbl": "ItemConfiguration/GetAllItemConfigurationTbl" 
 
    }
 }
