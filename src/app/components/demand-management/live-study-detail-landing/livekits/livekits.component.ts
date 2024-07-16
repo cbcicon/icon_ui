@@ -24,6 +24,10 @@ export class LiveKitsComponent implements OnInit {
     }, 1000);
   }
 
+  isHidden(index: number): boolean {
+    return index === 2 || index === 4; 
+  }
+
   handleKits(index: number) {
     this.iconState[index] = !this.iconState[index]; // Toggling the icon state for the clicked row
   }

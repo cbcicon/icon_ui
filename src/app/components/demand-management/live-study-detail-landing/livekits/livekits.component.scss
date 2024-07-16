@@ -34,6 +34,14 @@
           height: 20px; /* Example height */
         }
       }
+
+      .actions-icons i.bi-arrow-left-right {
+        visibility: visible;    /* Ensure icon is visible by default */
+      }
+      
+      .actions-icons i.bi-arrow-left-right.hide-icon {
+        visibility: hidden;     /* Hide the icon while preserving space */
+      }
       
   }
 

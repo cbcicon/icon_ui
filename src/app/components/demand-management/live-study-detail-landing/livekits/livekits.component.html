@@ -157,7 +157,8 @@
                     <tr *ngFor="let item of advancedKits; let i = index">
                       <td>
                         <div class="actions-icons">
-                          <i class="bi bi-arrow-left-right"></i>
+                          <!-- <i class="bi bi-arrow-left-right"></i> -->
+                          <i class="bi bi-arrow-left-right" [ngClass]="{'hide-icon': isHidden(i)}"></i>
                           <i class="bi bi-unlock"></i>
                         </div>
                       </td>
