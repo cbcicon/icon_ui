@@ -64,53 +64,52 @@ export class InvConfigItemComponent implements OnInit {
   }
 
   // Method to handle file selection
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    const reader: FileReader = new FileReader();
+onFileSelected(event: any) {
+  const file: File = event.target.files[0];
+  const reader: FileReader = new FileReader();
 
-    reader.onload = (e: any) => {
-      const binaryString: string = e.target.result;
-      const workbook: XLSX.WorkBook = XLSX.read(binaryString, { type: 'binary' });
+  reader.onload = (e: any) => {
+    const binaryString: string = e.target.result;
+    const workbook: XLSX.WorkBook = XLSX.read(binaryString, { type: 'binary' });
 
-      const sheetName: string = workbook.SheetNames[0];
-      const worksheet: XLSX.WorkSheet = workbook.Sheets[sheetName];
+    const sheetName: string = workbook.SheetNames[0];
+    const worksheet: XLSX.WorkSheet = workbook.Sheets[sheetName];
 
-      // Convert Excel data to JSON format
-      this.excelData = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+    // Convert Excel data to JSON format
+    const newExcelData: any[] = XLSX.utils.sheet_to_json(worksheet, { raw: true });
 
-      // Extract headers
-      this.excelHeaders = Object.keys(this.excelData[0]);
+    // Map Excel data to match table structure (if needed)
+    const mappedExcelData: any[] = newExcelData.map((item: any) => ({
+      itemNo: item['Item #'] || item['item'] || item['Item'] || item['item'],
+      itemDescription: item['Description'] || item['description'],
+      criticality: item['Criticality'] || item['criticality'],
+      itemType: item['Item Type'] || item['item type'] || item['Item Type'] || item['item type'],
+      weight: item['Weight'] || item['weight'],
+      price: item['Price'],
+      status: item['Status'],
+      approvedCountry: item['Approved Countries'],
+      replacement: item['Replacement'],
+      minoq: item['Min Order Qty'],
+      editing: false // Initialize editing flag for each item
+    }));
 
-      // Map Excel data to match table structure
-      this.itemDataConfig = this.excelData.map((item: any) => ({
-        itemNo: item['Item #'] || item['item'] || item['Item'] || item['item'],
-        itemDescription: item['Description'] || item['description'],
-        criticality: item['Criticality'] || item['criticality'],
-        itemType: item['Item Type'] || item['item type'] || item['Item Type'] || item['item type'],
-        weight: item['Weight'] || item['weight'],
-        price:item['Price'],
-        status:item['Status'],
-        approvedCountry:item['Approved Countries'],
-        replacement: item['Replacement'],
-        minoq: item['Min Order Qty'],
-        editing: false // Initialize editing flag for each item
-      }));
+    // Append new Excel data below after the existing itemDataConfig 
+    // this.itemDataConfig = [...this.itemDataConfig, ...mappedExcelData];
 
-      // Clear raw Excel data
-      this.excelData = [];
-      this.excelHeaders = [];
+     // Append new Excel data to existing itemDataConfig at the top
+     this.itemDataConfig = [...mappedExcelData, ...this.itemDataConfig];
 
-      // Fetch existing item configuration data
-      this.loadItemConfigData();
-    };
+    // Fetch existing item configuration data if needed
+    // this.loadItemConfigData();
+  };
 
-    reader.readAsBinaryString(file);
-  }
+  reader.readAsBinaryString(file);
+}
 
-  uploadExcel() {
-    // Trigger file upload process
-    document.getElementById('fileInput')?.click();
-  }
+// Method to trigger file upload process
+uploadExcel() {
+  document.getElementById('fileInput')?.click();
+}
 
   onSponsorChange(event: any) {
     let searchParam = event.value.value;
@@ -167,6 +166,7 @@ export class InvConfigItemComponent implements OnInit {
     this.tableDataService.fetchItemConfigData().subscribe(
       (data) => {
         console.log('Item config data:', data);
+        this.itemDataConfig = data;
       },
       (error) => {
         console.error('Error fetching item config data:', error);

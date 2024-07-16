@@ -52,225 +52,227 @@
         </table>
     </div>
 
-    <p-table #dt [value]="itemDataConfig" dataKey="id" [rowHover]="true"
-        [rows]="controlRow" [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading"
-        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [filterDelay]="0"
-        [globalFilterFields]="['itemNo', 'itemDescription', 'criticality', 'weight', 'price', 'status', 'approvedCountry', 'replacement', 'minoq']"
-        responsiveLayout="stack" 
-        [breakpoint]="'900px'" 
-        [tableStyle]="{'min-width': '100vw'}"
-        styleClass={{selectedSize}} [exportHeader]="'customExportHeader'">
+    <!-- Display existing table data -->
+    <div *ngIf="itemDataConfig && itemDataConfig.length > 0" class="p-mb-3">
+        <!-- <h5>Existing Table Data</h5> -->
+        <p-table #dt [value]="itemDataConfig" dataKey="id" [rowHover]="true"
+            [rows]="controlRow" [showCurrentPageReport]="true" [rowsPerPageOptions]="rowsPerPageOptions" [loading]="loading"
+            [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [filterDelay]="0"
+            [globalFilterFields]="['itemNo', 'itemDescription', 'criticality', 'weight', 'price', 'status', 'approvedCountry', 'replacement', 'minoq']"
+            responsiveLayout="stack" 
+            [breakpoint]="'900px'" 
+            [tableStyle]="{'min-width': '100vw'}"
+            styleClass={{selectedSize}} [exportHeader]="'customExportHeader'">
 
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="action-item">
+                        <div class="flex justify-content-between align-items-center">Actions</div>
+                    </th>
+                    
+                    <th pSortableColumn="itemNo">
+                        <div class="flex justify-content-between align-items-center">Item #
+                            <p-columnFilter type="text" field="itemNo" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    
+                    <th pSortableColumn="itemDescription">
+                        <div class="flex justify-content-between align-items-center">Item Description
+                            <p-columnFilter type="text" field="itemDescription" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    
+                    <th pSortableColumn="criticality">
+                        <div class="flex justify-content-between align-items-center">Criticality
+                            <p-columnFilter type="text" field="criticality" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    
+                    <th pSortableColumn="itemType">
+                        <div class="flex justify-content-between align-items-center">Item Type
+                            <p-columnFilter type="text" field="itemType" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    
+                    <th pSortableColumn="weight">
+                        <div class="flex justify-content-between align-items-center">Weight
+                            <p-columnFilter type="text" field="weight" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    
+                    <th pSortableColumn="price">
+                        <div class="flex justify-content-between align-items-center">Price
+                            <p-columnFilter type="text" field="price" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    
+                    <th pSortableColumn="status" style="min-width: 10rem">
+                        <div class="flex justify-content-between align-items-center">Status
+                            <p-columnFilter type="text" field="status" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    
+                    <th pSortableColumn="approvedCountry" style="min-width: 10rem">
+                        <div class="flex justify-content-between align-items-center">Approved Countries
+                            <p-columnFilter type="text" field="approvedCountry" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    
+                    <th pSortableColumn="replacement" style="min-width: 10rem">
+                        <div class="flex justify-content-between align-items-center">Replacement
+                            <p-columnFilter type="text" field="replacement" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    
+                    <th pSortableColumn="minoq" style="min-width: 10rem">
+                        <div class="flex justify-content-between align-items-center">Min Order Qty
+                            <p-columnFilter type="text" field="minoq" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    
+                </tr>
+            </ng-template>
 
-        <ng-template pTemplate="header">
-            <tr>
-                <th pSortableColumn="action-item">
-                    <div class="flex justify-content-between align-items-center">Actions</div>
-                </th>
-                
-                <th pSortableColumn="itemNo">
-                    <div class="flex justify-content-between align-items-center">Item #
-                        <p-columnFilter type="text" field="itemNo" display="menu" class="ml-auto"></p-columnFilter>
-                    </div>
-                </th>
-                
-                <th pSortableColumn="itemDescription">
-                    <div class="flex justify-content-between align-items-center">Item Description
-                        <p-columnFilter type="text" field="itemDescription" display="menu" class="ml-auto"></p-columnFilter>
-                    </div>
-                </th>
-                
-                <th pSortableColumn="criticality">
-                    <div class="flex justify-content-between align-items-center">Criticality
-                        <p-columnFilter type="text" field="criticality" display="menu" class="ml-auto"></p-columnFilter>
-                    </div>
-                </th>
-                
-                <th pSortableColumn="itemType">
-                    <div class="flex justify-content-between align-items-center">Item Type
-                        <p-columnFilter type="text" field="itemType" display="menu" class="ml-auto"></p-columnFilter>
-                    </div>
-                </th>
-                
-                <th pSortableColumn="weight">
-                    <div class="flex justify-content-between align-items-center">Weight
-                        <p-columnFilter type="text" field="weight" display="menu" class="ml-auto"></p-columnFilter>
-                    </div>
-                </th>
-                
-                <th pSortableColumn="price">
-                    <div class="flex justify-content-between align-items-center">Price
-                        <p-columnFilter type="text" field="price" display="menu" class="ml-auto"></p-columnFilter>
-                    </div>
-                </th>
-                
-                <th pSortableColumn="status" style="min-width: 10rem">
-                    <div class="flex justify-content-between align-items-center">Status
-                        <p-columnFilter type="text" field="status" display="menu" class="ml-auto"></p-columnFilter>
-                    </div>
-                </th>
-                
-                <th pSortableColumn="approvedCountry" style="min-width: 10rem">
-                    <div class="flex justify-content-between align-items-center">Approved Countries
-                        <p-columnFilter type="text" field="approvedCountry" display="menu" class="ml-auto"></p-columnFilter>
-                    </div>
-                </th>
-                
-                <th pSortableColumn="replacement" style="min-width: 10rem">
-                    <div class="flex justify-content-between align-items-center">Replacement
-                        <p-columnFilter type="text" field="replacement" display="menu" class="ml-auto"></p-columnFilter>
-                    </div>
-                </th>
-                
-                <th pSortableColumn="minoq" style="min-width: 10rem">
-                    <div class="flex justify-content-between align-items-center">Min Order Qty
-                        <p-columnFilter type="text" field="minoq" display="menu" class="ml-auto"></p-columnFilter>
-                    </div>
-                </th>
-                
-            </tr>
-        </ng-template>
+            <ng-template pTemplate="body" let-itemDataConfig let-ri="rowIndex" let-editing="editing">
+                <tr class="p-selectable-row" [pEditableRow]="itemDataConfig">
+                    <td>
+                        <span class="ml-2" *ngIf="!itemDataConfig.editing"><i class="bi bi-pencil mx-2" (click)="startEditing(itemDataConfig)"></i></span>
+                        <div *ngIf="itemDataConfig.editing" class="d-flex align-items-center">
+                            <button 
+                                pButton 
+                                pRipple 
+                                type="button" 
+                                pSaveEditableRow 
+                                icon="pi pi-check" 
+                                (click)="saveChanges(itemDataConfig)" 
+                                class="p-button-rounded p-button-text p-button-success mr-0">
+                            </button>
+                            <button 
+                                pButton 
+                                pRipple 
+                                type="button" 
+                                pCancelEditableRow 
+                                icon="pi pi-times" 
+                                (click)="cancelEdit(itemDataConfig, ri)" 
+                                class="p-button-rounded p-button-text p-button-danger">
+                            </button> 
+                        </div>
+                        <span class="ml-2" *ngIf="!itemDataConfig.editing"><i class="bi bi-eye mx-2"></i></span> 
+                        <span class="ml-2" *ngIf="!itemDataConfig.editing"><i class="bi bi-chat-left-text mx-2"></i></span>
+                    </td>
+                    <td [pEditableColumn]="itemDataConfig.itemNo" pEditableColumnField="itemNo" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="itemDataConfig.itemNo" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ itemDataConfig.itemNo }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td [pEditableColumn]="itemDataConfig.itemDescription" pEditableColumnField="itemDescription" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="itemDataConfig.itemDescription" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ itemDataConfig.itemDescription }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td [pEditableColumn]="itemDataConfig.criticality" pEditableColumnField="criticality" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="itemDataConfig.criticality" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ itemDataConfig.criticality }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td [pEditableColumn]="itemDataConfig.itemType" pEditableColumnField="itemType" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="itemDataConfig.itemType" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ itemDataConfig.itemType }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td [pEditableColumn]="itemDataConfig.weight" pEditableColumnField="weight" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="itemDataConfig.weight" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ itemDataConfig.weight }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td [pEditableColumn]="itemDataConfig.price" pEditableColumnField="price" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="itemDataConfig.price" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ itemDataConfig.price }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td [pEditableColumn]="itemDataConfig.status" pEditableColumnField="status" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="itemDataConfig.status" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ itemDataConfig.status }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td [pEditableColumn]="itemDataConfig.approvedCountry" pEditableColumnField="approvedCountry" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="itemDataConfig.approvedCountry" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ itemDataConfig.approvedCountry }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td [pEditableColumn]="itemDataConfig.replacement" pEditableColumnField="replacement" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="itemDataConfig.replacement" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ itemDataConfig.replacement }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td [pEditableColumn]="itemDataConfig.minoq" pEditableColumnField="minoq" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="itemDataConfig.minoq" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ itemDataConfig.minoq }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                </tr>
+            </ng-template>
 
-        <ng-template pTemplate="body" let-itemDataConfig let-ri="rowIndex" let-editing="editing">
-            <tr class="p-selectable-row" [pEditableRow]="itemDataConfig">
-                <td>
-                    <span class="ml-2" *ngIf="!itemDataConfig.editing"><i class="bi bi-pencil mx-2" (click)="startEditing(itemDataConfig)"></i></span>
-                    <div *ngIf="itemDataConfig.editing" class="d-flex align-items-center">
-                        <button 
-                            pButton 
-                            pRipple 
-                            type="button" 
-                            pSaveEditableRow 
-                            icon="pi pi-check" 
-                            (click)="saveChanges(itemDataConfig)" 
-                            class="p-button-rounded p-button-text p-button-success mr-0">
-                        </button>
-                        <button 
-                            pButton 
-                            pRipple 
-                            type="button" 
-                            pCancelEditableRow 
-                            icon="pi pi-times" 
-                            (click)="cancelEdit(itemDataConfig, ri)" 
-                            class="p-button-rounded p-button-text p-button-danger">
-                        </button> 
-                    </div>
-                    <span class="ml-2" *ngIf="!itemDataConfig.editing"><i class="bi bi-eye mx-2"></i></span> 
-                    <span class="ml-2" *ngIf="!itemDataConfig.editing"><i class="bi bi-chat-left-text mx-2"></i></span>
-                </td>
-                <td [pEditableColumn]="itemDataConfig.itemNo" pEditableColumnField="itemNo" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="itemDataConfig.itemNo" />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ itemDataConfig.itemNo }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-                
-                <td [pEditableColumn]="itemDataConfig.itemDescription" pEditableColumnField="itemDescription" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="itemDataConfig.itemDescription" />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ itemDataConfig.itemDescription }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-                <td [pEditableColumn]="itemDataConfig.criticality" pEditableColumnField="criticality" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="itemDataConfig.criticality"/>
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ itemDataConfig.criticality }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-                <td [pEditableColumn]="itemDataConfig.itemType" pEditableColumnField="itemType" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="itemDataConfig.itemType" />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ itemDataConfig.itemType }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-                <td [pEditableColumn]="itemDataConfig.weight" pEditableColumnField="weight" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="itemDataConfig.weight" />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ itemDataConfig.weight }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-                <td [pEditableColumn]="itemDataConfig.price" pEditableColumnField="price" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="itemDataConfig.price" />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ itemDataConfig.price }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-                <td [pEditableColumn]="itemDataConfig.status" pEditableColumnField="status" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="itemDataConfig.status" />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ itemDataConfig.status }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-                <td [pEditableColumn]="itemDataConfig.approvedCountry" pEditableColumnField="approvedCountry" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="itemDataConfig.approvedCountry" />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ itemDataConfig.approvedCountry }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-                <td [pEditableColumn]="itemDataConfig.replacement" pEditableColumnField="replacement" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="itemDataConfig.replacement" />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ itemDataConfig.replacement }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-                <td [pEditableColumn]="itemDataConfig.minoq" pEditableColumnField="minoq" [style.pointer-events]="itemDataConfig.editing ? 'auto' : 'none'">
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="itemDataConfig.minoq" />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ itemDataConfig.minoq }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-            </tr>
-        </ng-template>
-
-        <ng-template pTemplate="emptymessage">
-            <tr>
-                <td colspan="11">No Data found.</td>
-            </tr>
-        </ng-template>
-    </p-table>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="11">No Data found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
 </div>
-   
+
 <div class="item-confic-down-content">
     <h5><b>Criticality Config</b></h5>
     <p-divider />
