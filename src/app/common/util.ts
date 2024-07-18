@@ -111,4 +111,8 @@ isExpired(expiryDate: Date): boolean {
   }
   
 
+getRoundValue(val:any){
+  return Math.round(val)
+}
+
 }

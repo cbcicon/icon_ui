@@ -76,6 +76,16 @@ export class TableDataService {
     return this.http.get<any>(`${this.apiBaseUrl}/fetch-item-config-endpoint`);
   }
 
+
+  getAllShelflifeDetailTbl(): Observable<any> {
+    return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['getAllShelflifeDetailTbl']}`)
+  }
+
+
+saveShelfLifeDetails(data:any): Observable<any> {
+  return this.http.post<any>(`${this.apiBaseUrl}/${inventory.inventory['saveShelfLifeDetails']}`, data);
+}
+
   private handleError(error: any) {
     console.error('An error occurred:', error);
     throw error;
