@@ -248,11 +248,14 @@
 
 				<td>{{ inventoryTableData['consumption'] }}</td>
 
-				<td>{{ inventoryTableData['excessStock'] }}</td>
+				<td>{{ inventoryTableData['onStock'] - inventoryTableData['demand'] > 0 ? 'yes' : 'no' }}</td>
 
 				<td>{{ inventoryTableData['replacement'] }}</td>
 
-				<td>{{ inventoryTableData['scrap'] }}</td>
+				<td>
+					{{ inventoryTableData['scrap'] > 120 ? 'yes' : 'no' }}
+				
+				</td>
 
 				<td>
 	
@@ -278,10 +281,23 @@
 				<ng-container *ngFor="let item of tableHeaderItem">
 					<ng-container *ngIf="item.active">
 						<td style="min-width: 10rem">
-							<div class="flex justify-content-between align-items-center">
-								{{ inventoryTableData[item.sortableColumn] }}
-							</div>
-						</td>
+							<ng-container *ngIf="item.sortableColumn === 'monthOnHand'; else normal">
+							  {{util.getRoundValue(inventoryTableData['onStock'] / inventoryTableData['currentDemand'] )}}
+							</ng-container>
+						  
+							<ng-template #normal>
+							  <ng-container *ngIf="item.sortableColumn === 'weekOnHand'; else all">
+								{{ util.getRoundValue( (inventoryTableData['onStock'] / inventoryTableData['currentDemand']) * 4 )}}
+							  </ng-container>
+						  
+							  <ng-template #all>
+								<div class="flex justify-content-between align-items-center">
+								  {{ inventoryTableData[item.sortableColumn] }}
+								</div>
+							  </ng-template>
+							</ng-template>
+						  </td>
+						  
 					</ng-container>
 				</ng-container>
 
