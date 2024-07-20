@@ -14,12 +14,6 @@ export class InvConfigSelfLifeComponent {
 
   loading:boolean = false;
 
-  monthList = [{ value: '1', name: '1 month' },
-  { value: '2', name: '2 month' },
-  { value: '3', name: '3 month' },
-  { value: '4', name: '4 month' },
-  { value: '5', name: '5 month' },
-  ]
 
 
   shelfLifeForm: FormGroup;
@@ -30,7 +24,7 @@ export class InvConfigSelfLifeComponent {
       shortShelfLife: [0, Validators.required],
       mediumShelfLife: [0, Validators.required],
       longShelfLife: [0, Validators.required],
-      userName: ['', Validators.required]
+      
     });
   }
 
@@ -49,17 +43,21 @@ export class InvConfigSelfLifeComponent {
 
   onSubmit(): void {
     if (this.shelfLifeForm.valid) {
-      
-      this.tableDataService.saveShelfLifeDetails( this.shelfLifeForm.value).subscribe((res:any) => {
-  
 
+
+      let requestBody = this.shelfLifeForm.value ;
+
+      requestBody['userName'] = "SBarla"
+      
+      this.tableDataService.saveShelfLifeDetails( requestBody).subscribe((res:any) => {
+  
         this.tableDataService.getAllShelflifeDetailTbl().subscribe((res:any) => {
           this.selfLifeTableData = res 
-        })
-            
-      })
-       
+        })   
+      })  
     }
+
+
   }
 
 

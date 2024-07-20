@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TableDataService } from '../../../../common/table-data/table-data.service';
+import { UtilService } from '../../../../common/util';
 
 @Component({
   selector: 'app-inv-config-purchase-order',
@@ -7,22 +10,44 @@ import { Component } from '@angular/core';
 })
 export class InvConfigPurchaseOrderComponent {
 
-  selectedValue:any;
+  configPurchaseOrderForm!: FormGroup;
 
-  monthList = [{ value: '1', name: '1 month' },
-  { value: '2', name: '2 month' },
-  { value: '3', name: '3 month' },
-  { value: '4', name: '4 month' },
-  { value: '5', name: '5 month' },
-  ]
+  configPoData:any
+  loading =false
 
+  constructor(private fb: FormBuilder ,public tableDataService:TableDataService  , public util:UtilService) { }
 
-  onSponsorChange(event: any) {
+  ngOnInit(): void {
+    this.configPurchaseOrderForm = this.fb.group({
+      poboDuration: ['', Validators.required],
+      podlDuration: ['', Validators.required],
+    });
 
-    let searchParam = event.value.value;
-
-    console.log("test : " ,searchParam)
-
+    
+    this.tableDataService.getAllPOConfigDetailTbl().subscribe((res:any) => {
+        this.configPoData = res 
+      })   
   }
+ 
+
+  onSubmit(): void {
+    if (this.configPurchaseOrderForm.valid) {
+
+      let requestBody =  this.configPurchaseOrderForm.value
+
+      requestBody["userName"] = "SBarla"
+
+      this.tableDataService.savePOConfigDetails( requestBody).subscribe((res:any) => {
+  
+        this.tableDataService.getAllPOConfigDetailTbl().subscribe((res:any) => {
+          this.configPoData = res 
+        })   
+      })  
+
+ 
+    }
+  }
+
+
 
 }

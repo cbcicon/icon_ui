@@ -4,7 +4,7 @@
 
   <div class="d-flex align-items-start">
   <app-block-tag [blockTagStyle]="'blockTagStyle'" [blockData]="{label:'Total POs  ' , qtyNum:headerValues.uniqueItems}" ></app-block-tag>
-  <app-block-tag [blockTagStyle]="'blockTagStyle'" [blockData]="{label:'Manufacture' , qtyNum:'00'}" ></app-block-tag>
+  <app-block-tag [blockTagStyle]="'blockTagStyle'" [blockData]="{label:'Manufacture' , qtyNum:headerValues.uniqueManufacturer}" ></app-block-tag>
 
   <app-block-tag [blockTagStyle]="'blockTagStyle'" [blockData]="{label:'Open PO' , qtyNum:headerValues.uniqueStatusYes}" ></app-block-tag>
   <app-block-tag [blockTagStyle]="'blockTagStyle'" [blockData]="{label:'Sponsor' , qtyNum:headerValues.uniqueSponsors}" ></app-block-tag>
@@ -142,7 +142,7 @@
       <td>{{purchaseOrderData['productionLocationNumber']}}</td>
       <td>{{purchaseOrderData['status']}}</td>
       <td>{{purchaseOrderData['sponsor']}}</td>
-      <td>-------</td>
+      <td>{{purchaseOrderData['manufacturer']}} </td>
       <td>{{purchaseOrderData['qtyOrdered']}}</td>
       <td> <span class="green-text"> {{purchaseOrderData['qtyReceived']}}</span></td>
       <td>  <span class="skyblue-text">{{purchaseOrderData['qtyOpen']}}</span> </td>
