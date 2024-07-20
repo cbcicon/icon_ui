@@ -25,12 +25,8 @@
 		  <input pInputText id="longShelfLife" formControlName="longShelfLife" type="number" />
 		  <small class="error-text-color" *ngIf="shelfLifeForm.get('longShelfLife')?.invalid && shelfLifeForm.get('longShelfLife')?.touched">Long Shelf Life is required.</small>
 		</div>
-		<div class="p-field mx-2 d-flex flex-column" [ngClass]="{'p-invalid': shelfLifeForm.get('userName')?.invalid && shelfLifeForm.get('userName')?.touched}">
-		  <p for="userName">User Name</p>
-		  <input pInputText id="userName" formControlName="userName" type="text" />
-		  <small class="error-text-color" *ngIf="shelfLifeForm.get('userName')?.invalid && shelfLifeForm.get('userName')?.touched">User Name is required.</small>
-		</div>
-		<div class="p-field mx-2 mt-4">
+		
+		<div class="p-field mx-2 mt-3">
 		  <button type="submit" class="btn btn-success mt-3" [disabled]="shelfLifeForm.invalid">Submit</button>
 		</div>
 	  </div>
@@ -119,10 +115,10 @@
 			  <td class="ui-table-data-cell">{{selfLifeTableData.createdBy}}</td>
 			  <td class="ui-table-data-cell">{{util.formatDate(selfLifeTableData.createdDate)}}</td>
 			  <td class="ui-table-data-cell">{{util.formatDate(selfLifeTableData.createdDate)}}</td>
-		  </tr>w
+		  </tr>
 		</ng-template>  
 		
 	  
 	  </p-table>
-	</div>
+</div>
 

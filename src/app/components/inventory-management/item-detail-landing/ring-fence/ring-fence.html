@@ -109,9 +109,9 @@
 				<td  class="text-right font-bold pr-6">
 					{{calculateCustomerTotal(ringFenceData.location ,'qtyconsumed')}}
 				</td>
-				<td  class="text-right font-bold pr-6">
+				<!-- <td  class="text-right font-bold pr-6">
 					{{calculateCustomerTotal(ringFenceData.location ,'qtY_AVAILBALE')}}
-				</td>
+				</td> -->
 			</tr>
 		</ng-template>
 
@@ -137,8 +137,11 @@
 					{{ringFenceData.qtyconsumed}}
 				</td>
 				<td>
-					{{ringFenceData.qtY_AVAILBALE}}
-				</td>
+					{{
+					  ringFenceData.totaL_QTY - (ringFenceData.qtY_RING_FENCED + ringFenceData.qtyconsume)
+					}}
+				  </td>
+				  
 				<td>
 					{{ util.formatDate(ringFenceData.lockeD_DATE)}}
 				</td>

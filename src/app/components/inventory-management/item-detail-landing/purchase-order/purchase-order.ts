@@ -45,17 +45,20 @@ export class PurchaseOrderComponent {
   const uniqueSponsors = new Set();
   const uniqueItems = new Set();
   const uniqueStatusYes = new Set();
+  const uniqueManufacturer = new Set();
 
   data.forEach((entry:any) => {
       uniqueSponsors.add(entry.sponsor);
       uniqueItems.add(entry.item);
       uniqueStatusYes.add(entry.status);
+      uniqueManufacturer.add(entry.manufacturer)
   });
 
   return {
       uniqueSponsors: uniqueSponsors.size,
       uniqueItems: uniqueItems.size,
-      uniqueStatusYes: uniqueStatusYes.size
+      uniqueStatusYes: uniqueStatusYes.size,
+      uniqueManufacturer:uniqueManufacturer.size
   };
 }
 

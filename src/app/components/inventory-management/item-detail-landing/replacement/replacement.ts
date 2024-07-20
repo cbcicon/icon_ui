@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { DataService } from '../../data-services/data.service';
 import { TableDataService } from '../../../../common/table-data/table-data.service';
 import { DropdownFilterOptions } from 'primeng/dropdown';
+import { UtilService } from '../../../../common/util';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-replacement',
@@ -10,8 +12,9 @@ import { DropdownFilterOptions } from 'primeng/dropdown';
 })
 export class ReplacementComponent {
 
+  form!: FormGroup;
 
-  constructor( public tableDataService:TableDataService) {}
+  constructor( private fb: FormBuilder,public tableDataService:TableDataService , public util :UtilService) {}
 
   replacemnetData :any
   replacementActionData  :any
@@ -62,6 +65,17 @@ selectedProtocolNumbers:any
    setTimeout(() => {
      this.loading =  false
    },1000)
+
+
+   this.form = this.fb.group({
+    sponsor: [null, Validators.required],
+    protocolId: [null, Validators.required],
+    location: [null, Validators.required],
+    workOrder: [null, Validators.required],
+    lotNumber: [null, Validators.required],
+    qtyReplace: [null, [Validators.required, Validators.pattern('^[0-9]*$')]],
+    comment: ['']
+  });
 
  }
 
@@ -120,6 +134,16 @@ actionLotNumberList:any
   this.actionLotNumberList = [...new Set(filteredData.map((item: any) => item.lotNumber))]
     .map(lotNumber => ({ value: lotNumber, name: lotNumber }));
  }
+
+
+ handleSubmit() {
+  if (this.form.valid) {
+    console.log(this.form.value);
+    // handle form submission
+  } else {
+    this.form.markAllAsTouched();
+  }
+}
 
 
 
