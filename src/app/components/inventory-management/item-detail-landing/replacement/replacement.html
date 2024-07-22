@@ -1,4 +1,5 @@
 
+
 <div class="row mx-1">
 	<div class="card col replacement-card" >
 	
@@ -203,7 +204,7 @@
 			<td>{{searchfilteredData['quantity']}}</td>
 			<td>{{searchfilteredData['uom']}}</td>
 			<td>{{searchfilteredData['availability']}}</td>
-			<td>{{searchfilteredData['expiryDate']}}</td>
+			<td>{{ util.formatDate(searchfilteredData['expiryDate'])}}</td>
 	
 		  </tr>
 		</ng-template> 
@@ -219,47 +220,91 @@
 	
 	</div>
 	
-	<div class="col-md-3 card mx-2 side-card " *ngIf="showReversal">
-		<h6> <b>Replacement Action</b></h6>
-	
-		<div class="p-fluid p-formgrid grid">
-			
+	<div class="col-md-3 card mx-2 side-card" *ngIf="showReversal">
+		<h6><b>Replacement Action</b></h6>
+	  
+		<form [formGroup]="form" (ngSubmit)="handleSubmit()">
+		  <div class="p-fluid p-formgrid grid">
 			<div class="field md:col-6">
-				<label htmlFor="state">Sponsor *</label>
-				<p-dropdown [options]="actionSponsorList" optionLabel="name" ></p-dropdown>
+			  <label for="sponsor">Sponsor *</label>
+			  <p-dropdown
+				[options]="actionSponsorList"
+				optionLabel="name"
+				formControlName="sponsor"
+				[ngClass]="{ 'ng-invalid ng-dirty': form.controls['sponsor'].invalid && form.controls['sponsor'].touched }"
+			  ></p-dropdown>
 			</div>
+	  
 			<div class="field md:col-6">
-				<label htmlFor="state">Protocol ID *</label>
-				<p-dropdown [options]="actionProtocolIdList" optionLabel="name" ></p-dropdown>
+			  <label for="protocolId">Protocol ID *</label>
+			  <p-dropdown
+				[options]="actionProtocolIdList"
+				optionLabel="name"
+				formControlName="protocolId"
+				[ngClass]="{ 'ng-invalid ng-dirty': form.controls['protocolId'].invalid && form.controls['protocolId'].touched }"
+			  ></p-dropdown>
 			</div>
-	
+	  
 			<div class="field md:col-6">
-				<label htmlFor="state">Location *</label>
-				<p-dropdown [options]="actionLocationList" optionLabel="name" ></p-dropdown>
+			  <label for="location">Location *</label>
+			  <p-dropdown
+				[options]="actionLocationList"
+				optionLabel="name"
+				formControlName="location"
+				[ngClass]="{ 'ng-invalid ng-dirty': form.controls['location'].invalid && form.controls['location'].touched }"
+			  ></p-dropdown>
 			</div>
+	  
 			<div class="field md:col-6">
-				<label htmlFor="state">Work Order *</label>
-				<p-dropdown [options]="actionWorkOrderList" optionLabel="name" ></p-dropdown>
+			  <label for="workOrder">Work Order *</label>
+			  <p-dropdown
+				[options]="actionWorkOrderList"
+				optionLabel="name"
+				formControlName="workOrder"
+				[ngClass]="{ 'ng-invalid ng-dirty': form.controls['workOrder'].invalid && form.controls['workOrder'].touched }"
+			  ></p-dropdown>
 			</div>
+	  
 			<div class="field md:col-6">
-				<label htmlFor="state">Lot Number *</label>
-				<p-dropdown [options]="actionLotNumberList" optionLabel="name" ></p-dropdown>
+			  <label for="lotNumber">Lot Number *</label>
+			  <p-dropdown
+				[options]="actionLotNumberList"
+				optionLabel="name"
+				formControlName="lotNumber"
+				[ngClass]="{ 'ng-invalid ng-dirty': form.controls['lotNumber'].invalid && form.controls['lotNumber'].touched }"
+			  ></p-dropdown>
 			</div>
+	  
 			<div class="field md:col-6">
-				<label htmlFor="state">Qty Replace *</label>
-				<input pInputText id="username" type="text" />
+			  <label for="qtyReplace">Qty Replace *</label>
+			  <input
+				pInputText
+				id="qtyReplace"
+				type="text"
+				formControlName="qtyReplace"
+				[ngClass]="{ 'ng-invalid ng-dirty': form.controls['qtyReplace'].invalid && form.controls['qtyReplace'].touched }"
+			  />
 			</div>
-		</div>
-	
-		<div class="">
-			<p htmlFor="state" class="mb-0 mt-0" > <b>Comment</b> </p>
-			<textarea class="w-100" rows="2" cols="15" placeholder="Your Message" pInputTextarea></textarea>
-		</div>
-	
-		<div class="d-flex justify-content-between">
-			<button type="button" class="btn btn-outline-dark  mt-2" (click)="handleShowReplacement()"> cancel</button>
-			<button type="button" class="btn btn-success  mt-2"> Submit</button>
-		 </div>
-	</div>
+		  </div>
+	  
+		  <div>
+			<p class="mb-0 mt-0"><b>Comment</b></p>
+			<textarea
+			  class="w-100"
+			  rows="2"
+			  cols="15"
+			  placeholder="Your Message"
+			  pInputTextarea
+			  formControlName="comment"
+			></textarea>
+		  </div>
+	  
+		  <div class="d-flex justify-content-between">
+			<button type="button" class="btn btn-outline-dark mt-2" (click)="handleShowReplacement()">Cancel</button>
+			<button type="submit" class="btn btn-success mt-2">Submit</button>
+		  </div>
+		</form>
+	  </div>
+	  
 	
 	</div>

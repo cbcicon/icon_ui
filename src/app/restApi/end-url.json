@@ -12,7 +12,14 @@
        "safetyStockMain":"SafetyStockMain/GetAllSafetyStockMainTbl" ,
        "scrapMainComponent":"ScrapMain/GetAllScrapMainTbl" ,
        "allScrapDetailTbl":"ScrapDetail/GetAllScrapDetailTbl" ,
-       "allItemConfigurationTbl": "ItemConfiguration/GetAllItemConfigurationTbl" 
+       "allItemConfigurationTbl": "ItemConfiguration/GetAllItemConfigurationTbl" ,
+       "saveShelfLifeDetails":"ShelflifeDetail/SaveShelfLifeDetails",
+       "getAllShelflifeDetailTbl" :"ShelflifeDetail/GetAllShelflifeDetailTbl",
+      
+       "getAllSafetyStockConfigDetailTbl":"SafetyStockConfigDetail/GetAllSafetyStockConfigDetailTbl",
+       "saveSafetyStockConfigDetails":"SafetyStockConfigDetail/SaveSafetyStockConfigDetails",
+       "getAllPOConfigDetailTbl":"POConfigDetail/GetAllPOConfigDetailTbl",
+       "savePOConfigDetails":"POConfigDetail/SavePOConfigDetails"
 
    }
 }

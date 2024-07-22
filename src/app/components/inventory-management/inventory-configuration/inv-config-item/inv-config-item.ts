@@ -27,13 +27,6 @@ export class InvConfigItemComponent implements OnInit {
   newItemData: any = {}; // Store the new item data to be added
   editing: boolean = false; // Track if an item is being edited
 
-  monthList = [
-    { value: '1', name: '1 month' },
-    { value: '2', name: '2 months' },
-    { value: '3', name: '3 months' },
-    { value: '4', name: '4 months' },
-    { value: '5', name: '5 months' }
-  ];
 
   constructor(public tableDataService: TableDataService, private messageService: MessageService) {}
 
@@ -93,14 +86,7 @@ onFileSelected(event: any) {
       editing: false // Initialize editing flag for each item
     }));
 
-    // Append new Excel data below after the existing itemDataConfig 
-    // this.itemDataConfig = [...this.itemDataConfig, ...mappedExcelData];
-
-     // Append new Excel data to existing itemDataConfig at the top
      this.itemDataConfig = [...mappedExcelData, ...this.itemDataConfig];
-
-    // Fetch existing item configuration data if needed
-    // this.loadItemConfigData();
   };
 
   reader.readAsBinaryString(file);
@@ -134,7 +120,7 @@ uploadExcel(): void {
       minoq: ''
     };
     this.itemDataConfig = [this.newItemData, ...this.itemDataConfig];
-    this.addItemActive = true; // Set the flag to true indicating "Add Item" was clicked
+    this.addItemActive = true; 
   }
 
   onRowEditSave(item: any) {

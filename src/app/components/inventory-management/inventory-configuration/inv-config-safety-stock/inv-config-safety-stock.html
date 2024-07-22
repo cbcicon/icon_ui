@@ -1,143 +1,53 @@
-<h4>Safety Stock Configs </h4>
+<h4>Scrap Configs </h4>
 
 <p-divider />
 
 
 
-<div class="d-flex justify-content-start config-safety-stock ">
+
+<div style="margin-top: 1rem;" >
+
+	<div class="d-flex justify-content-start config-safety-stock mt-4">
+		<form [formGroup]="stockForm" (ngSubmit)="onSubmit()">
+		  <div class="d-flex flex-wrap">
+			<div class="p-field mx-2 d-flex flex-column" [ngClass]="{'p-invalid': stockForm.get('location')?.invalid && stockForm.get('location')?.touched}">
+			  <label for="location">Location</label>
+			  <input pInputText id="location" formControlName="location" type="text" placeholder="Enter Location" />
+			  <small class="error-text-color" *ngIf="stockForm.get('location')?.invalid && stockForm.get('location')?.touched">Location is required.</small>
+			</div>
+	  
+			<div class="p-field mx-2 d-flex flex-column" [ngClass]="{'p-invalid': stockForm.get('excessStockDuration')?.invalid && stockForm.get('excessStockDuration')?.touched}">
+			  <label for="excessStockDuration">Excess Stock Duration</label>
+			  <input pInputText id="excessStockDuration" formControlName="excessStockDuration" type="number" placeholder="Enter Excess Stock Duration" />
+			  <small class="error-text-color" *ngIf="stockForm.get('excessStockDuration')?.invalid && stockForm.get('excessStockDuration')?.touched">Excess Stock Duration is required and must be a number.</small>
+			</div>
+
+	  
+			<div class="p-field mx-2 d-flex flex-column" [ngClass]="{'p-invalid': stockForm.get('minStock')?.invalid && stockForm.get('minStock')?.touched}">
+			  <label for="minStock">Min Stock</label>
+			  <input pInputText id="minStock" formControlName="minStock" type="number" placeholder="Enter Min Stock" />
+			  <small class="error-text-color" *ngIf="stockForm.get('minStock')?.invalid && stockForm.get('minStock')?.touched">Min Stock is required and must be a number.</small>
+			</div>
+	  
+			<div class="p-field mx-2 d-flex flex-column" [ngClass]="{'p-invalid': stockForm.get('maxStock')?.invalid && stockForm.get('maxStock')?.touched}">
+			  <label for="maxStock">Max Stock</label>
+			  <input pInputText id="maxStock" formControlName="maxStock" type="number" placeholder="Enter Max Stock" />
+			  <small class="error-text-color" *ngIf="stockForm.get('maxStock')?.invalid && stockForm.get('maxStock')?.touched">Max Stock is required and must be a number.</small>
+			</div>
+	  
+		
 			
-
-    <div class="mx-4">
-          <p class="m-0"><b>Excess Stock Duration</b></p>
-        <p-dropdown 
-				[options]="monthList"
-				[(ngModel)]="selectedValue"
-				optionLabel="name"
-				[filter]="true"
-				filterBy="name"
-				[showClear]="true"
-				 (onChange)="onSponsorChange($event)"
-				placeholder="Select">
-					<ng-template pTemplate="selectedItem" let-selectedOption>
-						<div class="flex align-items-center gap-2">
-							
-							<div>{{ selectedOption.name }}</div>
-						</div>
-					</ng-template>
-					<ng-template let-sponsors pTemplate="item">
-						<div class="flex align-items-center gap-2">
-							
-							<div>{{ sponsors.name }}</div>
-						</div>
-					</ng-template>
-			</p-dropdown>
-    </div>
-
- <div>
-    <button type="button" class="btn btn-success mx-4 mt-4"> Submit</button>
- </div>
-
+			<div class="p-field mx-2 mt-2">
+			  <button type="submit" class="btn btn-success mt-4" [disabled]="stockForm.invalid">Submit</button>
+			</div>
+		  </div>
+		</form>
+	  </div>
+	  
 </div>
 
 
-<div style="margin-top: 5rem;" >
 
-<h4 class="mt-4">Min & Max Stock Level </h4>
-
-<p-divider />
-
-
-
-<div   class="d-flex justify-content-start config-safety-stock mt-4">
-			
-
-    <div class="mx-4">
-          <p class="m-0"><b>Location</b></p>
-        <p-dropdown 
-				[options]="monthList"
-				[(ngModel)]="selectedValue"
-				optionLabel="name"
-				[filter]="true"
-				filterBy="name"
-				[showClear]="true"
-				 (onChange)="onSponsorChange($event)"
-				placeholder="Select">
-					<ng-template pTemplate="selectedItem" let-selectedOption>
-						<div class="flex align-items-center gap-2">
-							
-							<div>{{ selectedOption.name }}</div>
-						</div>
-					</ng-template>
-					<ng-template let-sponsors pTemplate="item">
-						<div class="flex align-items-center gap-2">
-							
-							<div>{{ sponsors.name }}</div>
-						</div>
-					</ng-template>
-			</p-dropdown>
-    </div>
-
-    <div class="mx-4">
-      <p class="m-0"><b>Min Stock</b></p>
-    <p-dropdown 
-    [options]="monthList"
-    [(ngModel)]="selectedValue"
-    optionLabel="name"
-    [filter]="true"
-    filterBy="name"
-    [showClear]="true"
-     (onChange)="onSponsorChange($event)"
-    placeholder="Select">
-      <ng-template pTemplate="selectedItem" let-selectedOption>
-        <div class="flex align-items-center gap-2">
-          
-          <div>{{ selectedOption.name }}</div>
-        </div>
-      </ng-template>
-      <ng-template let-sponsors pTemplate="item">
-        <div class="flex align-items-center gap-2">
-          
-          <div>{{ sponsors.name }}</div>
-        </div>
-      </ng-template>
-  </p-dropdown>
-</div>
-
-<div class="mx-4">
-  <p class="m-0"><b>Max Stock</b></p>
-<p-dropdown 
-[options]="monthList"
-[(ngModel)]="selectedValue"
-optionLabel="name"
-[filter]="true"
-filterBy="name"
-[showClear]="true"
- (onChange)="onSponsorChange($event)"
-placeholder="Select">
-  <ng-template pTemplate="selectedItem" let-selectedOption>
-    <div class="flex align-items-center gap-2">
-      
-      <div>{{ selectedOption.name }}</div>
-    </div>
-  </ng-template>
-  <ng-template let-sponsors pTemplate="item">
-    <div class="flex align-items-center gap-2">
-      
-      <div>{{ sponsors.name }}</div>
-    </div>
-  </ng-template>
-</p-dropdown>
-</div>
-
-
- <div>
-    <button type="button" class="btn btn-success mx-4 mt-4"> Submit</button>
- </div>
-
-</div>
-
-
-</div>
 
 <div style="margin-top: 5rem;">
 
@@ -148,12 +58,8 @@ placeholder="Select">
 		styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm"  >
 	   
 		 <ng-template pTemplate="header">
-		  <tr>
-			<th pSortableColumn="action-item">
-			  <div class="flex justify-content-between align-items-center">
-				Action 
-			  </div>
-			</th>
+		  <tr class="config-safety-header ">
+			
 	  
 			<th pSortableColumn="ITEM_NAME">
 			  <div class="flex justify-content-between align-items-center">
@@ -181,6 +87,20 @@ placeholder="Select">
 				<p-columnFilter type="text" field="DEMAND" display="menu" class="ml-auto"></p-columnFilter>
 			  </div>
 			</th>
+
+			<th pSortableColumn="DEMAND">
+				<div class="flex justify-content-between align-items-center">
+			  Status
+				  <p-columnFilter type="text" field="DEMAND" display="menu" class="ml-auto"></p-columnFilter>
+				</div>
+			  </th>
+			  
+			  <th pSortableColumn="DEMAND">
+				<div class="flex justify-content-between align-items-center">
+			    User Name
+				  <p-columnFilter type="text" field="DEMAND" display="menu" class="ml-auto"></p-columnFilter>
+				</div>
+			  </th>
 	  
 			<th pSortableColumn="ON_STOCK">
 			  <div class="flex justify-content-between align-items-center">
@@ -205,13 +125,15 @@ placeholder="Select">
 	
    <ng-template pTemplate="body" let-invConfigSafetyStockData>
 		  <tr class="p-selectable-row">
-			<td><i class="bi bi-pencil"></i> {{invConfigSafetyStockData['action']}}</td>
+
 			<td>{{invConfigSafetyStockData['location']}}</td>
 			<td>{{invConfigSafetyStockData['configType']}}</td>
       <td>{{invConfigSafetyStockData['minStock']}}</td>
 			<td>{{invConfigSafetyStockData['maxStock']}}</td>
-      <td>{{invConfigSafetyStockData['createdDate']}}</td>
-    <td>{{invConfigSafetyStockData['lastModifiedDate']}}</td>
+			<td>{{invConfigSafetyStockData['status']}}</td>
+			<td>{{invConfigSafetyStockData['createdBy']}}</td>
+      <td> {{util.formatDate(invConfigSafetyStockData['createdDate'])}}</td>
+    <td>  {{util.formatDate(invConfigSafetyStockData['lastModifiedDate'])}}</td>
       
 		  </tr>
 		</ng-template>  

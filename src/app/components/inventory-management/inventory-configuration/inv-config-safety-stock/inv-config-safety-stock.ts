@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TableDataService } from '../../../../common/table-data/table-data.service';
+import { UtilService } from '../../../../common/util';
 
 @Component({
   selector: 'app-inv-config-safety-stock',
@@ -13,98 +16,49 @@ export class InvConfigSafetyStockComponent {
   loading:boolean = false;
   totalRecords:number = 0 ;
 
-  invConfigSafetyStockData:any =[
-    {
-      actions: "",
-      location: "Buxton",
-      configType: "Location",
-      minStock: 100,
-      maxStock: 500,
-    
-      createdDate: "01 Jan 2024",
-      lastModifiedDate: "15 Jan 2024",
-    },
-    {
-      actions: "",
-      location: "Farmingdale",
-      configType: "Location",
-      minStock: 3.0,
-      maxStock: 600,
-    
-      createdDate: "01 Jan 2024",
-      lastModifiedDate: "18 Jan 2024",
-    },
-    {
-      actions: "",
-      location: "Therepak CZ",
-      configType: "Location",
-      minStock: 50,
-      maxStock: 300,
-    
-      createdDate: "01 Jan 2024",
-      lastModifiedDate: "23 Jan 2024",
-    },
-    {
-      actions: "",
-      location: "Midland",
-      configType: "Location",
-      minStock: 100,
-      maxStock: 400,
-    
-      createdDate: "01 Jan 2024",
-      lastModifiedDate: "7 Feb 2024",
-    },
-    {
-      actions: "",
-      location: "Tennant EU",
-      configType: "Location",
-      minStock: 350,
-      maxStock: 400,
-    
-      createdDate: "01 Jan 2024",
-      lastModifiedDate: "10 Feb 2024",
-    },
-    {
-      actions: "",
-      location: "Shannon EU",
-      configType: "Location",
-      minStock: 300,
-      maxStock: 250,
-     
-      createdDate: "01 Jan 2024",
-      lastModifiedDate: "19 Feb 2024",
-    },
-    {
-      actions: "",
-      location: "Global",
-      configType: "Location",
-      minStock: 250,
-      maxStock: 850,
-    
-      createdDate: "01 Jan 2024",
-      lastModifiedDate: "22 Feb 2024",
+  stockForm!: FormGroup;
+  invConfigSafetyStockData:any
+
+  constructor(private fb: FormBuilder ,  public tableDataService:TableDataService  , public util:UtilService) { }
+
+
+  ngOnInit(): void {
+
+
+    this.tableDataService.getAllSafetyStockConfigDetailTbl().subscribe((res:any) => {
+      this.invConfigSafetyStockData = res 
+    })
+  
+
+    this.stockForm = this.fb.group({
+      location: ['', Validators.required],
+      excessStockDuration: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      minStock: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      maxStock: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+    });
+  }
+
+
+
+  onSubmit(): void {
+    if (this.stockForm.valid) {
+
+      let bodyRequest = this.stockForm.value ;
+      
+      bodyRequest["userName"] = "SBarla"
+
+      bodyRequest["configType"] =  bodyRequest["location"] ? "location"  : "global" ;
+
+      this.tableDataService.saveSafetyStockConfigDetails( bodyRequest ).subscribe((res:any) => {
+
+        this.tableDataService.getAllSafetyStockConfigDetailTbl().subscribe((res:any) => {
+          this.invConfigSafetyStockData = res 
+        })
+            
+      })
+
     }
-  ]
-  
-  
-
-
-  monthList = [{ value: '1', name: '1 month' },
-  { value: '2', name: '2 month' },
-  { value: '3', name: '3 month' },
-  { value: '4', name: '4 month' },
-  { value: '5', name: '5 month' },
-  ]
-
-
-  onSponsorChange(event: any) {
-
-    let searchParam = event.value.value;
-
-    console.log("test : " ,searchParam)
-
   }
 
 
 }
-

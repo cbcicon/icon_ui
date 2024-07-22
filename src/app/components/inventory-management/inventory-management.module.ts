@@ -1,7 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToggleButtonModule } from 'primeng/togglebutton';
@@ -53,6 +53,7 @@ import { InvConfigItemComponent } from './inventory-configuration/inv-config-ite
 import { InvConfigSafetyStockComponent } from './inventory-configuration/inv-config-safety-stock/inv-config-safety-stock';
 import { InvConfigSelfLifeComponent } from './inventory-configuration/inv-config-self-life/inv-config-self-life';
 import { InvConfigPurchaseOrderComponent } from './inventory-configuration/inv-config-purchase-order/inv-config-purchase-order';
+import { InvConfigCriticalityComponent } from './inventory-configuration/inv-config-criticality/inv-config-criticality';
 
 
 @NgModule({
@@ -60,9 +61,10 @@ import { InvConfigPurchaseOrderComponent } from './inventory-configuration/inv-c
 		OrderTableComponent, QauntityBreakdownPopupComponent, ItemSearchPopupComponent, ItemDetailsComponent, ItemDetailLandingComponent,
 		StockAndScrapComponent, RingFenceComponent, ReplacementComponent, PurchaseOrderComponent , SafetyStockComponent , ScrapComponent,
 		InventoryPurchaseOrderComponent ,InventoryConfigurationComponent , InvConfigItemComponent ,InvConfigSafetyStockComponent,
-		InvConfigSelfLifeComponent,InvConfigPurchaseOrderComponent
+		InvConfigSelfLifeComponent,InvConfigPurchaseOrderComponent , InvConfigCriticalityComponent
 	],
 	imports: [
+		ReactiveFormsModule,
 		CommonModule,
 		InventoryManagementRoutingModule,
 		DividerModule,

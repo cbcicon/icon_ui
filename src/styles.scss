@@ -800,7 +800,7 @@ input:focus-visible {
 }
 
 .p-datatable .p-datatable-tbody>tr>td:first-child {
-  padding-left: 1px;
+  padding-left: 10px;
 }
 
 .p-datatable .p-datatable-thead>tr>th {
@@ -891,6 +891,9 @@ color: #1790D0;
 font-weight: 500;
 }
 
+.error-text-color{
+  color: red;
+}
 
 
 @import "primeng/resources/themes/lara-light-blue/theme.css";
