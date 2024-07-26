@@ -38,9 +38,12 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
-                label: 'Revenue Planning',
+                label: 'Revenue Management',
                 icon: 'bi bi-currency-dollar mx-2',
-               
+                items: [
+                    { label: 'Revenue', routerLink: ['/'] },
+                    { label: 'Configurations', icon: 'truck-icon', routerLink: ['/'] },
+                ]
             },
             {
                 label: 'Inventory Management',
