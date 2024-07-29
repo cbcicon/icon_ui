@@ -4,16 +4,16 @@ import { TableDataService } from '../../../../common/table-data/table-data.servi
 import { UtilService } from '../../../../common/util';
 
 @Component({
-  selector: 'app-inv-config-self-life',
-  templateUrl: './inv-config-self-life.html',
-  styleUrls:['./inv-config-self-life.scss']
+  selector: 'app-dm-kit-config',
+  templateUrl: './dm-kit-config.component.html',
+  styleUrls:[ './dm-kit-config.component.scss']
 })
-export class InvConfigSelfLifeComponent {
+export class DmKitConfigComponent {
+
 
   selectedValue:any;
 
   loading:boolean = false;
-
 
 
   shelfLifeForm: FormGroup;
@@ -59,11 +59,6 @@ export class InvConfigSelfLifeComponent {
 
 
   }
-
-
-
-
-
 
 
 }

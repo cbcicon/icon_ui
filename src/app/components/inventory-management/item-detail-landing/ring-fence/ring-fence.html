@@ -3,8 +3,189 @@
 	<div class="col card " >
 		<div class="d-flex justify-content-between">
 					
-			<div>
-				<h4>Ring Fence</h4>
+					</div>
+				</th>
+
+				<th class="ring-fence-header">
+					<div class="flex justify-content-between align-items-center">
+					Qty Consumed
+					</div>
+				</th>
+
+				<th class="ring-fence-header">
+					<div class="flex justify-content-between align-items-center">
+						Qty Available
+						
+					</div>
+				</th>
+
+				<th class="ring-fence-header">
+					<div class="flex justify-content-between align-items-center">
+						Locked Date
+					</div>
+				</th>
+
+				<th class="ring-fence-header" style="min-width: 10rem">
+					<div class="flex justify-content-between align-items-center">
+                    Unlocked Date
+					</div>
+				</th>
+
+				<th style="min-width: 10rem" class="ring-fence-header">
+					<div class="flex justify-content-between align-items-center">
+						Expire Date
+					</div>
+				</th>
+
+			</tr>
+		</ng-template>
+	   
+		<ng-template pTemplate="groupfooter" let-ringFenceData>
+			<tr>
+				<td class="text-right font-bold pr-6"> Total</td>
+				<td colspan="3" class="text-right font-bold pr-6">
+				 {{calculateCustomerTotal(ringFenceData.location , 'totaL_QTY')}}
+				</td>
+				<td  class="text-right font-bold pr-6">
+					{{calculateCustomerTotal(ringFenceData.location ,'qtY_RING_FENCED')}}
+				</td>
+				<td  class="text-right font-bold pr-6">
+					{{calculateCustomerTotal(ringFenceData.location ,'qtyconsumed')}}
+				</td>
+				<!-- <td  class="text-right font-bold pr-6">
+					{{calculateCustomerTotal(ringFenceData.location ,'qtY_AVAILBALE')}}
+				</td> -->
+			</tr>
+		</ng-template>
+
+		<ng-template pTemplate="body" let-ringFenceData  let-rowIndex="rowIndex">
+			<tr>
+				<td >
+					<span (click)="handleLockUnlockShow();handleLockUnlockForm(ringFenceData)" > <i class="bi bi-unlock"></i></span>
+					<span class="ml-3" (click)="handleChatRightSidebar()"><i class="bi bi-chat-left-text" ></i></span>
+				</td>
+				<td  >
+				  <span > {{ringFenceData.location}}</span>	
+				</td>
+				<td>
+					{{ringFenceData.loT_NO}}
+				</td>
+				<td>
+					{{ringFenceData.totaL_QTY}}
+				</td>
+				<td>
+					{{ringFenceData.qtY_RING_FENCED}}
+				</td>
+				<td>
+					{{ringFenceData.qtyconsumed}}
+				</td>
+				<td>
+					{{
+					  ringFenceData.totaL_QTY - (ringFenceData.qtY_RING_FENCED + ringFenceData.qtyconsume)
+					}}
+				  </td>
+				  
+				<td>
+					{{ util.formatDate(ringFenceData.lockeD_DATE)}}
+				</td>
+				<td>
+					{{ util.formatDate(ringFenceData.unlockeD_DATE)}}
+				</td>
+				<td>
+					{{ util.formatDate(ringFenceData.expirE_DATE)}}
+				</td>
+				
+			</tr>
+		</ng-template>
+</p-table>
+
+
+</div>
+
+<!-- .............. lock unlock Form............ -->
+
+<div class=" col-md-3 card mx-2 side-card " *ngIf="lockActive">
+	<h6><b>Lock</b></h6>
+
+	<div class="flex flex-wrap gap-3">
+		<div class="flex align-items-center">
+			<p-radioButton name="pizza" value="Cheese" [(ngModel)]="ingredient" inputId="ingredient1"></p-radioButton>
+			<label for="ingredient1" class="ml-2">Lock</label>
+		</div>
+		
+		<div class="flex align-items-center">
+			<p-radioButton name="pizza" value="Mushroom" [(ngModel)]="ingredient" inputId="ingredient2"></p-radioButton>
+			<label for="ingredient2" class="ml-2">Unlock</label>
+		</div>
+		</div>
+	<div class="p-fluid p-formgrid grid">
+		
+		<div class="field md:col-6">
+			<label htmlFor="state">Sponsor *</label>
+			<p-dropdown [options]="sponsorList" optionLabel="value" ></p-dropdown>
+		</div>
+		<div class="field md:col-6">
+			<label htmlFor="state">Protocol ID *</label>
+			<p-dropdown [options]="protocolList" optionLabel="value" ></p-dropdown>
+		</div>
+
+		<div class="field md:col-6">
+			<label htmlFor="state">Location *</label>
+			<p-dropdown [options]="countryList" optionLabel="value" ></p-dropdown>
+		</div>
+		<div class="field md:col-6">
+			<label htmlFor="state">Lot Number *</label>
+			<p-dropdown [options]="lotNumberList" optionLabel="value" ></p-dropdown>
+		</div>
+		<div class="field md:col-6">
+			<label htmlFor="state">Qty Unlock *</label>
+			<p-dropdown [options]="qtyUnlockList" optionLabel="value" ></p-dropdown>
+		</div>
+		<div class="field md:col-6">
+			<label htmlFor="state">Date *</label>
+			<p-calendar  [iconDisplay]="'input'" [showIcon]="true"></p-calendar>
+		</div>
+    
+	</div>
+
+	<div>
+		<!-- <p htmlFor="state"> <b>Comment</b> </p> -->
+		<textarea class="w-100" rows="2" cols="15" placeholder="Your Message" pInputTextarea></textarea>
+	</div>
+
+	<div class="d-flex justify-content-between">
+		<button type="button" class="btn btn-outline-dark  mt-2"  (click)="handleLockUnlockShow()"> Submit</button>
+		<button type="button" class="btn btn-success  mt-2"> Submit</button>
+	 </div>
+</div>
+
+</div>
+
+<!-- ..............  Inventory Locations chart ............ -->
+
+<div class=" col-md-3 card mx-2 below-card" *ngIf="chartActive">
+
+<div class="d-flex justify-content-between mb-4"> 	<h4 > <i class="bi bi-geo-alt"></i> Inventory Locations</h4> <p-button icon="pi pi-times" (click)="handleChartShow()" [rounded]="true" [text]="true" severity="secondary" />
+</div>
+
+	<p-chart type="pie" [data]="data" [options]="options" class="chart-container"></p-chart>
+	
+</div>
+
+
+<!-- chat side bar  -->
+
+<div class="item-detail-right-sidebar">
+	<p-sidebar  #sidebarRef  [(visible)]="chatRightSideBar" position="right" styleClass="p-sidebar-lg">
+		<ng-template pTemplate="headless"  >
+			<div class="flex justify-content-between ml-3">
+				<div>
+					<p class="chat-sidebar-header">Activity History</p>
+				</div>
+				<span>
+					<p-button  type="button" (click)="closeCallback($event)" icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary"></p-button>
+
+				</span>
 			</div>
 			<div>
 				<span class="p-input-icon-left ml-auto">

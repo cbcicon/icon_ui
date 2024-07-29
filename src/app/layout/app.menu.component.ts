@@ -26,7 +26,7 @@ export class AppMenuComponent implements OnInit {
                     { label: 'Forecast', routerLink: ['/demand-management/forecast'] },
                     { label: 'New Study', routerLink: ['/demand-management/new-study'] },
                     { label: 'Live Study', routerLink: ['/pages/empty'] },
-                    { label: 'Configurations', routerLink: ['/pages/empty'] }
+                    { label: 'Configurations', routerLink: ['/demand-management/dm-configuration'] }
                 ]
             },
             {

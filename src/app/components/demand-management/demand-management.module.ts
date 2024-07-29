@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToggleButtonModule } from 'primeng/togglebutton';
@@ -48,13 +48,16 @@ import { LiveSitesComponent } from './live-study-detail-landing/livesites/livesi
 import { LiveVisitsComponent } from './live-study-detail-landing/livevisits/livevisits.component';
 import { LiveWorkOrdersComponent } from './live-study-detail-landing/liveworkorders/liveworkorders.component';
 import { LiveKitsComponent } from './live-study-detail-landing/livekits/livekits.component';
+import { DmConfigurationComponent } from './dm-configuration/dm-configuration.component';
+import { DmKitConfigComponent } from './dm-configuration/dm-kit-config/dm-kit-config.component';
 
 @NgModule({
 	declarations: [
 		ForecastTable, ForecastChart, NewstudyTableComponent, StudyDetailLandingComponent, CountriesComponent, SitesComponent, InventoryReviewComponent,
-		 SummaryComponent,MasterDemandPlanComponent, LiveStudyDetailLandingComponent,LiveCountriesComponent,LiveSitesComponent,LiveVisitsComponent,LiveWorkOrdersComponent,LiveKitsComponent
-	],
+		 SummaryComponent,MasterDemandPlanComponent, LiveStudyDetailLandingComponent,LiveCountriesComponent,LiveSitesComponent,LiveVisitsComponent
+		 ,LiveWorkOrdersComponent,LiveKitsComponent,DmConfigurationComponent ,DmKitConfigComponent],
 	imports: [
+		ReactiveFormsModule,
 		CommonModule,
 		DemandManagementRoutingModule,
 		DividerModule,
