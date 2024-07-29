@@ -76,7 +76,6 @@ export class TableDataService {
     return this.http.get<any>(`${this.apiBaseUrl}/fetch-item-config-endpoint`);
   }
 
-
   getAllShelflifeDetailTbl(): Observable<any> {
     return this.http.get<any>(`${this.apiBaseUrl}/${inventory.inventory['getAllShelflifeDetailTbl']}`)
   }
