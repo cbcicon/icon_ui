@@ -17,15 +17,15 @@
                 <div class="row">
                   <div class="col">
                     <i class="bi bi-download" (click)="exportExcel()"
-                    style="font-size: 1.25rem; cursor: pointer;"></i>
+                       style="font-size: 1.25rem; cursor: pointer;"></i>
                   </div>
                   <div class="col">
                     <span (click)="handleRowControl()" style="cursor: pointer;font-size: 1.25rem">
-                        <i class="bi bi-arrows-angle-expand"
-                            *ngIf="changeExpandButton; else collapseIcon"></i>
-                        <ng-template #collapseIcon>
-                            <i class="bi bi-arrows-angle-contract"></i>
-                        </ng-template>
+                      <i class="bi bi-arrows-angle-expand"
+                         *ngIf="changeExpandButton; else collapseIcon"></i>
+                      <ng-template #collapseIcon>
+                        <i class="bi bi-arrows-angle-contract"></i>
+                      </ng-template>
                     </span>
                   </div>
                 </div>
@@ -82,52 +82,24 @@
             <td>{{ revenue.newItemRevenuePerMonthMar }}</td>
             <td>{{ revenue.newItemVariationInMar }}</td>
           </tr>
-          <tr *ngIf="expandedRowIndex === ri">
-            <td colspan="13">
-              <div class="expanded-details">
-                <table class="expanded-details-table">
-                  <thead>
-                    <tr>
-                      <th style="background-color: rgba(255, 248, 232, 1); text-align: center;">Actions</th>
-                      <th style="background-color: rgba(255, 248, 232, 1); text-align: center;">Production Location</th>
-                      <th style="background-color: rgba(255, 248, 232, 1); text-align: center;">Cumulative Revenue</th>
-                      <th style="background-color: rgba(255, 248, 232, 1); text-align: center;">Margin</th>
-                      <th style="background-color: rgba(255, 248, 232, 1); text-align: center;">Goal per month</th>
-                      <th style="background-color: rgba(255, 248, 232, 1); text-align: center;">Revenue accrued per month</th>
-                      <th style="background-color: rgba(255, 248, 232, 1); text-align: center;">Variation in %</th>
-                      <th style="background-color: rgba(255, 248, 232, 1); text-align: center;">Goal per month</th>
-                      <th style="background-color: rgba(255, 248, 232, 1); text-align: center;">Revenue accrued per month</th>
-                      <th style="background-color: rgba(255, 248, 232, 1); text-align: center;">Variation in %</th>
-                      <th style="background-color: rgba(255, 248, 232, 1); text-align: center;">Goal per month</th>
-                      <th style="background-color: rgba(255, 248, 232, 1); text-align: center;">Revenue accrued per month</th>
-                      <th style="background-color: rgba(255, 248, 232, 1); text-align: center;">Variation in %</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let detail of revenue.Details">
-                      <td>
-                        <div class="ml-2">
-                          <i class="bi bi-chat-left-text" style="font-size: 1.25rem;"></i>
-                        </div>
-                      </td>
-                      <td [innerHTML]="detail.productionlocation"></td>
-                      <td>{{ detail.cumulativerevenue }}</td>
-                      <td>{{ detail.margin }}</td>
-                      <td>{{ detail.newItemGoalPerMonthJan }}</td>
-                      <td>{{ detail.newItemRevenuePerMonthJan }}</td>
-                      <td>{{ detail.newItemVariationInJan }}</td>
-                      <td>{{ detail.newItemGoalPerMonthFeb }}</td>
-                      <td>{{ detail.newItemRevenuePerMonthFeb }}</td>
-                      <td>{{ detail.newItemVariationInFeb }}</td>
-                      <td>{{ detail.newItemGoalPerMonthMar }}</td>
-                      <td>{{ detail.newItemRevenuePerMonthMar }}</td>
-                      <td>{{ detail.newItemVariationInMar }}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </td>
-          </tr>
+  
+          <ng-container *ngIf="expandedRowIndex === ri">
+            <tr *ngFor="let detail of revenue.Details">
+              <td><i class="bi bi-chat-left-text"></i></td>
+              <td [innerHTML]="detail.productionlocation"></td>
+              <td>{{ detail.cumulativerevenue }}</td>
+              <td>{{ detail.margin }}</td>
+              <td>{{ detail.newItemGoalPerMonthJan }}</td>
+              <td>{{ detail.newItemRevenuePerMonthJan }}</td>
+              <td>{{ detail.newItemVariationInJan }}</td>
+              <td>{{ detail.newItemGoalPerMonthFeb }}</td>
+              <td>{{ detail.newItemRevenuePerMonthFeb }}</td>
+              <td>{{ detail.newItemVariationInFeb }}</td>
+              <td>{{ detail.newItemGoalPerMonthMar }}</td>
+              <td>{{ detail.newItemRevenuePerMonthMar }}</td>
+              <td>{{ detail.newItemVariationInMar }}</td>
+            </tr>
+          </ng-container>
         </ng-template>
       </p-table>
     </div>
