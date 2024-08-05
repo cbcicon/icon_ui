@@ -91,7 +91,7 @@ selectedItems!: any[];
   }
 
   handleRowControl() {
-    this.setRows = this.setRows == this.util.getPageSize() ? this.revenues.length : this.util.getPageSize();
+    this.setRows = this.setRows == this.util.getPageSize() ? this.revenueData.length : this.util.getPageSize();
     this.changeExpandButton = this.setRows == this.util.getPageSize() ? false : true;
   }
 
@@ -118,7 +118,7 @@ showContent: boolean = true;
 
 exportExcel() {
   import('xlsx').then((xlsx) => {
-    const worksheet = xlsx.utils.json_to_sheet(this.revenues);
+    const worksheet = xlsx.utils.json_to_sheet(this.revenueData);
     const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
     const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
     this.saveAsExcelFile(excelBuffer, 'products');
