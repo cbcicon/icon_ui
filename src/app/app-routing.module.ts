@@ -15,6 +15,7 @@ const routes: Routes = [
             { path: 'demand-management', loadChildren: () => import('./components/demand-management/demand-management.module').then(m => m.DemandManagementModule) },
             { path: 'inventory-management', loadChildren: () => import('./components//inventory-management/inventory-management.module').then(m => m.InventoryManagementModule) },
             { path: 'to-do-list', component: ToDoListComponent },
+            { path: 'revenue-management', loadChildren: () => import('./components//revenue-management/revenue-management.module').then(m => m.RevenueManagementModule) },
         
         ]
     },

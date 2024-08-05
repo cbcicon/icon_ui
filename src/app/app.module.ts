@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppLayoutModule } from './layout/app.layout.module';
 import { DemandManagementModule } from './components/demand-management/demand-management.module';
+import { RevenueManagementModule } from './components/revenue-management/revenue-management.module';
 import { SharedModule } from './shared/shared.module';
 import { UtilService } from './common/util';
 import { DragDropModule } from '@angular/cdk/drag-drop';
