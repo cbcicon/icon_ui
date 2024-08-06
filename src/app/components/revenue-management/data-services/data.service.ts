@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  constructor() { }
+  constructor(private sanitizer: DomSanitizer) { }
 
   getRevenueData(): Observable<any[]> {
     const data = [
@@ -27,7 +28,7 @@ export class DataService {
         Details: [
           {
             Actions: "",
-            productionlocation: "<a href='#' style='color: rgba(18, 132, 116, 1)'>FarmingDale</a>",
+            productionlocation: this.sanitizer.bypassSecurityTrustHtml("<a href='#' style='color: rgba(18, 132, 116, 1); text-decoration: underline;'>FarmingDale</a>"),
             cumulativerevenue: "$447",
             margin: "10",
             newItemGoalPerMonthJan: "$100",
@@ -42,7 +43,7 @@ export class DataService {
           },
           {
             Actions: "",
-            productionlocation: "<a href='#' style='color: rgba(18, 132, 116, 1)'>Buford</a>",
+            productionlocation: this.sanitizer.bypassSecurityTrustHtml("<a href='#' style='color: rgba(18, 132, 116, 1); text-decoration: underline;'>Buford</a>"),
             cumulativerevenue: "$1000",
             margin: "-2",
             newItemGoalPerMonthJan: "$90",
@@ -57,7 +58,7 @@ export class DataService {
           },
           {
             Actions: "",
-            productionlocation: "<a href='#' style='color: rgba(18, 132, 116, 1)'>Therepak</a>",
+            productionlocation: this.sanitizer.bypassSecurityTrustHtml("<a href='#' style='color: rgba(18, 132, 116, 1); text-decoration: underline;'>Therepak</a>"),
             cumulativerevenue: "$1200",
             margin: "-10.2",
             newItemGoalPerMonthJan: "$110",
@@ -72,7 +73,7 @@ export class DataService {
           },
           {
             Actions: "",
-            productionlocation: "<a href='#' style='color: rgba(18, 132, 116, 1)'>Midland</a>",
+            productionlocation: this.sanitizer.bypassSecurityTrustHtml("<a href='#' style='color: rgba(18, 132, 116, 1); text-decoration: underline;'>Midland</a>"),
             cumulativerevenue: "$800",
             margin: "-15.2",
             newItemGoalPerMonthJan: "$900",
