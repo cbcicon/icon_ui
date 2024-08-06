@@ -86,7 +86,11 @@
           <ng-container *ngIf="expandedRowIndex === ri">
             <tr *ngFor="let detail of revenue.Details">
               <td><i class="bi bi-chat-left-text"></i></td>
-              <td [innerHTML]="detail.productionlocation"></td>
+              <td>
+                <a href="#" (click)="toggleProductionLocationTable(detail.productionlocation, $event)">
+                    <span [innerHTML]="detail.productionlocation"></span>
+                </a>
+              </td>
               <td>{{ detail.cumulativerevenue }}</td>
               <td>{{ detail.margin }}</td>
               <td>{{ detail.newItemGoalPerMonthJan }}</td>
@@ -103,5 +107,10 @@
         </ng-template>
       </p-table>
     </div>
+  </div>
+  
+  <!-- Production Location Table (initially hidden) -->
+  <div *ngIf="showProductionLocationTable">
+    <app-productionlocation></app-productionlocation>
   </div>
   

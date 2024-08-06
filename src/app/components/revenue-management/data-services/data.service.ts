@@ -94,7 +94,7 @@ export class DataService {
     return of(data);
   }
 
-  getProductionData() {
+  getProductionLocationData() {
     return [
       {
         "Sponsor": this.sanitizer.bypassSecurityTrustHtml("<a href='#' style='color: rgba(18, 132, 116, 1); text-decoration: underline;'>Duke</a>"),

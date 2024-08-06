@@ -32,6 +32,7 @@ export class RevenueTableComponent implements OnInit {
   iconState: boolean[] = []; // Array to track the icon state for each row
   expandedRowIndex: number | null = null;
   tableView: any;
+  showProductionLocationTable: boolean = false;
 
   rowsPerPageOptions: any[] = Array.from({ length: 9 }, (_, i) => (i + 1) * 10);
 
@@ -51,6 +52,7 @@ export class RevenueTableComponent implements OnInit {
   alertRightSideBar = true;
   changcontrolRoweExpandButton = false;
   showInfoCard: boolean = false;
+  
   commentText: string = '';
   
   constructor(private util: UtilService,private revenueService: DataService, public dialogService: DialogService) { }
@@ -159,6 +161,12 @@ handleChatRightSidebar(revenue:any) {
   this.revenueData = revenue;
 }
 
+ // Method to show the ProductionLocation component
+ toggleProductionLocationTable(productionLocation: string, event: MouseEvent): void {
+    event.preventDefault(); // Prevent default link behavior
+    this.showProductionLocationTable = true;
+    // You may want to pass or use the `productionLocation` value as needed
+  }
 postComment(){
 
 

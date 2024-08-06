@@ -34,10 +34,11 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { AvatarModule } from 'primeng/avatar';
 import { SharedModule } from '../../shared/shared.module';
 import { RevenueTableComponent } from './revenue/revenue-table.component';
+import { ProductionLocationComponent } from './productionlocation/productionlocation.component';
 
 @NgModule({
 	declarations: [
-		RevenueTableComponent
+		RevenueTableComponent, ProductionLocationComponent
 	],
 	imports: [
 		CommonModule,

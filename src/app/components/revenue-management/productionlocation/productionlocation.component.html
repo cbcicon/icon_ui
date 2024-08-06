@@ -1,0 +1,76 @@
+<div class="row productionlocation-table">
+    <div class="col card below-card" style="margin-left: 10px;">
+      <!-- Header with expand/collapse icon -->
+      <div class="d-flex justify-content-between align-items-center" style="padding: 10px;">
+        <h5 class="mb-0"><b>Production Locations</b></h5>
+        <span class="p-input-icon-left ml-auto" style="cursor: pointer; font-size: 1.25rem;">
+          <span (click)="handleRowControl()">
+            <i class="bi bi-arrows-angle-expand" *ngIf="changeExpandButton; else collapseIcon"></i>
+            <ng-template #collapseIcon>
+              <i class="bi bi-arrows-angle-contract"></i>
+            </ng-template>
+          </span>
+        </span>
+      </div>
+  
+      <p-table [value]="productionlocations" dataKey="Protocol" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
+               [rowsPerPageOptions]="[10, 20, 30]" [paginator]="false"
+               currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+               [filterDelay]="0"
+               styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm">
+  
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="Sponsor">
+              <div class="flex justify-content-between align-items-center">
+                Sponsor
+                <p-columnFilter type="text" field="Sponsor" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="Protocol">
+              <div class="flex justify-content-between align-items-center">
+                Protocol
+                <p-columnFilter type="text" field="Protocol" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="Cohort">
+              <div class="flex justify-content-between align-items-center">
+                Cohort
+                <p-columnFilter type="text" field="Cohort" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="Revenue">
+              <div class="flex justify-content-between align-items-center">
+                Revenue
+                <p-columnFilter type="text" field="Revenue" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="Margin">
+              <div class="flex justify-content-between align-items-center">
+                Margin
+                <p-columnFilter type="text" field="Margin" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+          </tr>
+        </ng-template>
+  
+        <ng-template pTemplate="body" let-productionlocations>
+          <tr>
+            <td [innerHTML]="productionlocations.Sponsor"></td>
+            <td>{{ productionlocations.Protocol }}</td>
+            <td>{{ productionlocations.Cohort }}</td>
+            <td>{{ productionlocations.Revenue }}</td>
+            <td>{{ productionlocations.Margin }}</td>
+          </tr>
+        </ng-template>
+  
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="5">No Data found.</td>
+          </tr>
+        </ng-template>
+  
+      </p-table>
+    </div>
+  </div>
+  
