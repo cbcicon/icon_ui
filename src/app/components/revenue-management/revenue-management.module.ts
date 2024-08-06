@@ -35,10 +35,11 @@ import { AvatarModule } from 'primeng/avatar';
 import { SharedModule } from '../../shared/shared.module';
 import { RevenueTableComponent } from './revenue/revenue-table.component';
 import { ProductionLocationComponent } from './productionlocation/productionlocation.component';
+import { SponsorComponent } from './sponsor/sponsor.component';
 
 @NgModule({
 	declarations: [
-		RevenueTableComponent, ProductionLocationComponent
+		RevenueTableComponent, ProductionLocationComponent, SponsorComponent
 	],
 	imports: [
 		CommonModule,

@@ -1,4 +1,4 @@
-<div class="row productionlocation-table">
+<div class="row sponsor-table">
     <div class="col card below-card" style="margin-left: 10px;">
       <!-- Header with expand/collapse icon -->
       <div class="d-flex justify-content-between align-items-center" style="padding: 10px;">
@@ -12,7 +12,7 @@
         </span>
       </div>
   
-      <p-table [value]="productionlocations" dataKey="Protocol" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
+      <p-table [value]="sponsors" dataKey="Visit" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
                [rowsPerPageOptions]="[10, 20, 30]" [paginator]="false"
                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                [filterDelay]="0"
@@ -20,56 +20,59 @@
   
         <ng-template pTemplate="header">
           <tr>
-            <th style="background-color: rgba(255, 248, 232, 1); text-align: center;" pSortableColumn="Sponsor">
-              <div class="flex justify-content-between align-items-center">
-                Sponsor
-                <p-columnFilter type="text" field="Sponsor" display="menu" class="ml-auto"></p-columnFilter>
-              </div>
-            </th>
             <th style="background-color: rgba(255, 248, 232, 1); text-align: center;" pSortableColumn="Protocol">
               <div class="flex justify-content-between align-items-center">
                 Protocol
-                <p-columnFilter type="text" field="Protocol" display="menu" class="ml-auto"></p-columnFilter>
               </div>
             </th>
             <th style="background-color: rgba(255, 248, 232, 1); text-align: center;" pSortableColumn="Cohort">
               <div class="flex justify-content-between align-items-center">
                 Cohort
-                <p-columnFilter type="text" field="Cohort" display="menu" class="ml-auto"></p-columnFilter>
               </div>
             </th>
-            <th style="background-color: rgba(255, 248, 232, 1); text-align: center;" pSortableColumn="Revenue">
+            <th style="background-color: rgba(255, 248, 232, 1); text-align: center;" pSortableColumn="Visit">
               <div class="flex justify-content-between align-items-center">
-                Revenue
-                <p-columnFilter type="text" field="Revenue" display="menu" class="ml-auto"></p-columnFilter>
+                Visit
               </div>
             </th>
-            <th style="background-color: rgba(255, 248, 232, 1); text-align: center;" pSortableColumn="Margin">
+            <th style="background-color: rgba(255, 248, 232, 1); text-align: center;" pSortableColumn="Kit Name">
               <div class="flex justify-content-between align-items-center">
-                Margin
-                <p-columnFilter type="text" field="Margin" display="menu" class="ml-auto"></p-columnFilter>
+                Kit Name
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1); text-align: center;" pSortableColumn="Kit Qty">
+              <div class="flex justify-content-between align-items-center">
+                Kit Qty
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1); text-align: center;" pSortableColumn="Pre Label">
+              <div class="flex justify-content-between align-items-center">
+                Pre Label
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1); text-align: center;" pSortableColumn="Kit Complexity Level">
+              <div class="flex justify-content-between align-items-center">
+                Kit Complexity Level
               </div>
             </th>
           </tr>
         </ng-template>
   
-        <ng-template pTemplate="body" let-productionlocations>
+        <ng-template pTemplate="body" let-sponsors>
           <tr>
-            <td>
-                <a href="#" (click)="toggleSponsorTable(productionlocations.Sponsor, $event)">
-                    <span [innerHTML]="productionlocations.Sponsor"></span>
-                </a>
-              </td>
-            <td>{{ productionlocations.Protocol }}</td>
-            <td>{{ productionlocations.Cohort }}</td>
-            <td>{{ productionlocations.Revenue }}</td>
-            <td>{{ productionlocations.Margin }}</td>
+            <td>{{ sponsors.Protocol }}</td>
+            <td>{{ sponsors.Cohort }}</td>
+            <td>{{ sponsors.Visit }}</td>
+            <td>{{ sponsors.KitName }}</td>
+            <td>{{ sponsors.KitQty }}</td>
+            <td>{{ sponsors.PreLabel }}</td>
+            <td>{{ sponsors.KitComplexityLevel }}</td>
           </tr>
         </ng-template>
   
         <ng-template pTemplate="emptymessage">
           <tr>
-            <td colspan="5">No Data found.</td>
+            <td colspan="7">No Data found.</td>
           </tr>
         </ng-template>
   
@@ -77,7 +80,3 @@
     </div>
   </div>
   
-  <!-- Sponsor Table (initially hidden) -->
-  <div *ngIf="showSponsorTable">
-    <app-sponsor></app-sponsor>
-  </div>

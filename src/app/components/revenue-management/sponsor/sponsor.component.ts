@@ -3,40 +3,33 @@ import { DataService } from '../data-services/data.service';
 import { UtilService} from '../../../common/util';
 
 @Component({
-    selector: 'app-productionlocation',
-    templateUrl: './productionlocation.component.html',
-    styleUrls: ['./productionlocation.component.scss']
+    selector: 'app-sponsor',
+    templateUrl: './sponsor.component.html',
+    styleUrls: ['./sponsor.component.scss']
   })
-export class ProductionLocationComponent {
+export class SponsorComponent {
 
 
   constructor(private util: UtilService,private dataService: DataService ) {}
 
-  productionlocations :any;
+  sponsors :any;
   changeExpandButton = false;
   pageSize: any;
   setRows: any;
   tableViewOption: boolean = false;
   showInfoCard: boolean = false;
   loading: boolean = true
-  showSponsorTable: boolean = false;
 
  ngOnInit(){
-  this.productionlocations = this.dataService.getProductionLocationData();
+  this.sponsors = this.dataService.getSponsorData();
    setTimeout(() => {
      this.loading =  false
    },1000)
  }
 
  handleRowControl() {
-    this.setRows = this.setRows == this.util.getPageSize() ? this.productionlocations.length : this.util.getPageSize();
+    this.setRows = this.setRows == this.util.getPageSize() ? this.sponsors.length : this.util.getPageSize();
     this.changeExpandButton = this.setRows == this.util.getPageSize() ? false : true;
-  }
-
-  // Method to show the Sponsor component
- toggleSponsorTable(sponsor: string, event: MouseEvent): void {
-    event.preventDefault(); // Prevent default link behavior
-    this.showSponsorTable = true;
   }
 
   handleTableView() {

@@ -165,8 +165,8 @@ handleChatRightSidebar(revenue:any) {
  toggleProductionLocationTable(productionLocation: string, event: MouseEvent): void {
     event.preventDefault(); // Prevent default link behavior
     this.showProductionLocationTable = true;
-    // You may want to pass or use the `productionLocation` value as needed
   }
+
 postComment(){
 
 
