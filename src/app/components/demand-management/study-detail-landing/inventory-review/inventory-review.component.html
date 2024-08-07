@@ -12,90 +12,78 @@
              [filterDelay]="0"
              styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm">
 
-             <ng-template pTemplate="header">
-              <tr style="height: 36.5px; border: 1px 0 0 0; background-color: rgba(255, 248, 232, 1);">
-                <th rowspan="2" style="width: 135px; background-color: rgba(255, 248, 232, 1)">Actions</th>
-                <th rowspan="2" style="width: 135px; background-color: rgba(255, 248, 232, 1)">Product No.</th>
-                <th rowspan="2" style="width: 135px; background-color: rgba(255, 248, 232, 1)">Component Name</th>
-                <th rowspan="2" style="width: 135px; background-color: rgba(255, 248, 232, 1)">QTY Needed (Initial Shipment)</th>
-                <th rowspan="2" style="width: 135px; background-color: rgba(255, 248, 232, 1)">QTY Needed (Study duration)</th>
-                <th rowspan="2" style="width: 135px;background-color: rgba(255, 248, 232, 1)">Item Type</th>
-                <th rowspan="2" style="width: 135px; background-color: rgba(255, 248, 232, 1)">New Item</th>
-                <th rowspan="2" style="width: 135px; background-color: rgba(255, 248, 232, 1)">Kit Vendor</th>
-                <th colspan="3" style="width: 290px; background-color: rgba(209, 233, 246, 1); text-align: center;">Kit Production Locations</th>
-                <th rowspan="2" style="width: 135px; background-color: rgba(255, 248, 232, 1)">Replacement Needed</th>
-              </tr>
-              <tr style="height: 36.5px; border: 1px 0 0 0; background-color: rgba(255, 248, 232, 1);">
-                <th style="width: 100px; padding: 5px 10px; background-color: rgba(255, 248, 232, 1);">Buford</th>
-                <th style="width: 110px; padding: 5px 10px; background-color: rgba(255, 248, 232, 1);">Farmingdale</th>
-                <th style="width: 110px; padding: 5px 10px; background-color: rgba(255, 248, 232, 1);">Midland</th>
-              </tr>
-            </ng-template>
-            
-            
+      <ng-template pTemplate="header">
+        <tr style="height: 36.5px; border: 1px 0 0 0; background-color: rgba(255, 248, 232, 1);">
+          <th rowspan="2" style="background-color: rgba(255, 248, 232, 1);">Actions</th>
+          <th rowspan="2" style="background-color: rgba(255, 248, 232, 1);">Product No.</th>
+          <th rowspan="2" style="background-color: rgba(255, 248, 232, 1);">Component Name</th>
+          <th rowspan="2" style="background-color: rgba(255, 248, 232, 1);">QTY Needed (Initial Shipment)</th>
+          <th rowspan="2" style="background-color: rgba(255, 248, 232, 1);">QTY Needed (Study duration)</th>
+          <th rowspan="2" style="background-color: rgba(255, 248, 232, 1);">Item Type</th>
+          <th rowspan="2" style="background-color: rgba(255, 248, 232, 1);">New Item</th>
+          <th rowspan="2" style="background-color: rgba(255, 248, 232, 1);">Assigned kit prod location</th>
+          <th colspan="3" style="background-color: rgba(209, 233, 246, 1); text-align: center;">Kit Production Locations</th>
+          <th rowspan="2" style="background-color: rgba(255, 248, 232, 1);">Replacement</th>
+        </tr>
+        <tr style="height: 36.5px; border: 1px 0 0 0; background-color: rgba(255, 248, 232, 1);">
+          <th style="padding: 5px 10px; background-color: rgba(255, 248, 232, 1);">Buford</th>
+          <th style="padding: 5px 10px; background-color: rgba(255, 248, 232, 1);">Farmingdale</th>
+          <th style="padding: 5px 10px; background-color: rgba(255, 248, 232, 1);">Midland</th>
+        </tr>
+      </ng-template>
+
       <ng-template pTemplate="body" let-item let-ri="rowIndex">
         <tr [pEditableRow]="item" style="height: 27px;">
           <td>
             <span class="ml-2" *ngIf="!item.editing">
               <i class="bi bi-pencil" (click)="onEditRow(item)"></i>
             </span>
-          
             <div *ngIf="item.editing" class="d-flex align-items-center">
-              <button 
-                pButton 
-                pRipple 
-                type="button" 
-                pSaveEditableRow 
-                icon="pi pi-check" 
-                (click)="onSaveRow(item)" 
-                class="p-button-rounded p-button-text p-button-success mr-0">
-              </button>
-              <button 
-                pButton 
-                pRipple 
-                type="button" 
-                pCancelEditableRow 
-                icon="pi pi-times" 
-                (click)="onCancelRow(item, ri)" 
-                class="p-button-rounded p-button-text p-button-danger">
-              </button> 
+              <button pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onSaveRow(item)"
+                      class="p-button-rounded p-button-text p-button-success mr-0"></button>
+              <button pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onCancelRow(item, ri)"
+                      class="p-button-rounded p-button-text p-button-danger"></button>
             </div>
             <span class="ml-2"><i class="bi bi-chat-left-text"></i></span>
           </td>
-          <td [pEditableColumn]="item.productNo" pEditableColumnField="productNo" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+          <td [pEditableColumn]="item.productNo" pEditableColumnField="productNo"
+              [style.pointer-events]="item.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="item.productNo" />
+                <input pInputText type="text" [(ngModel)]="item.productNo"/>
               </ng-template>
               <ng-template pTemplate="output">
                 {{ item.productNo }}
               </ng-template>
             </p-cellEditor>
           </td>
-          <td [pEditableColumn]="item.componentName" pEditableColumnField="componentName" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+          <td [pEditableColumn]="item.componentName" pEditableColumnField="componentName"
+              [style.pointer-events]="item.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="item.componentName" />
+                <input pInputText type="text" [(ngModel)]="item.componentName"/>
               </ng-template>
               <ng-template pTemplate="output">
                 {{ item.componentName }}
               </ng-template>
             </p-cellEditor>
           </td>
-          <td [pEditableColumn]="item.qtyNeededInitialShipment" pEditableColumnField="qtyNeededInitialShipment" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+          <td [pEditableColumn]="item.qtyNeededInitialShipment" pEditableColumnField="qtyNeededInitialShipment"
+              [style.pointer-events]="item.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="item.qtyNeededInitialShipment" />
+                <input pInputText type="text" [(ngModel)]="item.qtyNeededInitialShipment"/>
               </ng-template>
               <ng-template pTemplate="output">
                 {{ item.qtyNeededInitialShipment }}
               </ng-template>
             </p-cellEditor>
           </td>
-          <td [pEditableColumn]="item.qtyNeededStudyDuration" pEditableColumnField="qtyNeededStudyDuration" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+          <td [pEditableColumn]="item.qtyNeededStudyDuration" pEditableColumnField="qtyNeededStudyDuration"
+              [style.pointer-events]="item.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="item.qtyNeededStudyDuration" />
+                <input pInputText type="text" [(ngModel)]="item.qtyNeededStudyDuration"/>
               </ng-template>
               <ng-template pTemplate="output">
                 {{ item.qtyNeededStudyDuration }}
@@ -112,81 +100,75 @@
               </div>
               <div *ngIf="ri >= 6 && ri<= 7" class="item-type-cheap" style="background-color: rgba(227, 96, 96, 0.325);">
                 <i class="bi bi-exclamation-triangle" style="color: red;"></i>
-              </div>              
-              <div *ngIf="ri >= 8" 
-                class="item-type-cheap" 
-                style="background-color: rgba(212, 252, 252, 1);">
+              </div>
+              <div *ngIf="ri >= 8" class="item-type-cheap" style="background-color: rgba(212, 252, 252, 1);">
                 <i class="bi bi-hourglass" style="color: rgba(0, 71, 80, 1);"></i>
-              </div>                
+              </div>
             </div>
           </td>
-          <td [pEditableColumn]="item.newItem" pEditableColumnField="newItem" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+          <td [pEditableColumn]="item.newItem" pEditableColumnField="newItem"
+              [style.pointer-events]="item.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="item.newItem" />
+                <input pInputText type="text" [(ngModel)]="item.newItem"/>
               </ng-template>
               <ng-template pTemplate="output">
                 {{ item.newItem }}
               </ng-template>
             </p-cellEditor>
           </td>
-          <td [pEditableColumn]="item.kitVendor" pEditableColumnField="kitVendor" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+          <td [pEditableColumn]="item.kitVendor" pEditableColumnField="kitVendor"
+              [style.pointer-events]="item.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="item.kitVendor" />
+                <input pInputText type="text" [(ngModel)]="item.kitVendor"/>
               </ng-template>
               <ng-template pTemplate="output">
                 {{ item.kitVendor }}
               </ng-template>
             </p-cellEditor>
           </td>
-          <td [pEditableColumn]="item.newItemBuford" pEditableColumnField="newItemBuford" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+          <td [pEditableColumn]="item.newItemBuford" pEditableColumnField="newItemBuford"
+              [style.pointer-events]="item.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="item.newItemBuford" />
+                <input pInputText type="text" [(ngModel)]="item.newItemBuford"/>
               </ng-template>
               <ng-template pTemplate="output">
                 {{ item.newItemBuford }}
               </ng-template>
             </p-cellEditor>
           </td>
-          <td [pEditableColumn]="item.newItemFarmingdale" pEditableColumnField="newItemFarmingdale" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+          <td [pEditableColumn]="item.newItemFarmingdale" pEditableColumnField="newItemFarmingdale"
+              [style.pointer-events]="item.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="item.newItemFarmingdale" />
+                <input pInputText type="text" [(ngModel)]="item.newItemFarmingdale"/>
               </ng-template>
               <ng-template pTemplate="output">
                 {{ item.newItemFarmingdale }}
               </ng-template>
             </p-cellEditor>
           </td>
-          <td [pEditableColumn]="item.newItemMidland" pEditableColumnField="newItemMidland" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+          <td [pEditableColumn]="item.newItemMidland" pEditableColumnField="newItemMidland"
+              [style.pointer-events]="item.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="item.newItemMidland" />
+                <input pInputText type="text" [(ngModel)]="item.newItemMidland"/>
               </ng-template>
               <ng-template pTemplate="output">
                 {{ item.newItemMidland }}
               </ng-template>
             </p-cellEditor>
           </td>
-          <td [pEditableColumn]="item.kitProductionLocations" pEditableColumnField="kitProductionLocations" [style.pointer-events]="item.editing ? 'auto' : 'none'">
+          <td [pEditableColumn]="item.replacement" pEditableColumnField="replacement"
+              [style.pointer-events]="item.editing ? 'auto' : 'none'">
             <p-cellEditor>
               <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="item.kitProductionLocations" />
+                <input pInputText type="text" [(ngModel)]="item.replacement"/>
               </ng-template>
               <ng-template pTemplate="output">
-                {{ item.kitProductionLocations }}
-              </ng-template>
-            </p-cellEditor>
-          </td>
-          <td [pEditableColumn]="item.replacementNeeded" pEditableColumnField="replacementNeeded" [style.pointer-events]="item.editing ? 'auto' : 'none'">
-            <p-cellEditor>
-              <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="item.replacementNeeded" />
-              </ng-template>
-              <ng-template pTemplate="output">
-                {{ item.replacementNeeded }}
+                {{ item.replacement }}
               </ng-template>
             </p-cellEditor>
           </td>
@@ -195,10 +177,9 @@
 
       <ng-template pTemplate="emptymessage">
         <tr>
-          <td colspan="8">No Data found.</td>
+          <td colspan="13">No data found.</td>
         </tr>
       </ng-template>
-
     </p-table>
   </div>
 </div>
