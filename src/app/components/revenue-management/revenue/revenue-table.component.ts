@@ -6,6 +6,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Sidebar } from 'primeng/sidebar';
 import * as FileSaver from 'file-saver';
 import { UtilService} from '../../../common/util';
+import { DataShortenerService } from '../data-shortener/data.shortener.service';
 
 @Component({
   selector: 'app-revenue-table',
@@ -54,8 +55,10 @@ export class RevenueTableComponent implements OnInit {
   showInfoCard: boolean = false;
   
   commentText: string = '';
+  dateFilterData: any;
+  selectedInterval: string | null = null;
   
-  constructor(private util: UtilService,private revenueService: DataService, public dialogService: DialogService) { }
+  constructor(private util: UtilService,private revenueService: DataService, public dataShortenerService:DataShortenerService,public dialogService: DialogService) { }
 
   ngOnInit() {
     this.revenueService.getRevenueData().subscribe(data => {
@@ -166,6 +169,34 @@ handleChatRightSidebar(revenue:any) {
     event.preventDefault(); // Prevent default link behavior
     this.showProductionLocationTable = true;
   }
+
+  handleDateShortener(datetype: string): void {
+
+    if (this.selectedInterval === datetype) {
+      this.selectedInterval = '';
+      this.revenueData =  this.dateFilterData
+      return;
+    }
+  
+    this.selectedInterval = datetype; 
+    
+    this.revenueData = this.dateFilterData
+  
+    switch (datetype) {
+      case 'weekly':
+        this.revenueData = this.dataShortenerService.filterWeekly(this.revenueData);
+        break;
+      case 'monthly':
+        this.revenueData = this.dataShortenerService.filterMonthly(this.revenueData);
+        break;
+      case 'yearly':
+        this.revenueData = this.dataShortenerService.filterYearly(this.revenueData);
+        break;
+      default:
+        break;
+    }
+  }
+  
 
 postComment(){
 
