@@ -1,0 +1,295 @@
+<div class="grid dashboard-micro">
+  <div class="col-12 lg:col-6 xl:col-3 dashboard-card">
+      <div class="card mb-0 ">
+     <h5 class="m-3"><b>Turn-Around-time (TAT) (Days)</b></h5>
+
+     <div class="m-4">
+       <p-progressBar [value]="'50'" />
+
+     </div>
+      </div>
+  </div>
+  <div class="col-12 lg:col-6 xl:col-3  dashboard-card">
+      <div class="card mb-0 ">
+        <h5 class="ml-3 mt-3"><b>Scrap</b></h5>
+        <div class="mx-2">
+          <p-chart type="doughnut" [width]="'120'" [height]="'120'" [data]="data" [options]="options" />
+
+        </div>
+      </div>
+  </div>
+  <div class="col-12 lg:col-6 xl:col-3 dashboard-card">
+      <div class="card mb-0  ">
+        <h5 class="ml-3 mt-3"><b> Back Order Rate</b></h5>
+        <app-circular-progress  [value]="50" ></app-circular-progress>
+      </div>
+  </div>
+  <div class="col-12 lg:col-6 xl:col-3 dashboard-card">
+      <div class="card mb-0 ">
+        <h5 class="ml-3 mt-3"><b>Purchase Orders</b></h5>
+
+        <div  class="d-flex justify-content-center mt-4">
+
+          <div class="mx-4">
+           <p  class="text-center"><i style="font-size: 30px;" class="bi bi-dropbox"></i></p> 
+            <p class="text-center" style="font-size: 16px;color:#1790D0;line-height: 0;"> <b>340</b> </p>
+            <p   class="text-center" style="font-size: 14px;line-height: 1;">Open</p>
+          </div>
+
+          <div class="mx-4">
+            <p class="text-center" ><i style="font-size: 30px;" class="bi bi-check-circle"></i></p> 
+             <p  class="text-center" style="font-size: 16px;color:#41B34E;line-height: 0;"> <b>1200</b> </p>
+             <p  class="text-center" style="font-size: 14px;line-height: 1;">Closed</p>
+           </div>
+
+           <div class="mx-4">
+            <p  class="text-center"><i style="font-size: 30px;" class="bi bi-clock-history"></i></p> 
+             <p  class="text-center" style="font-size: 16px;color:blue;line-height: 0;"> <b>400</b> </p>
+             <p  class="text-center" style="font-size: 14px;line-height: 1;">Delayed</p>
+           </div>
+ 
+           <div class="mx-4">
+             <p  class="text-center"><i style="font-size: 30px;" class="bi bi-arrow-counterclockwise"></i></p> 
+              <p  class="text-center" style="font-size: 16px;color:red;line-height: 0;"> <b>340</b> </p>
+              <p  class="text-center" style="font-size: 14px;line-height: 1;">Back Order</p>
+            </div>
+
+        </div>
+
+      </div>
+
+  </div>
+
+</div>
+
+<div class="row ">
+
+  <div class="col-5 dashboard-card-lower">
+    <div class="card">
+      <h4 class="m-2"><b>Impact</b></h4>
+      <div class="toggle-tabset">
+
+        <p-tabMenu [model]="items" [activeItem]="activeItem">
+          <ng-template pTemplate="item" let-item>
+              <p pRipple class="flex align-items-center gap-2 p-menuitem-link">
+                  <span  style="font-size: 20px; color: #128474;">
+                      {{ item.label }}
+                  </span>
+                </p>
+          </ng-template>
+      </p-tabMenu>
+       
+      </div>
+
+      <div class="d-flex justify-content-between " >
+  <app-small-card [label]="'one'"  > </app-small-card>
+  <app-small-card [label]="'Two'" > </app-small-card>
+  <app-small-card  [label]="'Three'" > </app-small-card>
+      </div>
+
+      <div class="dashboard-impact-dropdown d-flex">
+
+        <div class="field md:col-6">
+         
+          <p-dropdown
+          [options]="optionsValue"
+          optionLabel="name"
+          ></p-dropdown>
+        </div>
+      
+        <div class="field md:col-6">
+         
+          <p-dropdown
+          [options]="optionsValue"
+          optionLabel="name"
+          ></p-dropdown>
+        </div>
+      </div>
+	  
+
+      <div class="mt-4">
+       <h5 class="mx-4">Current Impact</h5>
+        <div class="d-flex justify-content-between " >
+          <app-small-card [label]="'one'" (toggleTopSideBar)="handleTopsideBarToggle()" > </app-small-card>
+          <app-small-card [label]="'Two'" (toggleTopSideBar)="handleTopsideBarToggle()" > </app-small-card>
+          <app-small-card  [label]="'Three'" (toggleTopSideBar)="handleTopsideBarToggle()" > </app-small-card>
+          <app-small-card  [label]="'Four'" (toggleTopSideBar)="handleTopsideBarToggle()"> </app-small-card>
+        </div>
+      </div>
+
+
+      <div class="mt-4">
+        <h5 class="mx-4">Forecaste Impact</h5>
+         <div class="d-flex justify-content-between " >
+           <app-small-card [label]="'one'" (toggleTopSideBar)="handleTopsideBarToggle()"   > </app-small-card>
+           <app-small-card [label]="'Two'" (toggleTopSideBar)="handleTopsideBarToggle()" > </app-small-card>
+           <app-small-card  [label]="'Three'"  (toggleTopSideBar)="handleTopsideBarToggle()"> </app-small-card>
+           <app-small-card  [label]="'Four'" (toggleTopSideBar)="handleTopsideBarToggle()" > </app-small-card>
+         </div>
+       </div>
+    </div>
+
+  </div>
+
+  <div class="col-4 dashboard-card-lower">
+    <div class="card revenue-card ">
+    
+      <h4 class="m-2"><b>Revenue & Resource</b> </h4>
+
+      <div class="mt-4">
+
+        <p-table 
+          [value]="revenueResourceData" 
+          [scrollable]="true" 
+          scrollHeight="400px" 
+          [tableStyle]="{'min-width': '50rem'}">
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th>Location</th>
+                      <th>Capacity</th>
+                      <th>Allocated</th>
+                      <th>Revenue</th>
+                      <th>Gain</th>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-revenueResourceData>
+                  <tr>
+                      <td>{{revenueResourceData.location}}</td>
+                      <td>{{revenueResourceData.capacity}}</td>
+                      <td>{{revenueResourceData.allocated}}</td>
+                      <td>{{revenueResourceData.revenue}}</td>
+                      <td style="color: green;">{{revenueResourceData.gain}}</td>
+                  </tr>
+              </ng-template>
+      </p-table>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-3 dashboard-card-lower">
+    <div class="card p-2">
+      <h4 class="m-2"><b>Top Sponsors</b><i class="bi bi-exclamation-circle mx-4"></i> </h4>
+
+      <p style="color: #1790D0; font-size: 20px;" class=" mt-2 mx-2"> 75% <span>of Total Revenue</span> </p> 
+      <p-divider/> 
+
+    
+      <div class="d-flex justify-content-between mx-2"> <p style="font-size: 20px;">Pfizer</p> <p style="font-size: 20px;">$4900 <span style="color: green;font-size: 20px;"><i  style="color: green;font-size: 20px;" class="bi bi-arrow-up"></i> 20%</span> </p>  </div>
+      <div class="d-flex justify-content-between mx-2"> <p style="font-size: 20px;">Molecular</p> <p style="font-size: 20px;">$2900 <span style="color: red;font-size: 20px;"><i  style="color: red;font-size: 20px;" class="bi bi-arrow-up"></i> 20%</span> </p>  </div>
+      <div class="d-flex justify-content-between mx-2"> <p style="font-size: 20px;">Novaitis</p> <p style="font-size: 20px;">$3900 <span style="color: green;font-size: 20px;"><i  style="color: green;font-size: 20px;" class="bi bi-arrow-up"></i> 20%</span> </p>  </div>
+
+      <div class="d-flex justify-content-between mx-2"> <p style="font-size: 20px;">Assembly</p> <p style="font-size: 20px;">$3300 <span style="color: red;font-size: 20px;"><i  style="color: red;font-size: 20px;" class="bi bi-arrow-up"></i> 20%</span> </p>  </div>
+      <div class="d-flex justify-content-between mx-2"> <p style="font-size: 20px;">Abbott Biologicals B.V.</p> <p style="font-size: 20px;">$2200 <span style="color: green;font-size: 20px;"><i  style="color: green;font-size: 20px;" class="bi bi-arrow-up"></i> 20%</span> </p>  </div>
+
+
+    </div>
+
+  </div>
+
+
+
+</div>
+
+
+<!-- Top sideBar  -->
+
+<div class="dashboard-top-sidebar" >
+
+  <p-sidebar [(visible)]="showTopSidebar" position="top">
+    <h3>Impacted Items</h3>
+  
+    <p-table #dt [value]="impactingItemData"  dataKey="id" [rowHover]="true"
+    [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,20,30]" [loading]="loading"
+    [paginator]="false" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [filterDelay]="0"
+    [globalFilterFields]="['ITEM_ID', 'ITEM_NAME', 'ITEM_DESCRIPTION', 'DEMAND' , 'ON_STOCK' , 'AVAILABILITY','OPEN_PO' ,'ITEM_TYPE']"
+    styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm"  >
+  
+    <ng-template pTemplate="header">
+      <tr>
+        <th class="po-header" pSortableColumn="action-item">
+          <div class="flex justify-content-between align-items-center">
+            Item #
+          </div>
+        </th>
+  
+        <th  class="po-header" pSortableColumn="poNo">
+          <div class="flex justify-content-between align-items-center">
+            Item Description
+            <p-columnFilter type="text" field="poNo" display="menu" class="ml-auto"></p-columnFilter>
+          </div>
+        </th>
+        <th class="po-header" pSortableColumn="productionLocationNumber">
+          <div class="flex justify-content-between align-items-center">
+            Sponsor
+            <p-columnFilter type="text" field="productionLocationNumber" display="menu"
+              class="ml-auto"></p-columnFilter>
+          </div>
+        </th>
+  
+        <th class="po-header" pSortableColumn="status">
+          <div class="flex justify-content-between align-items-center">
+            Protocol #
+            <p-columnFilter type="text" field="status" display="menu" class="ml-auto"></p-columnFilter>
+          </div>
+        </th>
+  
+        <th class="po-header" pSortableColumn="sponsor">
+          <div class="flex justify-content-between align-items-center">
+            Kit Name
+            <p-columnFilter type="text" field="sponsor" display="menu" class="ml-auto"></p-columnFilter>
+          </div>
+        </th>
+  
+        <th class="po-header" pSortableColumn="sponsor">
+          <div class="flex justify-content-between align-items-center">
+            Replacement
+            <p-columnFilter type="text" field="sponsor" display="menu" class="ml-auto"></p-columnFilter>
+          </div>
+        </th>
+        
+        <th class="po-header" pSortableColumn="qtyReceived">
+          <div class="flex justify-content-between align-items-center">
+            Criticality
+            <p-columnFilter type="text" field="qtyReceived" display="menu" class="ml-auto"></p-columnFilter>
+          </div>
+        </th>
+  
+        <th class="po-header" pSortableColumn="qtyOpen" style="min-width: 10rem">
+          <div class="flex justify-content-between align-items-center">
+            Work Order #
+            <p-columnFilter type="date" field="qtyOpen" display="menu" class="ml-auto"></p-columnFilter>
+          </div>
+        </th>
+        
+      </tr>
+    </ng-template>
+  
+    <ng-template pTemplate="body" let-impactingItemData>
+      <tr class="p-selectable-row">
+  
+        <td > <span class="green-text">{{impactingItemData['itemNumber']}}</span></td>
+        <td> <span class="skyblue-text">{{impactingItemData['itemDescription']}}</span></td>
+        <td>{{impactingItemData['sponsorProtocolNumber']}}</td>
+        <td>{{impactingItemData['protocol']}}</td>
+        <td>{{impactingItemData['kitName']}}</td>
+        <td>{{impactingItemData['replacement']}} </td>
+        <td>{{impactingItemData['criticality']}}</td>
+        <td> <span class="green-text"> {{impactingItemData['workOrderNumber']}}</span></td>
+       
+      </tr>
+    </ng-template> 
+    
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8">No Data found.</td>
+      </tr>
+    </ng-template>
+  
+  </p-table>
+  
+  </p-sidebar>
+</div>
+

@@ -13,6 +13,7 @@ import { UtilService } from './common/util';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderRouterModule } from "ngx-ui-loader";
 import { TableDataService } from './common/table-data/table-data.service';
+import { ImportsModule } from './import';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import { TableDataService } from './common/table-data/table-data.service';
      RevenueManagementModule,
      SharedModule ,
      DragDropModule,
+     ImportsModule,
      NgxUiLoaderModule,
      NgxUiLoaderRouterModule,
      NgxUiLoaderHttpModule

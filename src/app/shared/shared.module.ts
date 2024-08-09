@@ -17,6 +17,8 @@ import { ArrowCardComponent } from './arrow-card/arrow-card';
 import { TagModule } from 'primeng/tag';
 import { VerticalStepperComponent } from './vertical-stepper/vertical-stepper';
 import { MoveStockItemComponent } from './move-stock-item/move-stock-item';
+import { CircularProgressComponent } from './circular-progress/circular-progress.component';
+import { SmallCardComponent } from './small-card/small-card.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { MoveStockItemComponent } from './move-stock-item/move-stock-item';
     MsgRightSidebarComponent,
     ArrowCardComponent ,
     VerticalStepperComponent ,
-    MoveStockItemComponent
+    MoveStockItemComponent,
+    CircularProgressComponent,
+    SmallCardComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +45,7 @@ import { MoveStockItemComponent } from './move-stock-item/move-stock-item';
     AvatarModule  ,
     TagModule
   ],
-  exports: [BlockTagComponent , MsgRightSidebarComponent ,ArrowCardComponent , VerticalStepperComponent ,MoveStockItemComponent],
+  exports: [SmallCardComponent,CircularProgressComponent,BlockTagComponent , MsgRightSidebarComponent ,ArrowCardComponent , VerticalStepperComponent ,MoveStockItemComponent],
 })
 export class SharedModule {
   
