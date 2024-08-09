@@ -8,11 +8,11 @@ import * as FileSaver from 'file-saver';
 import { UtilService} from '../../../common/util';
 
 @Component({
-  selector: 'app-newstudy-table',
-  templateUrl: './newstudy-table.component.html',
-  styleUrls: ['./newstudy-table.component.scss']
+  selector: 'app-studyplanning-table',
+  templateUrl: './studyplanning-table.component.html',
+  styleUrls: ['./studyplanning-table.component.scss']
 })
-export class NewstudyTableComponent implements OnInit {
+export class StudyPlanningTableComponent implements OnInit {
   studies: any[] = []; 
   studyData: any;
   editing: boolean = false;

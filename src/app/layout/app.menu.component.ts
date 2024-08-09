@@ -24,8 +24,7 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     { label: 'Master Demand Plan', routerLink: ['/demand-management/master-demand-plan'] },
                     { label: 'Forecast', routerLink: ['/demand-management/forecast'] },
-                    { label: 'New Study', routerLink: ['/demand-management/new-study'] },
-                    { label: 'Live Study', routerLink: ['/pages/empty'] },
+                    { label: 'Study Planning', routerLink: ['/demand-management/study-planning'] },
                     { label: 'Configurations', routerLink: ['/demand-management/dm-configuration'] }
                 ]
             },
@@ -42,7 +41,7 @@ export class AppMenuComponent implements OnInit {
                 icon: 'bi bi-currency-dollar mx-2',
                 items: [
                     { label: 'Revenue', routerLink: ['/revenue-management/revenue'] },
-                    { label: 'Configurations', icon: 'truck-icon', routerLink: ['/'] },
+                    { label: 'Configurations', icon: 'truck-icon', routerLink: ['//revenue-management/configurations'] },
                 ]
             },
             {

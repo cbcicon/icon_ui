@@ -24,6 +24,7 @@ import { TableDataService } from './common/table-data/table-data.service';
      BrowserAnimationsModule ,                  
      FormsModule ,
      DemandManagementModule ,
+     RevenueManagementModule,
      SharedModule ,
      DragDropModule,
      NgxUiLoaderModule,

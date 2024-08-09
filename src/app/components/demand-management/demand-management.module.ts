@@ -31,7 +31,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { MenuModule } from 'primeng/menu';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { ForecastChart } from './forecast/chart/forecast-chart';
-import { NewstudyTableComponent } from './newstudy/newstudy-table.component';
+import { StudyPlanningTableComponent } from './studyplanning/studyplanning-table.component';
 import { StudyDetailLandingComponent } from './study-detail-landing/study-detail-landing.component';
 import { LiveStudyDetailLandingComponent } from './live-study-detail-landing/live-study-detail-landing.component';
 import { CountriesComponent } from './study-detail-landing/countries/countries.component';
@@ -53,7 +53,7 @@ import { DmKitConfigComponent } from './dm-configuration/dm-kit-config/dm-kit-co
 
 @NgModule({
 	declarations: [
-		ForecastTable, ForecastChart, NewstudyTableComponent, StudyDetailLandingComponent, CountriesComponent, SitesComponent, InventoryReviewComponent,
+		ForecastTable, ForecastChart, StudyPlanningTableComponent, StudyDetailLandingComponent, CountriesComponent, SitesComponent, InventoryReviewComponent,
 		 SummaryComponent,MasterDemandPlanComponent, LiveStudyDetailLandingComponent,LiveCountriesComponent,LiveSitesComponent,LiveVisitsComponent
 		 ,LiveWorkOrdersComponent,LiveKitsComponent,DmConfigurationComponent ,DmKitConfigComponent],
 	imports: [
