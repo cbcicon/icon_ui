@@ -13,11 +13,47 @@
         <i style="color: white;" class="pi pi-ellipsis-v"></i>
     </button>
 
-    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
-        <button class="p-link layout-topbar-button">
+    <div #topbarmenu class="layout-topbar-menu " [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <button class="p-link layout-topbar-button" (click)="handleSearchBar()"  *ngIf="!showSearchBar">
             <i style="color: white;" class="bi-search"> </i>
             <span>Calendar</span>
         </button>
+
+        <div *ngIf="showSearchBar" class="searchBar d-flex justify-content-between mt-2 ">
+            <i style="color: black;" class="bi-search ml-3 mt-3" (click)="handleSearchBar()"> </i>
+             <div class="mt-1" > 
+
+                 <p-dropdown 
+                 [options]="searchOption"
+                 [(ngModel)]="selectedSearchValue"
+                 optionLabel="name"
+                 [filter]="true" 
+                 filterBy="name"
+                 [showClear]="true"
+                 placeholder='Search'
+                 (onChange)="onSearchOptionSelected()"
+                 >
+                     <ng-template pTemplate="selectedItem" let-selectedOption>
+                         <div class="flex align-items-center gap-2">
+                            
+                             <div>{{ selectedOption.name }}</div>
+                         </div>
+                     </ng-template>
+                     <ng-template let-country pTemplate="item">
+                         <div class="flex align-items-center gap-2">
+                            
+                             <div>{{ country.name }}</div>
+                         </div>
+                     </ng-template>
+             </p-dropdown>
+             
+             </div>
+
+            <div class="flex align-items-center gap-2">
+                <input type="text" pInputText placeholder="Enter ID or Name" class="w-8rem sm:w-auto" />
+            </div>
+
+        </div>
 
         <button class="p-link layout-topbar-button">
             <i style="color: white;" class="bi bi-arrow-repeat"> </i>

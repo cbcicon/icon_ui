@@ -2,12 +2,14 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from "./service/app.layout.service";
 import { Sidebar } from 'primeng/sidebar';
+import { Router } from '@angular/router';
 
 
 
 @Component({
     selector: 'app-topbar',
-    templateUrl: './app.topbar.component.html'
+    templateUrl: './app.topbar.component.html',
+    styleUrls:['./app.topbar.component.scss']
 })
 export class AppTopBarComponent {
 
@@ -17,6 +19,9 @@ export class AppTopBarComponent {
 
     showProfile:boolean = false
 
+    searchOption: any[] | undefined;
+
+    selectedSearchValue:any;
 
     alertRightSideBar :boolean = false;
     historyRightSideBar :boolean = false;
@@ -25,6 +30,8 @@ export class AppTopBarComponent {
     
     allComments = []
 
+    showSearchBar:boolean = false;
+    
     
     @ViewChild('sidebarRef') sidebarRef!: Sidebar;
 
@@ -34,14 +41,14 @@ export class AppTopBarComponent {
 
     @ViewChild('topbarmenu') menu!: ElementRef;
 
-    
+ 
+   
 
-    constructor(public layoutService: LayoutService) { }
+    constructor(public layoutService: LayoutService , private router: Router) { }
 
     ngOnInit(){ 
       this.profileMenu = [
      
-      
         {
             items: [
                 {
@@ -59,7 +66,19 @@ export class AppTopBarComponent {
             ]
         }
     ];
-    }
+
+    this.searchOption = [
+      { name: 'Work Order', code: 'AU' },
+      { name: 'Protocol', code: 'BR' },
+      { name: 'Sponsor', code: 'CN' },
+      { name: 'Kit', code: 'AU' },
+      { name: 'Protocol', code: 'BR' },
+      { name: 'Item #', code: 'CN' },
+     ];
+    
+
+ 
+  }
 
     get getComments(): boolean {
   
@@ -116,6 +135,17 @@ export class AppTopBarComponent {
      this.showProfile = !this.showProfile
    }
 
+
+   handleSearchBar(){
+    this.showSearchBar = !this.showSearchBar;
+   }
+
+
+   onSearchOptionSelected() {
+    if (this.selectedSearchValue) {
+      this.router.navigate(['/search-page/search-page-table'], { queryParams: { query: this.selectedSearchValue.name } });
+    }
+  }
 
    
 }
