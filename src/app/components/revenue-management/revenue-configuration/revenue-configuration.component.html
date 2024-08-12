@@ -1,0 +1,19 @@
+<div class="row revenue-configuration-main">
+    <div class="card revenue-configuration-sidebar">
+      <ul class="option-list">
+        <li *ngFor="let item of items" [class.active]="item === activeItem" (click)="selectItem(item)">
+          <i [class]="item.icon" [ngStyle]="{'color': 'rgba(18, 132, 116, 1)'}"></i>
+          <span class="mx-4" [ngStyle]="{'color': 'rgba(18, 132, 116, 1)'}">{{ item.name }}</span>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="card revenue-configuration-content">
+      <div [ngSwitch]="activeItem.name">
+        <div *ngSwitchCase="'Revenue Goal Config'" class="mr-4">
+          <app-revenue-goal-config></app-revenue-goal-config>
+        </div>
+      </div>
+    </div>
+  </div>
+  
