@@ -14,6 +14,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderRouterModule } from "ngx-ui-loader";
 import { TableDataService } from './common/table-data/table-data.service';
 import { ImportsModule } from './import';
+import { SearchPageModule } from './components/search-page/search-page.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +29,7 @@ import { ImportsModule } from './import';
      SharedModule ,
      DragDropModule,
      ImportsModule,
+     SearchPageModule,
      NgxUiLoaderModule,
      NgxUiLoaderRouterModule,
      NgxUiLoaderHttpModule
