@@ -1,0 +1,26 @@
+.content-header-container {
+    width: 1610px;
+    padding: 10px 0;
+    gap: 0; /* Remove gap between elements */
+    display: flex;
+    flex-direction: column; /* Stack the header and border vertically */
+    align-items: flex-start; /* Align items to the left */
+  }
+  
+  .content-header {
+    font-family: 'Poppins', sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 28.5px;
+    letter-spacing: 0.15px;
+    text-align: left;
+    color: rgba(0, 0, 0, 1);
+    margin: 0; /* Remove default margin */
+  }
+  
+  .header-border {
+    width: 100%; /* Make the border span the full width of the container */
+    border-bottom: 1px solid rgba(210, 210, 211, 1);
+    margin-top: 20px; /* Adjust margin to fine-tune spacing between header and border */
+  }
+  
