@@ -26,6 +26,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ToDoListComponent } from './to-do-list/to-do-list';
 import { ListboxModule } from 'primeng/listbox';
 import { MenuModule } from 'primeng/menu';
+import { ImportsModule } from '../import';
 
 @NgModule({
     declarations: [
@@ -55,7 +56,8 @@ import { MenuModule } from 'primeng/menu';
         AvatarModule ,
         SharedModule,
         ListboxModule,
-        MenuModule
+        MenuModule,
+        ImportsModule
     ],
     exports: [AppLayoutComponent ]
 })
