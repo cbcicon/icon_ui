@@ -1,28 +1,42 @@
 <div class="content-container">
-    <div class="content-header-container">
-      <h5 class="content-header">Revenue Goal Config</h5>
-      <div class="header-border"></div>
-    </div>
-    
-    <div class="panel-container">
-      <div class="sub-header-container">
-        <h5 class="sub-header">Farmingdale</h5>
-        <i class="bi bi-chevron-right clickable-icon"></i>
-      </div>
-    </div>
-  
-    <div class="panel-container">
-      <div class="sub-header-container">
-        <h5 class="sub-header">Midland</h5>
-        <i class="bi bi-chevron-right clickable-icon"></i>
-      </div>
-    </div>
-  
-    <div class="panel-container">
-      <div class="sub-header-container">
-        <h5 class="sub-header">Buford</h5>
-        <i class="bi bi-chevron-right clickable-icon"></i>
-      </div>
+  <div class="content-header-container">
+    <h5 class="content-header">Revenue Goal Config</h5>
+    <div class="header-border"></div>
+  </div>
+
+  <!-- Farmingdale Section -->
+  <div class="panel-container">
+    <div class="sub-header-container">
+      <h5 class="sub-header">Farmingdale</h5>
+      <i class="bi"
+         [ngClass]="iconStateFarmingdale ? 'bi-chevron-down ml-2' : 'bi-chevron-right ml-2'"
+         (click)="toggleIcon('farmingdale')"
+         style="cursor: pointer;">
+      </i>
     </div>
   </div>
-  
+
+  <!-- Midland Section -->
+  <div class="panel-container">
+    <div class="sub-header-container">
+      <h5 class="sub-header">Midland</h5>
+      <i class="bi"
+         [ngClass]="iconStateMidland ? 'bi-chevron-down ml-2' : 'bi-chevron-right ml-2'"
+         (click)="toggleIcon('midland')"
+         style="cursor: pointer;">
+      </i>
+    </div>
+  </div>
+
+  <!-- Buford Section -->
+  <div class="panel-container">
+    <div class="sub-header-container">
+      <h5 class="sub-header">Buford</h5>
+      <i class="bi"
+         [ngClass]="iconStateBuford ? 'bi-chevron-down ml-2' : 'bi-chevron-right ml-2'"
+         (click)="toggleIcon('buford')"
+         style="cursor: pointer;">
+      </i>
+    </div>
+  </div>
+</div>
