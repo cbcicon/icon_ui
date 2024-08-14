@@ -5,38 +5,359 @@
   </div>
 
   <!-- Farmingdale Section -->
-  <div class="panel-container">
-    <div class="sub-header-container">
-      <h5 class="sub-header">Farmingdale</h5>
-      <i class="bi"
-         [ngClass]="iconStateFarmingdale ? 'bi-chevron-down ml-2' : 'bi-chevron-right ml-2'"
-         (click)="toggleIcon('farmingdale')"
-         style="cursor: pointer;">
-      </i>
-    </div>
+<div class="panel-container">
+  <div class="sub-header-container" [ngClass]="{'margin-visible': iconStateFarmingdale}">
+    <h5 class="sub-header">Farmingdale</h5>
+    <i class="bi"
+       [ngClass]="iconStateFarmingdale ? 'bi-chevron-down' : 'bi-chevron-right'"
+       (click)="toggleIcon('farmingdale')"
+       style="cursor: pointer;">
+    </i>
   </div>
+  <div *ngIf="iconStateFarmingdale" class="table-container">
+    <p-table [value]="farmingdaleData" dataKey="Month" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
+             [rowsPerPageOptions]="[10, 20, 30]" [paginator]="false"
+             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+             [filterDelay]="0"
+             styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="background-color: rgba(255, 248, 232, 1);">Actions</th>
+          <th style="background-color: rgba(255, 248, 232, 1);">Month</th>
+          <th style="background-color: rgba(255, 248, 232, 1);">Goal Per Month</th>
+          <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="userName">
+            <div class="flex justify-content-between align-items-center">
+              User Name
+              <p-columnFilter type="text" field="userName" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+          <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="createdDate">
+            <div class="flex justify-content-between align-items-center">
+              Created Date
+              <p-columnFilter type="date" field="createdDate" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+          <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="lastModifiedDate">
+            <div class="flex justify-content-between align-items-center">
+              Last Modified Date
+              <p-columnFilter type="date" field="lastModifiedDate" display="menu" class="ml-auto"></p-columnFilter>
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-goal let-ri="rowIndex">
+        <tr [pEditableRow]="goal" style="height: 27px;">
+          <td>
+            <span class="ml-2" *ngIf="!goal.editing">
+              <i class="bi bi-pencil" (click)="onEditRow(goal)"></i>
+            </span>
+            <div *ngIf="goal.editing" class="d-flex align-items-center">
+              <button pButton pRipple type="button" pSaveEditableRow icon="pi pi-check"
+                      (click)="onSaveRow(goal)"
+                      class="p-button-rounded p-button-text p-button-success mr-0">
+              </button>
+              <button pButton pRipple type="button" pCancelEditableRow icon="pi pi-times"
+                      (click)="onCancelRow(goal, ri)"
+                      class="p-button-rounded p-button-text p-button-danger">
+              </button>
+            </div>
+          </td>
+          <td [pEditableColumn]="goal.Month" pEditableColumnField="Month" [style.pointer-events]="goal.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="goal.Month" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ goal.Month }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="goal.GoalPerMonth" pEditableColumnField="GoalPerMonth" [style.pointer-events]="goal.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="goal.GoalPerMonth" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ goal.GoalPerMonth }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="goal.UserName" pEditableColumnField="UserName" [style.pointer-events]="goal.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="goal.UserName" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ goal.UserName }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="goal.CreatedDate" pEditableColumnField="CreatedDate" [style.pointer-events]="goal.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="goal.CreatedDate" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ goal.CreatedDate }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td [pEditableColumn]="goal.LastModifiedDate" pEditableColumnField="LastModifiedDate" [style.pointer-events]="goal.editing ? 'auto' : 'none'">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="goal.LastModifiedDate" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ goal.LastModifiedDate }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="6">No Data found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
 
   <!-- Midland Section -->
   <div class="panel-container">
-    <div class="sub-header-container">
+    <div class="sub-header-container" [ngClass]="{'margin-visible': iconStateMidland}">
       <h5 class="sub-header">Midland</h5>
       <i class="bi"
-         [ngClass]="iconStateMidland ? 'bi-chevron-down ml-2' : 'bi-chevron-right ml-2'"
+         [ngClass]="iconStateMidland ? 'bi-chevron-down' : 'bi-chevron-right'"
          (click)="toggleIcon('midland')"
          style="cursor: pointer;">
       </i>
+    </div>
+    <div *ngIf="iconStateMidland" class="table-container">
+      <p-table [value]="midlandData" dataKey="Month" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
+               [rowsPerPageOptions]="[10, 20, 30]" [paginator]="false"
+               currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+               [filterDelay]="0"
+               styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="background-color: rgba(255, 248, 232, 1);">Actions</th>
+            <th style="background-color: rgba(255, 248, 232, 1);">Month</th>
+            <th style="background-color: rgba(255, 248, 232, 1);">Goal Per Month</th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="userName">
+              <div class="flex justify-content-between align-items-center">
+                User Name
+                <p-columnFilter type="text" field="userName" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="createdDate">
+              <div class="flex justify-content-between align-items-center">
+                Created Date
+                <p-columnFilter type="date" field="createdDate" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="lastModifiedDate">
+              <div class="flex justify-content-between align-items-center">
+                Last Modified Date
+                <p-columnFilter type="date" field="lastModifiedDate" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-goal let-ri="rowIndex">
+          <tr [pEditableRow]="goal" style="height: 27px;">
+            <td>
+              <span class="ml-2" *ngIf="!goal.editing">
+                <i class="bi bi-pencil" (click)="onEditRow(goal)"></i>
+              </span>
+              <div *ngIf="goal.editing" class="d-flex align-items-center">
+                <button pButton pRipple type="button" pSaveEditableRow icon="pi pi-check"
+                        (click)="onSaveRow(goal)"
+                        class="p-button-rounded p-button-text p-button-success mr-0">
+                </button>
+                <button pButton pRipple type="button" pCancelEditableRow icon="pi pi-times"
+                        (click)="onCancelRow(goal, ri)"
+                        class="p-button-rounded p-button-text p-button-danger">
+                </button>
+              </div>
+            </td>
+            <td [pEditableColumn]="goal.Month" pEditableColumnField="Month" [style.pointer-events]="goal.editing ? 'auto' : 'none'">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="goal.Month" />
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{ goal.Month }}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td [pEditableColumn]="goal.GoalPerMonth" pEditableColumnField="GoalPerMonth" [style.pointer-events]="goal.editing ? 'auto' : 'none'">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="goal.GoalPerMonth" />
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{ goal.GoalPerMonth }}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td [pEditableColumn]="goal.UserName" pEditableColumnField="UserName" [style.pointer-events]="goal.editing ? 'auto' : 'none'">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="goal.UserName" />
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{ goal.UserName }}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td [pEditableColumn]="goal.CreatedDate" pEditableColumnField="CreatedDate" [style.pointer-events]="goal.editing ? 'auto' : 'none'">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="goal.CreatedDate" />
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{ goal.CreatedDate }}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td [pEditableColumn]="goal.LastModifiedDate" pEditableColumnField="LastModifiedDate" [style.pointer-events]="goal.editing ? 'auto' : 'none'">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="goal.LastModifiedDate" />
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{ goal.LastModifiedDate }}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="6">No Data found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
   </div>
 
   <!-- Buford Section -->
   <div class="panel-container">
-    <div class="sub-header-container">
+    <div class="sub-header-container" [ngClass]="{'margin-visible': iconStateBuford}">
       <h5 class="sub-header">Buford</h5>
       <i class="bi"
-         [ngClass]="iconStateBuford ? 'bi-chevron-down ml-2' : 'bi-chevron-right ml-2'"
+         [ngClass]="iconStateBuford ? 'bi-chevron-down' : 'bi-chevron-right'"
          (click)="toggleIcon('buford')"
          style="cursor: pointer;">
       </i>
+    </div>
+    <div *ngIf="iconStateBuford" class="table-container">
+      <p-table [value]="bufordData" dataKey="Month" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
+               [rowsPerPageOptions]="[10, 20, 30]" [paginator]="false"
+               currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+               [filterDelay]="0"
+               styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="background-color: rgba(255, 248, 232, 1);">Actions</th>
+            <th style="background-color: rgba(255, 248, 232, 1);">Month</th>
+            <th style="background-color: rgba(255, 248, 232, 1);">Goal Per Month</th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="userName">
+              <div class="flex justify-content-between align-items-center">
+                User Name
+                <p-columnFilter type="text" field="userName" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="createdDate">
+              <div class="flex justify-content-between align-items-center">
+                Created Date
+                <p-columnFilter type="date" field="createdDate" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th style="background-color: rgba(255, 248, 232, 1);" pSortableColumn="lastModifiedDate">
+              <div class="flex justify-content-between align-items-center">
+                Last Modified Date
+                <p-columnFilter type="date" field="lastModifiedDate" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-goal let-ri="rowIndex">
+          <tr [pEditableRow]="goal" style="height: 27px;">
+            <td>
+              <span class="ml-2" *ngIf="!goal.editing">
+                <i class="bi bi-pencil" (click)="onEditRow(goal)"></i>
+              </span>
+              <div *ngIf="goal.editing" class="d-flex align-items-center">
+                <button pButton pRipple type="button" pSaveEditableRow icon="pi pi-check"
+                        (click)="onSaveRow(goal)"
+                        class="p-button-rounded p-button-text p-button-success mr-0">
+                </button>
+                <button pButton pRipple type="button" pCancelEditableRow icon="pi pi-times"
+                        (click)="onCancelRow(goal, ri)"
+                        class="p-button-rounded p-button-text p-button-danger">
+                </button>
+              </div>
+            </td>
+            <td [pEditableColumn]="goal.Month" pEditableColumnField="Month" [style.pointer-events]="goal.editing ? 'auto' : 'none'">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="goal.Month" />
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{ goal.Month }}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td [pEditableColumn]="goal.GoalPerMonth" pEditableColumnField="GoalPerMonth" [style.pointer-events]="goal.editing ? 'auto' : 'none'">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="goal.GoalPerMonth" />
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{ goal.GoalPerMonth }}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td [pEditableColumn]="goal.UserName" pEditableColumnField="UserName" [style.pointer-events]="goal.editing ? 'auto' : 'none'">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="goal.UserName" />
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{ goal.UserName }}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td [pEditableColumn]="goal.CreatedDate" pEditableColumnField="CreatedDate" [style.pointer-events]="goal.editing ? 'auto' : 'none'">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="goal.CreatedDate" />
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{ goal.CreatedDate }}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td [pEditableColumn]="goal.LastModifiedDate" pEditableColumnField="LastModifiedDate" [style.pointer-events]="goal.editing ? 'auto' : 'none'">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="goal.LastModifiedDate" />
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{ goal.LastModifiedDate }}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="6">No Data found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
   </div>
 </div>

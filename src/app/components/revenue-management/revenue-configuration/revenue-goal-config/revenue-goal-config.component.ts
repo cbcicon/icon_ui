@@ -12,6 +12,8 @@ export class RevenueGoalConfigComponent implements OnInit {
   midlandData:any;
   bufordData:any;
   loading: boolean = true;
+  editing: boolean = false;
+  editingRow: any = null;
   iconStateFarmingdale: boolean = false; // Array to track the icon state for each row
   iconStateMidland: boolean = false; // Array to track the icon state for each row
   iconStateBuford: boolean = false; // Array to track the icon state for each row
@@ -55,4 +57,20 @@ export class RevenueGoalConfigComponent implements OnInit {
         break;
     }
   }
+
+  onEditRow(goal: any): void {
+    goal.editing = true;
+    this.editing = true;
+  }
+
+  onSaveRow(goal: any): void {
+    goal.editing = false; 
+    this.editing = false;
+  }
+
+  onCancelRow(goal: any, ri: number): void {
+    goal.editing = false; 
+    this.editing = false;
+  }
+  
 }
