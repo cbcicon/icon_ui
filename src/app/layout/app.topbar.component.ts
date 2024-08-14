@@ -68,12 +68,13 @@ export class AppTopBarComponent {
     ];
 
     this.searchOption = [
-      { name: 'Work Order', code: 'AU' },
-      { name: 'Protocol', code: 'BR' },
-      { name: 'Sponsor', code: 'CN' },
-      { name: 'Kit', code: 'AU' },
-      { name: 'Protocol', code: 'BR' },
-      { name: 'Item #', code: 'CN' },
+      { name: 'Work Order', code: 'workOrder' },
+      { name: 'Protocol', code: 'protocol' },
+      { name: 'Sponsor', code: 'sponsor' },
+      { name: 'Kit', code: 'kit' },
+      { name: 'Item', code: 'item' },
+      { name: 'Vendor', code: 'vendor' },
+      { name: 'Country', code: 'country' },
      ];
     
 
@@ -143,7 +144,7 @@ export class AppTopBarComponent {
 
    onSearchOptionSelected() {
     if (this.selectedSearchValue) {
-      this.router.navigate(['/search-page/search-page-table'], { queryParams: { query: this.selectedSearchValue.name } });
+      this.router.navigate(['/search-page/search-page-table'], { queryParams: { query: this.selectedSearchValue.code } });
     }
   }
 
