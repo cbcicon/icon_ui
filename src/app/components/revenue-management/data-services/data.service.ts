@@ -200,4 +200,307 @@ export class DataService {
     ];
   }
 
+  getFarmingdaleData() {
+    return [
+      {
+        "Actions": "",
+        "Month": "Jan",
+        "GoalPerMonth": "$500",
+        "UserName": "Admin",
+        "CreatedDate": "15 Jan 2024",
+        "LastModifiedDate":"15 Jan 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Feb",
+        "GoalPerMonth": "$600",
+        "UserName": "Admin",
+        "CreatedDate": "18 Jan 2024",
+        "LastModifiedDate":"18 Jan 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Mar",
+        "GoalPerMonth": "$300",
+        "UserName": "Admin",
+        "CreatedDate": "23 Jan 2024",
+        "LastModifiedDate":"23 Jan 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Apr",
+        "GoalPerMonth": "$400",
+        "UserName": "Admin",
+        "CreatedDate": "7 Feb 2024",
+        "LastModifiedDate":"7 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "May",
+        "GoalPerMonth": "$350",
+        "UserName": "Admin",
+        "CreatedDate": "10 Feb 2024",
+        "LastModifiedDate":"10 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Jun",
+        "GoalPerMonth": "$250",
+        "UserName": "Admin",
+        "CreatedDate": "19 Feb 2024",
+        "LastModifiedDate":"19 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Jul",
+        "GoalPerMonth": "$600",
+        "UserName": "Admin",
+        "CreatedDate": "18 Jan 2024",
+        "LastModifiedDate":"18 Jan 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Aug",
+        "GoalPerMonth": "$300",
+        "UserName": "Admin",
+        "CreatedDate": "23 Jan 2024",
+        "LastModifiedDate":"23 Jan 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Sep",
+        "GoalPerMonth": "$400",
+        "UserName": "Admin",
+        "CreatedDate": "7 Feb 2024",
+        "LastModifiedDate":"7 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Oct",
+        "GoalPerMonth": "$350",
+        "UserName": "Admin",
+        "CreatedDate": "10 Feb 2024",
+        "LastModifiedDate":"10 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Nov",
+        "GoalPerMonth": "$250",
+        "UserName": "Admin",
+        "CreatedDate": "19 Feb 2024",
+        "LastModifiedDate":"19 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Dec",
+        "GoalPerMonth": "$250",
+        "UserName": "Admin",
+        "CreatedDate": "19 Feb 2024",
+        "LastModifiedDate":"19 Feb 2024"
+      }
+    ];
+  }
+
+  getMidlandData() {
+    return [
+      {
+        "Actions": "",
+        "Month": "Jan",
+        "GoalPerMonth": "$500",
+        "UserName": "Admin",
+        "CreatedDate": "15 Jan 2024",
+        "LastModifiedDate":"15 Jan 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Feb",
+        "GoalPerMonth": "$600",
+        "UserName": "Admin",
+        "CreatedDate": "18 Jan 2024",
+        "LastModifiedDate":"18 Jan 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Mar",
+        "GoalPerMonth": "$300",
+        "UserName": "Admin",
+        "CreatedDate": "23 Jan 2024",
+        "LastModifiedDate":"23 Jan 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Apr",
+        "GoalPerMonth": "$400",
+        "UserName": "Admin",
+        "CreatedDate": "7 Feb 2024",
+        "LastModifiedDate":"7 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "May",
+        "GoalPerMonth": "$350",
+        "UserName": "Admin",
+        "CreatedDate": "10 Feb 2024",
+        "LastModifiedDate":"10 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Jun",
+        "GoalPerMonth": "$250",
+        "UserName": "Admin",
+        "CreatedDate": "19 Feb 2024",
+        "LastModifiedDate":"19 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Jul",
+        "GoalPerMonth": "$600",
+        "UserName": "Admin",
+        "CreatedDate": "18 Jan 2024",
+        "LastModifiedDate":"18 Jan 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Aug",
+        "GoalPerMonth": "$300",
+        "UserName": "Admin",
+        "CreatedDate": "23 Jan 2024",
+        "LastModifiedDate":"23 Jan 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Sep",
+        "GoalPerMonth": "$400",
+        "UserName": "Admin",
+        "CreatedDate": "7 Feb 2024",
+        "LastModifiedDate":"7 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Oct",
+        "GoalPerMonth": "$350",
+        "UserName": "Admin",
+        "CreatedDate": "10 Feb 2024",
+        "LastModifiedDate":"10 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Nov",
+        "GoalPerMonth": "$250",
+        "UserName": "Admin",
+        "CreatedDate": "19 Feb 2024",
+        "LastModifiedDate":"19 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Dec",
+        "GoalPerMonth": "$250",
+        "UserName": "Admin",
+        "CreatedDate": "19 Feb 2024",
+        "LastModifiedDate":"19 Feb 2024"
+      }
+    ];
+  }
+
+  getBufordData() {
+    return [
+      {
+        "Actions": "",
+        "Month": "Jan",
+        "GoalPerMonth": "$500",
+        "UserName": "Admin",
+        "CreatedDate": "15 Jan 2024",
+        "LastModifiedDate":"15 Jan 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Feb",
+        "GoalPerMonth": "$600",
+        "UserName": "Admin",
+        "CreatedDate": "18 Jan 2024",
+        "LastModifiedDate":"18 Jan 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Mar",
+        "GoalPerMonth": "$300",
+        "UserName": "Admin",
+        "CreatedDate": "23 Jan 2024",
+        "LastModifiedDate":"23 Jan 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Apr",
+        "GoalPerMonth": "$400",
+        "UserName": "Admin",
+        "CreatedDate": "7 Feb 2024",
+        "LastModifiedDate":"7 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "May",
+        "GoalPerMonth": "$350",
+        "UserName": "Admin",
+        "CreatedDate": "10 Feb 2024",
+        "LastModifiedDate":"10 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Jun",
+        "GoalPerMonth": "$250",
+        "UserName": "Admin",
+        "CreatedDate": "19 Feb 2024",
+        "LastModifiedDate":"19 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Jul",
+        "GoalPerMonth": "$600",
+        "UserName": "Admin",
+        "CreatedDate": "18 Jan 2024",
+        "LastModifiedDate":"18 Jan 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Aug",
+        "GoalPerMonth": "$300",
+        "UserName": "Admin",
+        "CreatedDate": "23 Jan 2024",
+        "LastModifiedDate":"23 Jan 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Sep",
+        "GoalPerMonth": "$400",
+        "UserName": "Admin",
+        "CreatedDate": "7 Feb 2024",
+        "LastModifiedDate":"7 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Oct",
+        "GoalPerMonth": "$350",
+        "UserName": "Admin",
+        "CreatedDate": "10 Feb 2024",
+        "LastModifiedDate":"10 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Nov",
+        "GoalPerMonth": "$250",
+        "UserName": "Admin",
+        "CreatedDate": "19 Feb 2024",
+        "LastModifiedDate":"19 Feb 2024"
+      },
+      {
+        "Actions": "",
+        "Month": "Dec",
+        "GoalPerMonth": "$250",
+        "UserName": "Admin",
+        "CreatedDate": "19 Feb 2024",
+        "LastModifiedDate":"19 Feb 2024"
+      }
+    ];
+  }
+
 }
