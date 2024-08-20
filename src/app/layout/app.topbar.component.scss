@@ -22,3 +22,58 @@
     border: none;
     height: 2rem;
 }
+//////////////////////////////////////////////////////////////////////////
+
+
+.sidebar-menu{
+.layout-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item {
+    margin-bottom: 10px;
+}
+
+.menu-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #E7F3F1;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    color: #128474;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.menu-label:hover {
+    background-color:#E7F3F1;
+}
+
+.submenu {
+    padding-left: 20px;
+}
+
+.submenu li {
+    margin-bottom: 5px;
+}
+
+.additionalSidebarItem {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.additionalSidebarItem:hover {
+    background-color:#E7F3F1;
+}
+
+.bi {
+    margin-left: auto;
+   
+    color:  #128474;
+}
+
+}
