@@ -102,6 +102,13 @@
 
 				<th pSortableColumn="earlyExpiryDate" style="min-width: 10rem" class="main-table-header">
 					<div class="flex justify-content-between align-items-center">
+						Due Date
+
+						<p-columnFilter type="date" field="earlyExpiryDate" display="menu" class="ml-auto"></p-columnFilter>
+					</div>
+				</th>
+				<th pSortableColumn="earlyExpiryDate" style="min-width: 10rem" class="main-table-header">
+					<div class="flex justify-content-between align-items-center">
 						Early Expire Date
 
 						<p-columnFilter type="date" field="earlyExpiryDate" display="menu" class="ml-auto"></p-columnFilter>
@@ -242,6 +249,8 @@
 
 				</td>
 				  
+             <td> due data</td>
+
 				<td>
 				     <p  [ngClass]="{'expired': !util.isExpired(inventoryTableData['earlyExpiryDate']), 'not-expired': util.isExpired(inventoryTableData['earlyExpiryDate'])}"> {{util.formatDate(inventoryTableData['earlyExpiryDate']) }}</p>	
 				</td>

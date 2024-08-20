@@ -41,8 +41,10 @@ export class AppTopBarComponent {
 
     @ViewChild('topbarmenu') menu!: ElementRef;
 
- 
-   
+     
+    sidebarVisible:boolean =  false;
+
+    model:any
 
     constructor(public layoutService: LayoutService , private router: Router) { }
 
@@ -76,6 +78,78 @@ export class AppTopBarComponent {
       { name: 'Vendor', code: 'vendor' },
       { name: 'Country', code: 'country' },
      ];
+
+     this.model = [
+      {
+          label: 'Dashboard',
+          icon: 'bi bi-columns-gap mx-2',
+          items:[
+            { label: 'Dashboard', routerLink: ['/'] }
+          ]
+          
+          
+      },
+      {
+          label: 'Demand Management',
+          icon:"bi bi-bar-chart mx-2",
+          collapsed: true,
+          items: [
+              { label: 'Master Demand Plan', routerLink: ['/demand-management/master-demand-plan'] },
+              { label: 'Forecast', routerLink: ['/demand-management/forecast'] },
+              { label: 'Study Planning', routerLink: ['/demand-management/study-planning'] },
+              { label: 'Configurations', routerLink: ['/demand-management/dm-configuration'] }
+          ]
+      },
+      {
+          label: 'Resource Planning',
+          icon: 'bi bi-people-fill mx-2',
+          collapsed:true,
+          items: [
+              { label: 'Person hours', routerLink: ['/'] },
+              { label: 'Storage', icon: 'truck-icon', routerLink: ['/'] },
+          ]
+      },
+      {
+          label: 'Revenue Management',
+          icon: 'bi bi-currency-dollar mx-2',
+          collapsed:true,
+          items: [
+              { label: 'Revenue', routerLink: ['/revenue-management/revenue'] },
+              { label: 'Configurations', icon: 'truck-icon', routerLink: ['/revenue-management/revenue-configuration'] },
+          ]
+      },
+      {
+          label: 'Inventory Management',
+          icon: 'bi bi-clipboard-data mx-2',
+          collapsed:true,
+          items: [
+              { label: 'Inventory', routerLink: ['/inventory-management/order-list'] },
+              { label: 'Purchase Orders', routerLink: ['/inventory-management/inventory-purchase-order'] },
+              { label: 'Saftey Stocks', routerLink: ['/inventory-management/safety-stock'] },
+              { label: 'Scrap', routerLink: ['/inventory-management/scrap'] },
+              { label: 'Configurations', routerLink: ['/inventory-management/inventory-configuration'] }
+          ]
+      },
+      {
+          label: 'MPS',
+          icon: 'bi bi-clipboard-data mx-2',
+          collapsed:true,
+          items: [{ label: 'Schedule', icon: 'setting-icon', routerLink: ['/'] }]
+      },
+      {
+          label: 'What-if Scenarios',
+          icon:'bi bi-question-circle mx-2',
+          collapsed:true,
+          items: [
+              { label: 'Kit Reports', icon: 'setting-icon', routerLink: ['/'] }
+          ]
+      },
+      { label: 'Analytics', icon: 'bi bi-graph-up-arrow mx-2', routerLink: ['/'] },
+
+      { label: 'Report', icon:  'bi bi-file-spreadsheet mx-2', routerLink: ['/'] },
+
+ 
+  ];
     
 
  
@@ -148,5 +222,13 @@ export class AppTopBarComponent {
     }
   }
 
-   
+  
+  handleSideBarContent(){
+    this.sidebarVisible = !this.sidebarVisible
+  }
+
+  toggleMenu(index: number) {
+    this.model[index].collapsed = !this.model[index].collapsed;
+}
+
 }

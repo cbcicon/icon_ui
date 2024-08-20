@@ -4,7 +4,7 @@
         <a class="layout-topbar-logo" routerLink="">
             <img src="../../assets/logo.png" alt="logo">
         </a>
-        <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+        <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="handleSideBarContent()">
             <i class="bi bi-list h1"></i>
         </button>
     </div>
@@ -153,3 +153,59 @@
 </p-menu>
 
 </div>
+
+
+<!-- sidebar items -->
+
+<p-sidebar [(visible)]="sidebarVisible"  styleClass="w-24rem">
+
+    <ng-template pTemplate="header">
+        <a class="layout-topbar-logo mr-4" routerLink="">
+            <img src="../../assets/images/sidebar-logo.svg" alt="logo">
+        </a>
+      
+    </ng-template>
+
+    <ul class="layout-menu sidebar-menu">
+        <ng-container *ngFor="let item of model; let i = index;">
+            <li *ngIf="!item.separator" class="menu-item">
+                <div (click)="toggleMenu(i)" class="menu-label">
+                    <i [ngClass]="item.icon"></i>
+                    <span>{{ item.label }}</span>
+                    <i *ngIf="item.items" class="bi"
+                       [ngClass]="item.collapsed ? 'bi-chevron-right' : 'bi-chevron-down'"></i>
+                </div>
+                <ul *ngIf="item.items && !item.collapsed" class="submenu">
+                    <li *ngFor="let subItem of item.items">
+                        <a [routerLink]="subItem.routerLink">
+                            <i [ngClass]="subItem.icon"></i>
+                            <span>{{ subItem.label }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li *ngIf="item.separator" class="menu-separator"></li>
+        </ng-container>
+    
+        <!-- Additional static sidebar items -->
+        <div class="additionalSidebarItem">
+            <span><i class="bi bi-people-fill ml-2 mr-3 mt-4"></i></span>
+            <span>User Management</span>
+        </div>
+    
+        <div class="additionalSidebarItem">
+            <span><i class="bi bi-gear-fill ml-2 mr-3 mt-4"></i></span>
+            <span>Setting</span>
+        </div>
+    
+        <div class="additionalSidebarItem">
+            <span><i class="bi bi-box-arrow-right ml-2 mr-3 mt-4"></i></span>
+            <span>Sign Out</span>
+        </div>
+    
+        <div class="extraTopMargine"></div>
+    </ul>
+    
+      
+
+ </p-sidebar>
